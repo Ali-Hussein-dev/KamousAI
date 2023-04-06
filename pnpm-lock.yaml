@@ -25,6 +25,7 @@ specifiers:
   eventsource-parser: ^1.0.0
   langchain: ^0.0.48
   next: ^13.2.4
+  nextjs-google-analytics: ^2.3.3
   postcss: ^8.4.21
   prettier: ^2.8.6
   prettier-plugin-tailwindcss: ^0.2.6
@@ -56,6 +57,7 @@ dependencies:
   eventsource-parser: 1.0.0
   langchain: 0.0.48
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
+  nextjs-google-analytics: 2.3.3_next@13.2.4+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.43.9_react@18.2.0
@@ -3247,6 +3249,18 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nextjs-google-analytics/2.3.3_next@13.2.4+react@18.2.0:
+    resolution: {integrity: sha512-Y6sI6A7wt5dji8hYBnVkOh9LTyImSLFZXx3FpyQgVW7W4b4qEFHjH2u3fhDJsrRZeLlUGM8/RuHD/mhHc2Axfg==}
+    peerDependencies:
+      next: '>=11.0.0'
+      react: '>=17.0.0'
+    dependencies:
+      next: 13.2.4_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /node-fetch/2.6.7:

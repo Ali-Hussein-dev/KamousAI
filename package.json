@@ -25,6 +25,7 @@
     "eventsource-parser": "^1.0.0",
     "langchain": "^0.0.48",
     "next": "^13.2.4",
+    "nextjs-google-analytics": "^2.3.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",

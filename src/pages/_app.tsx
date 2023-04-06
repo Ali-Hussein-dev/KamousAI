@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 // import { Notifications } from "@mantine/notifications";
 import * as React from "react";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 // import { Analytics } from "@vercel/analytics/react";
 // import { RouterTransition } from "../components";
 
@@ -36,6 +37,7 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
         {/* <Notifications position="top-center" />
           <RouterTransition /> */}
         <TypographyStylesProvider>
+          <GoogleAnalytics trackPageViews strategy="lazyOnload" />
           <Component {...pageProps} />
         </TypographyStylesProvider>
         {/* <Analytics /> */}
