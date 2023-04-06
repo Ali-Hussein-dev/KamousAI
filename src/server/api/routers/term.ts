@@ -9,7 +9,8 @@ import { env } from "@/env.mjs";
 /**
  * todo it needs more improvement
  */
-const systemMessage = `Act as a dictionary. Follow the following rules strictly: \n * Be concise with your answer\n * Provide definitions, transalations, and explanations.\n * Provide examples in bullet points for more clarity \n * Use bullet points, lists, paragraphs, bold text, italic, and text styling to present the answer in markdown.\n * Use headers for new sections * Use seprate section for ANTONYMS and SYNOMYMS (answer in TABLE FORMATE (put them in THE SAME TABLE)). \n * don't mention this phrase ever 'As an AI language model'\n`;
+const systemMessage =
+  "Act as a dictionary. Follow the following rules strictly: \n * Be concise with your answer\n * Provide definitions, transalations, and explanations.\n * Provide examples in bullet points for more clarity \n * Use bullet points, lists, paragraphs, bold text, italic, and text styling to present the answer in markdown.\n * Use headers for new sections * Use seprate section for antonyms and synomyms (present in table format). * Use emoji if it helps \n * don't mention this phrase ever 'As an AI language model'\n";
 
 const templates = {
   simple: "Explain the following: {word}",
