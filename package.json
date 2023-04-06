@@ -6,6 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "tc": "tsc --project ./tsconfig.json",
+    "pre-commit": "npm run tc & npm run lint",
     "start": "next start"
   },
   "dependencies": {
@@ -14,6 +16,7 @@
     "@mantine/core": "^6.0.6",
     "@mantine/hooks": "^6.0.6",
     "@mantine/next": "^6.0.6",
+    "@tailwindcss/typography": "^0.5.9",
     "@tanstack/react-query": "^4.28.0",
     "@trpc/client": "^10.18.0",
     "@trpc/next": "^10.18.0",
@@ -25,10 +28,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-icons": "^4.8.0",
     "react-markdown": "^8.0.6",
     "remark-gfm": "^3.0.1",
     "superjson": "1.12.2",
-    "zod": "^3.21.4"
+    "tailwind-custom-utilities": "^1.0.2",
+    "zod": "^3.21.4",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@types/eslint": "^8.21.3",
