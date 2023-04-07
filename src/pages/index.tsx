@@ -1,12 +1,63 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Anchor, AppShell, Footer, Header, Title } from "@mantine/core";
+import {
+  Anchor,
+  AppShell,
+  Badge,
+  Footer,
+  Header,
+  Paper,
+  Text,
+  Title,
+} from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Searchbar } from "@/components/Search-Bar";
 import { useResponse } from "@/utils/use-response";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+
+//======================================
+export const Placeholder = () => {
+  return (
+    <Paper
+      withBorder
+      className="gap grid grid-cols-1 gap-1 md:grid-cols-5"
+      p="md"
+      radius="lg"
+    >
+      <div className="col-span-2">
+        <Text className="mb-4 text-lg font-bold" color="dimmed">
+          Regular Dictionary
+        </Text>
+        <div className="mb-5 space-y-2">
+          <Badge color="yellow" size="xs" tt="lowercase" p="xs">
+            <Text color="dimmed">words</Text>
+          </Badge>
+        </div>
+      </div>
+      <div className="col-span-3">
+        <Text className="mb-4 text-lg font-bold" color="dimmed">
+          AI Dictionary
+        </Text>
+        <div className="mb-5 grid grid-cols-2 gap-4 ">
+          {[
+            "words",
+            "idioms",
+            "expressions",
+            "word vs word",
+            "word or word",
+            "misspelled words",
+          ].map((s) => (
+            <Badge key={s} color="yellow" size="xs" p="xs" tt="lowercase">
+              <Text color="dimmed">{s}</Text>
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </Paper>
+  );
+};
 const Home: NextPage = () => {
   const response = useResponse((s) => s.response);
   return (
@@ -32,7 +83,7 @@ const Home: NextPage = () => {
             {/* Footer content */}
             <div className="mx-auto w-full max-w-4xl flex-row-between">
               <span>
-                Powered by <b>Langchain</b>, <b>Nextjs</b>, and <b>Mantine</b>
+                Powered by <b>LangChain</b>, <b>Nextjs</b>, and <b>Mantine</b>
               </span>
               <div className="gap-3 flex-row-start">
                 <Anchor
@@ -61,7 +112,7 @@ const Home: NextPage = () => {
                 : theme.colors.gray[0],
             color:
               theme.colorScheme === "dark"
-                ? theme.colors.dark[1]
+                ? theme.colors.dark[2]
                 : theme.colors.dark[8],
           },
         })}
@@ -71,13 +122,19 @@ const Home: NextPage = () => {
             AI Dictionary
           </Title>
           <Searchbar />
-          <section className="prose px-1 py-4 text-lg">
-            <ReactMarkdown
-              // eslint-disable-next-line react/no-children-prop
-              children={response || ""}
-              remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-            />
-          </section>
+          <div className="pt-2">
+            {response ? (
+              <section className="prose px-1 py-2 text-lg md:px-4">
+                <ReactMarkdown
+                  remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
+                >
+                  {response}
+                </ReactMarkdown>
+              </section>
+            ) : (
+              <Placeholder />
+            )}
+          </div>
         </div>
       </AppShell>
     </>
