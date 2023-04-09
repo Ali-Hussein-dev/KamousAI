@@ -31,8 +31,8 @@ export const Placeholder = () => {
           Regular Dictionary
         </Text>
         <div className="mb-5 space-y-2">
-          <Badge color="yellow" size="xs" tt="lowercase" p="xs">
-            <Text color="dimmed">words</Text>
+          <Badge color="yellow" tt="inherit" p="xs" size="lg">
+            <Text color="dimmed">Words</Text>
           </Badge>
         </div>
       </div>
@@ -42,14 +42,14 @@ export const Placeholder = () => {
         </Text>
         <div className="mb-5 grid grid-cols-2 gap-4 ">
           {[
-            "words",
-            "idioms",
-            "expressions",
-            "word vs word",
-            "word or word",
-            "misspelled words",
+            "Words",
+            "Idioms",
+            "Expressions",
+            "Word vs word",
+            "Word or word",
+            "Misspelled words",
           ].map((s) => (
-            <Badge key={s} color="yellow" size="xs" p="xs" tt="lowercase">
+            <Badge key={s} color="yellow" p="xs" tt="inherit" size="lg">
               <Text color="dimmed">{s}</Text>
             </Badge>
           ))}
