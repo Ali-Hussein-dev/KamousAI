@@ -6,7 +6,7 @@ export const useFetchStream = (
 ) => {
   const setResponse = useResponse((s) => s.setResponse);
   const ctrl = new AbortController();
-  const fetcher = ({ term }: { term: string }) => {
+  const fetcher = (term: { term: string }) => {
     let text = "";
     fetchEventSource("/api/term", {
       method: "POST",
