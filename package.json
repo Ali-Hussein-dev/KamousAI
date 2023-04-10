@@ -16,6 +16,7 @@
     "@mantine/core": "^6.0.6",
     "@mantine/hooks": "^6.0.6",
     "@mantine/next": "^6.0.6",
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@tailwindcss/typography": "^0.5.9",
     "@tanstack/react-query": "^4.28.0",
     "@trpc/client": "^10.18.0",

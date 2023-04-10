@@ -1,26 +1,23 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useForm } from "react-hook-form";
-import { api } from "@/utils/api";
 import { Loader, ActionIcon, TextInput, Divider } from "@mantine/core";
 import { BsFillSendFill } from "react-icons/bs";
-import { useResponse } from "@/utils/use-response";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
+import { useFetchStream } from "@/utils/use-fetch-stream";
+import * as React from "react";
 
 interface FormValues {
   term: string;
 }
 //======================================
 export const Searchbar = () => {
-  const setResponse = useResponse((s) => s.setResponse);
-  const { status, mutate } = api.term.term.useMutation({
-    onSuccess: (data) => {
-      setResponse(data.output.text);
-    },
-  });
+  const [status, setStatus] = React.useState<"idle" | "loading">("idle");
+  const fetcher = useFetchStream(setStatus);
   const { register, handleSubmit, reset, watch } = useForm<FormValues>();
   const onSubmit = (formValues: FormValues) => {
-    mutate(formValues);
+    setStatus("loading");
+    fetcher(formValues.term);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
