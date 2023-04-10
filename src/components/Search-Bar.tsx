@@ -1,26 +1,24 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useForm } from "react-hook-form";
-import { api } from "@/utils/api";
-import { Loader, ActionIcon, TextInput, Divider } from "@mantine/core";
+import { ActionIcon, TextInput, Divider, Loader } from "@mantine/core";
 import { BsFillSendFill } from "react-icons/bs";
-import { useResponse } from "@/utils/use-response";
+import { useFetchStream, useResponse } from "@/hooks";
 import { FaSearch } from "react-icons/fa";
-import { MdClear } from "react-icons/md";
 
+import { MdClear } from "react-icons/md";
+import * as React from "react";
 interface FormValues {
   term: string;
 }
 //======================================
 export const Searchbar = () => {
-  const setResponse = useResponse((s) => s.setResponse);
-  const { status, mutate } = api.term.term.useMutation({
-    onSuccess: (data) => {
-      setResponse(data.output.text);
-    },
-  });
+  const status = useResponse((s) => s.status);
+  const setStatus = useResponse((s) => s.setStatus);
   const { register, handleSubmit, reset, watch } = useForm<FormValues>();
+  const { fetcher } = useFetchStream();
   const onSubmit = (formValues: FormValues) => {
-    mutate(formValues);
+    setStatus("loading");
+    fetcher(formValues);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -35,26 +33,22 @@ export const Searchbar = () => {
           <div className="gap-x-2 pr-3 flex-row-start">
             <ActionIcon
               hidden={!watch("term")}
-              size="md"
+              size="lg"
               onClick={() => reset({ term: "" })}
             >
               <MdClear />
             </ActionIcon>
-            <Divider
-              hidden={!watch("term")}
-              className="m-1 "
-              orientation="vertical"
-            />
-            <ActionIcon
-              size="md"
-              type={status == "loading" ? "button" : "submit"}
-            >
-              {status == "loading" ? (
-                <Loader variant="dots" />
-              ) : (
+            <Divider hidden={!watch("term")} orientation="vertical" />
+            {status == "loading" ? (
+              <ActionIcon size="lg">
+                {/* <BsStopFill className="z-10 text-red-700" size="20" /> */}
+                <Loader variant="dots" size="md" color="gray" />
+              </ActionIcon>
+            ) : (
+              <ActionIcon size="lg" type="submit">
                 <BsFillSendFill size="14" />
-              )}
-            </ActionIcon>
+              </ActionIcon>
+            )}
           </div>
         }
       />
