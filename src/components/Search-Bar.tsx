@@ -16,8 +16,12 @@ export const Searchbar = () => {
   const fetcher = useFetchStream(setStatus);
   const { register, handleSubmit, reset, watch } = useForm<FormValues>();
   const onSubmit = (formValues: FormValues) => {
-    setStatus("loading");
-    fetcher(formValues.term);
+    if (formValues.term) {
+      setStatus("loading");
+      fetcher(formValues.term);
+    } else {
+      console.log("term", formValues.term);
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
