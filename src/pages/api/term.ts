@@ -1,7 +1,6 @@
 import { OpenAIChat } from "langchain/llms";
 // import { ChatOpenAI } from "langchain/chat_models";
 import { PromptTemplate } from "langchain/prompts";
-import { env } from "@/env.mjs";
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { CallbackManager } from "langchain/callbacks";
 // import { HumanChatMessage, SystemChatMessage } from "langchain/schema";
@@ -48,7 +47,7 @@ const Model_option = async (input: string, cb: (token: string) => void) => {
   const model = new OpenAIChat({
     modelName: "gpt-3.5-turbo",
     temperature: 0.1,
-    openAIApiKey: env.OPENAI_API_KEY,
+    openAIApiKey: process.env.OPENAI_API_KEY,
     streaming: true,
     callbackManager: CallbackManager.fromHandlers({
       async handleLLMNewToken(token) {
