@@ -18,7 +18,7 @@ export const Searchbar = () => {
   const onSubmit = (formValues: FormValues) => {
     if (formValues.term) {
       setStatus("loading");
-      fetcher(formValues.term);
+      fetcher(formValues);
     } else {
       console.log("term", formValues.term);
     }
