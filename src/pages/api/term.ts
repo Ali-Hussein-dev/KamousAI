@@ -67,8 +67,9 @@ const Model_option = async (input: string, cb: (token: string) => void) => {
 };
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { term } = req.body;
+  console.warn("term:", term);
   if (!term) {
-    console.warn({ term });
+    console.warn("Body", req.body);
     return res.status(400).send("No word provided");
   }
   const sanitizedTerm = term.trim();
