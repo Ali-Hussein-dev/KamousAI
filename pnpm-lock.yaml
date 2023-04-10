@@ -6,6 +6,7 @@ specifiers:
   '@mantine/core': ^6.0.6
   '@mantine/hooks': ^6.0.6
   '@mantine/next': ^6.0.6
+  '@microsoft/fetch-event-source': ^2.0.1
   '@tailwindcss/typography': ^0.5.9
   '@tanstack/react-query': ^4.28.0
   '@trpc/client': ^10.18.0
@@ -48,6 +49,7 @@ dependencies:
   '@mantine/core': 6.0.6_z6mkljgfz35cqw5xrleq7kjcbq
   '@mantine/hooks': 6.0.6_react@18.2.0
   '@mantine/next': 6.0.6_qqau3dvbojnwvgou4gzbrwl7sy
+  '@microsoft/fetch-event-source': 2.0.1
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.1
   '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.18.0_@trpc+server@10.18.0
@@ -426,6 +428,10 @@ packages:
       react: '>=16.8.0'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@microsoft/fetch-event-source/2.0.1:
+    resolution: {integrity: sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==}
     dev: false
 
   /@next/env/13.2.4:
