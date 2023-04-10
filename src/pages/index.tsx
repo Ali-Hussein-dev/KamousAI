@@ -18,7 +18,7 @@ import { useResponse } from "@/utils/use-response";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 //======================================
-export const Placeholder = () => {
+export const InitialView = () => {
   return (
     <Paper
       withBorder
@@ -82,9 +82,9 @@ const Home: NextPage = () => {
           <Footer height={50} p="xs" className="flex-row-center">
             {/* Footer content */}
             <div className="mx-auto w-full max-w-4xl flex-row-between">
-              <span>
-                Powered by <b>LangChain</b>, <b>Nextjs</b>, and <b>Mantine</b>
-              </span>
+              <Text color="dimmed">
+                Powered by <b>Large Langauge Model</b>
+              </Text>
               <div className="gap-3 flex-row-start">
                 <Anchor
                   color="gray"
@@ -132,7 +132,7 @@ const Home: NextPage = () => {
                 </ReactMarkdown>
               </section>
             ) : (
-              <Placeholder />
+              <InitialView />
             )}
           </div>
         </div>
