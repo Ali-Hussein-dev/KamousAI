@@ -1,4 +1,4 @@
-import { OpenAIChat } from "langchain/llms";
+import { OpenAIChat } from "langchain/llms/openai";
 // import { ChatOpenAI } from "langchain/chat_models";
 import { PromptTemplate } from "langchain/prompts";
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -69,7 +69,6 @@ const Model_option = async (input: string, cb: (token: string) => void) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { term } = req.body;
-  console.warn("body:", req.body);
   if (!term) {
     console.warn("Body", req.body);
     return res.status(400).send("No word provided");
