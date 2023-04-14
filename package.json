@@ -23,7 +23,7 @@
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
     "eventsource-parser": "^1.0.0",
-    "langchain": "^0.0.48",
+    "langchain": "^0.0.56",
     "next": "^13.2.4",
     "nextjs-google-analytics": "^2.3.3",
     "react": "18.2.0",
