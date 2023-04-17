@@ -14,7 +14,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Searchbar } from "@/components/Search-Bar";
-import { useResponse } from "@/utils/use-response";
+import { useResponse } from "@/hooks";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 //======================================
