@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { api } from "@/utils/api";
 import { Loader, ActionIcon, TextInput, Divider } from "@mantine/core";
 import { BsFillSendFill } from "react-icons/bs";
-import { useResponse } from "@/utils/use-response";
+import { useResponse } from "@/hooks";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 

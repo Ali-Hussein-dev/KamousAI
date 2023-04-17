@@ -19,6 +19,9 @@ const templates = {
   // examples: "What are some examples of {word}?",
   // translation: "What is the translation of {word} in {language}?",
 };
+export const configs = {
+  runtime: "edge",
+};
 export const termRouter = createTRPCRouter({
   term: publicProcedure
     .input(z.object({ term: z.string() }))
