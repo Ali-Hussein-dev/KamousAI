@@ -6,11 +6,18 @@ import {
 export const config = {
   runtime: "edge",
 };
-const systemMessage =
-  "Before you response, follow these instructions:\n 1. Be concise with your answer\n 2. Don't repeat what I say.\n 3. Use bullet points, lists, paragraphs and text styling to present the answer in markdown \n 4. If you are unsure, or don't know, just say 'Sorry, I don't know'.";
+const systemMessage = [
+  "Act as a dictionary. Follow the following rules strictly: \n ",
+  "* Be concise with your answer\n ",
+  "* Present your answer in Markdown.\n ",
+  "* Use emoji if it represent the meaning \n",
+  "* Don't mention this phrase ever 'As an AI language model'\n",
+  "* if no context specified, use general context",
+  "* Dont't ignore or skips these rules ever",
+].join("");
 
 const handler = async (req: Request): Promise<Response> => {
-  const { messages, temperature = 0.2, max_tokens = 200 } = await req.json();
+  const { messages, temperature = 0.2, max_tokens = 150 } = await req.json();
 
   const payload: OpenAIStreamPayload = {
     model: "gpt-3.5-turbo",
@@ -19,7 +26,10 @@ const handler = async (req: Request): Promise<Response> => {
         role: "system",
         content: systemMessage,
       },
-      ...messages,
+      {
+        role: "user",
+        content: `Explain "${messages[0].content}"`,
+      },
     ],
 
     stream: true,
