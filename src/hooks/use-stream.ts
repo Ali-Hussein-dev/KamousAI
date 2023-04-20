@@ -10,6 +10,7 @@ export const useStream = () => {
   const methods = useForm<FormData>();
   const { reset } = methods;
   const setResponse = useResponse((s) => s.setResponse);
+  const resetResponse = useResponse((s) => s.resetResponse);
   const setStatus = useResponse((s) => s.setStatus);
   const [controller, setController] = React.useState<null | AbortController>(
     null
@@ -18,8 +19,8 @@ export const useStream = () => {
   const stopStreaming = () => {
     if (controller) {
       controller.abort();
-      setController(null);
       setStatus("success");
+      setController(null);
     }
   };
   const fetchStreaming = async (term: string) => {
@@ -48,15 +49,15 @@ export const useStream = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder("utf-8");
     let done = false;
-    let response = "";
+    // let response = "";
     while (!done) {
       try {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunkValue = decoder.decode(value);
         if (chunkValue) {
-          response += chunkValue;
-          setResponse(response);
+          // response += chunkValue;
+          setResponse(chunkValue);
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: unknown | any) {
@@ -78,7 +79,10 @@ export const useStream = () => {
     }
   };
   const onSubmit = async ({ term: input }: FormData) => {
-    await fetchStreaming(input.trim());
+    if (input) {
+      resetResponse();
+      await fetchStreaming(input.trim());
+    }
     window.scrollTo({
       top: document.body.scrollHeight,
       behavior: "smooth",

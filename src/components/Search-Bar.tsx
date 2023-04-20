@@ -31,26 +31,22 @@ export const Searchbar = () => {
         rightSectionWidth="auto"
         autoComplete="off"
         rightSection={
-          <div className="gap-x-2 pr-3 flex-row-start">
+          <div className="gap-x-2 pr-2 flex-row-start">
             <ActionIcon
               hidden={!watch("term")}
-              size="md"
+              size="xl"
               onClick={() => reset({ term: "" })}
             >
               <MdClear />
             </ActionIcon>
-            <Divider
-              hidden={!watch("term")}
-              className="m-1"
-              orientation="vertical"
-            />
+            <Divider hidden={!watch("term")} orientation="vertical" />
             {status == "loading" ? (
-              <ActionIcon size="lg" type="button" onClick={stopStreaming}>
-                <BsStopCircle size="20" />
+              <ActionIcon size="xl" type="button" onClick={stopStreaming}>
+                <BsStopCircle size="24" />
               </ActionIcon>
             ) : (
-              <ActionIcon size="lg" type="submit">
-                <BsFillSendFill size="20" />
+              <ActionIcon size="xl" type="submit" hidden={!watch("term")}>
+                <BsFillSendFill size="17" />
               </ActionIcon>
             )}
           </div>
