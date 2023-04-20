@@ -21,40 +21,38 @@ export const Searchbar = () => {
         placeholder="Enter a word, phrase, acronym, or idiom."
         {...register("term")}
         size="xl"
-        icon={<FaSearch size="20" />}
+        icon={
+          status == "loading" ? (
+            <Loader color="#d6d6d6" size="md" variant="dots" />
+          ) : (
+            <FaSearch size="20" />
+          )
+        }
         rightSectionWidth="auto"
         autoComplete="off"
         rightSection={
           <div className="gap-x-2 pr-3 flex-row-start">
+            <ActionIcon
+              hidden={!watch("term")}
+              size="md"
+              onClick={() => reset({ term: "" })}
+            >
+              <MdClear />
+            </ActionIcon>
+            <Divider
+              hidden={!watch("term")}
+              className="m-1"
+              orientation="vertical"
+            />
             {status == "loading" ? (
               <ActionIcon size="lg" type="button" onClick={stopStreaming}>
                 <BsStopCircle size="20" />
               </ActionIcon>
             ) : (
-              <ActionIcon
-                hidden={!watch("term")}
-                size="md"
-                onClick={() => reset({ term: "" })}
-              >
-                <MdClear />
+              <ActionIcon size="lg" type="submit">
+                <BsFillSendFill size="20" />
               </ActionIcon>
             )}
-
-            <Divider
-              hidden={!watch("term") && status !== "loading"}
-              className="m-1"
-              orientation="vertical"
-            />
-            <ActionIcon
-              size="lg"
-              type={status == "loading" ? "button" : "submit"}
-            >
-              {status == "loading" ? (
-                <Loader color="#d6d6d6" size="md" variant="dots" />
-              ) : (
-                <BsFillSendFill size="20" />
-              )}
-            </ActionIcon>
           </div>
         }
       />
