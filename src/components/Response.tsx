@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useResponse } from "@/hooks";
-import { Badge, Paper, Text } from "@mantine/core";
+import { Badge, Paper, Text, Skeleton } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -45,20 +45,30 @@ const IntialView = () => {
     </Paper>
   );
 };
+const LoadingSkeleton = () => (
+  <div>
+    <Skeleton height={16} mt={12} radius="xl" />
+    <Skeleton height={16} mt={12} radius="xl" />
+    <Skeleton height={16} mt={12} radius="xl" />
+    <Skeleton height={16} mt={12} radius="xl" width="70%" />
+    <Skeleton height={16} mt={12} radius="xl" width="40%" />
+  </div>
+);
 //======================================
 export const Response = () => {
   const content = useResponse((s) => s.response);
+  const status = useResponse((s) => s.status);
   return (
     <div className="pt-2">
-      {content ? (
+      {status === "idle" && !content && <IntialView />}
+      {content && (
         <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {content}
           </ReactMarkdown>
         </section>
-      ) : (
-        <IntialView />
       )}
+      {!content && status === "loading" && <LoadingSkeleton />}
     </div>
   );
 };

@@ -46,17 +46,16 @@ export const useStream = () => {
     if (!data) {
       return;
     }
+    resetResponse();
     const reader = data.getReader();
     const decoder = new TextDecoder("utf-8");
     let done = false;
-    // let response = "";
     while (!done) {
       try {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunkValue = decoder.decode(value);
         if (chunkValue) {
-          // response += chunkValue;
           setResponse(chunkValue);
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -80,13 +79,12 @@ export const useStream = () => {
   };
   const onSubmit = async ({ term: input }: FormData) => {
     if (input) {
-      resetResponse();
       await fetchStreaming(input.trim());
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     }
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
   };
   return { methods, onSubmit, stopStreaming };
 };
