@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Anchor, AppShell, Footer, Header, Title } from "@mantine/core";
+import { Anchor, AppShell, Footer, Title } from "@mantine/core";
 import { Searchbar } from "@/components/Search-Bar";
 import { Response } from "@/components/Response";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import { Header } from "@/components";
 
 const Home: NextPage = () => {
   return (
@@ -16,15 +17,7 @@ const Home: NextPage = () => {
       </Head>
       <AppShell
         padding="sm"
-        header={
-          <Header height={60} p="xs" className="flex-row-center">
-            <div className="mx-auto w-full max-w-4xl flex-row-start">
-              <Anchor color="gray" href="/" target="_blank">
-                <div className="text-xl font-bold">KamousAI</div>
-              </Anchor>
-            </div>
-          </Header>
-        }
+        header={<Header />}
         footer={
           <Footer height={50} p="xs" className="flex-row-center">
             {/* Footer content */}
