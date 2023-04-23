@@ -16,6 +16,7 @@ export const useStream = () => {
   const { reset } = methods;
   const setResponse = useResponse((s) => s.setResponse);
   const resetResponse = useResponse((s) => s.resetResponse);
+  const setTerm = useResponse((s) => s.setTerm);
   const setStatus = useResponse((s) => s.setStatus);
   const [controller, setController] = React.useState<null | AbortController>(
     null
@@ -90,6 +91,7 @@ export const useStream = () => {
         behavior: "smooth",
       });
       push(`/?term=${input}`);
+      setTerm(input);
     }
   };
   return { methods, onSubmit, stopStreaming };
