@@ -1,13 +1,18 @@
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useResponse } from "@/hooks";
+import { useRouter } from "next/router";
 
 interface FormData {
   term: string;
 }
 
 export const useStream = () => {
-  const methods = useForm<FormData>();
+  const router = useRouter();
+  const { push, query } = router;
+  const methods = useForm<FormData>({
+    defaultValues: { term: query.term as string },
+  });
   const { reset } = methods;
   const setResponse = useResponse((s) => s.setResponse);
   const resetResponse = useResponse((s) => s.resetResponse);
@@ -84,6 +89,7 @@ export const useStream = () => {
         top: document.body.scrollHeight,
         behavior: "smooth",
       });
+      push(`/?term=${input}`);
     }
   };
   return { methods, onSubmit, stopStreaming };
