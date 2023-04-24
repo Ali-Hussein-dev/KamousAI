@@ -2,10 +2,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { Anchor, AppShell, Footer, Title } from "@mantine/core";
-import { Searchbar } from "@/components/Search-Bar";
-import { Response } from "@/components/Response";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import { Header } from "@/components";
+import { Header, Searchbar, Response } from "@/components";
 
 const Home: NextPage = () => {
   return (
@@ -57,7 +55,7 @@ const Home: NextPage = () => {
           },
         })}
       >
-        <div className="mx-auto w-full max-w-xl">
+        <div className="mx-auto w-full max-w-2xl">
           <Title order={1} className=" text-center">
             AI Dictionary
           </Title>
