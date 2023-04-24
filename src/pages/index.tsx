@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Anchor, AppShell, Footer, Title } from "@mantine/core";
+import { Anchor, AppShell, Footer } from "@mantine/core";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { Header, Searchbar, Response } from "@/components";
 
@@ -55,10 +55,7 @@ const Home: NextPage = () => {
           },
         })}
       >
-        <div className="mx-auto w-full max-w-2xl">
-          <Title order={1} className=" text-center">
-            AI Dictionary
-          </Title>
+        <div className="mx-auto w-full max-w-2xl pt-4">
           <Searchbar />
           <Response />
         </div>
