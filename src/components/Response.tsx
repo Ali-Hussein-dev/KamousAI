@@ -44,7 +44,7 @@ const IntialView = () => {
   );
 };
 const LoadingSkeleton = () => (
-  <div className="px-2">
+  <div>
     <Skeleton height={16} mt={12} radius="xl" />
     <Skeleton height={16} mt={12} radius="xl" />
     <Skeleton height={16} mt={12} radius="xl" />
@@ -71,15 +71,15 @@ export const Response = () => {
   return (
     <div className=" pt-2">
       {status === "idle" && !definition && <IntialView />}
-      {definition && (
-        <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
+      <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
+        {definition && (
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>
-          {status === "success" && <Actions />}
-        </section>
-      )}
-      {!definition && status === "loading" && <LoadingSkeleton />}
+        )}
+        {status === "success" && <Actions />}
+        {!definition && status === "loading" && <LoadingSkeleton />}
+      </section>
       <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
         <ActionResponse />
       </section>
