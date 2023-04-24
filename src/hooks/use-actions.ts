@@ -1,23 +1,16 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-import { useResponse } from "@/hooks";
-import { useRouter } from "next/router";
+import { type ResType, useResponse } from "@/hooks";
 
 interface FormData {
   term: string;
 }
 
-export const useStream = () => {
-  const router = useRouter();
-  const { push, query } = router;
-  const methods = useForm<FormData>({
-    defaultValues: { term: query.term as string },
-  });
-  const { reset } = methods;
+export const useActions = () => {
+  const methods = useForm<FormData>();
   const setResponse = useResponse((s) => s.setResponse);
-  const resetResponse = useResponse((s) => s.resetResponse);
-  const setTerm = useResponse((s) => s.setTerm);
-  const setStatus = useResponse((s) => s.setStatus);
+  const term = useResponse((s) => s.term);
+  const setActionStatus = useResponse((s) => s.setActionStatus);
   const [controller, setController] = React.useState<null | AbortController>(
     null
   );
@@ -25,13 +18,12 @@ export const useStream = () => {
   const stopStreaming = () => {
     if (controller) {
       controller.abort();
-      setStatus("success");
+      setActionStatus("success");
       setController(null);
     }
   };
-  const fetchStreaming = async (term: string) => {
-    setStatus("loading");
-    reset({ term: "" });
+  const fetchStreaming = async (term: string, keyword: ResType) => {
+    setActionStatus("loading");
     const abortController = new AbortController();
     setController(abortController);
     // eslint-disable-next-line prefer-const
@@ -45,7 +37,7 @@ export const useStream = () => {
             content: term,
           },
         ],
-        keyword: "definition",
+        keyword,
       }),
     });
     // This data is a ReadableStream
@@ -53,7 +45,6 @@ export const useStream = () => {
     if (!data) {
       return;
     }
-    resetResponse();
     const reader = data.getReader();
     const decoder = new TextDecoder("utf-8");
     let done = false;
@@ -63,7 +54,7 @@ export const useStream = () => {
         done = doneReading;
         const chunkValue = decoder.decode(value);
         if (chunkValue) {
-          setResponse(chunkValue, "definition");
+          setResponse(chunkValue, keyword);
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: unknown | any) {
@@ -75,20 +66,21 @@ export const useStream = () => {
         break;
       }
     }
-    setStatus("success");
+    setActionStatus("success");
     if (done) {
       return;
     }
   };
-  const onSubmit = async ({ term: input }: FormData) => {
-    if (input) {
-      await fetchStreaming(input.trim());
+  const onSubmit = async (keyword: ResType) => {
+    console.log("🚀 keyword:", keyword);
+    if (keyword && term) {
+      await fetchStreaming(term, keyword);
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: "smooth",
       });
-      push(`/?term=${input}`);
-      setTerm(input);
+    } else {
+      console.warn({ term, keyword });
     }
   };
   return { methods, onSubmit, stopStreaming };

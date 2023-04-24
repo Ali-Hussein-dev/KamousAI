@@ -1,42 +1,40 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useResponse } from "@/hooks";
-import { Badge, Paper, Text, Skeleton } from "@mantine/core";
+import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
+import { Actions } from ".";
 //======================================
 const IntialView = () => {
   return (
-    <Paper
-      withBorder
-      className="gap grid grid-cols-1 gap-1 md:grid-cols-5"
-      p="md"
-      radius="lg"
-    >
-      <div className="col-span-2">
-        <Text className="mb-4 text-lg font-bold" color="dimmed">
-          Regular Dictionary
+    <Paper withBorder className="w-full gap-2 flex-col-start " p="md" pt="0">
+      <Title order={1} className="w-full">
+        KamousAI First AI-Powered Dictionary
+      </Title>
+      <div className="mb-4 ">
+        <Text className="mb-2 text-xl font-bold" color="dimmed">
+          What a regular dictionary can look up
         </Text>
-        <div className="mb-5 space-y-2">
-          <Badge color="yellow" tt="inherit" p="xs" size="lg">
-            <Text color="dimmed">Words</Text>
+        <div className="">
+          <Badge color="yellow" tt="inherit" p="md" size="lg">
+            <Text color="dimmed">Limited words</Text>
           </Badge>
         </div>
       </div>
-      <div className="col-span-3">
-        <Text className="mb-4 text-lg font-bold" color="dimmed">
-          AI Dictionary
+      <div className="mb-4 ">
+        <Text className="mb-2 text-xl font-bold" color="dimmed">
+          What KamousAI can look up
         </Text>
-        <div className="mb-5 grid grid-cols-2 gap-4 ">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
           {[
-            "Words",
+            "Amost any word",
             "Idioms",
             "Expressions",
             "Word vs word",
             "Word or word",
             "Misspelled words",
           ].map((s) => (
-            <Badge key={s} color="yellow" p="xs" tt="inherit" size="lg">
+            <Badge key={s} color="yellow" p="md" tt="inherit" size="lg">
               <Text color="dimmed">{s}</Text>
             </Badge>
           ))}
@@ -54,21 +52,37 @@ const LoadingSkeleton = () => (
     <Skeleton height={16} mt={12} radius="xl" width="40%" />
   </div>
 );
+
+const ActionResponse = () => {
+  const content = useResponse((s) => s.actionResponse);
+  const actionStatus = useResponse((s) => s.actionStatus);
+  return actionStatus == "loading" ? (
+    <LoadingSkeleton />
+  ) : (
+    <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
+      {content || ""}
+    </ReactMarkdown>
+  );
+};
 //======================================
 export const Response = () => {
-  const content = useResponse((s) => s.response);
+  const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
   return (
-    <div className="pt-2">
-      {status === "idle" && !content && <IntialView />}
-      {content && (
-        <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
+    <div className=" pt-2">
+      {status === "idle" && !definition && <IntialView />}
+      <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
+        {definition && (
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
-            {content}
+            {definition}
           </ReactMarkdown>
-        </section>
-      )}
-      {!content && status === "loading" && <LoadingSkeleton />}
+        )}
+        {status === "success" && <Actions />}
+        {!definition && status === "loading" && <LoadingSkeleton />}
+      </section>
+      <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
+        <ActionResponse />
+      </section>
     </div>
   );
 };

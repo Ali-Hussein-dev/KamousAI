@@ -16,9 +16,9 @@ export const Searchbar = () => {
   } = useStream();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-2">
       <TextInput
-        placeholder="Enter a word, phrase, acronym, or idiom."
+        placeholder="Enter your words..."
         {...register("term")}
         size="xl"
         icon={
