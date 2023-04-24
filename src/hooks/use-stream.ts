@@ -74,10 +74,6 @@ export const useStream = () => {
         break;
       }
     }
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
     setStatus("success");
     if (done) {
       return;
