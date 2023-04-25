@@ -1,7 +1,8 @@
 import { api } from "@/utils/api";
 import "@/styles/globals.css";
 import { type AppType } from "next/app";
-// import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
+import { type Session } from "next-auth";
 import {
   ColorSchemeProvider,
   type ColorScheme,
@@ -11,39 +12,40 @@ import {
 // import { Notifications } from "@mantine/notifications";
 import * as React from "react";
 import { GoogleAnalytics } from "nextjs-google-analytics";
-// import { Analytics } from "@vercel/analytics/react";
 // import { RouterTransition } from "../components";
 
-const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
+const MyApp: AppType<{ session: Session | null }> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
   const [colorScheme, setColorScheme] = React.useState<ColorScheme>("dark");
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
   return (
-    // <SessionProvider session={session}>
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          colorScheme,
-          primaryColor: "gray",
-          /** Put your mantine theme override here */
-        }}
+    <SessionProvider session={session}>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        {/* <Notifications position="top-center" />
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme,
+            primaryColor: "gray",
+            /** Put your mantine theme override here */
+          }}
+        >
+          {/* <Notifications position="top-center" />
           <RouterTransition /> */}
-        <TypographyStylesProvider>
-          <GoogleAnalytics trackPageViews strategy="lazyOnload" />
-          <Component {...pageProps} />
-        </TypographyStylesProvider>
-        {/* <Analytics /> */}
-      </MantineProvider>
-    </ColorSchemeProvider>
-    // </SessionProvider>
+          <TypographyStylesProvider>
+            <GoogleAnalytics trackPageViews strategy="lazyOnload" />
+            <Component {...pageProps} />
+          </TypographyStylesProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </SessionProvider>
   );
 };
 
