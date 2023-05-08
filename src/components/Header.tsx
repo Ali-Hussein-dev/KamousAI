@@ -5,6 +5,7 @@ import {
   Button,
   Header as MantineHeader,
   Tooltip,
+  useMantineTheme,
 } from "@mantine/core";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -26,9 +27,9 @@ export const UserDropdown = () => {
 //======================================
 export const Header = () => {
   const { data: sessionData } = useSession();
-
+  const { colors } = useMantineTheme()
   return (
-    <MantineHeader height={60} p="xs" className="flex-row-center">
+    <MantineHeader height={60} p="xs" className="flex-row-center" bg={colors.dark[9]} withBorder={false}>
       <div className="mx-auto w-full max-w-4xl flex-row-between ">
         <Anchor color="gray" href="/">
           <div className="text-xl font-bold">KamousAI</div>
