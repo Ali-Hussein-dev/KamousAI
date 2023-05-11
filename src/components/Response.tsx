@@ -4,13 +4,26 @@ import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Actions } from ".";
+import Typewriter from 'typewriter-effect';
+
+const H1 = () =>
+  <Title order={1} className="w-full" size="md">
+    <Typewriter
+      onInit={(typewriter) => {
+        typewriter.typeString('Get Smarter With KamousAI Dictionary')
+          .pauseFor(2500)
+          .start()
+      }}
+      options={{
+        cursor: "",
+      }}
+    />
+  </Title>
 //======================================
 const IntialView = () => {
   return (
     <Paper withBorder radius="lg" className="w-full gap-2 flex-col-start" p="md" pt="0">
-      <Title order={1} className="w-full" size="md">
-        Get Smarter With KamousAI Dictionary
-      </Title>
+      <H1 />
       <div className="mb-4 ">
         <Text className="mb-2 text-xl font-bold" color="dimmed">
           What a regular dictionary can look up

@@ -38,6 +38,7 @@
     "remark-gfm": "^3.0.1",
     "superjson": "1.12.2",
     "tailwind-custom-utilities": "^1.0.2",
+    "typewriter-effect": "^2.19.0",
     "zod": "^3.21.4",
     "zustand": "^4.3.7"
   },
