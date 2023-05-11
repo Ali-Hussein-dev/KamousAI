@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create, } from "zustand";
 
 type Status = "loading" | "success" | "error" | "idle";
 
@@ -9,7 +9,14 @@ export type ResType =
   | "related"
   | "anatonyms";
 
-interface State {
+export type DictionaryMode = "mono" | "bili";
+export type PreferencesT = {
+  mode: DictionaryMode;
+  inputLanguage: string;
+  outputLanguage: string;
+};
+
+interface Store {
   status?: Status;
   actionStatus?: Status;
   term?: string;
@@ -25,6 +32,8 @@ interface State {
 
   resType?: ResType;
 
+  preferences: PreferencesT;
+  setPreferences: (settings: Partial<PreferencesT>) => void
   /**
    * used to set cached action response
    */
@@ -37,37 +46,44 @@ interface State {
   setKeyword: (resType: ResType) => void;
 }
 
-export const useResponse = create<State>((set) => ({
-  setResponse: (response, keyword) =>
-    set((s) => {
-      switch (keyword) {
-        case "definition":
-          return {
-            definition: s.definition + response,
-            examples: "",
-            synonyms: "",
-            related: "",
-            anatonyms: "",
-            actionResponse: "",
-          };
-        case "examples":
-        case "anatonyms":
-        case "synonyms":
-        case "related":
-          return {
-            [keyword]: s[keyword] + response,
-            actionResponse: s[keyword] + response,
-          };
-      }
-    }),
-  status: "idle",
-  actionStatus: "idle",
-  definition: "",
-  setStatus: (status) => set({ status }),
-  setActionStatus: (actionStatus) => set({ actionStatus }),
-  resetResponse: () => set({ definition: "" }),
-  setTerm: (term) => set({ term }),
-  setActionResponse: (keyword) =>
-    set((s) => ({ actionResponse: s[keyword as keyof State] as string })),
-  setKeyword: (resType) => set({ resType }),
-}));
+export const useResponse = create<Store>()(
+  (set) => ({
+    setResponse: (response, keyword) =>
+      set((s) => {
+        switch (keyword) {
+          case "definition":
+            return {
+              definition: s.definition + response,
+              examples: "",
+              synonyms: "",
+              related: "",
+              anatonyms: "",
+              actionResponse: "",
+            };
+          case "examples":
+          case "anatonyms":
+          case "synonyms":
+          case "related":
+            return {
+              [keyword]: s[keyword] + response,
+              actionResponse: s[keyword] + response,
+            };
+        }
+      }),
+    status: "idle",
+    actionStatus: "idle",
+    definition: "",
+    preferences: {
+      mode: "mono",
+      inputLanguage: "en",
+      outputLanguage: "de"
+    },
+    setPreferences: (settings) => set((s) => ({ preferences: { ...s.preferences, ...settings } })),
+    setStatus: (status) => set({ status }),
+    setActionStatus: (actionStatus) => set({ actionStatus }),
+    resetResponse: () => set({ definition: "" }),
+    setTerm: (term) => set({ term }),
+    setActionResponse: (keyword) =>
+      set((s) => ({ actionResponse: s[keyword as keyof Store] as string })),
+    setKeyword: (resType) => set({ resType }),
+  }));
