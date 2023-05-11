@@ -1,4 +1,4 @@
-import { type ResType } from "@/hooks";
+import { type PreferencesT, type ResType } from "@/hooks";
 import {
   type ChatGPTMessage,
   openaiStreamParser,
@@ -33,23 +33,39 @@ const systemMessages = {
     "Be concise with your answer\n",
     "* Use emoji if it represent the meaning\n",
   ],
-};
 
-const getMessages = (messages: ChatGPTMessage[], keyword: ResType) => {
+};
+interface Options extends PreferencesT {
+  keyword: ResType
+}
+const getMessages = (messages: ChatGPTMessage[], options: Options) => {
+  const { keyword, mode = "mono", inputLanguage, outputLanguage } = options
+  const outputLang = mode == "bili" ? `* Generate response in the following language ${outputLanguage}` : ""
   const term = messages[0]?.content as string;
   const systemInstructions = {
     role: "system",
-    content: systemMessages[keyword].join(""),
+    content: systemMessages[keyword].join("") + outputLang,
   };
   switch (keyword) {
-    case "definition":
-      return [
-        systemInstructions,
-        {
-          role: "user",
-          content: `Explain "${term}"`,
-        },
-      ];
+    case "definition": {
+      if (mode === "mono") {
+        return [
+          systemInstructions,
+          {
+            role: "user",
+            content: `Explain "${term}"`,
+          },
+        ];
+      } else {
+        return [
+          systemInstructions,
+          {
+            role: "user",
+            content: `Translate the following "${term}" from ${inputLanguage} to ${outputLanguage}`,
+          },
+        ];
+      }
+    }
     case "examples":
       return [
         systemInstructions,
@@ -97,10 +113,12 @@ const handler = async (req: Request): Promise<Response> => {
     keyword,
     temperature = 0.2,
     max_tokens = 150,
+    preferences
   } = await req.json();
+
   const payload: OpenAIStreamPayload = {
     model: "gpt-3.5-turbo",
-    messages: getMessages(messages, keyword),
+    messages: getMessages(messages, { keyword, ...preferences }),
 
     stream: true,
     temperature,

@@ -22,6 +22,7 @@ export const useStream = () => {
     null
   );
 
+  const preferences = useResponse((s) => s.preferences);
   const stopStreaming = () => {
     if (controller) {
       controller.abort();
@@ -46,6 +47,7 @@ export const useStream = () => {
           },
         ],
         keyword: "definition",
+        preferences
       }),
     });
     // This data is a ReadableStream

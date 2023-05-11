@@ -9,6 +9,7 @@ interface FormData {
 export const useActions = () => {
   const methods = useForm<FormData>();
   const setResponse = useResponse((s) => s.setResponse);
+  const preferences = useResponse((s) => s.preferences);
   const term = useResponse((s) => s.term);
   const setActionStatus = useResponse((s) => s.setActionStatus);
   const [controller, setController] = React.useState<null | AbortController>(
@@ -38,6 +39,7 @@ export const useActions = () => {
           },
         ],
         keyword,
+        preferences
       }),
     });
     // This data is a ReadableStream

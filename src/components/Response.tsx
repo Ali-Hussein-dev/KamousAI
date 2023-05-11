@@ -7,17 +7,17 @@ import { Actions } from ".";
 //======================================
 const IntialView = () => {
   return (
-    <Paper withBorder className="w-full gap-2 flex-col-start " p="md" pt="0">
-      <Title order={1} className="w-full">
-        KamousAI First AI-Powered Dictionary
+    <Paper withBorder radius="lg" className="w-full gap-2 flex-col-start" p="md" pt="0">
+      <Title order={1} className="w-full" size="md">
+        Get Smarter With KamousAI Dictionary
       </Title>
       <div className="mb-4 ">
         <Text className="mb-2 text-xl font-bold" color="dimmed">
           What a regular dictionary can look up
         </Text>
-        <div className="">
-          <Badge color="yellow" tt="inherit" p="md" size="lg">
-            <Text color="dimmed">Limited words</Text>
+        <div>
+          <Badge tt="inherit" p="lg" size="lg">
+            <Text color="dimmed">Limited number of words</Text>
           </Badge>
         </div>
       </div>
@@ -34,7 +34,7 @@ const IntialView = () => {
             "Word or word",
             "Misspelled words",
           ].map((s) => (
-            <Badge key={s} color="yellow" p="md" tt="inherit" size="lg">
+            <Badge key={s} p="lg" tt="inherit" size="lg">
               <Text color="dimmed">{s}</Text>
             </Badge>
           ))}
@@ -44,7 +44,7 @@ const IntialView = () => {
   );
 };
 const LoadingSkeleton = () => (
-  <div>
+  <div className="px-2">
     <Skeleton height={16} mt={12} radius="xl" />
     <Skeleton height={16} mt={12} radius="xl" />
     <Skeleton height={16} mt={12} radius="xl" />
@@ -69,20 +69,27 @@ export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
   return (
-    <div className=" pt-2">
+    <div>
       {status === "idle" && !definition && <IntialView />}
-      <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
-        {definition && (
+      {definition && (
+        <Paper
+          bg="transparent"
+          withBorder
+          radius="lg"
+          p="lg"
+          pb="sm"
+          className="prose mx-auto text-lg font-medium tracking-wide"
+        >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>
-        )}
-        {status === "success" && <Actions />}
-        {!definition && status === "loading" && <LoadingSkeleton />}
-      </section>
-      <section className="prose px-2 pt-2 text-lg font-medium tracking-wide">
-        <ActionResponse />
-      </section>
+          {status === "success" && <Actions />}
+          {!definition && status == "loading" && <LoadingSkeleton />}
+          <section className="prose pt-2 text-lg font-medium tracking-wide">
+            <ActionResponse />
+          </section>
+        </Paper>
+      )}
     </div>
   );
 };
