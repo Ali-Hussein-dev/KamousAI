@@ -18,6 +18,7 @@ const Monolingual = () => {
             <Select
                 label="Your language"
                 placeholder="Pick one"
+                searchable
                 defaultValue={inputLanguage}
                 data={languages}
                 value={inputLanguage}
@@ -37,6 +38,7 @@ const Bilingual = () => {
                     label="Transalte from "
                     placeholder="Pick a language"
                     defaultValue={"en"}
+                    searchable
                     data={languages}
                     value={inputLanguage}
                     onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
@@ -45,6 +47,7 @@ const Bilingual = () => {
                     label="To"
                     placeholder="Pick a language"
                     defaultValue={"de"}
+                    searchable
                     data={languages}
                     value={outputLanguage || "de"}
                     onChange={(lang) => setSettings({ outputLanguage: lang || "de" })}
@@ -53,6 +56,7 @@ const Bilingual = () => {
         </div>
     );
 };
+
 function uppercaseFirstLetter(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
