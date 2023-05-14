@@ -40,7 +40,8 @@ interface Options extends PreferencesT {
 }
 const getMessages = (messages: ChatGPTMessage[], options: Options) => {
   const { keyword, mode = "mono", inputLanguage, outputLanguage } = options
-  const outputLang = mode == "bili" ? `* Generate response in the following language ${outputLanguage}` : ""
+  const outputLang = mode == "bili" ? `* Generate response in the following language ${outputLanguage}` : `* Generate response in the following language ${inputLanguage}`
+
   const term = messages[0]?.content as string;
   const systemInstructions = {
     role: "system",

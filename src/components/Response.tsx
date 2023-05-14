@@ -91,14 +91,14 @@ export const Response = () => {
           radius="lg"
           p="lg"
           pb="sm"
-          className="prose mx-auto text-lg font-medium tracking-wide"
+          className="prose mx-auto text-lg font-medium tracking-wide w-full max-w-3xl"
         >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>
           {status === "success" && <Actions />}
           {!definition && status == "loading" && <LoadingSkeleton />}
-          <section className="prose pt-2 text-lg font-medium tracking-wide">
+          <section className="pt-2 text-lg font-medium tracking-wide w-full">
             <ActionResponse />
           </section>
         </Paper>
