@@ -13,7 +13,7 @@ export const Actions = () => {
   const setKeyword = useResponse((s) => s.setKeyword);
   const store = useResponse();
   return (
-    <div className="gap-2 pb-3 flex-row-start flex-wrap">
+    <div className="gap-2 pb-2 flex-row-start flex-wrap">
       {list.map((o) => (
         <Transition
           key={o.label}
@@ -26,6 +26,7 @@ export const Actions = () => {
             <Button
               variant="default"
               style={styles}
+              size="xs"
               onClick={() => {
                 setKeyword(o.resType);
                 store[o.resType as keyof typeof store]
