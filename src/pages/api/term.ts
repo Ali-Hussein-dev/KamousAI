@@ -88,7 +88,7 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
         systemInstructions,
         {
           role: "user",
-          content: `Generate not greater than 5 anatonyms of the following "${term}"`,
+          content: `Generate not greater than 5 antonyms of the following "${term}"`,
         },
       ];
     case "related":

@@ -58,7 +58,7 @@ export const useResponse = create<Store>()(
                 examples: "",
                 synonyms: "",
                 related: "",
-                anatonyms: "",
+                antonyms: "",
                 actionResponse: "",
               };
             case "examples":
