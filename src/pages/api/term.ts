@@ -24,7 +24,7 @@ const systemMessages = {
     "* if no context specified, use general context\n",
   ],
   synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", ""],
-  anatonyms: [
+  antonyms: [
     "Act as a dictionary. Follow the following rules strictly:\n",
     "",
   ],
@@ -83,12 +83,12 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
           content: `Generate not greater than 5 synonyms of the following "${term}"`,
         },
       ];
-    case "anatonyms":
+    case "antonyms":
       return [
         systemInstructions,
         {
           role: "user",
-          content: `Generate not greater than 5 anatonyms of the following "${term}"`,
+          content: `Generate not greater than 5 antonyms of the following "${term}"`,
         },
       ];
     case "related":
