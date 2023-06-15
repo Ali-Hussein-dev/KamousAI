@@ -2,13 +2,13 @@ import {
   ActionIcon,
   Anchor,
   Avatar,
-  Button,
+  // Button,
   Header as MantineHeader,
   Tooltip,
   useMantineTheme,
 } from "@mantine/core";
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+// import Link from "next/link";
 
 //======================================
 export const UserDropdown = () => {
@@ -26,7 +26,7 @@ export const UserDropdown = () => {
 };
 //======================================
 export const Header = () => {
-  const { data: sessionData } = useSession();
+  // const { data: sessionData } = useSession();
   const { colors } = useMantineTheme();
   return (
     <MantineHeader
@@ -36,11 +36,11 @@ export const Header = () => {
       bg={colors.dark[9]}
       withBorder={false}
     >
-      <div className="mx-auto w-full max-w-4xl flex-row-between ">
+      <div className="mx-auto w-full max-w-4xl flex-row-center ">
         <Anchor color="gray" href="/">
-          <div className="text-xl font-bold">KamousAI</div>
+          <div className="text-2xl font-extrabold">KamousAI</div>
         </Anchor>
-        {sessionData ? (
+        {/* {sessionData ? (
           <UserDropdown />
         ) : (
           <Link href="/signin">
@@ -48,7 +48,7 @@ export const Header = () => {
               Login
             </Button>
           </Link>
-        )}
+        )} */}
       </div>
     </MantineHeader>
   );
