@@ -8,7 +8,7 @@ export type ResType =
   | "examples"
   | "synonyms"
   | "related"
-  | "anatonyms";
+  | "antonyms";
 
 export type DictionaryMode = "mono" | "bili";
 export type PreferencesT = {
@@ -27,7 +27,7 @@ interface Store {
   definition?: string;
   examples?: string;
   synonyms?: string;
-  anatonyms?: string;
+  antonyms?: string;
   related?: string;
   actionResponse?: string;
 
@@ -62,7 +62,7 @@ export const useResponse = create<Store>()(
                 actionResponse: "",
               };
             case "examples":
-            case "anatonyms":
+            case "antonyms":
             case "synonyms":
             case "related":
               return {

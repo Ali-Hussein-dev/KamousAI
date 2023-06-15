@@ -3,7 +3,7 @@ import { Button, Text, Transition } from "@mantine/core";
 const list: { label: string; resType: ResType }[] = [
   { label: "Examples", resType: "examples" },
   { label: "Synonyms", resType: "synonyms" },
-  { label: "Anatonyms", resType: "anatonyms" },
+  { label: "Antonyms", resType: "antonyms" },
   // { label: "Related", resType: "related" },
 ];
 //======================================
@@ -13,7 +13,7 @@ export const Actions = () => {
   const setKeyword = useResponse((s) => s.setKeyword);
   const store = useResponse();
   return (
-    <div className=" gap-2 pb-3 flex-row-start">
+    <div className="gap-2 pb-3 flex-row-start flex-wrap">
       {list.map((o) => (
         <Transition
           key={o.label}
