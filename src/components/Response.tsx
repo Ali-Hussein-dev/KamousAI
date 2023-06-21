@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Actions } from ".";
 import Typewriter from 'typewriter-effect';
+import { useRouter } from "next/router";
 
 const H1 = () =>
   <Title order={1} className="w-full" size="md">
@@ -81,10 +82,12 @@ const ActionResponse = () => {
 export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
+  const { query } = useRouter()
   return (
     <div>
       {status === "idle" && !definition && <IntialView />}
-      {definition && (
+      {!query.term && <IntialView />}
+      {definition && !!query.term && (
         <Paper
           bg="transparent"
           withBorder
