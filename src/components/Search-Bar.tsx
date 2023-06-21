@@ -54,6 +54,7 @@ const PopoverWrapper = ({
         p="sm"
         px="xs"
         hidden={filteredHistory.length == 0 || !term}
+        className="max-h-72 overflow-y-auto border-zinc-800 border-[1px] shadow"
       >
         <div className="flex-wrap flex-col-start">
           {filteredHistory.map((value, i) => (
