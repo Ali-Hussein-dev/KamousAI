@@ -7,6 +7,7 @@ import {
   Popover,
   useMantineTheme,
   Button,
+  Badge,
 } from "@mantine/core";
 import { BsClockHistory, BsFillSendFill, BsStopCircle } from "react-icons/bs";
 import { useResponse, useStream } from "@/hooks";
@@ -15,6 +16,7 @@ import SettingsDropdown from "./Dropdown";
 import { FaSearch } from "react-icons/fa";
 import { type UseFormSetValue, useWatch } from "react-hook-form";
 import * as React from "react";
+import { useHotkeys } from "@mantine/hooks";
 
 function uppercaseFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -54,7 +56,7 @@ const PopoverWrapper = ({
         p="sm"
         px="xs"
         hidden={filteredHistory.length == 0 || !term}
-        className="max-h-72 overflow-y-auto border-zinc-800 border-[1px] shadow"
+        className="max-h-72 overflow-y-auto border-[1px] border-zinc-800 shadow"
       >
         <div className="flex-wrap flex-col-start">
           {filteredHistory.map((value, i) => (
@@ -78,11 +80,13 @@ export const Searchbar = () => {
   const status = useResponse((s) => s.status);
 
   const {
-    methods: { handleSubmit, register, reset, control, setValue },
+    methods: { handleSubmit, register, reset, control, setValue, setFocus },
     onSubmit,
     stopStreaming,
   } = useStream();
   const term = useWatch({ name: "term", control });
+
+  useHotkeys([["ctrl+K", () => setFocus("term")]]);
 
   return (
     <div>
@@ -115,7 +119,18 @@ export const Searchbar = () => {
                 >
                   <MdClear />
                 </ActionIcon>
-                <Divider hidden={!term} orientation="vertical" />
+                <Badge
+                  hidden={!!term}
+                  color="dimmed"
+                  h="100%"
+                  py="xs"
+                  px="sm"
+                  radius="md"
+                  fw={300}
+                >
+                  ctrl+K
+                </Badge>
+                <Divider orientation="vertical" />
                 <div hidden={!!term} className="p-2">
                   <FaSearch size="20" />
                 </div>
