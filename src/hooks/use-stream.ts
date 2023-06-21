@@ -87,10 +87,6 @@ export const useStream = () => {
   const onSubmit = async ({ term: input }: FormData) => {
     if (input) {
       await fetchStreaming(input.trim());
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
       push(`/?term=${input}`);
       setTerm(input);
       setHistory(input.trim())
