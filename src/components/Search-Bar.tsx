@@ -8,6 +8,7 @@ import {
   useMantineTheme,
   Button,
   Badge,
+  clsx,
 } from "@mantine/core";
 import { BsClockHistory, BsFillSendFill, BsStopCircle } from "react-icons/bs";
 import { useResponse, useStream } from "@/hooks";
@@ -120,14 +121,16 @@ export const Searchbar = () => {
                   <MdClear />
                 </ActionIcon>
                 <Badge
-                  hidden={!!term}
                   color="dimmed"
                   h="100%"
                   py="xs"
                   px="sm"
                   radius="md"
                   fw={300}
-                  className="hidden md:inline-block"
+                  className={clsx(
+                    "hidden",
+                    !!term ? "hidden" : "md:inline-block"
+                  )}
                 >
                   ctrl+K
                 </Badge>
