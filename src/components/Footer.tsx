@@ -13,7 +13,7 @@ export const Footer = () => {
     <MantineFooter
       height={50}
       p="xs"
-      className="flex-row-center"
+      className="flex-row-center relative"
       bg={colors.dark[9]}
     >
       <div className="mx-auto w-full max-w-4xl flex-row-between">
