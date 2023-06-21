@@ -18,6 +18,7 @@ export const useStream = () => {
   const resetResponse = useResponse((s) => s.resetResponse);
   const setTerm = useResponse((s) => s.setTerm);
   const setStatus = useResponse((s) => s.setStatus);
+  const setHistory = useResponse((s) => s.setHistory);
   const [controller, setController] = React.useState<null | AbortController>(
     null
   );
@@ -91,6 +92,7 @@ export const useStream = () => {
       });
       push(`/?term=${input}`);
       setTerm(input);
+      setHistory(input.trim())
     }
   };
   return { methods, onSubmit, stopStreaming };
