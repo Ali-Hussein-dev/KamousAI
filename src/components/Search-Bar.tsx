@@ -129,12 +129,12 @@ export const Searchbar = () => {
                   fw={300}
                   className={clsx(
                     "hidden",
-                    !!term ? "hidden" : "md:inline-block"
+                    !!term || status == "loading" ? "hidden" : "md:inline-block"
                   )}
                 >
                   ctrl+K
                 </Badge>
-                <Divider orientation="vertical" />
+                <Divider orientation="vertical" hidden={status == "loading"} />
                 <div hidden={!!term} className="p-2">
                   <FaSearch size="20" />
                 </div>
