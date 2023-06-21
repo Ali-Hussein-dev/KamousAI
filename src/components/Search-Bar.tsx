@@ -127,6 +127,7 @@ export const Searchbar = () => {
                   px="sm"
                   radius="md"
                   fw={300}
+                  className="hidden md:inline-block"
                 >
                   ctrl+K
                 </Badge>
