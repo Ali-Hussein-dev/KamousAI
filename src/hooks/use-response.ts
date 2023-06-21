@@ -1,5 +1,5 @@
-import { persist } from 'zustand/middleware';
-import { create, } from "zustand";
+import { persist } from "zustand/middleware";
+import { create } from "zustand";
 
 type Status = "loading" | "success" | "error" | "idle";
 
@@ -32,9 +32,10 @@ interface Store {
   actionResponse?: string;
 
   resType?: ResType;
+  history: { value: string }[];
 
   preferences: PreferencesT;
-  setPreferences: (settings: Partial<PreferencesT>) => void
+  setPreferences: (settings: Partial<PreferencesT>) => void;
   /**
    * used to set cached action response
    */
@@ -45,6 +46,7 @@ interface Store {
   resetResponse: () => void;
   setTerm: (term: string) => void;
   setKeyword: (resType: ResType) => void;
+  setHistory: (term: string) => void;
 }
 export const useResponse = create<Store>()(
   persist(
@@ -77,9 +79,11 @@ export const useResponse = create<Store>()(
       preferences: {
         mode: "mono",
         inputLanguage: "en",
-        outputLanguage: "de"
+        outputLanguage: "de",
       },
-      setPreferences: (settings) => set((s) => ({ preferences: { ...s.preferences, ...settings } })),
+      history: [],
+      setPreferences: (settings) =>
+        set((s) => ({ preferences: { ...s.preferences, ...settings } })),
       setStatus: (status) => set({ status }),
       setActionStatus: (actionStatus) => set({ actionStatus }),
       resetResponse: () => set({ definition: "" }),
@@ -87,8 +91,16 @@ export const useResponse = create<Store>()(
       setActionResponse: (keyword) =>
         set((s) => ({ actionResponse: s[keyword as keyof Store] as string })),
       setKeyword: (resType) => set({ resType }),
-    })
-    , {
-      name: "kamousai"
-    })
+      setHistory: (value) =>
+        set((s) => {
+          const isTermExist = (s.history || []).find((o) => o.value == value)
+          if (!isTermExist) {
+            return { history: [...(s.history || []), { value }] };
+          } else return {};
+        }),
+    }),
+    {
+      name: "kamousai",
+    }
+  )
 );
