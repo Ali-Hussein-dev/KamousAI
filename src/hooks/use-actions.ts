@@ -16,13 +16,13 @@ export const useActions = () => {
     null
   );
 
-  const stopStreaming = () => {
+  const stopStreaming = React.useCallback(() => {
     if (controller) {
       controller.abort();
       setActionStatus("success");
       setController(null);
     }
-  };
+  }, [controller, setActionStatus]);
   const fetchStreaming = async (term: string, keyword: ResType) => {
     setActionStatus("loading");
     const abortController = new AbortController();
@@ -62,6 +62,8 @@ export const useActions = () => {
       } catch (error: unknown | any) {
         if (error?.name === "AbortError") {
           console.log("Stream stopped by user");
+          setActionStatus("success");
+          setController(null);
         } else {
           console.error("Error in reading stream:", error);
         }
