@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
-import React from "react";
+import * as React from 'react'
 import { useResponse } from "@/hooks";
 import { useRouter } from "next/router";
-
 interface FormData {
   term: string;
 }
@@ -24,13 +23,13 @@ export const useStream = () => {
   );
 
   const preferences = useResponse((s) => s.preferences);
-  const stopStreaming = () => {
+  const stopStreaming = React.useCallback(() => {
     if (controller) {
       controller.abort();
       setStatus("success");
       setController(null);
     }
-  };
+  }, [controller, setStatus]);
   const fetchStreaming = async (term: string) => {
     setStatus("loading");
     reset({ term: "" });
@@ -72,6 +71,8 @@ export const useStream = () => {
       } catch (error: unknown | any) {
         if (error?.name === "AbortError") {
           console.log("Stream stopped by user");
+          setStatus("success");
+          setController(null);
         } else {
           console.error("Error in reading stream:", error);
         }
