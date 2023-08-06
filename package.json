@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "tc": "tsc --project ./tsconfig.json",
-    "pre-commit": "npm run tc & npm run lint",
+    "pre-commit": "pnpm tc & pnpm lint",
     "start": "next start"
   },
   "dependencies": {
@@ -25,22 +25,21 @@
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
     "eventsource-parser": "^1.0.0",
-    "langchain": "^0.0.56",
-    "next": "^13.4.1",
+    "langchain": "^0.0.123",
+    "next": "^13.4.12",
     "next-auth": "^4.22.1",
     "nextjs-google-analytics": "^2.3.3",
-    "prisma": "^4.13.0",
+    "prisma": "^5.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
-    "react-markdown": "^8.0.6",
+    "react-markdown": "^8.0.7",
     "remark-gfm": "^3.0.1",
     "superjson": "1.12.2",
-    "tailwind-custom-utilities": "^1.0.2",
-    "typewriter-effect": "^2.19.0",
+    "typewriter-effect": "^2.20.1",
     "zod": "^3.21.4",
-    "zustand": "^4.3.7"
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@types/eslint": "^8.21.3",
@@ -52,11 +51,12 @@
     "@typescript-eslint/parser": "^5.56.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
-    "eslint-config-next": "^13.4.1",
+    "eslint-config-next": "^13.4.12",
     "postcss": "^8.4.21",
     "prettier": "^2.8.6",
-    "prettier-plugin-tailwindcss": "^0.2.6",
-    "tailwindcss": "^3.3.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "tailwind-custom-utilities": "^1.0.3",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2"
   },
   "ct3aMetadata": {
