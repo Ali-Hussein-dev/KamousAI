@@ -1,16 +1,19 @@
+"use client"
 import { useForm } from "react-hook-form";
 import * as React from 'react'
 import { useResponse } from "@/hooks";
-import { useRouter } from "next/router";
+import { useSearchParams, useRouter } from "next/navigation";
 interface FormData {
   term: string;
 }
 
 export const useStream = () => {
-  const router = useRouter();
-  const { push, query } = router;
+  const router = useRouter()
+
+  const { push } = router;
+  const term = useSearchParams()?.get("term") 
   const methods = useForm<FormData>({
-    defaultValues: { term: query.term as string },
+    defaultValues: { term: term || "" },
   });
   const { reset } = methods;
   const setResponse = useResponse((s) => s.setResponse);

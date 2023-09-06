@@ -152,7 +152,9 @@ export const Searchbar = () => {
               // icon: { pointerEvents: "all" },
               input: {
                 background: "transparent",
-                // border:"1px solid #d6d6d6"
+                // border:"1px solid #d6d6d6",
+                // width: "100%",
+                // position: "relative"
               },
               wrapper: {
                 // border: "1px solid #d6d6d6"
@@ -166,6 +168,7 @@ export const Searchbar = () => {
             rightSection={<RightSection />}
             placeholder="Lookup a word or phrase..."
             rightSectionWidth="auto"
+            // leftSectionWidth="auto"
             autoComplete="off"
             radius="lg"
             size="xl"
