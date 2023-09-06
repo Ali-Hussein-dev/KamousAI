@@ -1,7 +1,6 @@
 import { Button, Title, Paper, Divider } from "@mantine/core";
 import { type GetServerSidePropsContext } from "next";
 import { getProviders, getSession, signIn } from "next-auth/react";
-
 import * as React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
@@ -37,7 +36,7 @@ const Signin = ({
                 color="gray"
                 size="lg"
                 radius="md"
-                leftIcon={prov.id === "github" ? <BsGithub /> : <BsGoogle />}
+                leftSection={prov.id === "github" ? <BsGithub /> : <BsGoogle />}
                 onClick={() => void signIn(prov.id)}
               >
                 {prov.name}
