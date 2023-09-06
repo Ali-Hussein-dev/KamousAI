@@ -34,6 +34,9 @@ export default {
       }),
     },
   },
+  corePlugins: {
+    preflight: false,
+  },
   plugins: [
     require("tailwind-custom-utilities"),
     require("@tailwindcss/typography"),
