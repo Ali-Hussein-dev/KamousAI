@@ -82,14 +82,11 @@ export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
   const params = useSearchParams()
-  const term= params.get("term")
-  console.log("🚀 ~ Response ~ term:", term)
-  console.log("🚀 ~ Response ~ definition:", definition)
+  const term = params.get("term")
   return (
     <div>
-      {status === "idle" && !definition && <IntialView />}
       {!term && <IntialView />}
-      {definition && !!term && (
+      {!!term && definition &&  (
         <Paper
           bg="transparent"
           withBorder
