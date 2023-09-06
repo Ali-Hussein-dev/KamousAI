@@ -82,7 +82,7 @@ export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
   const params = useSearchParams()
-  const term = params.get("term")
+  const term = params?.get("term")
   return (
     <div>
       {!term && <IntialView />}
