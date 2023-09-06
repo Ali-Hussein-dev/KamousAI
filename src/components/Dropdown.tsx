@@ -73,8 +73,12 @@ const SettingsDropdown = () => {
     return (
         <Menu shadow="lg" width={350} position="bottom-start">
             <Menu.Target>
-                <ActionIcon size="xl" fw="bold" className="h-full w-full rounded-l-xl">
-                    <Text size="xs">
+                <ActionIcon radius="lg" size="xl" fw="bold" className="center" style={{
+                    // display: "grid",
+                    // placeItems: "center",
+                    // border: "1px solid #fff",
+                }}>
+                    <Text size="xs" mb={0}>
                         {uppercaseFirstLetter(inputLanguage)}
                         {mode === "bili" &&
                             "-" + uppercaseFirstLetter(outputLanguage as string)}

@@ -1,8 +1,8 @@
+"use client"
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type NextPage } from "next";
 import Head from "next/head";
 import { AppShell, Skeleton } from "@mantine/core";
-import { Footer, Header } from "@/components";
 import dynamic from "next/dynamic";
 
 const Searchbar = dynamic(() => import("../components/Search-Bar").then(c => c.Searchbar), {
@@ -23,23 +23,27 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppShell
-        padding="sm"
-        header={<Header />}
-        footer={<Footer />}
+        padding={0}
+        pt="xl"
+        // header={<Header />}
+        // footer={<Footer />}
         styles={(theme) => ({
+          // main: {
+          //   backgroundColor:
+          //     theme.colorScheme === "dark"
+          //       ? theme.colors.dark[9]
+          //       : theme.colors.gray[0],
+          //   color:
+          //     theme.colorScheme === "dark"
+          //       ? theme.colors.dark[2]
+          //       : theme.colors.dark[8],
+          // },
           main: {
-            backgroundColor:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[9]
-                : theme.colors.gray[0],
-            color:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[2]
-                : theme.colors.dark[8],
-          },
+            // color: "white"
+          }
         })}
       >
-        <div className="mx-auto w-full max-w-2xl pt-4">
+        <div className="relative mx-auto w-full max-w-2xl pt-4 ">
           <Searchbar />
           <Response />
         </div>

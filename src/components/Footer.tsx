@@ -1,6 +1,6 @@
 import {
   Anchor,
-  Footer as MantineFooter,
+  AppShell,
   useMantineTheme,
 } from "@mantine/core";
 import { FaTwitter } from "react-icons/fa";
@@ -10,8 +10,8 @@ export const Footer = () => {
   const { colors } = useMantineTheme();
 
   return (
-    <MantineFooter
-      height={50}
+    <AppShell.Footer
+      // height={50}
       p="xs"
       className="flex-row-center relative"
       bg={colors.dark[9]}
@@ -22,7 +22,7 @@ export const Footer = () => {
         </span>
         <div className="gap-3 flex-row-start">
           <Anchor
-            color="gray"
+            c="gray"
             href="https://twitter.com/AliHussein_20"
             target="_blank"
           >
@@ -30,6 +30,6 @@ export const Footer = () => {
           </Anchor>
         </div>
       </div>
-    </MantineFooter>
+    </AppShell.Footer>
   );
 };

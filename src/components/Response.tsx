@@ -1,17 +1,18 @@
+"use client"
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useResponse } from "@/hooks";
 import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Actions } from ".";
+import { Actions } from "./Actions";
 import Typewriter from 'typewriter-effect';
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 const H1 = () =>
-  <Title order={1} className="w-full" size="md">
+  <Title order={1} className="w-full" mt="xl" size="md">
     <Typewriter
       onInit={(typewriter) => {
-        typewriter.typeString('Get Smarter With KamousAI Dictionary')
+        typewriter.typeString('Learn new words with AI dictionary')
           .pauseFor(2500)
           .start()
       }}
@@ -23,20 +24,18 @@ const H1 = () =>
 //======================================
 const IntialView = () => {
   return (
-    <Paper withBorder radius="lg" className="w-full gap-2 flex-col-start" p="md" pt="0">
+    <Paper withBorder radius="lg" className="w-full gap-2 flex-col-start" p="md" pt={0}>
       <H1 />
-      <div className="mb-4 ">
-        <Text className="mb-2 text-xl font-bold" color="dimmed">
+      <div className="mb-6">
+        <Text className="text-xl font-bold" mb="xs" c="dimmed">
           What a regular dictionary can look up
         </Text>
-        <div>
           <Badge tt="inherit" p="lg" size="lg">
-            <Text color="dimmed">Limited number of words</Text>
+            <Text mb={0}>Limited number of words</Text>
           </Badge>
-        </div>
       </div>
       <div className="mb-4 ">
-        <Text className="mb-2 text-xl font-bold" color="dimmed">
+        <Text className="mb-2 text-xl font-bold" mb="xs" c="dimmed">
           What KamousAI can look up
         </Text>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
@@ -49,7 +48,7 @@ const IntialView = () => {
             "Misspelled words",
           ].map((s) => (
             <Badge key={s} p="lg" tt="inherit" size="lg">
-              <Text color="dimmed">{s}</Text>
+              <Text mb={0}>{s}</Text>
             </Badge>
           ))}
         </div>
@@ -82,12 +81,15 @@ const ActionResponse = () => {
 export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
-  const { query } = useRouter()
+  const params = useSearchParams()
+  const term= params.get("term")
+  console.log("🚀 ~ Response ~ term:", term)
+  console.log("🚀 ~ Response ~ definition:", definition)
   return (
     <div>
       {status === "idle" && !definition && <IntialView />}
-      {!query.term && <IntialView />}
-      {definition && !!query.term && (
+      {!term && <IntialView />}
+      {definition && !!term && (
         <Paper
           bg="transparent"
           withBorder
@@ -102,7 +104,7 @@ export const Response = () => {
           {status === "success" && <Actions />}
           {!definition && status == "loading" && <LoadingSkeleton />}
           <section className="pt-2 text-lg font-medium tracking-wide w-full">
-            <ActionResponse />
+            <ActionResponse /> 
           </section>
         </Paper>
       )}

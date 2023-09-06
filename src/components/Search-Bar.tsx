@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import {
   ActionIcon,
@@ -8,7 +9,6 @@ import {
   useMantineTheme,
   Button,
   Badge,
-  clsx,
 } from "@mantine/core";
 import { BsClockHistory, BsFillSendFill, BsStopCircle } from "react-icons/bs";
 import { useResponse, useStream } from "@/hooks";
@@ -63,12 +63,18 @@ const PopoverWrapper = ({
           {filteredHistory.map((value, i) => (
             <Button
               type="button"
+              w="100%"
               key={value + i}
-              className="w-full pl-2 flex-row-start"
+              className="mb-2 pl-2"
               onClick={() => onSelect(value)}
-              leftIcon={<BsClockHistory className="text-zinc-500" size="17" />}
+              leftSection={
+                <BsClockHistory className="text-zinc-500" size="17" />
+              }
+              style={{
+                display: "flex",
+              }}
             >
-              <span className="w-full pl-2">{uppercaseFirstLetter(value)}</span>
+              <span className="border pl-2">{uppercaseFirstLetter(value)}</span>
             </Button>
           ))}
         </div>
@@ -88,67 +94,81 @@ export const Searchbar = () => {
   const term = useWatch({ name: "term", control });
 
   useHotkeys([["ctrl+K", () => setFocus("term")]]);
-
+  // submit, badge, clear, search icon
+  const RightSection = () => (
+    <div className="gap-x-2 pr-2 flex-row-start">
+      {!!term && (
+        <ActionIcon radius="lg" size="xl" onClick={() => reset({ term: "" })}>
+          <MdClear />
+        </ActionIcon>
+      )}
+      {!term && (
+        <Badge
+          color="dimmed"
+          h="100%"
+          py="xs"
+          px="sm"
+          radius="md"
+          fw={300}
+          visibleFrom="md"
+          className="md:inline-block"
+        >
+          ctrl+K
+        </Badge>
+      )}
+      <Divider orientation="vertical" hidden={status == "loading"} />
+      <div className="p-2" hidden={!!term || status === "loading"}>
+        <FaSearch size="20" />
+      </div>
+      {status === "loading" && (
+        <ActionIcon radius="lg" size="xl" type="button" onClick={stopStreaming}>
+          <BsStopCircle size="24" />
+        </ActionIcon>
+      )}
+      {term && (
+        <ActionIcon radius="lg" size="xl" type="submit" hidden={!term}>
+          <BsFillSendFill size="17" />
+        </ActionIcon>
+      )}
+    </div>
+  );
+  // dropdown, spinner
+  const LeftSection = () => (
+    <div className="center">
+      {status == "loading" ? (
+        <Loader color="#d6d6d6" size="sm" variant="dots" />
+      ) : (
+        <SettingsDropdown />
+      )}
+    </div>
+  );
   return (
     <div>
       <PopoverWrapper term={term} setValue={setValue}>
-        <form onSubmit={handleSubmit(onSubmit)} className="mb-8 shadow-lg">
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-8">
           <TextInput
-            placeholder="Enter your words..."
             {...register("term")}
-            size="xl"
-            radius="lg"
             styles={{
-              icon: { pointerEvents: "all" },
-              input: { background: "transparent" },
+              // icon: { pointerEvents: "all" },
+              input: {
+                background: "transparent",
+                // border:"1px solid #d6d6d6"
+              },
+              wrapper: {
+                // border: "1px solid #d6d6d6"
+              },
+              root: {
+                overflow: "hidden",
+                // border:"2px solid #d6d6d6"
+              },
             }}
-            icon={
-              status == "loading" ? (
-                <Loader color="#d6d6d6" size="md" variant="dots" />
-              ) : (
-                <SettingsDropdown />
-              )
-            }
+            leftSection={<LeftSection />}
+            rightSection={<RightSection />}
+            placeholder="Lookup a word or phrase..."
             rightSectionWidth="auto"
             autoComplete="off"
-            rightSection={
-              <div className="gap-x-2 pr-2 flex-row-start">
-                <ActionIcon
-                  hidden={!term}
-                  size="xl"
-                  onClick={() => reset({ term: "" })}
-                >
-                  <MdClear />
-                </ActionIcon>
-                <Badge
-                  color="dimmed"
-                  h="100%"
-                  py="xs"
-                  px="sm"
-                  radius="md"
-                  fw={300}
-                  className={clsx(
-                    "hidden",
-                    !!term || status == "loading" ? "hidden" : "md:inline-block"
-                  )}
-                >
-                  ctrl+K
-                </Badge>
-                <Divider orientation="vertical" hidden={status == "loading"} />
-                <div hidden={!!term} className="p-2">
-                  <FaSearch size="20" />
-                </div>
-                {status == "loading" ? (
-                  <ActionIcon size="xl" type="button" onClick={stopStreaming}>
-                    <BsStopCircle size="24" />
-                  </ActionIcon>
-                ) : (
-                  <ActionIcon size="xl" type="submit" hidden={!term}>
-                    <BsFillSendFill size="17" />
-                  </ActionIcon>
-                )}
-              </div>
-            }
+            radius="lg"
+            size="xl"
           />
         </form>
       </PopoverWrapper>

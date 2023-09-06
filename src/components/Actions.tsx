@@ -1,5 +1,6 @@
+"use client"
 import { type ResType, useActions, useResponse } from "@/hooks";
-import { Button, Text, Transition } from "@mantine/core";
+import { Button } from "@mantine/core";
 const list: { label: string; resType: ResType }[] = [
   { label: "Examples", resType: "examples" },
   { label: "Synonyms", resType: "synonyms" },
@@ -15,17 +16,11 @@ export const Actions = () => {
   return (
     <div className="gap-2 pb-2 flex-row-start flex-wrap">
       {list.map((o) => (
-        <Transition
+        <Button
           key={o.label}
-          mounted
-          transition="scale"
-          duration={3400}
-          timingFunction="ease"
-        >
-          {(styles) => (
-            <Button
               variant="default"
-              style={styles}
+              c="dimmed"
+              // style={styles}
               size="xs"
               onClick={() => {
                 setKeyword(o.resType);
@@ -34,10 +29,18 @@ export const Actions = () => {
                   : onSubmit(o.label.toLowerCase() as ResType);
               }}
             >
-              <Text color="dimmed">{o.label} </Text>
+              {o.label}
             </Button>
-          )}
-        </Transition>
+          
+        // <Transition
+        //   key={o.label}
+        //   mounted
+        //   transition="scale"
+        //   duration={3400}
+        //   timingFunction="ease"
+        // >
+        //   {(styles) => ()}
+        // </Transition>
       ))}
     </div>
   );
