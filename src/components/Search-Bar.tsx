@@ -150,15 +150,6 @@ export const Searchbar = () => {
             {...register("term")}
             styles={{
               // icon: { pointerEvents: "all" },
-              input: {
-                background: "transparent",
-                // border:"1px solid #d6d6d6",
-                // width: "100%",
-                // position: "relative"
-              },
-              wrapper: {
-                // border: "1px solid #d6d6d6"
-              },
               root: {
                 overflow: "hidden",
                 // border:"2px solid #d6d6d6"
