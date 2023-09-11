@@ -148,18 +148,11 @@ export const Searchbar = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="mb-8">
           <TextInput
             {...register("term")}
-            styles={{
-              // icon: { pointerEvents: "all" },
-              root: {
-                overflow: "hidden",
-                // border:"2px solid #d6d6d6"
-              },
-            }}
             leftSection={<LeftSection />}
             rightSection={<RightSection />}
             placeholder="Lookup a word or phrase..."
             rightSectionWidth="auto"
-            leftSectionWidth="auto"
+            // leftSectionWidth="auto"
             autoComplete="off"
             radius="lg"
             size="xl"
