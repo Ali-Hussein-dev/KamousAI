@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@mantine/core': 7.0.0-beta.3
-  '@mantine/hooks': 7.0.0-beta.3
+  '@mantine/core': 7.0.0-beta.4
+  '@mantine/hooks': 7.0.0-beta.4
   '@mantine/next': ^6.0.20
   '@next-auth/prisma-adapter': ^1.0.6
   '@prisma/client': ^4.13.0
@@ -46,8 +46,8 @@ specifiers:
   zustand: ^4.4.0
 
 dependencies:
-  '@mantine/core': 7.0.0-beta.3_2dqtflh4zr2cvwywcnkhavpxiu
-  '@mantine/hooks': 7.0.0-beta.3_react@18.2.0
+  '@mantine/core': 7.0.0-beta.4_3rxbxwbprhkx2y2x553bltbgjm
+  '@mantine/hooks': 7.0.0-beta.4_react@18.2.0
   '@mantine/next': 6.0.20_54ux7fu2vrztxgcjbkegvwjefy
   '@next-auth/prisma-adapter': 1.0.6_mj4zmq54qgbwr7klxt7lbfwdhu
   '@prisma/client': 4.13.0_prisma@5.1.1
@@ -246,28 +246,28 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@mantine/core/7.0.0-beta.3_2dqtflh4zr2cvwywcnkhavpxiu:
-    resolution: {integrity: sha512-EaQTylQahV5I68uWWuA6MiJhrG0nRg0n1MpQ0ngn0aJFFEuruvZqi/PaWRGxywy6ageSRiAEQzzWlSzMchl2gQ==}
+  /@mantine/core/7.0.0-beta.4_3rxbxwbprhkx2y2x553bltbgjm:
+    resolution: {integrity: sha512-zRu15xh7TP9tRtd+g/Ink+eUaSHsfoc/YnwRHgKzcwOAe6Smk97Exca9OOaoiu/VrdMdUv3nSuwcZOHb1NoUUQ==}
     peerDependencies:
-      '@mantine/hooks': 7.0.0-beta.3
+      '@mantine/hooks': 7.0.0-beta.4
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@floating-ui/react': 0.24.8_biqbaboplfbrettd7655fr4n2y
-      '@mantine/hooks': 7.0.0-beta.3_react@18.2.0
+      '@mantine/hooks': 7.0.0-beta.4_react@18.2.0
       clsx: 2.0.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-number-format: 5.2.2_biqbaboplfbrettd7655fr4n2y
       react-remove-scroll: 2.5.6_pofolu2o2erjq4lhyzl3hqovzq
       react-textarea-autosize: 8.5.2_pofolu2o2erjq4lhyzl3hqovzq
-      type-fest: 4.1.0
+      type-fest: 3.13.1
     transitivePeerDependencies:
       - '@types/react'
     dev: false
 
-  /@mantine/hooks/7.0.0-beta.3_react@18.2.0:
-    resolution: {integrity: sha512-OaghvoGt2Q5/n+b9wQ/1IMvSW9T1OP3O672XpI2scrPFxeZnbZI/9NW/9lEqjmyqbE5ba7fAE6/bl4CilThjtA==}
+  /@mantine/hooks/7.0.0-beta.4_react@18.2.0:
+    resolution: {integrity: sha512-4cGdR6O7C1DdijqySYD/TKze7sBXoKXtXAgkeZniwgYE108Q6PN1r3/FvpIEiP1GNb7ICGW86/OaAU6IM7+rxg==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -4310,9 +4310,9 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/4.1.0:
-    resolution: {integrity: sha512-VJGJVepayd8OWavP+rgXt4i3bfLk+tSomTV7r4mca2XD/oTCWnkJlNkpXavkxdmtU2aKdAmFGeHvoQutOVHCZg==}
-    engines: {node: '>=16'}
+  /type-fest/3.13.1:
+    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /typed-array-length/1.0.4:
