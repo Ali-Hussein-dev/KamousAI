@@ -4,8 +4,8 @@ import { Text } from "@mantine/core";
 
 export default function Page() {
   return (
-    <main className="!w-full h-screen">
-      <div className="mx-auto w-full max-w-2xl pt-4">
+    <main className="!w-full h-screen p-2">
+      <div className="mx-auto w-full max-w-2xl pt-8 md:pt-12">
       <Searchbar />
       <Response />
       <div className="mx-auto w-fit pt-3">
