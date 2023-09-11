@@ -159,7 +159,7 @@ export const Searchbar = () => {
             rightSection={<RightSection />}
             placeholder="Lookup a word or phrase..."
             rightSectionWidth="auto"
-            // leftSectionWidth="auto"
+            leftSectionWidth="auto"
             autoComplete="off"
             radius="lg"
             size="xl"
