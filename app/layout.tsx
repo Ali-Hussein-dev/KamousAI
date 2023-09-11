@@ -1,5 +1,5 @@
-"use client"
-import '@mantine/core/styles.css';
+"use client";
+import "@mantine/core/styles.css";
 // import { SessionProvider } from "next-auth/react";
 import {
   MantineProvider,
@@ -22,23 +22,23 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       {/* <SessionProvider session={session}> */}
       <body>
         <MantineProvider
-          // withGlobalStyles
-          theme={{
-           primaryColor: "gray",
-            /** Put your mantine theme override here */
-        }}
-        defaultColorScheme="dark"
-      >
-          <TypographyStylesProvider>
-            <GoogleAnalytics trackPageViews strategy="lazyOnload" />
-            {children}
+          theme={
+            {
+              primaryColor: "gray",
+              /** Put your mantine theme override here */
+            }
+          }
+          defaultColorScheme="dark"
+        >
+          <TypographyStylesProvider className='p-0'>
+          <GoogleAnalytics trackPageViews strategy="lazyOnload" />
+          {children}
           </TypographyStylesProvider>
         </MantineProvider>
       </body>
-    {/* </SessionProvider> */}
-  
+      {/* </SessionProvider> */}
     </html>
   );
 };
 
-export default RootLayout; 
+export default RootLayout;
