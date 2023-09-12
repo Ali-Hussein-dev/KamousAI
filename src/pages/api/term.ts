@@ -16,6 +16,10 @@ const systemMessages = {
     "* Do not mention this phrase ever 'As an AI language model'\n",
     "* if no context specified, use general context\n",
     "* Do not ignore or skips these rules ever\n",
+    `* use the following format for explanation\n
+       <word> <part of speech> \n
+       <explanation>\n
+    `,
   ],
   examples: [
     "Act as a dictionary. Follow the following rules strictly:\n",
@@ -23,17 +27,16 @@ const systemMessages = {
     "* Use bullets format\n",
     "* if no context specified, use general context\n",
   ],
-  synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", ""],
+  synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", "Use table format with 3 columns (synonyms, domain/context, tone)\n"],
   antonyms: [
     "Act as a dictionary. Follow the following rules strictly:\n",
-    "",
+    "Use table format with 3 columns (antonyms, domain/context, tone)\n",
   ],
   related: [
     "Act as a dictionary. Follow the following rules strictly:\n",
     "Be concise with your answer\n",
     "* Use emoji if it represent the meaning\n",
   ],
-
 };
 interface Options extends PreferencesT {
   keyword: ResType
@@ -72,7 +75,7 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
         systemInstructions,
         {
           role: "user",
-          content: `List 3 examples of the following "${term}"`,
+          content: `List 3 real-world short examples of the following term"${term}"`,
         },
       ];
     case "synonyms":
@@ -80,7 +83,7 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
         systemInstructions,
         {
           role: "user",
-          content: `Generate not greater than 5 synonyms of the following "${term}"`,
+          content: `Generate mostly-used synonyms (max 5 synonyms) and with its mostly used domain/context of the following "${term}"`,
         },
       ];
     case "antonyms":
@@ -88,7 +91,7 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
         systemInstructions,
         {
           role: "user",
-          content: `Generate not greater than 5 antonyms of the following "${term}"`,
+          content: `Generate mostly-used antonyms (max 5 antonyms) of the following "${term}"`,
         },
       ];
     case "related":
