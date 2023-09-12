@@ -134,7 +134,7 @@ export const Searchbar = () => {
   );
   // dropdown, spinner
   const LeftSection = () => (
-    <div className="">
+    <div className="center">
       {status == "loading" ? (
         <Loader color="#d6d6d6" size="sm" variant="dots" />
       ) : (
