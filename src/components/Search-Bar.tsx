@@ -134,7 +134,7 @@ export const Searchbar = () => {
   );
   // dropdown, spinner
   const LeftSection = () => (
-    <div className="center">
+    <div className="">
       {status == "loading" ? (
         <Loader color="#d6d6d6" size="sm" variant="dots" />
       ) : (
@@ -152,7 +152,8 @@ export const Searchbar = () => {
             rightSection={<RightSection />}
             placeholder="Lookup a word or phrase..."
             rightSectionWidth="auto"
-            // leftSectionWidth="auto"
+            leftSectionPointerEvents="all"
+            rightSectionPointerEvents="all"
             autoComplete="off"
             radius="lg"
             size="xl"
