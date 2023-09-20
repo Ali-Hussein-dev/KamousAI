@@ -1,5 +1,6 @@
 {
-  "name": "ai-dictionary",
+  "name": "kamousai",
+  "description": "AI Dictionary",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,11 +12,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/server": "^11.10.0",
-    "@mantine/core": "^6.0.6",
-    "@mantine/hooks": "^6.0.6",
-    "@mantine/next": "^6.0.6",
+    "@mantine/core": "^7.0.0",
+    "@mantine/hooks": "^7.0.0",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.13.0",
     "@tailwindcss/typography": "^0.5.9",
@@ -24,8 +22,9 @@
     "@trpc/next": "^10.18.0",
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
+    "clsx": "^2.0.0",
     "eventsource-parser": "^1.0.0",
-    "langchain": "^0.0.123",
+    "langchain": "^0.0.152",
     "next": "^13.4.12",
     "next-auth": "^4.22.1",
     "nextjs-google-analytics": "^2.3.3",
@@ -53,6 +52,8 @@
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.4.12",
     "postcss": "^8.4.21",
+    "postcss-preset-mantine": "^1.7.0",
+    "postcss-simple-vars": "^7.0.1",
     "prettier": "^2.8.6",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "tailwind-custom-utilities": "^1.0.3",
