@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         },
       }}>
         <Header />
-        <div className="black mx-auto w-full max-w-2xl pt-20 h-full ">
+        <div className="black mx-auto w-full max-w-2xl pt-20 h-full px-2">
           <Searchbar />
           <Response />
         </div>
