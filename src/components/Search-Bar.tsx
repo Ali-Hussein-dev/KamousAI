@@ -92,14 +92,17 @@ export const Searchbar = () => {
   const { colors } = useMantineTheme();
   return (
     <PopoverWrapper term={term} setValue={setValue}>
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-8 rounded-2xl">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="mb-8 rounded-2xl"
+        ref={ref}
+      >
         <TextInput
           placeholder="Enter your words..."
           {...register("term")}
           size="xl"
           radius="lg"
           leftSectionPointerEvents="all"
-          ref={ref}
           className="duration-500"
           styles={{
             input: {
