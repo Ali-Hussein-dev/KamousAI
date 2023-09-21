@@ -99,7 +99,7 @@ const {colors}= useMantineTheme()
           radius="lg"
           leftSectionPointerEvents="all"
           styles={{
-            input: { background: "transparent" },
+            input: { background: "transparent", paddingLeft: "4rem" },
           }}
           leftSection={
             <div className="h-full w-full rounded-l-xl">
@@ -132,13 +132,10 @@ const {colors}= useMantineTheme()
                   bg="transparent"
                   variant="white"
                   h="100%"
-                  // py="xs"
-                  // px="sm"
-                  // radius="md"
                   fw={400}
                   className={clsx(
-                    "hidden",
-                    !!term || status == "loading" ? "hidden" : "md:inline-block"
+                    "opacity-0",
+                    !!term || status == "loading" ? "opacity-0" : "sm:opacity-100"
                   )}
                 >
                   ctrl+K
