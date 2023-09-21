@@ -16,7 +16,7 @@ import SettingsDropdown from "./Dropdown";
 import { FaSearch } from "react-icons/fa";
 import { type UseFormSetValue, useWatch } from "react-hook-form";
 import * as React from "react";
-import { useHotkeys } from "@mantine/hooks";
+import { useFocusWithin, useHotkeys } from "@mantine/hooks";
 import clsx from "clsx";
 
 function uppercaseFirstLetter(string: string) {
@@ -57,7 +57,7 @@ const PopoverWrapper = ({
         hidden={filteredHistory.length == 0 || !term}
         className="max-h-72 overflow-y-auto shadow"
       >
-        <div className="flex-wrap gap-2 flex ">
+        <div className="flex flex-wrap gap-2 ">
           {filteredHistory.map((value, i) => (
             <Button
               type="button"
@@ -65,7 +65,7 @@ const PopoverWrapper = ({
               c="dimmed"
               radius="lg"
               key={value + i}
-              className="w-full flex-row-start gap-0"
+              className="w-full gap-0 flex-row-start"
               onClick={() => onSelect(value)}
             >
               <span className="w-full">{uppercaseFirstLetter(value)}</span>
@@ -88,7 +88,8 @@ export const Searchbar = () => {
   const term = useWatch({ name: "term", control });
 
   useHotkeys([["ctrl+K", () => setFocus("term")]]);
-const {colors}= useMantineTheme()
+  const { focused, ref } = useFocusWithin();
+  const { colors } = useMantineTheme();
   return (
     <PopoverWrapper term={term} setValue={setValue}>
       <form onSubmit={handleSubmit(onSubmit)} className="mb-8 rounded-2xl">
@@ -98,15 +99,23 @@ const {colors}= useMantineTheme()
           size="xl"
           radius="lg"
           leftSectionPointerEvents="all"
+          ref={ref}
+          className="duration-500"
           styles={{
-            input: { background: "transparent", paddingLeft: "4rem" },
+            input: {
+              background: "transparent",
+              paddingLeft: "4rem",
+              border: focused
+                ? `1px solid ${colors.primary?.[3]}`
+                : `1px solid ${colors.primary?.[5]}`,
+            },
           }}
           leftSection={
             <div className="h-full w-full rounded-l-xl">
               {status == "loading" ? (
-                <div className="w-full h-full center">
+                <div className="center h-full w-full">
                   <Loader color="white" size="sm" variant="dots" />
-                  </div>
+                </div>
               ) : (
                 <SettingsDropdown />
               )}
@@ -135,7 +144,9 @@ const {colors}= useMantineTheme()
                   fw={400}
                   className={clsx(
                     "opacity-0",
-                    !!term || status == "loading" ? "opacity-0" : "sm:opacity-100"
+                    !!term || status == "loading"
+                      ? "opacity-0"
+                      : "sm:opacity-100"
                   )}
                 >
                   ctrl+K
