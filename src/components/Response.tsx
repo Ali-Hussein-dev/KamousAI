@@ -93,8 +93,7 @@ export const Response = () => {
   const { query } = useRouter();
   return (
     <div>
-      {status === "idle" && !definition && <IntialView />}
-      {!query.term && <IntialView />}
+      {status !== "loading" && !query.term && <IntialView />}
       {definition && !!query.term && (
         <Paper
           withBorder
