@@ -1,5 +1,5 @@
 import { type ResType, useActions, useResponse } from "@/hooks";
-import { Button, Text, Transition } from "@mantine/core";
+import { Button, Transition } from "@mantine/core";
 const list: { label: string; resType: ResType }[] = [
   { label: "Examples", resType: "examples" },
   { label: "Synonyms", resType: "synonyms" },
@@ -34,7 +34,7 @@ export const Actions = () => {
                   : onSubmit(o.label.toLowerCase() as ResType);
               }}
             >
-              <Text color="dimmed">{o.label} </Text>
+              {o.label}
             </Button>
           )}
         </Transition>

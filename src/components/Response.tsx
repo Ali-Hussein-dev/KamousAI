@@ -4,39 +4,47 @@ import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Actions } from ".";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 import { useRouter } from "next/router";
 
-const H1 = () =>
-  <Title order={1} className="w-full" size="md">
+const H1 = () => (
+  <Title order={1} className="w-full" size="md" mt="xl">
     <Typewriter
       onInit={(typewriter) => {
-        typewriter.typeString('Get Smarter With KamousAI Dictionary')
+        typewriter
+          .typeString("New Way To Learn New Words")
           .pauseFor(2500)
-          .start()
+          .start();
       }}
       options={{
-        cursor: "",
+        // cursor: "",
       }}
     />
   </Title>
+);
 //======================================
 const IntialView = () => {
   return (
-    <Paper withBorder radius="lg" className="w-full gap-2 flex-col-start" p="md" pt="0">
+    <Paper
+      withBorder
+      radius="lg"
+      className="w-full gap-2 flex-col-start"
+      p="xl"
+      shadow="md"
+    >
       <H1 />
       <div className="mb-4 ">
-        <Text className="mb-2 text-xl font-bold" color="dimmed">
+        <Text className="text-xl font-bold" c="dimmed" mb="xs">
           What a regular dictionary can look up
         </Text>
         <div>
           <Badge tt="inherit" p="lg" size="lg">
-            <Text color="dimmed">Limited number of words</Text>
+            Limited number of words
           </Badge>
         </div>
       </div>
       <div className="mb-4 ">
-        <Text className="mb-2 text-xl font-bold" color="dimmed">
+        <Text className="text-xl font-bold" c="dimmed" mb="xs">
           What KamousAI can look up
         </Text>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
@@ -49,7 +57,7 @@ const IntialView = () => {
             "Misspelled words",
           ].map((s) => (
             <Badge key={s} p="lg" tt="inherit" size="lg">
-              <Text color="dimmed">{s}</Text>
+              {s}
             </Badge>
           ))}
         </div>
@@ -82,26 +90,25 @@ const ActionResponse = () => {
 export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
-  const { query } = useRouter()
+  const { query } = useRouter();
   return (
     <div>
-      {status === "idle" && !definition && <IntialView />}
-      {!query.term && <IntialView />}
+      {status !== "loading" && !query.term && <IntialView />}
       {definition && !!query.term && (
         <Paper
-          bg="transparent"
           withBorder
           radius="lg"
           p="lg"
           pb="sm"
-          className="prose mx-auto text-lg font-medium tracking-wide w-full max-w-3xl"
+          className="prose mx-auto w-full max-w-3xl text-lg font-medium tracking-wide"
+          shadow="md"
         >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>
           {status === "success" && <Actions />}
           {!definition && status == "loading" && <LoadingSkeleton />}
-          <section className="pt-2 text-lg font-medium tracking-wide w-full">
+          <section className="w-full pt-2 text-lg font-medium tracking-wide">
             <ActionResponse />
           </section>
         </Paper>

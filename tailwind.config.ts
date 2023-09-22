@@ -38,4 +38,7 @@ export default {
     require("tailwind-custom-utilities"),
     require("@tailwindcss/typography"),
   ],
+  corePlugins: {
+    preflight: false,
+  }
 } satisfies Config;
