@@ -27,10 +27,10 @@ const systemMessages = {
     "* Use bullets format\n",
     "* if no context specified, use general context\n",
   ],
-  synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", "Use table format with 3 columns (synonyms, domain/context, tone)\n"],
+  synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", "Use table format with 3 columns (synonyms, context, tone)\n"],
   antonyms: [
     "Act as a dictionary. Follow the following rules strictly:\n",
-    "Use table format with 3 columns (antonyms, domain/context, tone)\n",
+    "Use table format with 3 columns (antonyms, context, tone)\n",
   ],
   related: [
     "Act as a dictionary. Follow the following rules strictly:\n",
@@ -83,7 +83,7 @@ const getMessages = (messages: ChatGPTMessage[], options: Options) => {
         systemInstructions,
         {
           role: "user",
-          content: `Generate mostly-used synonyms (max 5 synonyms) and with its mostly used domain/context of the following "${term}"`,
+          content: `Generate mostly-used synonyms (max 5 synonyms) and with its mostly used context of the following "${term}"`,
         },
       ];
     case "antonyms":
