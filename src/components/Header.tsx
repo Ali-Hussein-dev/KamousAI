@@ -27,9 +27,8 @@ export const Header = () => {
   // const { data: sessionData } = useSession();
   return (
     <AppShell.Header
-      // height={60}
       p="xs"
-      className="flex-row-center"
+      className="flex-row-center !relative"
       withBorder={false}
     >
       <div className="mx-auto w-full max-w-4xl flex-row-center ">

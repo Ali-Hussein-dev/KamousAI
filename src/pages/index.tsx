@@ -32,16 +32,17 @@ const Home: NextPage = () => {
         <meta name="description" content="KamousAI dictionary AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AppShell padding="lg" styles={{
-        root: {
-          // backgroundColor: theme.colors.dark[9],
-        },
-      }}>
+      <AppShell
+        // header={{height: 64}}
+        padding="lg"
+      >
         <Header />
-        <div className="black mx-auto w-full max-w-2xl pt-20 h-full px-2">
-          <Searchbar />
-          <Response />
-        </div>
+        <AppShell.Main>
+          <div className="mx-auto h-full w-full max-w-2xl border px-2 pb-14">
+            <Searchbar />
+            <Response />
+          </div>
+        </AppShell.Main>
         <Footer />
       </AppShell>
     </>

@@ -10,8 +10,11 @@ export const Footer = () => {
   return (
     <AppShell.Footer
       p="xs"
-      className="flex-row-center relative"
+      className="!relative"
+      withBorder={false}
     >
+      {/* <div className="h-[0.5px] bg-gradient-to-r from-transparent via-white to-transparent max-w-4xl mx-auto mb-1" /> */}
+      <div className="h-[0.5px] bg-white/40 max-w-4xl mx-auto mb-2" />
       <div className="mx-auto w-full max-w-4xl flex-row-between">
         <span>
           Powered by <b>AI</b>
@@ -29,3 +32,4 @@ export const Footer = () => {
     </AppShell.Footer>
   );
 };
+
