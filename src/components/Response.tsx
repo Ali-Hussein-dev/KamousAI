@@ -100,7 +100,7 @@ export const Response = () => {
           radius="lg"
           p="lg"
           pb="sm"
-          className="prose mx-auto w-full max-w-3xl text-lg font-medium tracking-wide"
+          className="prose mx-auto w-full max-w-3xl text-lg font-medium tracking-wide prose-thead:bg-indigo-200/60 rounded-t" 
           shadow="md"
         >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
