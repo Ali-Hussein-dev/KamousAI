@@ -98,9 +98,9 @@ export const Response = () => {
         <Paper
           withBorder
           radius="lg"
-          p="lg"
-          pb="sm"
-          className="prose mx-auto w-full max-w-3xl text-lg font-medium tracking-wide prose-thead:bg-indigo-200/60 rounded-t" 
+          py="lg"
+          px="xs"
+          className="prose mx-auto w-full max-w-3xl md:text-lg font-medium tracking-wide prose-thead:bg-indigo-200/60 rounded-t" 
           shadow="md"
         >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
@@ -108,7 +108,7 @@ export const Response = () => {
           </ReactMarkdown>
           {status === "success" && <Actions />}
           {!definition && status == "loading" && <LoadingSkeleton />}
-          <section className="w-full pt-2 text-lg font-medium tracking-wide">
+          <section className="w-full pt-2 md:text-lg font-medium tracking-wide">
             <ActionResponse />
           </section>
         </Paper>

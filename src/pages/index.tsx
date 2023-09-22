@@ -29,16 +29,17 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>KamousAI</title>
-        <meta name="description" content="KamousAI dictionary AI" />
+        <meta name="description" content="Dictionary powered by AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppShell
         // header={{height: 64}}
-        padding="lg"
+        py="lg"
+        px="xs"
       >
         <Header />
         <AppShell.Main>
-          <div className="mx-auto h-full w-full max-w-2xl border px-2 pb-14">
+          <div className="mx-auto h-full w-full max-w-2xl border pb-14">
             <Searchbar />
             <Response />
           </div>
