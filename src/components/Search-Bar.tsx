@@ -61,11 +61,11 @@ const PopoverWrapper = ({
           {filteredHistory.map((value, i) => (
             <Button
               type="button"
-              variant="outline"
+              variant="light"
               c="dimmed"
               radius="lg"
               key={value + i}
-              className="w-full gap-0 flex-row-start"
+              className="gap-0 flex-row-start"
               onClick={() => onSelect(value)}
             >
               <span className="w-full">{uppercaseFirstLetter(value)}</span>
