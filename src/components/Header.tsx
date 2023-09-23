@@ -28,12 +28,13 @@ export const Header = () => {
   return (
     <AppShell.Header
       p="xs"
-      className="flex-row-center !relative"
+      className="border-solid border-b border-0 border-slate-500"
       withBorder={false}
+      pos="relative"
     >
-      <div className="mx-auto w-full max-w-4xl flex-row-center ">
-        <Anchor c="white" href="/">
-          <div className="text-2xl font-extrabold">KamousAI</div>
+      <div className="mx-auto w-full max-w-[1520px] flex-row-start">
+        <Anchor c="primary" href="/">
+          <span className="text-2xl sm:text-3xl font-extrabold">KamousAI</span>
         </Anchor>
         {/* {sessionData ? (
           <UserDropdown />

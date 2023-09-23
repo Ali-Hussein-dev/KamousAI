@@ -109,8 +109,8 @@ export const Searchbar = () => {
               background: "transparent",
               paddingLeft: "4rem",
               border: focused
-                ? `1px solid ${colors.primary?.[3]}`
-                : `1px solid ${colors.primary?.[5]}`,
+                ? `1px solid ${colors.dark?.[4]}`
+                : `1px solid ${colors.dark?.[6]}`,
             },
           }}
           leftSection={

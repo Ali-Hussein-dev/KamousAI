@@ -1,3 +1,4 @@
+"use client"
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useResponse } from "@/hooks";
 import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
@@ -5,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Actions } from ".";
 import Typewriter from "typewriter-effect";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 const H1 = () => (
   <Title order={1} className="w-full" size="md" mt="xl">
@@ -90,18 +91,19 @@ const ActionResponse = () => {
 export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
-  const { query } = useRouter();
+  const query = useSearchParams();
+  const term = query?.get("term");
   return (
     <div>
-      {status !== "loading" && !query.term && <IntialView />}
-      {definition && !!query.term && (
+      {status !== "loading" && !term && <IntialView />}
+      {definition && !!term && (
         <Paper
-          withBorder
           radius="lg"
-          py="lg"
-          px="xs"
-          className="prose mx-auto w-full max-w-3xl md:text-lg font-medium tracking-wide prose-thead:bg-indigo-200/60 rounded-t" 
+          py="xl"
+          px={{base: "xs", md: "lg"}}
+          className="prose mx-auto w-full max-w-2xl md:text-lg font-medium tracking-wide prose-thead:bg-white/60" 
           shadow="md"
+          bg="dark"
         >
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
