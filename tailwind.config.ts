@@ -1,7 +1,7 @@
 import { type Config } from "tailwindcss";
 
 export default {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       typography: (_theme: unknown) => ({
@@ -40,5 +40,5 @@ export default {
   ],
   corePlugins: {
     preflight: false,
-  }
+  },
 } satisfies Config;

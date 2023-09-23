@@ -61,11 +61,11 @@ const PopoverWrapper = ({
           {filteredHistory.map((value, i) => (
             <Button
               type="button"
-              variant="outline"
+              variant="light"
               c="dimmed"
               radius="lg"
               key={value + i}
-              className="w-full gap-0 flex-row-start"
+              className="gap-0 flex-row-start"
               onClick={() => onSelect(value)}
             >
               <span className="w-full">{uppercaseFirstLetter(value)}</span>
@@ -109,8 +109,8 @@ export const Searchbar = () => {
               background: "transparent",
               paddingLeft: "4rem",
               border: focused
-                ? `1px solid ${colors.primary?.[3]}`
-                : `1px solid ${colors.primary?.[5]}`,
+                ? `1px solid ${colors.dark?.[4]}`
+                : `1px solid ${colors.dark?.[6]}`,
             },
           }}
           leftSection={

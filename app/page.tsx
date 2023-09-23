@@ -1,12 +1,12 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type NextPage } from "next";
-import Head from "next/head";
 import { AppShell, Skeleton } from "@mantine/core";
-import { Footer, Header } from "@/components";
+import { Footer, Header } from "../src/components";
 import dynamic from "next/dynamic";
 
 const Searchbar = dynamic(
-  () => import("../components/Search-Bar").then((c) => c.Searchbar),
+  () => import("../src/components/Search-Bar").then((c) => c.Searchbar),
   {
     ssr: false,
     loading: () => (
@@ -15,7 +15,7 @@ const Searchbar = dynamic(
   }
 );
 const Response = dynamic(
-  () => import("../components/Response").then((c) => c.Response),
+  () => import("../src/components/Response").then((c) => c.Response),
   {
     ssr: false,
     loading: () => (
@@ -26,27 +26,18 @@ const Response = dynamic(
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>KamousAI</title>
-        <meta name="description" content="Dictionary powered by AI" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <AppShell
-        // header={{height: 64}}
-        py="lg"
-        px="xs"
+      // header={{height: 64}}
       >
         <Header />
-        <AppShell.Main>
-          <div className="mx-auto h-full w-full max-w-2xl border pb-14">
+        <AppShell.Main py="lg" px="xs">
+          <div className="mx-auto h-full w-full max-w-2xl border pb-10 pt-5">
             <Searchbar />
             <Response />
           </div>
         </AppShell.Main>
         <Footer />
       </AppShell>
-    </>
   );
 };
 
