@@ -33,7 +33,7 @@ export const Header = () => {
       pos="relative"
     >
       <div className="mx-auto w-full max-w-[1520px] flex-row-start">
-        <Anchor c="primary" href="/">
+        <Anchor c="white" href="/">
           <span className="text-2xl sm:text-3xl font-extrabold">KamousAI</span>
         </Anchor>
         {/* {sessionData ? (

@@ -9,7 +9,7 @@ import Typewriter from "typewriter-effect";
 import { useSearchParams } from "next/navigation";
 
 const H1 = () => (
-  <Title order={1} className="w-full" size="md" mt="xl">
+  <Title order={1} className="w-full" mt="lg" mb="lg">
     <Typewriter
       onInit={(typewriter) => {
         typewriter
@@ -30,13 +30,12 @@ const IntialView = () => {
       withBorder
       radius="lg"
       className="w-full gap-2 flex-col-start"
-      p="xl"
-      shadow="md"
+      p={{ base: "sm", md: "lg" }}
     >
       <H1 />
       <div className="mb-4 ">
-        <Text className="text-xl font-bold" c="dimmed" mb="xs">
-          What a regular dictionary can look up
+        <Text className="ml-1 text-xl font-bold" c="dimmed" mb="xs">
+          Regular dictionary
         </Text>
         <div>
           <Badge tt="inherit" p="lg" size="lg">
@@ -45,8 +44,8 @@ const IntialView = () => {
         </div>
       </div>
       <div className="mb-4 ">
-        <Text className="text-xl font-bold" c="dimmed" mb="xs">
-          What KamousAI can look up
+        <Text className="ml-1 text-xl font-bold" c="dimmed" mb="xs">
+          AI dictionary
         </Text>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
           {[
@@ -57,7 +56,7 @@ const IntialView = () => {
             "Word or word",
             "Misspelled words",
           ].map((s) => (
-            <Badge key={s} p="lg" tt="inherit" size="lg">
+            <Badge key={s} p="lg" tt="inherit" size="lg" w="100%">
               {s}
             </Badge>
           ))}
