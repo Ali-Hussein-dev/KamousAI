@@ -11,16 +11,16 @@ specifiers:
   '@trpc/next': ^10.18.0
   '@trpc/react-query': ^10.18.0
   '@trpc/server': ^10.18.0
-  '@types/eslint': ^8.21.3
-  '@types/node': ^18.15.5
+  '@types/eslint': ^8.37.0
+  '@types/node': ^18.15.11
   '@types/prettier': ^2.7.2
-  '@types/react': ^18.0.28
+  '@types/react': ^18.0.33
   '@types/react-dom': ^18.0.11
-  '@typescript-eslint/eslint-plugin': ^5.56.0
-  '@typescript-eslint/parser': ^5.56.0
+  '@typescript-eslint/eslint-plugin': ^5.57.1
+  '@typescript-eslint/parser': ^5.57.1
   autoprefixer: ^10.4.14
   clsx: ^2.0.0
-  eslint: ^8.36.0
+  eslint: ^8.37.0
   eslint-config-next: ^13.4.12
   eventsource-parser: ^1.0.0
   langchain: ^0.0.152
@@ -30,7 +30,7 @@ specifiers:
   postcss: ^8.4.21
   postcss-preset-mantine: ^1.7.0
   postcss-simple-vars: ^7.0.1
-  prettier: ^2.8.6
+  prettier: ^2.8.7
   prettier-plugin-tailwindcss: ^0.4.1
   prisma: ^5.1.1
   react: 18.2.0
@@ -42,7 +42,7 @@ specifiers:
   superjson: 1.12.2
   tailwind-custom-utilities: ^1.0.3
   tailwindcss: ^3.3.3
-  typescript: ^5.0.2
+  typescript: ^5.0.3
   typewriter-effect: ^2.20.1
   zod: ^3.21.4
   zustand: ^4.4.0
@@ -899,7 +899,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001474
+      caniuse-lite: 1.0.30001538
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -962,7 +962,7 @@ packages:
     resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     dependencies:
-      caniuse-lite: 1.0.30001474
+      caniuse-lite: 1.0.30001538
       electron-to-chromium: 1.4.353
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
@@ -996,8 +996,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /caniuse-lite/1.0.30001474:
-    resolution: {integrity: sha512-iaIZ8gVrWfemh5DG3T9/YqarVZoYf0r188IjaGwx68j4Pf0SGY6CQkmJUIE+NZHkkecQGohzXmBGEwWDr9aM3Q==}
+  /caniuse-lite/1.0.30001538:
+    resolution: {integrity: sha512-HWJnhnID+0YMtGlzcp3T9drmBJUVDchPJ08tpUGFLs9CYlwWPH2uLgpHn8fND5pCgXVtnGS3H4QR9XLMHVNkHw==}
 
   /ccount/2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1031,7 +1031,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
@@ -1754,8 +1754,8 @@ packages:
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
-  /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents/2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -3132,7 +3132,7 @@ packages:
       '@next/env': 13.4.12
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001474
+      caniuse-lite: 1.0.30001538
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -3163,7 +3163,7 @@ packages:
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: false
 
   /node-domexception/1.0.0:
