@@ -1,13 +1,22 @@
-"use client"
+"use client";
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useResponse } from "@/hooks";
-import { Badge, Paper, Text, Skeleton, Title } from "@mantine/core";
+import { useResponse, useVoice } from "@/hooks";
+import {
+  Badge,
+  Paper,
+  Text,
+  Skeleton,
+  Title,
+  ActionIcon,
+  Loader,
+} from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Actions } from ".";
 import Typewriter from "typewriter-effect";
 import { useSearchParams } from "next/navigation";
-
+import { HiSpeakerWave } from "react-icons/hi2";
+import * as React from "react";
 const H1 = () => (
   <Title order={1} className="w-full" mt="lg" mb="lg">
     <Typewriter
@@ -17,9 +26,11 @@ const H1 = () => (
           .pauseFor(2500)
           .start();
       }}
-      options={{
-        // cursor: "",
-      }}
+      options={
+        {
+          // cursor: "",
+        }
+      }
     />
   </Title>
 );
@@ -91,7 +102,8 @@ export const Response = () => {
   const definition = useResponse((s) => s.definition);
   const status = useResponse((s) => s.status);
   const query = useSearchParams();
-  const term = query?.get("term");
+  const term = query?.get("term") || "";
+  const { play, fetching } = useVoice();
   return (
     <div>
       {status !== "loading" && !term && <IntialView />}
@@ -99,17 +111,38 @@ export const Response = () => {
         <Paper
           radius="lg"
           py="xl"
-          px={{base: "xs", md: "lg"}}
-          className="prose mx-auto w-full max-w-2xl md:text-lg font-medium tracking-wide prose-thead:bg-white/60" 
+          px={{ base: "xs", md: "lg" }}
+          className="prose mx-auto w-full max-w-2xl font-medium tracking-wide prose-thead:bg-white/60 md:text-lg"
           shadow="md"
           bg="dark"
         >
+          <div className="gap-3 flex-row-start ">
+            <Text fw="bold" size="xl" my="xs" c="white">
+              {term?.toUpperCase()}
+            </Text>
+            {status === "success" && (
+              <ActionIcon
+                variant="filled"
+                radius="md"
+                size="lg"
+                type="button"
+                onClick={play}
+                disabled={fetching}
+              >
+                {fetching ? (
+                  <Loader size="xs" color="white" type="bars" />
+                ) : (
+                  <HiSpeakerWave className="" size="20" />
+                )}
+              </ActionIcon>
+            )}
+          </div>
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>
           {status === "success" && <Actions />}
           {!definition && status == "loading" && <LoadingSkeleton />}
-          <section className="w-full pt-2 md:text-lg font-medium tracking-wide">
+          <section className="w-full pt-2 font-medium tracking-wide md:text-lg">
             <ActionResponse />
           </section>
         </Paper>
