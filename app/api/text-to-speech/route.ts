@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { env } from "@/env.mjs";
 
-export async function getElevenLabsAudio(term: string): Promise<string> {
+async function getElevenLabsAudio(term: string): Promise<string> {
     const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
     const elevenLabsTextToSpeechURL = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`;
