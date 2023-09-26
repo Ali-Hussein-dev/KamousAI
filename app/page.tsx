@@ -1,43 +1,23 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-misused-promises */
+import { languagetoolsList } from "@/components";
+import { Card, Title } from "@mantine/core";
 import { type NextPage } from "next";
-import { AppShell, Skeleton } from "@mantine/core";
-import { Footer, Header } from "../src/components";
-import dynamic from "next/dynamic";
-
-const Searchbar = dynamic(
-  () => import("../src/components/Search-Bar").then((c) => c.Searchbar),
-  {
-    ssr: false,
-    loading: () => (
-      <Skeleton h={48} radius="lg" my="md" w="100%" opacity="0.3" />
-    ),
-  }
-);
-const Response = dynamic(
-  () => import("../src/components/Response").then((c) => c.Response),
-  {
-    ssr: false,
-    loading: () => (
-      <Skeleton h={248} radius="lg" my="md" w="100%" opacity="0.3" />
-    ),
-  }
-);
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
-      <AppShell
-      // header={{height: 64}}
-      >
-        <Header />
-        <AppShell.Main py="lg" px="xs">
-          <div className="mx-auto h-full w-full max-w-2xl border pb-10 pt-5">
-            <Searchbar />
-            <Response />
-          </div>
-        </AppShell.Main>
-        <Footer />
-      </AppShell>
+    <div className="mx-auto h-full w-full max-w-2xl border pb-10 pt-5">
+      <div className="mx-auto max-w-xl space-y-3 sm:pt-10">
+        <Title size="sm" ml={2}>Language Tools</Title>
+        {languagetoolsList.map((item) => (
+          <Card key={item.label}>
+            <Link href={item.href} className="text-slate-100 no-underline font-semibold">
+              {item.label}
+            </Link>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 };
 
