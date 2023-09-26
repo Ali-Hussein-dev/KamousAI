@@ -4,11 +4,6 @@ import { ActionIcon, Button, Paper, Text, Textarea } from "@mantine/core";
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 
-export const metadata = {
-  title: "KamousAI | Grammer Checker",
-  description: "Check your grammer with KamousAI",
-};
-
 export default function GrammerCheckerPage() {
   const {
     messages,

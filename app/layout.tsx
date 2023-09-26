@@ -5,11 +5,6 @@ import { Layout } from "@/components";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
 
-export const metadata = {
-  title: "KamousAI | AI Language Tools",
-  description: "KamousAI is a new way to learn new words.",
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -19,6 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
+        <title>KamousAI | AI Language Tools</title>
       </head>
       <body>
         <Layout>{children}</Layout>
