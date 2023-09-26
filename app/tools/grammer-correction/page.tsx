@@ -1,7 +1,8 @@
 "use client";
-import { Button, Paper, Text, Textarea } from "@mantine/core";
+import { ActionIcon, Button, Paper, Text, Textarea } from "@mantine/core";
 
 import { useChat } from "ai/react";
+import { IoCopy } from "react-icons/io5";
 
 export const metadata = {
   title: "KamousAI | Grammer Checker",
@@ -9,7 +10,12 @@ export const metadata = {
 };
 
 export default function GrammerCheckerPage() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+  } = useChat({
     api: "/api/grammer-checker",
   });
   return (
@@ -27,11 +33,24 @@ export default function GrammerCheckerPage() {
             Check
           </Button>
         </form>
-        <div className="pl-1 text-teal-100">
+        <div className="px-1 pt-4 text-teal-100 space-y-3">
           {messages
             .filter((msg) => msg.role === "assistant")
             .map((msg, i) => (
-              <Text key={i}>{msg.content}</Text>
+              <div className="group gap-2 flex-row-between" key={i}>
+                <Text>{msg.content}</Text>
+                <ActionIcon
+                  radius="md"
+                  type="button"
+                  variant="light"
+                  // className="!hidden group-hover:inline-block"
+                  onClick={() => {
+                    navigator.clipboard.writeText(msg.content);
+                  }}
+                >
+                  <IoCopy />
+                </ActionIcon>
+              </div>
             ))}
         </div>
       </Paper>

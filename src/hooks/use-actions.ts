@@ -28,7 +28,7 @@ export const useActions = () => {
     const abortController = new AbortController();
     setController(abortController);
     // eslint-disable-next-line prefer-const
-    const res = await fetch("api/term", {
+    const res = await fetch("/api/dictionary", {
       method: "POST",
       signal: abortController.signal,
       body: JSON.stringify({

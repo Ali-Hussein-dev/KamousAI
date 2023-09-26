@@ -38,7 +38,7 @@ export const useStream = () => {
     const abortController = new AbortController();
     setController(abortController);
     // eslint-disable-next-line prefer-const
-    const res = await fetch("api/term", {
+    const res = await fetch("/api/dictionary", {
       method: "POST",
       signal: abortController.signal,
       body: JSON.stringify({
@@ -89,7 +89,7 @@ export const useStream = () => {
   const onSubmit = async ({ term: input }: FormData) => {
     if (input) {
       await fetchStreaming(input.trim());
-      push(`/?term=${input}`);
+      push(`/tools/dictionary/?term=${input}`);
       setTerm(input);
       setHistory(input.trim())
     }
