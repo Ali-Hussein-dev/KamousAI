@@ -1,13 +1,9 @@
+"use client";
 // All packages except `@mantine/hooks` require styles imports
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
-import { theme } from "../theme";
+import { ColorSchemeScript } from "@mantine/core";
+import { Layout } from "@/components";
 import "../src/styles/globals.css";
-import '@mantine/core/styles.css';
-
-export const metadata = {
-  title: "KamousAI | AI Dictionary",
-  description: "KamousAI is a new way to learn new words.",
-};
+import "@mantine/core/styles.css";
 
 export default function RootLayout({
   children,
@@ -18,14 +14,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
+        <title>KamousAI | AI Language Tools</title>
       </head>
-          <body>
-        <MantineProvider
-          defaultColorScheme="dark"
-          theme= {theme}
-        >
-          {children}
-        </MantineProvider>
+      <body>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

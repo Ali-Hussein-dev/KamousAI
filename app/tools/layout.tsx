@@ -1,0 +1,20 @@
+"use client";
+import { ToolsMenu } from "@/components";
+import { capitalizeFirstLetter } from "@/utils/helpers";
+import { Title } from "@mantine/core";
+import { useSelectedLayoutSegment } from "next/navigation";
+
+export default function LayoutG({ children }: { children: React.ReactNode }) {
+  const segment = useSelectedLayoutSegment();
+  return (
+    <section>
+      <div className="mx-auto mb-6 w-full max-w-2xl border-b border-solid border-transparent border-b-slate-600 pb-2 flex-row-between">
+        <Title order={2} c="gray">
+          {capitalizeFirstLetter(segment?.replaceAll("-", " ") as string)}
+        </Title>
+        <ToolsMenu />
+      </div>
+      {children}
+    </section>
+  );
+}
