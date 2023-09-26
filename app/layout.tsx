@@ -6,7 +6,7 @@ import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
 
 export const metadata = {
-  title: "KamousAI | AI Dictionary",
+  title: "KamousAI | AI Language Tools",
   description: "KamousAI is a new way to learn new words.",
 };
 
