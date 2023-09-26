@@ -18,11 +18,13 @@ export const ToolsMenu = () => {
       </Menu.Target>
       <Menu.Dropdown p="sm">
         {languagetoolsList.map((item) => (
-          <Menu.Item key={item.label}>
-            <Link href={item.href} className="text-slate-100 no-underline">
-              {item.label}
-            </Link>
-          </Menu.Item>
+          <Link
+            key={item.label}
+            href={item.href}
+            className="w-full no-underline"
+          >
+            <Menu.Item key={item.label}>{item.label}</Menu.Item>
+          </Link>
         ))}
       </Menu.Dropdown>
     </Menu>
