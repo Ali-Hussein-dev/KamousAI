@@ -1,8 +1,8 @@
 "use client";
 import { ActionIcon, Button, Paper, Text, Textarea } from "@mantine/core";
-
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
+import { AiOutlineClear } from "react-icons/ai";
 
 export default function GrammerCheckerPage() {
   const {
@@ -10,6 +10,8 @@ export default function GrammerCheckerPage() {
     input,
     handleInputChange,
     handleSubmit,
+    isLoading,
+    setMessages,
   } = useChat({
     api: "/api/grammer-checker",
   });
@@ -20,25 +22,24 @@ export default function GrammerCheckerPage() {
           <Textarea
             value={input}
             onChange={handleInputChange}
-            placeholder="example text"
-            label="Enter text to be corrected"
+            placeholder="e.g I has an pen"
+            label="Enter text for correction"
             className="w-full"
           />
-          <Button type="submit" radius="lg">
+          <Button loading={isLoading} type="submit" radius="lg">
             Check
           </Button>
         </form>
-        <div className="px-1 pt-4 text-teal-100 space-y-3">
+        <div className="space-y-3 px-1 pt-4 text-teal-100">
           {messages
             .filter((msg) => msg.role === "assistant")
             .map((msg, i) => (
-              <div className="group gap-2 flex-row-between" key={i}>
+              <div className="group mb-3 gap-2 flex-row-between" key={i}>
                 <Text>{msg.content}</Text>
                 <ActionIcon
                   radius="md"
                   type="button"
                   variant="light"
-                  // className="!hidden group-hover:inline-block"
                   onClick={() => {
                     navigator.clipboard.writeText(msg.content);
                   }}
@@ -47,6 +48,16 @@ export default function GrammerCheckerPage() {
                 </ActionIcon>
               </div>
             ))}
+          {messages.length > 0 && (
+            <Button
+              variant="light"
+              color="red"
+              rightSection={<AiOutlineClear />}
+              onClick={() => setMessages([])}
+            >
+              Clear
+            </Button>
+          )}
         </div>
       </Paper>
     </div>
