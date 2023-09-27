@@ -9,7 +9,7 @@ export default function LayoutG({ children }: { children: React.ReactNode }) {
   return (
     <section>
       <div className="mx-auto mb-6 w-full max-w-2xl border-b border-solid border-transparent border-b-slate-600 pb-2 flex-row-between">
-        <Title order={2} c="gray">
+        <Title order={2} size="md" c="gray">
           {capitalizeFirstLetter(segment?.replaceAll("-", " ") as string)}
         </Title>
         <ToolsMenu />
