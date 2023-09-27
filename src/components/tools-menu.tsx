@@ -12,7 +12,7 @@ description: "A tool for looking up the meanings and definitions of words.",
   },
   {
     label: "Grammer Corrector",
-    href: "/tools/grammer-correction",
+    href: "/tools/grammer-corrector",
     status: "done",
     description: "An application that helps correct grammar and punctuation errors in text.",
   },
