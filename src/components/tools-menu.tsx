@@ -11,8 +11,8 @@ export const languagetoolsList = [
 description: "A tool for looking up the meanings and definitions of words.",
   },
   {
-    label: "Grammer Corrector",
-    href: "/tools/grammer-corrector",
+    label: "Grammar Corrector",
+    href: "/tools/grammar-corrector",
     status: "done",
     description: "An application that helps correct grammar and punctuation errors in text.",
   },
