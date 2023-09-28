@@ -34,7 +34,7 @@ const Bilingual = () => {
     <div>
       <div className="gap-2 flex-row-start">
         <Select
-          label="Transalte from "
+          label="Translate from "
           placeholder="Pick a language"
           defaultValue={"en"}
           searchable
