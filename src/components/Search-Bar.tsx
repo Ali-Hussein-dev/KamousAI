@@ -87,7 +87,7 @@ export const Searchbar = () => {
   } = useStream();
   const term = useWatch({ name: "term", control });
 
-  useHotkeys([["ctrl+K", () => setFocus("term")]]);
+  useHotkeys([["mod+K", () => setFocus("term")]]);
   const { focused, ref } = useFocusWithin();
   const { colors } = useMantineTheme();
   return (
@@ -152,7 +152,7 @@ export const Searchbar = () => {
                       : "sm:opacity-100"
                   )}
                 >
-                  ctrl+K
+                  {navigator.userAgent.includes('Mac') ? 'cmd+K' : 'ctrl+K'}
                 </Badge>
               )}
               <Divider orientation="vertical" hidden={status == "loading"} />
