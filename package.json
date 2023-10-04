@@ -12,8 +12,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@mantine/core": "^7.0.0",
-    "@mantine/hooks": "^7.0.0",
+    "@mantine/core": "^7.1.2",
+    "@mantine/hooks": "^7.1.2",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.13.0",
     "@tailwindcss/typography": "^0.5.9",
@@ -34,7 +34,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-icons": "^4.8.0",
+    "react-icons": "^4.11.0",
     "react-markdown": "^8.0.7",
     "remark-gfm": "^3.0.1",
     "superjson": "1.12.2",
