@@ -58,7 +58,7 @@ const TextToneOptionsMenu = ({
           value={selected}
           onChange={(value) => {
             setSelected(value);
-            const content = instuctionPrompt + value.join(" ")
+            const content = instuctionPrompt + value.join(" ");
             const instruction: Message = {
               id: "instruction",
               role: "system",
@@ -74,7 +74,7 @@ const TextToneOptionsMenu = ({
                 key={item.label}
                 value={item.value}
                 label={item.label}
-                className="px-2 py-3 w-full"
+                className="w-full px-2 py-3"
               />
             </Menu.Item>
           ))}
@@ -94,6 +94,13 @@ export default function TextOptimizer() {
     setMessages,
   } = useChat({
     api: "/api/text-optimizer",
+    initialMessages: [
+      {
+        role: "system",
+        content: `${instuctionPrompt} standard`,
+        id: "instruction-4040",
+      },
+    ],
   });
   return (
     <section className="mx-auto max-w-2xl rounded-lg bg-slate-600 px-4 py-6">
@@ -113,7 +120,7 @@ export default function TextOptimizer() {
         </div>
       </form>
       <div
-        hidden={messages.length < 1}
+        hidden={messages.length < 2}
         className="mt-4 space-y-3 rounded-lg bg-slate-700 px-3 py-4"
       >
         {messages
@@ -135,7 +142,7 @@ export default function TextOptimizer() {
               </ActionIcon>
             </div>
           ))}
-        {messages.length > 0 && (
+        {messages.length > 1 && (
           <Button
             variant="light"
             opacity={isLoading ? 0 : 1}
