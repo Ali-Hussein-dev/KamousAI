@@ -38,7 +38,7 @@ const IntialView = () => {
           Regular dictionary
         </Text>
         <div>
-          <Badge tt="inherit" p="lg" size="lg">
+          <Badge tt="inherit" p="lg" size="lg" variant="light">
             Limited number of words
           </Badge>
         </div>
@@ -56,7 +56,7 @@ const IntialView = () => {
             "Word or word",
             "Misspelled words",
           ].map((s) => (
-            <Badge key={s} p="lg" tt="inherit" size="lg" w="100%">
+            <Badge key={s} p="lg" tt="inherit" size="lg" w="100%" variant="light">
               {s}
             </Badge>
           ))}

@@ -8,21 +8,7 @@ import { GiSpellBook } from "react-icons/gi";
 import { GoGoal } from "react-icons/go";
 
 export const languagetoolsList = [
-  {
-    label: "Dictionary",
-    href: "/tools/dictionary",
-    status: "done",
-    icon: <PiBooksLight />,
-    description: "A tool for looking up the meanings and definitions of words.",
-  },
-  {
-    label: "Reverse Dictionary",
-    href: "/tools/reverse-dictionary",
-    status: "done",
-    icon: <GiSpellBook />,
-    description:
-      "A tool that allows you to find words based on their meanings or descriptions.",
-  },
+  
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
@@ -32,6 +18,13 @@ export const languagetoolsList = [
       "A tool that helps correct grammar and punctuation errors in text.",
   },
   {
+    label: "KamousAI",
+    href: "/tools/dictionary",
+    status: "done",
+    icon: <PiBooksLight />,
+    description: "An AI Dictionary for looking up the meanings and definitions of words.",
+  },
+  {
     label: "Text Optimizer",
     href: "/tools/text-optimizer",
     status: "done",
@@ -39,13 +32,21 @@ export const languagetoolsList = [
     description:
       "A tool designed to optimize and improve written text for clarity and style.",
   },
+  {
+    label: "Reverse Dictionary",
+    href: "/tools/reverse-dictionary",
+    status: "done",
+    icon: <GiSpellBook />,
+    description:
+      "A tool that allows you to find words based on their meanings or descriptions.",
+  },
 ];
 //======================================
 export const ToolsMenu = () => {
   return (
     <Menu shadow="lg" width={270} position="bottom-end">
       <Menu.Target>
-        <Button radius="lg" rightSection={<TbChevronDown />} variant="outline">
+        <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
           Language Tools
         </Button>
       </Menu.Target>
