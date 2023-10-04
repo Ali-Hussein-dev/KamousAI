@@ -2,31 +2,42 @@
 import { Button, Menu } from "@mantine/core";
 import Link from "next/link";
 import { TbChevronDown } from "react-icons/tb";
+import { TbPencilMinus } from "react-icons/tb";
+import { PiBooksLight } from "react-icons/pi";
+import { GiSpellBook } from "react-icons/gi";
+import { GoGoal } from "react-icons/go";
 
 export const languagetoolsList = [
   {
     label: "Dictionary",
     href: "/tools/dictionary",
     status: "done",
-description: "A tool for looking up the meanings and definitions of words.",
-  },
-  {
-    label: "Grammar Corrector",
-    href: "/tools/grammar-corrector",
-    status: "done",
-    description: "An application that helps correct grammar and punctuation errors in text.",
+    icon: <PiBooksLight />,
+    description: "A tool for looking up the meanings and definitions of words.",
   },
   {
     label: "Reverse Dictionary",
     href: "/tools/reverse-dictionary",
     status: "done",
-    description: "A feature that allows you to find words based on their meanings or descriptions.",
+    icon: <GiSpellBook />,
+    description:
+      "A tool that allows you to find words based on their meanings or descriptions.",
+  },
+  {
+    label: "Grammar Corrector",
+    href: "/tools/grammar-corrector",
+    status: "done",
+    icon: <TbPencilMinus />,
+    description:
+      "A tool that helps correct grammar and punctuation errors in text.",
   },
   {
     label: "Text Optimizer",
     href: "/tools/text-optimizer",
-    status: "planned",
-    description: "An upcoming tool designed to optimize and improve written text for clarity and style.",
+    status: "done",
+    icon: <GoGoal />,
+    description:
+      "A tool designed to optimize and improve written text for clarity and style.",
   },
 ];
 //======================================
@@ -47,7 +58,9 @@ export const ToolsMenu = () => {
               href={item.href}
               className="w-full no-underline"
             >
-              <Menu.Item key={item.label}>{item.label}</Menu.Item>
+              <Menu.Item key={item.label} leftSection={item.icon}>
+                {item.label}
+              </Menu.Item>
             </Link>
           ))}
       </Menu.Dropdown>
