@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@mantine/core': ^7.0.0
-  '@mantine/hooks': ^7.0.0
+  '@mantine/core': ^7.1.2
+  '@mantine/hooks': ^7.1.2
   '@next-auth/prisma-adapter': ^1.0.6
   '@prisma/client': ^4.13.0
   '@tailwindcss/typography': ^0.5.9
@@ -38,7 +38,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-hook-form: ^7.43.9
-  react-icons: ^4.8.0
+  react-icons: ^4.11.0
   react-markdown: ^8.0.7
   remark-gfm: ^3.0.1
   superjson: 1.12.2
@@ -50,8 +50,8 @@ specifiers:
   zustand: ^4.4.0
 
 dependencies:
-  '@mantine/core': 7.0.0_s4nmzxv6nd6xwhmytqcosevney
-  '@mantine/hooks': 7.0.0_react@18.2.0
+  '@mantine/core': 7.1.2_7n6qzwu2dssnhhctlo3d376rae
+  '@mantine/hooks': 7.1.2_react@18.2.0
   '@next-auth/prisma-adapter': 1.0.6_mj4zmq54qgbwr7klxt7lbfwdhu
   '@prisma/client': 4.13.0_prisma@5.1.1
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
@@ -72,7 +72,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.43.9_react@18.2.0
-  react-icons: 4.8.0_react@18.2.0
+  react-icons: 4.11.0_react@18.2.0
   react-markdown: 8.0.7_pofolu2o2erjq4lhyzl3hqovzq
   remark-gfm: 3.0.1
   superjson: 1.12.2
@@ -253,28 +253,28 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@mantine/core/7.0.0_s4nmzxv6nd6xwhmytqcosevney:
-    resolution: {integrity: sha512-0F+AdATM6uzZyKD3YNR95EY4taYVpdnKIaEmjSNRqYnfHCK/4TcbG+srDDBXrXclyJpGg9I1TF1D5M1ePoBoNA==}
+  /@mantine/core/7.1.2_7n6qzwu2dssnhhctlo3d376rae:
+    resolution: {integrity: sha512-EZg82V/+uA2bM981mEUOUGfqKIRsMfvxLdAPQpurhtqsnq4yBj1xjC3KzX/Eas9QhhHuR+4DJJyGTuO9aOK6nQ==}
     peerDependencies:
-      '@mantine/hooks': 7.0.0
+      '@mantine/hooks': 7.1.2
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@floating-ui/react': 0.24.8_biqbaboplfbrettd7655fr4n2y
-      '@mantine/hooks': 7.0.0_react@18.2.0
+      '@mantine/hooks': 7.1.2_react@18.2.0
       clsx: 2.0.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-number-format: 5.3.1_biqbaboplfbrettd7655fr4n2y
       react-remove-scroll: 2.5.6_pofolu2o2erjq4lhyzl3hqovzq
-      react-textarea-autosize: 8.5.2_pofolu2o2erjq4lhyzl3hqovzq
+      react-textarea-autosize: 8.5.3_pofolu2o2erjq4lhyzl3hqovzq
       type-fest: 3.13.1
     transitivePeerDependencies:
       - '@types/react'
     dev: false
 
-  /@mantine/hooks/7.0.0_react@18.2.0:
-    resolution: {integrity: sha512-HdZ6qE15OKNA3esbO72+mRqztMcdGphL/wl/ks8N7iAlSUu7sFtgZN+IU6MfJxGc/MEN3x5dEceWG6FgwOmHOw==}
+  /@mantine/hooks/7.1.2_react@18.2.0:
+    resolution: {integrity: sha512-2sqfBKse/aJq93zEpIn4OY+jRACmDIWBixfBgobRfltDyeL8G+3223LSAaeT6ZD8+h2YBJVmbCD5QY7bx2l11Q==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -3772,8 +3772,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-icons/4.8.0_react@18.2.0:
-    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+  /react-icons/4.11.0_react@18.2.0:
+    resolution: {integrity: sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==}
     peerDependencies:
       react: '*'
     dependencies:
@@ -3885,8 +3885,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /react-textarea-autosize/8.5.2_pofolu2o2erjq4lhyzl3hqovzq:
-    resolution: {integrity: sha512-uOkyjkEl0ByEK21eCJMHDGBAAd/BoFQBawYK5XItjAmCTeSbjxghd8qnt7nzsLYzidjnoObu6M26xts0YGKsGg==}
+  /react-textarea-autosize/8.5.3_pofolu2o2erjq4lhyzl3hqovzq:
+    resolution: {integrity: sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
