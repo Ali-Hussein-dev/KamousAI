@@ -89,7 +89,7 @@ export const useStream = () => {
   const onSubmit = async ({ term: input }: FormData) => {
     if (input) {
       await fetchStreaming(input.trim());
-      push(`/tools/dictionary/?term=${input}`);
+      push(`/dictionary/?term=${input}`);
       setTerm(input);
       setHistory(input.trim())
     }
