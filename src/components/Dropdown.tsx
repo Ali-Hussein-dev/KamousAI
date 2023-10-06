@@ -70,7 +70,13 @@ const SettingsDropdown = () => {
     setSettings({ mode });
   };
   return (
-    <Menu shadow="lg" width={350} position="bottom-start">
+    <Menu
+      shadow="lg"
+      width={350}
+      position="bottom-start"
+      closeOnItemClick={false}
+      closeOnClickOutside={false}
+    >
       <Menu.Target>
         <div className="flex h-full w-full pl-1">
           <div className="center h-full w-full">
