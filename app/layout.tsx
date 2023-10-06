@@ -2,10 +2,11 @@
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript } from "@mantine/core";
 import { Layout } from "@/components";
-import { Inter } from "next/font/google"
+import { Nunito } from "next/font/google"
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
-const fontFamily = Inter({
+
+const fontFamily = Nunito({
   subsets: ['latin'],
   display: 'swap',
   weight:["300","400", "500", "600", "700", "800", "900"]

@@ -30,7 +30,7 @@ const dark: MantineColorsTuple = [
 export const theme = createTheme({
     primaryColor: "primary",
     primaryShade: 6,
-    fontFamily: "Inter",
+    fontFamily: "Nunito",
     colors: {
         primary,
         dark
