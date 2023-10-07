@@ -69,13 +69,15 @@ const TextToneOptionsMenu = ({
           }}
         >
           {options.map((item) => (
-            <Menu.Item key={item.label} p={0}>
+            <Menu.Item key={item.label} p="xs">
               <Checkbox
                 key={item.label}
                 value={item.value}
                 label={item.label}
-                className="w-full px-2 py-3"
-              />
+                classNames={{
+                labelWrapper: "w-full",
+              }}
+            />
             </Menu.Item>
           ))}
         </Checkbox.Group>
