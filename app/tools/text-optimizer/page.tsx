@@ -69,12 +69,14 @@ const TextToneOptionsMenu = ({
           }}
         >
           {options.map((item) => (
-            <Menu.Item key={item.label} p={0}>
+            <Menu.Item key={item.label} p="xs">
               <Checkbox
                 key={item.label}
                 value={item.value}
                 label={item.label}
-                className="w-full px-2 py-3"
+                classNames={{
+                  labelWrapper: "w-full",
+                }}
               />
             </Menu.Item>
           ))}
@@ -92,6 +94,7 @@ export default function TextOptimizer() {
     handleSubmit,
     isLoading,
     setMessages,
+    setInput,
   } = useChat({
     api: "/api/text-optimizer",
     initialMessages: [
@@ -101,6 +104,9 @@ export default function TextOptimizer() {
         id: "instruction-4040",
       },
     ],
+    onResponse: () => {
+      setInput(input);
+    },
   });
   return (
     <section className="mx-auto max-w-2xl rounded-lg bg-slate-600 px-4 py-6">

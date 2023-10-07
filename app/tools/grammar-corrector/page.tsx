@@ -3,6 +3,7 @@ import { ActionIcon, Button, Text, Textarea } from "@mantine/core";
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
+import * as React from 'react'
 
 export default function GrammerCheckerPage() {
   const {
@@ -12,8 +13,12 @@ export default function GrammerCheckerPage() {
     handleSubmit,
     isLoading,
     setMessages,
+    setInput
   } = useChat({
     api: "/api/grammer-checker",
+    onResponse: () => {
+      setInput(input)
+    },
   });
   return (
     <div className="h-full w-full">

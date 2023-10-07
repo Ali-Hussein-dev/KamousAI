@@ -20,10 +20,19 @@ function convertToShape(a: Message[]) {
   return result;
 }
 export const ReverseDictionary = () => {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } =
-    useChat({
-      api: "/api/reverse-dictionary",
-    });
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    setInput,
+  } = useChat({
+    api: "/api/reverse-dictionary",
+    onResponse: () => {
+      setInput(input);
+    },
+  });
   return (
     <div className="mx-auto max-w-2xl">
       <form onSubmit={handleSubmit} className="mb-4 gap-3 flex-col-end">
@@ -36,8 +45,8 @@ export const ReverseDictionary = () => {
           className="w-full"
           styles={{
             input: {
-               border: "1px solid var(--mantine-color-dark-5)"
-            }
+              border: "1px solid var(--mantine-color-dark-5)",
+            },
           }}
         />
         <Button type="submit" radius="lg" loading={isLoading}>
