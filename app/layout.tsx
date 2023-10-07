@@ -2,15 +2,16 @@
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript } from "@mantine/core";
 import { Layout } from "@/components";
-import { Nunito } from "next/font/google"
+import { Nunito } from "next/font/google";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 const fontFamily = Nunito({
-  subsets: ['latin'],
-  display: 'swap',
-  weight:["300","400", "500", "600", "700", "800", "900"]
-})
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
 
 export default function RootLayout({
   children,
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body className={fontFamily.className}>
         <Layout>{children}</Layout>
+        <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       </body>
     </html>
   );
