@@ -3,8 +3,7 @@ import OpenAI from "openai"
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { env } from "@/env.mjs";
 import { type ChatCompletionMessageParam } from "openai/resources/chat";
-import { type PreferencesT, type ResType } from "@/hooks";
-
+import { type Preferences, type WordEntryKey } from "@/hooks/use-history-store";
 
 const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY,
@@ -21,9 +20,8 @@ const systemMessages = {
         "* if no context specified, use general context\n",
         "* Do not ignore or skips these rules ever\n",
         `* use the following format for explanation\n
-       <word> <part of speech> \n
-       <explanation>\n
-    `,
+           As <part of speech> <explanation>\n
+        `,
     ],
     examples: [
         "Act as a dictionary. Follow the following rules strictly:\n",
@@ -42,20 +40,21 @@ const systemMessages = {
         "* Use emoji if it represent the meaning\n",
     ],
 };
-interface Options extends PreferencesT {
-    keyword: ResType
+interface Options extends Preferences {
+    wordEntryKey: WordEntryKey
 }
 
-const getMessages = (messages: Array<ChatCompletionMessageParam>, options: Options): Array<ChatCompletionMessageParam> => {
-    const { keyword, mode = "mono", inputLanguage, outputLanguage } = options
+const getMessages = (messages: string, options: Options): Array<ChatCompletionMessageParam> => {
+    const { wordEntryKey = "definition", mode = "mono", inputLanguage, outputLanguage } = options
     const outputLang = mode == "bili" ? `* Generate response in the following language ${outputLanguage}` : `* Generate response in the following language ${inputLanguage}`
 
-    const term = messages[0]?.content as string;
+    // const term = messages[0]?.content as string;
+    const term = messages;
     const systemInstructions = {
         role: "system",
-        content: systemMessages[keyword].join("") + outputLang,
+        content: systemMessages[wordEntryKey].join("") + outputLang,
     } as const;
-    switch (keyword) {
+    switch (wordEntryKey) {
         case "definition": {
             if (mode === "mono") {
                 return [
@@ -99,14 +98,14 @@ const getMessages = (messages: Array<ChatCompletionMessageParam>, options: Optio
                     content: `Generate mostly-used antonyms (max 5 antonyms) of the following "${term}"`,
                 },
             ];
-        case "related":
-            return [
-                systemInstructions,
-                {
-                    role: "user",
-                    content: `What is the tone of the word "${term}"? and where it can be used?`,
-                },
-            ];
+        // case "related":
+        //     return [
+        //         systemInstructions,
+        //         {
+        //             role: "user",
+        //             content: `What is the tone of the word "${term}"? and where it can be used?`,
+        //         },
+        //     ];
         default:
             return [
                 {
@@ -118,16 +117,15 @@ const getMessages = (messages: Array<ChatCompletionMessageParam>, options: Optio
 };
 export const POST = async (req: Request) => {
     const {
-        messages,
-        keyword,
+        prompt,
+        wordEntryKey,
         preferences
     } = await req.json();
-    console.log("req", req.url);
-    // return new Response("hello")
+    console.log("-----------------REQ", prompt, wordEntryKey);
     const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         stream: true,
-        messages: getMessages(messages, { keyword, ...preferences }),
+        messages: getMessages(prompt, { wordEntryKey: wordEntryKey || "definition", ...preferences }),
     });
     // Convert the response into a friendly text-stream
     const stream = OpenAIStream(response);
