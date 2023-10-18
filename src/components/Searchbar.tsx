@@ -1,40 +1,57 @@
 "use client";
-import { ActionIcon, Badge, Divider, Loader, TextInput } from "@mantine/core";
+import { ActionIcon, Badge, Loader, Autocomplete } from "@mantine/core";
 import SettingsDropdown from "./Dropdown";
 import { MdClear } from "react-icons/md";
 import clsx from "clsx";
 import { BsFillSendFill, BsStopCircle } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import * as React from "react";
+import { useHistoryStore } from "@/hooks/use-history-store";
 
 type Props = {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  complete: (v: string) => void;
   stop: () => void;
   isLoading: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
-}
-export const DictionarySearchbar = (props:Props) => {
-  const {
-    input,
-    setInput,
-    handleInputChange,
-    handleSubmit,
-    stop,
-    isLoading,
-    inputRef,
-  } = props
+};
+export const DictionarySearchbar = (props: Props) => {
+  const { input, setInput, handleSubmit, stop, isLoading, inputRef, complete } =
+    props;
+  const history = useHistoryStore((s) => s.lexicalEntries);
+  const list = React.useMemo(
+    () => Object.values(history).map((o) => o.term),
+    [history]
+  );
+  const onChange = (value: string) => {
+    setInput(value);
+  };
+  const onOptionSubmit = (value: string) => {
+    setInput(value);
+    if (!value) return;
+    else {
+      complete(value);
+    }
+  };
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      !!input && complete(input);
+    }
+  };
   return (
     <form
       className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-600 duration-300 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
       onSubmit={handleSubmit}
     >
-      <TextInput
+      <Autocomplete
         ref={inputRef}
         value={input}
-        onChange={handleInputChange}
+        data={list}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        onOptionSubmit={onOptionSubmit}
         placeholder="Enter your words..."
         size="xl"
         leftSectionPointerEvents="all"
@@ -42,6 +59,9 @@ export const DictionarySearchbar = (props:Props) => {
         autoComplete="off"
         classNames={{
           input: "!bg-transparent !pl-[4rem] !border-0",
+          dropdown:
+            "!bg-slate-800 !rounded-2xl !border-b-2 !border-0 !border-slate-300 !shadow-lg mt-2",
+          option: "!rounded-2xl capitalize",
         }}
         leftSection={
           <div className="h-full w-full rounded-l-xl">
@@ -79,7 +99,6 @@ export const DictionarySearchbar = (props:Props) => {
                 {navigator.userAgent.includes("Mac") ? "cmd+K" : "ctrl+K"}
               </Badge>
             )}
-            <Divider orientation="vertical" hidden={isLoading} />
             {isLoading ? (
               <ActionIcon size="xl" type="button" onClick={stop} radius="lg">
                 <BsStopCircle size="24" />
@@ -103,3 +122,4 @@ export const DictionarySearchbar = (props:Props) => {
     </form>
   );
 };
+

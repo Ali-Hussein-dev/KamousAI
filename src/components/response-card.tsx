@@ -57,7 +57,7 @@ const WordEntryTabs = ({ term }: Pick<LexicalEntry, "term">) => {
 };
 //------------------------------
 type LastResponseProps = {
-  definition?: string;
+  definition: string;
   isLoading: boolean;
 };
 export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
@@ -67,9 +67,11 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
   if (!definition && !isLoading) return <InitialView />;
   return (
     <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 p-2 pl-3 pt-6 text-slate-300">
-      {definition && (
+      {isLoading ? (
+        <Loader type="dots" className="mx-auto" size="lg" />
+      ) : (
         <div className="prose mx-auto w-full max-w-2xl font-medium tracking-wide prose-thead:bg-slate-400/80 ">
-          <span className="block">{term}</span>
+          <span className="block capitalize">{term}</span>
           <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
             {definition}
           </ReactMarkdown>

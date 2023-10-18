@@ -30,14 +30,13 @@ const ResponseCard = dynamic(
 
 export default function DictionaryPage() {
   const s = useDefinition();
-
   return (
     <div className="mx-auto h-full w-full max-w-2xl pb-10">
       <Searchbar
         inputRef={s.inputRef}
         input={s.input}
         setInput={s.setInput}
-        handleInputChange={s.handleInputChange}
+        complete={s.complete}
         handleSubmit={s.handleSubmit}
         stop={s.stop}
         isLoading={s.isLoading}

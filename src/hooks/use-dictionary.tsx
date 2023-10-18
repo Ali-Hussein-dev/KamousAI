@@ -20,8 +20,10 @@ const useFocus = () => {
 
 //------------------------------
 export const useDefinition = () => {
-  const cacheResponse = useHistoryStore((s) => s.setLexicalEntries);
+  const setCache = useHistoryStore((s) => s.setLexicalEntries);
+  const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const preferences = useHistoryStore((s) => s.preferences);
+  const { inputRef } = useFocus();
   const router = useRouter();
   const res = useCompletion({
     api: "/api/dictionary",
@@ -31,18 +33,24 @@ export const useDefinition = () => {
     },
     onFinish: (prompt, completion) => {
       // cache response...
-      const key = (Math.random() * 10000).toFixed(0);
-      const block = {
-        term: prompt,
-        id: key,
-        createdAt: new Date().getTime(),
-        definition: completion,
-      };
-      cacheResponse(key, block);
+      const term = Object.values(lexicalEntries).find((o) => o.term === prompt);
+      const key = term?.id || (Math.random() * 10000).toFixed(0);
+      const createdAt = new Date().getTime();
+      if (term) {
+        setCache(key, { ...term, definition: completion, createdAt });
+      } else {
+        const block = {
+          term: prompt.trim().toLowerCase(),
+          id: key,
+          createdAt,
+          definition: completion,
+        };
+        setCache(key, block);
+      }
+      inputRef.current?.blur();
       router.push(`/tools/dictionary?key=${key}`);
     },
   });
-  const { inputRef } = useFocus();
   return { ...res, inputRef };
 };
 //------------------------------

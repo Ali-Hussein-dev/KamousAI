@@ -86,7 +86,7 @@ const SettingsDropdown = () => {
                 "-" + uppercaseFirstLetter(outputLanguage as string)}
             </ActionIcon>
           </div>
-          <Divider orientation="vertical" mx={4} my={8} />
+          <Divider orientation="vertical" mx={4} my={12} />
         </div>
       </Menu.Target>
       <Menu.Dropdown p="sm">

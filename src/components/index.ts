@@ -1,4 +1,3 @@
-export * from "./Search-Bar";
 export * from "./Header";
 export * from "./Footer";
 export * from "./Dropdown";
