@@ -22,7 +22,7 @@
     "@trpc/next": "^10.18.0",
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
-    "ai": "^2.2.13",
+    "ai": "^2.2.15",
     "clsx": "^2.0.0",
     "eventsource-parser": "^1.0.0",
     "langchain": "^0.0.152",
@@ -40,7 +40,7 @@
     "superjson": "1.12.2",
     "typewriter-effect": "^2.20.1",
     "zod": "^3.21.4",
-    "zustand": "^4.4.0"
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
