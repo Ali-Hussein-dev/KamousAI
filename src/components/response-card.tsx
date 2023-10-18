@@ -4,55 +4,51 @@ import {
   type LexicalEntry,
   useHistoryStore,
 } from "@/hooks/use-history-store";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { Loader, Tabs } from "@mantine/core";
 import { useWordEntries } from "@/hooks/use-dictionary";
 import { useSearchParams } from "next/navigation";
 import { InitialView } from "./initial-view";
+import { Markdown } from "./Markdown";
 
-const list: { label: string; wordEntryKey: WordEntryKey }[] = [
-  { label: "Examples", wordEntryKey: "examples" },
-  { label: "Synonyms", wordEntryKey: "synonyms" },
-  { label: "Antonyms", wordEntryKey: "antonyms" },
-  // { label: "Related", resType: "related" },
-];
+export const wordEntriesTabs: { label: string; wordEntryKey: WordEntryKey }[] =
+  [
+    { label: "Examples", wordEntryKey: "examples" },
+    { label: "Synonyms", wordEntryKey: "synonyms" },
+    { label: "Antonyms", wordEntryKey: "antonyms" },
+    // { label: "Related", resType: "related" },
+  ];
+
 //======================================
-const WordEntryTabs = ({ term }: Pick<LexicalEntry, "term">) => {
-  const searchParams = useSearchParams();
-  const id = searchParams?.get("key") || "";
+export const WordEntryTabs = ({
+  term,
+  id,
+}: Pick<LexicalEntry, "term" | "id">) => {
   const { isLoading, completion, onTabChange } = useWordEntries({
     id,
     term,
   });
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
-
   return (
-    <>
-      <Tabs variant="default" inverted onChange={onTabChange}>
-        <Tabs.List className="">
-          {list.map((o) => (
-            <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey}>
-              {o.label}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List>
-        {list.map(({ label, wordEntryKey }) => (
-          <Tabs.Panel key={label} value={wordEntryKey} pt="sm">
-            {isLoading ? (
-              <Loader type="dots" mx="auto" size="lg" />
-            ) : (
-              <ReactMarkdown
-                remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-                className="prose prose-p:mt-2"
-              >
-                {lexicalEntries[id]?.[wordEntryKey] || completion}
-              </ReactMarkdown>
-            )}
-          </Tabs.Panel>
+    <Tabs variant="default" inverted onChange={onTabChange}>
+      <Tabs.List>
+        {wordEntriesTabs.map((o) => (
+          <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey}>
+            {o.label}
+          </Tabs.Tab>
         ))}
-      </Tabs>
-    </>
+      </Tabs.List>
+      {wordEntriesTabs.map(({ label, wordEntryKey }) => (
+        <Tabs.Panel key={label} value={wordEntryKey}>
+          {isLoading ? (
+            <Loader type="dots" mx="auto" size="lg" />
+          ) : (
+            <Markdown>
+              {lexicalEntries[id]?.[wordEntryKey] || completion}
+            </Markdown>
+          )}
+        </Tabs.Panel>
+      ))}
+    </Tabs>
   );
 };
 //------------------------------
@@ -70,12 +66,10 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
       {isLoading ? (
         <Loader type="dots" className="mx-auto" size="lg" />
       ) : (
-        <div className="prose mx-auto w-full max-w-2xl font-medium tracking-wide prose-thead:bg-slate-400/80 ">
+        <div className="prose mx-auto w-full max-w-2xl font-medium  ">
           <span className="block capitalize">{term}</span>
-          <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
-            {definition}
-          </ReactMarkdown>
-          <WordEntryTabs term={term} />
+          <Markdown>{definition}</Markdown>
+          <WordEntryTabs term={term} id={key} />
         </div>
       )}
     </div>

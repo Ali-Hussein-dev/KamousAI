@@ -22,7 +22,7 @@ export const DictionarySearchbar = (props: Props) => {
     props;
   const history = useHistoryStore((s) => s.lexicalEntries);
   const list = React.useMemo(
-    () => Object.values(history).map((o) => o.term),
+    () => Object.values(history).map((o) => o?.term),
     [history]
   );
   const onChange = (value: string) => {

@@ -1,4 +1,5 @@
 "use client";
+
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useDefinition } from "@/hooks/use-dictionary";
 import { Skeleton } from "@mantine/core";
@@ -27,6 +28,18 @@ const ResponseCard = dynamic(
     ),
   }
 );
+const DictionaryHistory = dynamic(
+  () =>
+    import("../../../src/components/dictionary-history").then(
+      (c) => c.DictionaryHistory
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <Skeleton h={48} radius="xl" my="md" w="100%" opacity="0.3" />
+    ),
+  }
+);
 
 export default function DictionaryPage() {
   const s = useDefinition();
@@ -42,6 +55,7 @@ export default function DictionaryPage() {
         isLoading={s.isLoading}
       />
       <ResponseCard definition={s.completion} isLoading={s.isLoading} />
+      <DictionaryHistory />
     </div>
   );
 }

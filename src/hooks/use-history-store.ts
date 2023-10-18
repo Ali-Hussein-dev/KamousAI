@@ -6,7 +6,6 @@ export type LexicalEntry = {
     createdAt: number;
     term: string;
     definition: string;
-    // lexicalCategory: string;
     examples?: string;
     synonyms?: string;
     antonyms?: string;
@@ -24,7 +23,7 @@ export type Preferences = {
 
 type State = {
     lexicalEntries: Record<string, LexicalEntry>;
-    setLexicalEntries: (key: string, value: LexicalEntry) => void;
+    setLexicalEntries: (key: string, value: LexicalEntry | undefined) => void;
 
     preferences: Preferences;
     setPreferences: (settings: Partial<Preferences>) => void;
@@ -40,14 +39,14 @@ export const useHistoryStore = create<State>()(
             lexicalEntries: {},
             setLexicalEntries: (key, value) =>
                 set((s) => {
-                    const lexicalEntry = {
+                    const lexicalEntry = value ? {
                         ...(s.lexicalEntries[key] || {}),
                         ...value,
-                    };
+                    } : undefined;
                     return {
                         lexicalEntries: {
                             ...s.lexicalEntries,
-                            [key]: lexicalEntry,
+                            [key]: lexicalEntry as LexicalEntry,
                         },
                     };
                 }),
