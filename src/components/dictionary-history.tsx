@@ -74,7 +74,7 @@ export const DictionaryHistory = () => {
         onClick={() => setOpen(!open)}
         leftSection={<TbHistory />}
       >
-        {cached?.length || 0 > 0 ? "Hide history" : "View history"}
+        {open ? "Hide history" : "View history"}
       </Button>
       <div hidden={!open} className="px-1 pt-2 text-slate-300">
         {cached}
