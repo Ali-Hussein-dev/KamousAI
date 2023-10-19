@@ -9,10 +9,10 @@ export type LexicalEntry = {
     examples?: string;
     synonyms?: string;
     antonyms?: string;
-    related?: string;
+    idioms?: string;
 };
 
-export type WordEntryKey = "definition" | "synonyms" | "antonyms" | "examples";
+export type WordEntryKey = "definition" | "synonyms" | "antonyms" | "examples" | "idioms";
 
 export type DictionaryMode = "mono" | "bili";
 export type Preferences = {

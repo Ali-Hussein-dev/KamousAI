@@ -19,14 +19,13 @@ const systemMessages = {
         "* Do not mention this phrase ever 'As an AI language model'\n",
         "* if no context specified, use general context\n",
         "* Do not ignore or skips these rules ever\n",
-        `* use the following format for explanation\n
-           As <part of speech> <explanation>\n
-        `,
+        "* use the following format for explanation\n",
     ],
     examples: [
         "Act as a dictionary. Follow the following rules strictly:\n",
         "* Do not explain the examples, that you should provide\n",
         "* Use bullets format\n",
+        "* Example must be short and real-world\n",
         "* if no context specified, use general context\n",
     ],
     synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", "Use table format with 3 columns (synonyms, context, tone)\n"],
@@ -34,11 +33,12 @@ const systemMessages = {
         "Act as a dictionary. Follow the following rules strictly:\n",
         "Use table format with 3 columns (antonyms, context, tone)\n",
     ],
-    related: [
+    idioms: [
         "Act as a dictionary. Follow the following rules strictly:\n",
-        "Be concise with your answer\n",
-        "* Use emoji if it represent the meaning\n",
-    ],
+        "Bold idiom text\n",
+        "Do not explain the idioms or provide related examples\n",
+        `Reply with "No related idioms found" if there are no idioms\n`,
+    ]
 };
 interface Options extends Preferences {
     wordEntryKey: WordEntryKey
@@ -79,7 +79,7 @@ const getMessages = (messages: string, options: Options): Array<ChatCompletionMe
                 systemInstructions,
                 {
                     role: "user",
-                    content: `List 3 real-world short examples of the following term"${term}"`,
+                    content: `List 3 examples of the following term "${term}"`,
                 },
             ];
         case "synonyms":
@@ -98,14 +98,14 @@ const getMessages = (messages: string, options: Options): Array<ChatCompletionMe
                     content: `Generate mostly-used antonyms (max 5 antonyms) of the following "${term}"`,
                 },
             ];
-        // case "related":
-        //     return [
-        //         systemInstructions,
-        //         {
-        //             role: "user",
-        //             content: `What is the tone of the word "${term}"? and where it can be used?`,
-        //         },
-        //     ];
+        case "idioms":
+            return [
+                systemInstructions,
+                {
+                    role: "user",
+                    content: `Generate mostly-used idioms (max 3 idioms) that contains "${term}"`,
+                },
+            ];
         default:
             return [
                 {

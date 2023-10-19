@@ -15,7 +15,7 @@ export const wordEntriesTabs: { label: string; wordEntryKey: WordEntryKey }[] =
     { label: "Examples", wordEntryKey: "examples" },
     { label: "Synonyms", wordEntryKey: "synonyms" },
     { label: "Antonyms", wordEntryKey: "antonyms" },
-    // { label: "Related", resType: "related" },
+    { label: "Idioms", wordEntryKey: "idioms" },
   ];
 
 //======================================
@@ -32,7 +32,7 @@ export const WordEntryTabs = ({
     <Tabs variant="default" inverted onChange={onTabChange}>
       <Tabs.List>
         {wordEntriesTabs.map((o) => (
-          <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey}>
+          <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey} fw="bold">
             {o.label}
           </Tabs.Tab>
         ))}
