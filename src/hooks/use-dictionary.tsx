@@ -109,7 +109,9 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
       });
       if (
         !cache &&
-        ["examples", "synonyms", "antonyms"].includes(activeWordEntryKey)
+        ["examples", "synonyms", "antonyms", "idioms"].includes(
+          activeWordEntryKey
+        )
       ) {
         res.complete(term, {
           body: {
@@ -121,7 +123,7 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
         console.log("cached", { activeWordEntryKey });
       }
     },
-    [id, term, wordEntryKey, lexicalEntries]
+    [lexicalEntries, id, term, wordEntryKey, res, preferences]
   );
   return { ...res, wordEntryKey, onTabChange };
 };
