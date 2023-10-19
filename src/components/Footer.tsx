@@ -13,8 +13,7 @@ export const Footer = () => {
       <div className="mx-auto mb-2 h-[0.5px] max-w-4xl bg-white/40" />
       <div className="mx-auto w-full max-w-4xl flex-row-between">
         <span>
-          {/* ©{new Date().getFullYear()} */}
-          Made by{" "}
+          © {new Date().getFullYear()} Designed & built by{" "}
           <a href="https://ali-hussein.com" target="_blank">
             AH
           </a>
@@ -32,4 +31,3 @@ export const Footer = () => {
     </AppShell.Footer>
   );
 };
-
