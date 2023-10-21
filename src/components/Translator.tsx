@@ -4,7 +4,7 @@ import * as React from "react";
 import languages from "../content/languages.json";
 import { useCompletion } from "ai/react";
 import { MdContentCopy } from "react-icons/md";
-import { useClipboard } from "@mantine/hooks";
+import { useClipboard, useMediaQuery } from "@mantine/hooks";
 import { GiCheckMark } from "react-icons/gi";
 
 const SelectLanguage = ({
@@ -45,10 +45,12 @@ export const Translator = () => {
       },
     });
   const { copied, copy } = useClipboard({ timeout: 2000 });
+  const matches = useMediaQuery("(max-width: 500px)");
   return (
     <form className=" w-full space-y-4" onSubmit={handleSubmit}>
       <div className="mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg ">
-        <div className="mb-2 flex border-0 border-b border-solid border-slate-500">
+        {/* // DIRECT WRAPPER */}
+        <div className="mb-2 flex flex-wrap border-0 border-b border-solid border-slate-500 md:flex-nowrap ">
           {/* // INPUT language pane */}
           <div className="w-full gap-1 flex-col-start">
             <SelectLanguage value={inputLanguage} setValue={setInputLanguage} />
@@ -57,8 +59,8 @@ export const Translator = () => {
               <Textarea
                 value={input}
                 onChange={handleInputChange}
-                minRows={14}
-                maxRows={14}
+                minRows={matches ? 6 : 14}
+                maxRows={matches ? 8 : 14}
                 autosize
                 w="100%"
                 placeholder="Enter text to translate"
@@ -71,15 +73,13 @@ export const Translator = () => {
           </div>
 
           {/* // OUTPUT language pane */}
-          <div className="w-full  ">
-            <div className="w-full gap-1 flex-col-start">
-              <SelectLanguage
-                value={outputLanguage}
-                setValue={setOutputLanguage}
-              />
-              <div className="w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-300">
-                {completion}
-              </div>
+          <div className="h-full w-full gap-1 flex-col-start">
+            <SelectLanguage
+              value={outputLanguage}
+              setValue={setOutputLanguage}
+            />
+            <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-300 ">
+              {completion}
             </div>
           </div>
         </div>
