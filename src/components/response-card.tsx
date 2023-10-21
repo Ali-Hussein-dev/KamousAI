@@ -66,7 +66,7 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
       {isLoading ? (
         <Loader type="dots" className="mx-auto" size="lg" />
       ) : (
-        <div className="prose mx-auto w-full max-w-2xl font-medium  ">
+        <div className="w-full font-medium ">
           <span className="block capitalize">{term}</span>
           <Markdown>{definition}</Markdown>
           <WordEntryTabs term={term} id={key} />
