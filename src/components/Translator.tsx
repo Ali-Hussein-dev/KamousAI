@@ -6,6 +6,7 @@ import { useCompletion } from "ai/react";
 import { MdContentCopy } from "react-icons/md";
 import { useClipboard, useMediaQuery } from "@mantine/hooks";
 import { GiCheckMark } from "react-icons/gi";
+import { TbSwitchHorizontal } from "react-icons/tb";
 
 const SelectLanguage = ({
   value,
@@ -29,6 +30,7 @@ const SelectLanguage = ({
         input: "!bg-transparent",
         dropdown: "!bg-slate-800",
       }}
+      maw="7rem"
     />
   );
 };
@@ -74,10 +76,23 @@ export const Translator = () => {
 
           {/* // OUTPUT language pane */}
           <div className="h-full w-full gap-1 flex-col-start">
-            <SelectLanguage
-              value={outputLanguage}
-              setValue={setOutputLanguage}
-            />
+            <div className="w-full flex-row-between">
+              <ActionIcon
+                className=""
+                onClick={() => {
+                  setOutputLanguage(inputLanguage);
+                  setInputLanguage(outputLanguage);
+                }}
+                size="lg"
+                radius="md"
+              >
+                <TbSwitchHorizontal className="" size="17" />
+              </ActionIcon>
+              <SelectLanguage
+                value={outputLanguage}
+                setValue={setOutputLanguage}
+              />
+            </div>
             <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-300 ">
               {completion}
             </div>
