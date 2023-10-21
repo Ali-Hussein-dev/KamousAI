@@ -34,14 +34,16 @@ export const ReverseDictionary = () => {
     },
   });
   return (
-    <div className="mx-auto max-w-2xl">
-      <form onSubmit={handleSubmit} className="mb-4 gap-3 flex-col-end">
+    <div className="w-full rounded bg-slate-600 px-4 pb-1 pt-6">
+      <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <Textarea
-          label="Use when you know the meaning but not the word"
+          label="Add your definition to get the word"
           value={input}
           onChange={handleInputChange}
           placeholder="Enter the meaning here"
-          minRows={5}
+          minRows={4}
+          maxRows={4}
+          autosize
           className="w-full"
           styles={{
             input: {

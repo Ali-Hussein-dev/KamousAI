@@ -44,7 +44,7 @@ const DictionaryHistory = dynamic(
 export default function DictionaryPage() {
   const s = useDefinition();
   return (
-    <div className="mx-auto h-full w-full max-w-2xl pb-10">
+    <div className="h-full w-full pb-10">
       <Searchbar
         inputRef={s.inputRef}
         input={s.input}

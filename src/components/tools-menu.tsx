@@ -6,9 +6,9 @@ import { TbPencilMinus } from "react-icons/tb";
 import { PiBooksLight } from "react-icons/pi";
 import { GiSpellBook } from "react-icons/gi";
 import { GoGoal } from "react-icons/go";
+import { SiMicrosofttranslator } from "react-icons/si";
 
 export const languagetoolsList = [
-  
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
@@ -22,7 +22,8 @@ export const languagetoolsList = [
     href: "/tools/dictionary",
     status: "done",
     icon: <PiBooksLight />,
-    description: "An AI Dictionary for looking up the meanings and definitions of words.",
+    description:
+      "An AI Dictionary for looking up the meanings and definitions of words.",
   },
   {
     label: "Text Optimizer",
@@ -40,11 +41,26 @@ export const languagetoolsList = [
     description:
       "A tool that allows you to find words based on their meanings or descriptions.",
   },
+  {
+    label: "Long text translator",
+    href: "/tools/translator",
+    status: "done",
+    icon: <SiMicrosofttranslator />,
+    description:
+      "A tool that allows you to translate long text from one language to another.",
+  },
 ];
 //======================================
 export const ToolsMenu = () => {
   return (
-    <Menu shadow="lg" width={270} position="bottom-end">
+    <Menu
+      shadow="lg"
+      width={270}
+      position="bottom-end"
+      classNames={{
+        dropdown: "!bg-slate-800 !rounded-lg",
+      }}
+    >
       <Menu.Target>
         <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
           Language Tools

@@ -109,7 +109,7 @@ export default function TextOptimizer() {
     },
   });
   return (
-    <section className="mx-auto max-w-2xl rounded-lg bg-slate-600 px-4 py-6">
+    <section className="w-full rounded-lg bg-slate-600 px-4 py-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <Textarea
           value={input}
