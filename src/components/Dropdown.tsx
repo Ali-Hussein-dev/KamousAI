@@ -5,9 +5,11 @@ import {
   SegmentedControl,
   Select,
 } from "@mantine/core";
+import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
 import languages from "../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
+// TODO: add a button to swap input and output languages
 
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
@@ -32,7 +34,7 @@ const Bilingual = () => {
   const outputLanguage = useResponse((s) => s.preferences.outputLanguage);
   return (
     <div>
-      <div className="gap-2 flex-row-start">
+      <div className="flex items-end gap-2 ">
         <Select
           label="Translate from "
           placeholder="Pick a language"
@@ -42,6 +44,18 @@ const Bilingual = () => {
           value={inputLanguage}
           onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
         />
+        <ActionIcon
+          onClick={() => {
+            setSettings({
+              inputLanguage: outputLanguage,
+              outputLanguage: inputLanguage,
+            });
+          }}
+          mb={5}
+          radius="md"
+        >
+          <TbSwitchHorizontal />
+        </ActionIcon>
         <Select
           label="To"
           placeholder="Pick a language"
