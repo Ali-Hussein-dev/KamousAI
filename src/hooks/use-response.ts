@@ -89,7 +89,7 @@ export const useResponse = create<Store>()(
         inputLanguage: "en",
         outputLanguage: "de",
       },
-      setTranslator: () => set(langPair => ({ translator: { ...langPair.translator, ...langPair } })),
+      setTranslator: (langPair) => set((s) => ({ translator: { ...s.translator, ...langPair } })),
       history: [],
       setPreferences: (settings) =>
         set((s) => ({ preferences: { ...s.preferences, ...settings } })),
