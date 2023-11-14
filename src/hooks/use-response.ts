@@ -15,6 +15,11 @@ export type PreferencesT = {
   mode: DictionaryMode;
   inputLanguage: string;
   outputLanguage: string;
+  translator: {
+    inputLanguage: string;
+    outputLanguage: string;
+  }
+
 };
 
 interface Store {
@@ -80,6 +85,10 @@ export const useResponse = create<Store>()(
         mode: "mono",
         inputLanguage: "en",
         outputLanguage: "de",
+        translator: {
+          inputLanguage: "en",
+          outputLanguage: "de",
+        }
       },
       history: [],
       setPreferences: (settings) =>
