@@ -9,7 +9,6 @@ import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
 import languages from "../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
-// TODO: add a button to swap input and output languages
 
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);

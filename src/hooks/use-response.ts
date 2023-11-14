@@ -33,7 +33,11 @@ interface Store {
 
   resType?: ResType;
   history: { value: string }[];
-
+  translator: {
+    inputLanguage: string;
+    outputLanguage: string;
+  };
+  setTranslator: (settings: Partial<Omit<PreferencesT, "mode">>) => void;
   preferences: PreferencesT;
   setPreferences: (settings: Partial<PreferencesT>) => void;
   /**
@@ -81,6 +85,11 @@ export const useResponse = create<Store>()(
         inputLanguage: "en",
         outputLanguage: "de",
       },
+      translator: {
+        inputLanguage: "en",
+        outputLanguage: "de",
+      },
+      setTranslator: () => set(langPair => ({ translator: { ...langPair.translator, ...langPair } })),
       history: [],
       setPreferences: (settings) =>
         set((s) => ({ preferences: { ...s.preferences, ...settings } })),

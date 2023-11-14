@@ -7,6 +7,7 @@ import { MdContentCopy } from "react-icons/md";
 import { useClipboard, useMediaQuery } from "@mantine/hooks";
 import { GiCheckMark } from "react-icons/gi";
 import { TbSwitchHorizontal } from "react-icons/tb";
+import { useResponse } from "@/hooks";
 
 const SelectLanguage = ({
   value,
@@ -36,8 +37,21 @@ const SelectLanguage = ({
 };
 
 export const Translator = () => {
-  const [inputLanguage, setInputLanguage] = React.useState("en");
-  const [outputLanguage, setOutputLanguage] = React.useState("de");
+  const setTranslator = useResponse((s) => s.setTranslator);
+  const translator = useResponse((s) => s.translator);
+
+  const [inputLanguage, setInputLanguage] = React.useState(
+    translator.inputLanguage
+  );
+
+  const [outputLanguage, setOutputLanguage] = React.useState(
+    translator.outputLanguage
+  );
+
+  React.useEffect(() => {
+    setTranslator({ inputLanguage, outputLanguage });
+  }, [inputLanguage, outputLanguage, setTranslator]);
+
   const { input, handleInputChange, handleSubmit, completion, isLoading } =
     useCompletion({
       api: "/api/translator",
