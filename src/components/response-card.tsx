@@ -9,6 +9,8 @@ import { useWordEntries } from "@/hooks/use-dictionary";
 import { useSearchParams } from "next/navigation";
 import { InitialView } from "./initial-view";
 import { Markdown } from "./Markdown";
+import { useVoice } from "@/hooks/use-voice";
+import { Audio } from "./Audio";
 
 export const wordEntriesTabs: { label: string; wordEntryKey: WordEntryKey }[] =
   [
@@ -51,23 +53,38 @@ export const WordEntryTabs = ({
     </Tabs>
   );
 };
-//------------------------------
+
 type LastResponseProps = {
   definition: string;
   isLoading: boolean;
 };
+//---------------------------------------------------
 export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
   const searchParams = useSearchParams();
   const key = searchParams?.get("key") || "";
   const term = useHistoryStore((s) => s.lexicalEntries)[key]?.term || "";
+  const {
+    playAudio,
+    isFetching: isLoadingAudio,
+    audioURL,
+    audioRef,
+  } = useVoice({ text: term });
   if (!definition && !isLoading) return <InitialView />;
   return (
-    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 p-2 pl-3 pt-6 text-slate-300">
+    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 px-2 pb-2 pt-6 text-slate-300 md:px-6">
       {isLoading ? (
         <Loader type="dots" className="mx-auto" size="lg" />
       ) : (
-        <div className="w-full font-medium ">
-          <span className="block capitalize">{term}</span>
+        <div className="mx-auto w-full font-medium">
+          <div className="gap-4 flex-row-start">
+            <span className="block text-lg font-bold capitalize">{term}</span>
+            <Audio
+              isLoadingAudio={isLoadingAudio}
+              playAudio={playAudio}
+              audioURL={audioURL}
+              audioRef={audioRef}
+            />
+          </div>
           <Markdown>{definition}</Markdown>
           <WordEntryTabs term={term} id={key} />
         </div>
