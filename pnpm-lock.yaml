@@ -7,6 +7,7 @@ specifiers:
   '@prisma/client': ^4.13.0
   '@tailwindcss/typography': ^0.5.9
   '@tanstack/react-query': ^5.0.0
+  '@tanstack/react-query-devtools': ^5.8.4
   '@trpc/client': ^10.18.0
   '@trpc/next': ^10.18.0
   '@trpc/react-query': ^10.18.0
@@ -56,6 +57,7 @@ dependencies:
   '@prisma/client': 4.13.0_prisma@5.1.1
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   '@tanstack/react-query': 5.0.0_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query-devtools': 5.8.4_tyhxpoijbbe3ws5y3hgyfdzuqy
   '@trpc/client': 10.18.0_@trpc+server@10.18.0
   '@trpc/next': 10.18.0_hr6cwqebtoeaneg3bydjlhh3li
   '@trpc/react-query': 10.18.0_x7fle2lss7tckrdnret5v4udwu
@@ -463,6 +465,23 @@ packages:
 
   /@tanstack/query-core/5.0.0:
     resolution: {integrity: sha512-Y1BpiA6BblJd/UlVqxEVeAG7IACn568YJuTTItAiecBI7En+33g780kg+/8lhgl+BzcUPN7o+NjBrSRGJoemyQ==}
+    dev: false
+
+  /@tanstack/query-devtools/5.8.4:
+    resolution: {integrity: sha512-F1dRbITNt9tMUoM9WCH8WQ2c54116hv52m/PKK8ZiN/pO2wGVzTZtKuLanF8pFpwmNchjIixcMw/a57HY5ivcw==}
+    dev: false
+
+  /@tanstack/react-query-devtools/5.8.4_tyhxpoijbbe3ws5y3hgyfdzuqy:
+    resolution: {integrity: sha512-mffs51FJqXU/5rwhbwv393DccL6et7uK2pRLwOcmMrWbPyW8vpxr9oidaghHX4cdVeP/7u5owW9yMpBhBAJfcQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.8.4
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.8.4
+      '@tanstack/react-query': 5.0.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@tanstack/react-query/5.0.0_biqbaboplfbrettd7655fr4n2y:

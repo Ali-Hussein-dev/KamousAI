@@ -86,7 +86,7 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
   );
 
   React.useEffect(() => {
-    console.log("useEffect", { completion: res.completion, id, wordEntryKey });
+    // console.log("useEffect", { completion: res.completion, id, wordEntryKey });
     if (!isFinished || !wordEntryKey) return;
     // cache response
     else {

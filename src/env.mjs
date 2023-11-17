@@ -23,6 +23,7 @@ const server = z.object({
   GOOGLE_CLIENT_SECRET: z.string().min(1),
   DATABASE_URL: z.string().min(1),
   DIRECT_URL: z.string().min(1),
+  ELEVEN_LABS_KEY: z.string()
 });
 
 /**
@@ -49,6 +50,7 @@ const processEnv = {
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   DATABASE_URL: process.env.DATABASE_URL,
   DIRECT_URL: process.env.DIRECT_URL,
+  ELEVEN_LABS_KEY: process.env.ELEVEN_LABS_KEY
 };
 
 // Don't touch the part below
