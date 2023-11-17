@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs";
 
-export async function getElevenLabsAudio(text: string): Promise<ArrayBuffer> {
+async function getElevenLabsAudio(text: string): Promise<ArrayBuffer> {
     const voiceId = "21m00Tcm4TlvDq8ikWAM";
 
     const elevenLabsTextToSpeechURL = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`;
