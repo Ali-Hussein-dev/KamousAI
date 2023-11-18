@@ -6,6 +6,7 @@ import { Nunito } from "next/font/google";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { Providers } from "./Providers";
 
 const fontFamily = Nunito({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
         <title>KamousAI | AI Language Tools</title>
       </head>
       <body className={fontFamily.className}>
-        <Layout>{children}</Layout>
+        <Layout>
+          <Providers>{children}</Providers>
+        </Layout>
         <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       </body>
     </html>

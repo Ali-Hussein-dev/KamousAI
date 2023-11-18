@@ -33,14 +33,17 @@ export const useDefinition = () => {
     },
     onFinish: (prompt, completion) => {
       // cache response...
-      const term = Object.values(lexicalEntries).find((o) => o.term === prompt);
-      const key = term?.id || (Math.random() * 10000).toFixed(0);
+      const cleanedTerm = prompt.trim().toLowerCase();
+      const term = Object.values(lexicalEntries).find(
+        (o) => o.term === cleanedTerm
+      );
+      const key = term?.id ?? (Math.random() * 10000).toFixed(0);
       const createdAt = new Date().getTime();
       if (term) {
         setCache(key, { ...term, definition: completion, createdAt });
       } else {
         const block = {
-          term: prompt.trim().toLowerCase(),
+          term: cleanedTerm,
           id: key,
           createdAt,
           definition: completion,
@@ -86,7 +89,7 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
   );
 
   React.useEffect(() => {
-    console.log("useEffect", { completion: res.completion, id, wordEntryKey });
+    // console.log("useEffect", { completion: res.completion, id, wordEntryKey });
     if (!isFinished || !wordEntryKey) return;
     // cache response
     else {

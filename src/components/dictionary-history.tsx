@@ -5,8 +5,10 @@ import { ActionIcon, Button } from "@mantine/core";
 import React from "react";
 import { TbHistory } from "react-icons/tb";
 import { WordEntryTabs } from "./response-card";
+import { Audio } from "./Audio";
 import { Markdown } from "./Markdown";
 import { MdOutlineClear } from "react-icons/md";
+import { useVoice } from "@/hooks/use-voice";
 
 const Card = ({
   definition,
@@ -19,12 +21,27 @@ const Card = ({
   term: string;
   remove: () => void;
 }) => {
+  const {
+    playAudio,
+    audioURL,
+    audioRef,
+    isFetching: isLoadingAudio,
+  } = useVoice({ text: term });
+
   return (
     <div className="mb-3 rounded-xl bg-slate-800/40 px-3 py-2 pt-6">
       <div className="mb-2 flex-row-between">
-        <span className="block font-bold uppercase text-primary-600">
-          {term}
-        </span>
+        <div className="gap-3 flex-row-start">
+          <span className="block font-bold uppercase text-primary-600">
+            {term}
+          </span>
+          <Audio
+            isLoadingAudio={isLoadingAudio}
+            playAudio={playAudio}
+            audioURL={audioURL}
+            audioRef={audioRef}
+          />
+        </div>
         <ActionIcon
           radius="lg"
           variant="outline"
