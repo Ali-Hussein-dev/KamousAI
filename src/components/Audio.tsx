@@ -14,7 +14,8 @@ export const Audio = ({
   audioRef,
 }: AudioProp) => {
   return (
-    <>
+    // workaround solution currently is not working on mobile devices
+    <div className="hidden sm:inline-block">
       <ActionIcon
         onClick={() => playAudio()}
         disabled={isLoadingAudio}
@@ -36,6 +37,6 @@ export const Audio = ({
           <source src={audioURL} />
         </audio>
       )}
-    </>
+    </div>
   );
 };
