@@ -32,7 +32,9 @@ export const Audio = ({
         <audio
           ref={audioRef as React.RefObject<HTMLAudioElement>}
           src={audioURL}
-        ></audio>
+        >
+          <source src={audioURL} />
+        </audio>
       )}
     </>
   );
