@@ -21,7 +21,7 @@ export default function GrammerCheckerPage() {
     },
   });
   return (
-    <div className="mx-auto w-full rounded-lg bg-slate-600 px-4 py-6">
+    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
         <Textarea
           value={input}
@@ -29,8 +29,13 @@ export default function GrammerCheckerPage() {
           placeholder="e.g I has an pen"
           label="Enter text for correction"
           className="w-full"
+          classNames={{
+            input:
+              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
+            wrapper: "!bg-transparent",
+          }}
           autosize
-          minRows={3}
+          minRows={4}
         />
         <Button loading={isLoading} type="submit" radius="lg">
           Check
@@ -38,13 +43,14 @@ export default function GrammerCheckerPage() {
       </form>
       <div
         hidden={messages.length < 1}
-        className="mt-4 space-y-3 rounded-lg bg-slate-700 px-3 py-4"
+        className="mt-4 space-y-2 rounded-lg px-1 py-4"
       >
         {messages
           .filter((msg) => msg.role === "assistant")
+          .reverse()
           .map((msg, i) => (
             <div
-              className="group mb-3 flex items-start justify-between gap-2"
+              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 py-4 text-slate-200"
               key={i}
             >
               <Text>{msg.content}</Text>
@@ -72,6 +78,6 @@ export default function GrammerCheckerPage() {
           </Button>
         )}
       </div>
-    </div>
+    </section>
   );
 }

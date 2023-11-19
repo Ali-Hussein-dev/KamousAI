@@ -109,14 +109,19 @@ export default function TextOptimizer() {
     },
   });
   return (
-    <section className="w-full rounded-lg bg-slate-600 px-4 py-6">
+    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <Textarea
           value={input}
           onChange={handleInputChange}
           placeholder="Enter text here"
           autosize
-          minRows={3}
+          classNames={{
+            input:
+              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
+            wrapper: "!bg-transparent",
+          }}
+          minRows={4}
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
@@ -127,14 +132,15 @@ export default function TextOptimizer() {
       </form>
       <div
         hidden={messages.length < 2}
-        className="mt-4 space-y-3 rounded-lg bg-slate-700 px-3 py-4"
+        className="mt-4 space-y-2 rounded-lg px-1 py-4"
       >
         {messages
           .filter((msg) => msg.role === "assistant")
+          .reverse()
           .map((msg, i) => (
             <div
               key={i}
-              className="flex items-start justify-between gap-2 rounded-sm py-1 pb-1 text-slate-300"
+              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 py-4 text-slate-200"
             >
               {msg.content}
               <ActionIcon
