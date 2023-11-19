@@ -23,7 +23,7 @@ export const languagetoolsList = [
     status: "done",
     icon: <PiBooksLight />,
     description:
-      "An AI Dictionary for looking up the meanings and definitions of words.",
+      "An AI-based Dictionary for looking up the meanings and definitions of words.",
   },
   {
     label: "Text Optimizer",
