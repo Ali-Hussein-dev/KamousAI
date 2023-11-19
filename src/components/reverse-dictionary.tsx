@@ -34,10 +34,10 @@ export const ReverseDictionary = () => {
     },
   });
   return (
-    <div className="w-full rounded bg-slate-600 px-4 pb-1 pt-6">
+    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <Textarea
-          label="Add your definition to get the word"
+          // label="Add your definition to get the word"
           value={input}
           onChange={handleInputChange}
           placeholder="Enter the meaning here"
@@ -45,10 +45,10 @@ export const ReverseDictionary = () => {
           maxRows={4}
           autosize
           className="w-full"
-          styles={{
-            input: {
-              border: "1px solid var(--mantine-color-dark-5)",
-            },
+          classNames={{
+            input:
+              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
+            wrapper: "!bg-transparent",
           }}
         />
         <Button type="submit" radius="lg" loading={isLoading}>
@@ -76,6 +76,6 @@ export const ReverseDictionary = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
