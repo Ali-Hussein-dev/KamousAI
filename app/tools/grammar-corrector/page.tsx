@@ -27,7 +27,7 @@ export default function GrammerCheckerPage() {
           value={input}
           onChange={handleInputChange}
           placeholder="e.g I has an pen"
-          label="Enter text for correction"
+          // label="Enter text for correction"
           className="w-full"
           classNames={{
             input:
