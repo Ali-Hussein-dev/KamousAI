@@ -14,7 +14,7 @@ export const useDefinition = () => {
   const setCache = useHistoryStore((s) => s.setLexicalEntries);
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const preferences = useHistoryStore((s) => s.preferences);
-  const { inputRef } = useInputFocus();
+  const { inputRef } = useInputFocus<HTMLInputElement>();
   const router = useRouter();
   const res = useCompletion({
     api: "/api/dictionary",
