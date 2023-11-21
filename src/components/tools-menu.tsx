@@ -7,7 +7,9 @@ import { PiBooksLight } from "react-icons/pi";
 import { GiSpellBook } from "react-icons/gi";
 import { GoGoal } from "react-icons/go";
 import { SiMicrosofttranslator } from "react-icons/si";
-
+import { usePathname } from "next/navigation";
+import { LuCheck } from "react-icons/lu";
+import { CustomMenu } from "./Mantine/custom-menu";
 export const languagetoolsList = [
   {
     label: "Grammar Corrector",
@@ -52,35 +54,42 @@ export const languagetoolsList = [
 ];
 //======================================
 export const ToolsMenu = () => {
+  const pathname = usePathname();
   return (
-    <Menu
-      shadow="lg"
-      width={270}
-      position="bottom-end"
-      classNames={{
-        dropdown: "!bg-slate-800 !rounded-lg",
-      }}
-    >
+    <CustomMenu>
       <Menu.Target>
         <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
-          Language Tools
+          Tools
         </Button>
       </Menu.Target>
       <Menu.Dropdown p="sm">
-        {languagetoolsList
-          .filter((o) => o.status === "done")
-          .map((item) => (
-            <Link
+        {languagetoolsList.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            className="w-full no-underline"
+          >
+            <Menu.Item
               key={item.label}
-              href={item.href}
-              className="w-full no-underline"
+              leftSection={item.icon}
+              classNames={{
+                item: `data-[hovered]:!bg-slate-800 !rounded`,
+                // itemLabel: "data-[hovered]:!bg-slate-800",
+              }}
+              style={{}}
             >
-              <Menu.Item key={item.label} leftSection={item.icon}>
-                {item.label}
-              </Menu.Item>
-            </Link>
-          ))}
+              <div className="w-full flex-row-between">
+                <span>{item.label}</span>
+                {pathname == item.href && (
+                  <span className="">
+                    <LuCheck />
+                  </span>
+                )}
+              </div>
+            </Menu.Item>
+          </Link>
+        ))}
       </Menu.Dropdown>
-    </Menu>
+    </CustomMenu>
   );
 };
