@@ -7,7 +7,7 @@ import * as React from "react";
 import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
 import { useInputFocus } from "@/hooks/use-input-focus";
-import { CustomTextarea } from "@/components/custom-textarea";
+import { CustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
 
 const instuctionPrompt =

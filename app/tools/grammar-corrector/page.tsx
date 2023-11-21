@@ -4,7 +4,7 @@ import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
-import { CustomTextarea } from "@/components/custom-textarea";
+import { CustomTextarea } from "@/components/Mantine/custom-textarea";
 import { useInputFocus } from "@/hooks/use-input-focus";
 
 export default function GrammerCheckerPage() {
