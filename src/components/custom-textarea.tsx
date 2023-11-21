@@ -6,15 +6,16 @@ export const CustomTextarea = ({ ...rest }) => {
   const { inputRef } = useInputFocus<HTMLTextAreaElement>();
   return (
     <Textarea
+      unstyled
       ref={inputRef}
       autosize
       minRows={4}
-      maxRows={8}
+      maxRows={9}
       className="w-full"
       classNames={{
         input:
-          "!bg-transparent !border-slate-600 !border-none duration-300 !font-medium placeholder:!text-slate-400 !text-base !tracking-wide !bg-slate-700/70 focus:!bg-slate-700",
-        wrapper: "!bg-transparent",
+          "font-medium placeholder:text-slate-500 text-base tracking-wide bg-slate-700/50 focus:bg-slate-700/70 w-full focus:outline-none resize-none px-3 border-none rounded-lg py-4",
+        // wrapper: "bg-transparent",
       }}
       {...rest}
     />
