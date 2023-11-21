@@ -30,6 +30,7 @@
     "next": "^14.0.2",
     "next-auth": "^4.22.1",
     "nextjs-google-analytics": "^2.3.3",
+    "nextjs-toploader": "^1.6.4",
     "openai": "^4.10.0",
     "prisma": "^5.1.1",
     "react": "18.2.0",

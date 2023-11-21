@@ -29,6 +29,7 @@ specifiers:
   next: ^14.0.2
   next-auth: ^4.22.1
   nextjs-google-analytics: ^2.3.3
+  nextjs-toploader: ^1.6.4
   openai: ^4.10.0
   postcss: ^8.4.21
   postcss-preset-mantine: ^1.7.0
@@ -69,6 +70,7 @@ dependencies:
   next: 14.0.2_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.22.1_jkbxmum2k66uczeeyfa2ahwyou
   nextjs-google-analytics: 2.3.3_next@14.0.2+react@18.2.0
+  nextjs-toploader: 1.6.4_jkbxmum2k66uczeeyfa2ahwyou
   openai: 4.10.0
   prisma: 5.1.1
   react: 18.2.0
@@ -600,6 +602,10 @@ packages:
 
   /@types/node/18.15.11:
     resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
+
+  /@types/nprogress/0.2.3:
+    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
+    dev: false
 
   /@types/prettier/2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
@@ -3472,6 +3478,21 @@ packages:
       fsevents: 2.3.3
     dev: false
 
+  /nextjs-toploader/1.6.4_jkbxmum2k66uczeeyfa2ahwyou:
+    resolution: {integrity: sha512-KYLQ+0MvGdFk9JwOQfRtaYBAsyuX67Ca5QTa51RGNO4gQx64KLSE+ryHjUQ5LcDczHotp0l32GgksQW9vucUkw==}
+    peerDependencies:
+      next: '>= 6.0.0'
+      react: '>= 16.0.0'
+      react-dom: '>= 16.0.0'
+    dependencies:
+      '@types/nprogress': 0.2.3
+      next: 14.0.2_biqbaboplfbrettd7655fr4n2y
+      nprogress: 0.2.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /node-domexception/1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
@@ -3501,6 +3522,10 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /num-sort/2.1.0:
     resolution: {integrity: sha512-1MQz1Ed8z2yckoBeSfkQHHO9K1yDRxxtotKSJ9yvcTUUxSvfvzEq5GwBrjjHEpMlq/k5gvXdmJ1SbYxWtpNoVg==}
