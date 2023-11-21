@@ -7,6 +7,7 @@ import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { Providers } from "./Providers";
+import NextTopLoader from "nextjs-toploader";
 
 const fontFamily = Nunito({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <title>KamousAI | AI Language Tools</title>
       </head>
       <body className={fontFamily.className}>
+        <NextTopLoader color="#6672b0" showSpinner={false} speed={300} />
         <Layout>
           <Providers>{children}</Providers>
         </Layout>

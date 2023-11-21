@@ -1,24 +1,19 @@
-import {
-  ActionIcon,
-  Divider,
-  Menu,
-  SegmentedControl,
-  Select,
-} from "@mantine/core";
+import { ActionIcon, Divider, Menu, SegmentedControl } from "@mantine/core";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
 import languages from "../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
+import { CustomSelect } from "./Mantine/custom-select";
+import { CustomMenu } from "./Mantine/custom-menu";
 
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
   const { inputLanguage } = useResponse((s) => s.preferences);
   return (
     <div className="">
-      <Select
+      <CustomSelect
         label="Your language"
         placeholder="Pick one"
-        searchable
         defaultValue={inputLanguage}
         data={languages}
         value={inputLanguage}
@@ -34,11 +29,10 @@ const Bilingual = () => {
   return (
     <div>
       <div className="flex items-end gap-2 ">
-        <Select
+        <CustomSelect
           label="Translate from "
           placeholder="Pick a language"
           defaultValue={"en"}
-          searchable
           data={languages}
           value={inputLanguage}
           onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
@@ -55,11 +49,10 @@ const Bilingual = () => {
         >
           <TbSwitchHorizontal />
         </ActionIcon>
-        <Select
+        <CustomSelect
           label="To"
           placeholder="Pick a language"
           defaultValue={"de"}
-          searchable
           data={languages}
           value={outputLanguage || "de"}
           onChange={(lang) => setSettings({ outputLanguage: lang || "de" })}
@@ -83,7 +76,7 @@ const SettingsDropdown = () => {
     setSettings({ mode });
   };
   return (
-    <Menu
+    <CustomMenu
       shadow="lg"
       width={350}
       position="bottom-start"
@@ -104,6 +97,7 @@ const SettingsDropdown = () => {
       </Menu.Target>
       <Menu.Dropdown p="sm">
         <SegmentedControl
+          color="dark"
           value={mode}
           onChange={onChange}
           fullWidth
@@ -115,7 +109,7 @@ const SettingsDropdown = () => {
         />
         {mode === "mono" ? <Monolingual /> : <Bilingual />}
       </Menu.Dropdown>
-    </Menu>
+    </CustomMenu>
   );
 };
 export default SettingsDropdown;

@@ -3,7 +3,7 @@ import { capitalizeFirstLetter } from "@/utils/helpers";
 import { Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
-import { CustomTextarea } from "./custom-textarea";
+import { CustomTextarea } from "./Mantine/custom-textarea";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {

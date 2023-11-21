@@ -15,7 +15,6 @@ export const CustomTextarea = ({ ...rest }) => {
       classNames={{
         input:
           "font-medium placeholder:text-slate-500 text-base tracking-wide bg-slate-700/50 focus:bg-slate-700/70 w-full focus:outline-none resize-none px-3 border-none rounded-lg py-4",
-        // wrapper: "bg-transparent",
       }}
       {...rest}
     />

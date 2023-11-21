@@ -7,7 +7,8 @@ import * as React from "react";
 import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
 import { useInputFocus } from "@/hooks/use-input-focus";
-import { CustomTextarea } from "@/components/custom-textarea";
+import { CustomTextarea } from "@/components/Mantine/custom-textarea";
+import { CustomMenu } from "@/components/Mantine/custom-menu";
 
 const instuctionPrompt =
   "Fix, rephrase and optimize the following text to make it ";
@@ -44,15 +45,10 @@ const TextToneOptionsMenu = ({
 }) => {
   const [selected, setSelected] = React.useState<string[]>([]);
   return (
-    <Menu
-      shadow="lg"
-      width={170}
-      position="bottom-start"
-      closeOnItemClick={false}
-    >
+    <CustomMenu width={"210"} position="bottom-start" closeOnItemClick={false}>
       <Menu.Target>
         <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
-          Select text tone
+          Text tone {selected.length > 0 && `(${selected.length})`}
         </Button>
       </Menu.Target>
       <Menu.Dropdown p={5}>
@@ -84,7 +80,7 @@ const TextToneOptionsMenu = ({
           ))}
         </Checkbox.Group>
       </Menu.Dropdown>
-    </Menu>
+    </CustomMenu>
   );
 };
 
