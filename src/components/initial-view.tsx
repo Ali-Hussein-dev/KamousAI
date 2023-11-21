@@ -22,9 +22,9 @@ const H1 = () => (
 //======================================
 export const InitialView = () => {
   return (
-    <div className="mb-4 w-full gap-2 rounded-3xl border border-solid border-slate-600 p-2 flex-col-start md:p-4">
+    <div className="mb-4 w-full gap-2 rounded-3xl bg-slate-800/70 p-2 flex-col-start md:p-4">
       <H1 />
-      <div className="mb-4 ">
+      <div className="mb-4">
         <Text className="ml-1 text-xl font-bold" c="dimmed" mb="xs">
           Regular dictionary
         </Text>
