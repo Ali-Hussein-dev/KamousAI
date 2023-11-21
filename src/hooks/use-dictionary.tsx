@@ -1,5 +1,4 @@
 "use client";
-import { useHotkeys } from "@mantine/hooks";
 import { useCompletion } from "ai/react";
 import * as React from "react";
 import {
@@ -8,22 +7,14 @@ import {
   type WordEntryKey,
 } from "./use-history-store";
 import { useRouter } from "next/navigation";
-
-const useFocus = () => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const setFocus = () => {
-    inputRef.current?.focus();
-  };
-  useHotkeys([["mod+K", () => setFocus()]]);
-  return { inputRef };
-};
+import { useInputFocus } from "./use-input-focus";
 
 //------------------------------
 export const useDefinition = () => {
   const setCache = useHistoryStore((s) => s.setLexicalEntries);
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const preferences = useHistoryStore((s) => s.preferences);
-  const { inputRef } = useFocus();
+  const { inputRef } = useInputFocus();
   const router = useRouter();
   const res = useCompletion({
     api: "/api/dictionary",

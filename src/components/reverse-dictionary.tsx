@@ -1,8 +1,9 @@
 "use client";
 import { capitalizeFirstLetter } from "@/utils/helpers";
-import { Button, Text, Textarea } from "@mantine/core";
+import { Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
+import { CustomTextarea } from "./custom-textarea";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -36,20 +37,10 @@ export const ReverseDictionary = () => {
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
-        <Textarea
-          // label="Add your definition to get the word"
+        <CustomTextarea
           value={input}
           onChange={handleInputChange}
           placeholder="Enter the meaning here"
-          minRows={4}
-          maxRows={4}
-          autosize
-          className="w-full"
-          classNames={{
-            input:
-              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
-            wrapper: "!bg-transparent",
-          }}
         />
         <Button type="submit" radius="lg" loading={isLoading}>
           Submit
