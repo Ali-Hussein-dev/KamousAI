@@ -1,9 +1,11 @@
 "use client";
-import { ActionIcon, Button, Text, Textarea } from "@mantine/core";
+import { ActionIcon, Button, Text } from "@mantine/core";
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
-import * as React from 'react'
+import * as React from "react";
+import { CustomTextarea } from "@/components/custom-textarea";
+import { useInputFocus } from "@/hooks/use-input-focus";
 
 export default function GrammerCheckerPage() {
   const {
@@ -13,29 +15,22 @@ export default function GrammerCheckerPage() {
     handleSubmit,
     isLoading,
     setMessages,
-    setInput
+    setInput,
   } = useChat({
     api: "/api/grammer-checker",
     onResponse: () => {
-      setInput(input)
+      setInput(input);
     },
   });
+  const { inputRef } = useInputFocus<HTMLTextAreaElement>();
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
-        <Textarea
+        <CustomTextarea
+          ref={inputRef}
           value={input}
           onChange={handleInputChange}
           placeholder="e.g I has an pen"
-          // label="Enter text for correction"
-          className="w-full"
-          classNames={{
-            input:
-              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
-            wrapper: "!bg-transparent",
-          }}
-          autosize
-          minRows={4}
         />
         <Button loading={isLoading} type="submit" radius="lg">
           Check

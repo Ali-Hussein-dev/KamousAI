@@ -1,11 +1,13 @@
 "use client";
-import { Checkbox, Menu, ActionIcon, Button, Textarea } from "@mantine/core";
+import { Checkbox, Menu, ActionIcon, Button } from "@mantine/core";
 import { IoCopy } from "react-icons/io5";
 import { useChat } from "ai/react";
 import { TbChevronDown } from "react-icons/tb";
 import * as React from "react";
 import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
+import { useInputFocus } from "@/hooks/use-input-focus";
+import { CustomTextarea } from "@/components/custom-textarea";
 
 const instuctionPrompt =
   "Fix, rephrase and optimize the following text to make it ";
@@ -108,20 +110,15 @@ export default function TextOptimizer() {
       setInput(input);
     },
   });
+  const { inputRef } = useInputFocus<HTMLTextAreaElement>();
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <Textarea
+        <CustomTextarea
+          ref={inputRef}
           value={input}
           onChange={handleInputChange}
-          placeholder="Enter text here"
-          autosize
-          classNames={{
-            input:
-              "!bg-transparent !border-slate-600 focus:!border-slate-500 duration-200 !text-slate-400 focus:!text-slate-300 !font-medium",
-            wrapper: "!bg-transparent",
-          }}
-          minRows={4}
+          placeholder="Enter text to optimize"
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
