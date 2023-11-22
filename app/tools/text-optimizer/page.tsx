@@ -9,6 +9,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { CustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
+import { Markdown } from "@/components/Markdown";
 
 const instuctionPrompt =
   "Fix, rephrase and optimize the following text to make it ";
@@ -135,7 +136,7 @@ export default function TextOptimizer() {
               key={i}
               className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 py-4 text-slate-200"
             >
-              {msg.content}
+              <Markdown>{msg.content}</Markdown>
               <ActionIcon
                 onClick={() => {
                   navigator.clipboard.writeText(msg.content);
