@@ -58,7 +58,7 @@ export const DictionarySearchbar = (props: Props) => {
         rightSectionWidth="auto"
         autoComplete="off"
         classNames={{
-          input: "!bg-transparent !pl-[4rem] !border-0",
+          input: "!bg-transparent !pl-[4rem] !border-0 !text-base",
           dropdown:
             "!bg-slate-800 !rounded-2xl !border-b-2 !border-0 !border-slate-300 !shadow-lg mt-2",
           option: "!rounded-2xl capitalize",
