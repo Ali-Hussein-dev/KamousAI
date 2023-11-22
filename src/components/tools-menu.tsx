@@ -69,15 +69,7 @@ export const ToolsMenu = () => {
             href={item.href}
             className="w-full no-underline"
           >
-            <Menu.Item
-              key={item.label}
-              leftSection={item.icon}
-              classNames={{
-                item: `data-[hovered]:!bg-slate-800 !rounded`,
-                // itemLabel: "data-[hovered]:!bg-slate-800",
-              }}
-              style={{}}
-            >
+            <Menu.Item key={item.label} leftSection={item.icon}>
               <div className="w-full flex-row-between">
                 <span>{item.label}</span>
                 {pathname == item.href && (
