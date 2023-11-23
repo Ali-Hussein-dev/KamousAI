@@ -77,7 +77,9 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
       ) : (
         <div className="mx-auto w-full font-medium">
           <div className="gap-4 flex-row-start">
-            <span className="block text-lg font-bold capitalize">{term}</span>
+            <span className="block text-lg font-bold first-letter:capitalize">
+              {term}
+            </span>
             <Audio
               isLoadingAudio={isLoadingAudio}
               playAudio={playAudio}

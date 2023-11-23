@@ -1,5 +1,5 @@
 "use client";
-import { ActionIcon, Button, Text } from "@mantine/core";
+import { ActionIcon, Button } from "@mantine/core";
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
