@@ -50,22 +50,24 @@ export const ReverseDictionary = () => {
         hidden={messages.length < 1}
         className="space-y-2 rounded-lg bg-slate-800 px-4 pb-6 pt-5 text-slate-300"
       >
-        {convertToShape(messages).map((arr, i) => (
-          <div key={i}>
-            {capitalizeFirstLetter(arr[1]?.content || "")}
-            <Text
-              styles={{
-                root: {
-                  color: "var(--mantine-color-dark-5)",
-                },
-              }}
-              mb={4}
-            >
-              {capitalizeFirstLetter(arr[0]?.content || "")}
-            </Text>
-            <div className="h-[0.4px] w-full bg-slate-600" />
-          </div>
-        ))}
+        {convertToShape(messages)
+          .reverse()
+          .map((arr, i) => (
+            <div key={i}>
+              {capitalizeFirstLetter(arr[1]?.content || "")}
+              <Text
+                styles={{
+                  root: {
+                    color: "var(--mantine-color-dark-5)",
+                  },
+                }}
+                mb={4}
+              >
+                {capitalizeFirstLetter(arr[0]?.content || "")}
+              </Text>
+              <div className="h-[0.4px] w-full bg-slate-600" />
+            </div>
+          ))}
       </div>
     </section>
   );
