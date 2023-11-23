@@ -6,6 +6,7 @@ import {
   AppShell
 } from "@mantine/core";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 // import Link from "next/link";
 
 //======================================
@@ -28,13 +29,13 @@ export const Header = () => {
   return (
     <AppShell.Header
       p="xs"
-      className="border-solid border-b border-0 border-slate-500"
+      className="border-0 border-b border-solid border-slate-500"
       withBorder={false}
       pos="relative"
     >
       <div className="mx-auto w-full max-w-[1520px] flex-row-start">
         <Anchor c="white" href="/">
-          <span className="text-2xl sm:text-3xl font-extrabold">KamousAI</span>
+          <Image src="/logo.svg" width={100} height={40} alt="logo" />
         </Anchor>
         {/* {sessionData ? (
           <UserDropdown />
