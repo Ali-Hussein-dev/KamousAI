@@ -4,7 +4,7 @@ import { env } from "@/env.mjs";
 
 export const runtime = "edge";
 
-const prompt = "I will give you the meaning of a word and you will suggest all the words that mean the same.";
+const prompt = "I will give you the meaning of a word and you will suggest all the words that mean the same. Don't repeat what I say, just the give the results without explanation.";
 const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY,
 });
