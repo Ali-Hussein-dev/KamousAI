@@ -6,6 +6,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
 import { CustomTextarea } from "@/components/Mantine/custom-textarea";
 import { useInputFocus } from "@/hooks/use-input-focus";
+import { Markdown } from "@/components/Markdown";
 
 export default function GrammerCheckerPage() {
   const {
@@ -45,10 +46,10 @@ export default function GrammerCheckerPage() {
           .reverse()
           .map((msg, i) => (
             <div
-              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 py-4 text-slate-200"
+              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 pb-2 pt-4 text-slate-200"
               key={i}
             >
-              <Text>{msg.content}</Text>
+              <Markdown>{msg.content}</Markdown>
               <ActionIcon
                 radius="md"
                 type="button"
