@@ -28,10 +28,13 @@ export const Header = () => {
   // const { data: sessionData } = useSession();
   return (
     <AppShell.Header
-      p="xs"
-      className="border-0 border-b border-solid border-slate-500"
+      py={4}
+      px={10}
       withBorder={false}
       pos="relative"
+      classNames={{
+        header: "!h-12",
+      }}
     >
       <div className="mx-auto w-full max-w-[1520px] flex-row-start">
         <Anchor c="white" href="/">
