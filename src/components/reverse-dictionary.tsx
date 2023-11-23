@@ -4,6 +4,7 @@ import { Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
 import { CustomTextarea } from "./Mantine/custom-textarea";
+import { AiOutlineClear } from "react-icons/ai";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -28,6 +29,7 @@ export const ReverseDictionary = () => {
     handleSubmit,
     isLoading,
     setInput,
+    setMessages,
   } = useChat({
     api: "/api/reverse-dictionary",
     onResponse: () => {
@@ -68,6 +70,17 @@ export const ReverseDictionary = () => {
               <div className="h-[0.4px] w-full bg-slate-600" />
             </div>
           ))}
+        {messages.length > 0 && (
+          <Button
+            variant="light"
+            color="red"
+            opacity={isLoading ? 0 : 1}
+            leftSection={<AiOutlineClear />}
+            onClick={() => setMessages([])}
+          >
+            Clear
+          </Button>
+        )}
       </div>
     </section>
   );
