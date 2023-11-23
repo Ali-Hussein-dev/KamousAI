@@ -1,9 +1,9 @@
 "use client";
-import { Badge, Text, Title } from "@mantine/core";
+import { Badge, Text } from "@mantine/core";
 import Typewriter from "typewriter-effect";
 
 const H1 = () => (
-  <Title order={1} className="w-full" mt="lg" mb="lg">
+  <h1 className="my-4 w-full text-2xl font-extrabold md:text-4xl">
     <Typewriter
       onInit={(typewriter) => {
         typewriter
@@ -17,12 +17,12 @@ const H1 = () => (
         }
       }
     />
-  </Title>
+  </h1>
 );
 //======================================
 export const InitialView = () => {
   return (
-    <div className="mb-4 w-full gap-2 rounded-3xl bg-slate-800/70 p-2 flex-col-start md:p-4">
+    <div className="mb-4 w-full gap-2 rounded-3xl bg-gradient-to-t from-slate-800/70 to-slate-800/30 px-5 py-2 flex-col-start sm:px-7 sm:pb-2 sm:pt-5">
       <H1 />
       <div className="mb-4">
         <Text className="ml-1 text-xl font-bold" c="dimmed" mb="xs">
