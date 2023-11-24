@@ -16,8 +16,7 @@ export const languagetoolsList = [
     href: "/tools/grammar-corrector",
     status: "done",
     icon: <TbPencilMinus />,
-    description:
-      "A tool that helps correct grammar and punctuation errors in text.",
+    description: "Correct grammar and punctuation errors in text.",
   },
   {
     label: "KamousAI",
@@ -32,8 +31,7 @@ export const languagetoolsList = [
     href: "/tools/text-optimizer",
     status: "done",
     icon: <GoGoal />,
-    description:
-      "A tool designed to optimize and improve written text for clarity and style.",
+    description: "Optimize and improve written text for clarity and style.",
   },
   {
     label: "Reverse Dictionary",
@@ -41,15 +39,14 @@ export const languagetoolsList = [
     status: "done",
     icon: <GiSpellBook />,
     description:
-      "A tool that allows you to find words based on their meanings or descriptions.",
+      "Find words or idioms based on meanings or descriptions you give.",
   },
   {
     label: "Long text translator",
     href: "/tools/translator",
     status: "done",
     icon: <SiMicrosofttranslator />,
-    description:
-      "A tool that allows you to translate long text from one language to another.",
+    description: "Translate long text from one language to another.",
   },
 ];
 //======================================

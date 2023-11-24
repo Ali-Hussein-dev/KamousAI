@@ -34,7 +34,13 @@ export const WordEntryTabs = ({
     <Tabs variant="default" inverted onChange={onTabChange}>
       <Tabs.List>
         {wordEntriesTabs.map((o) => (
-          <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey} fw="bold">
+          <Tabs.Tab
+            size="lg"
+            key={o.label}
+            value={o.wordEntryKey}
+            fw="bold"
+            px={{ base: "6px", md: "xs" }}
+          >
             {o.label}
           </Tabs.Tab>
         ))}
@@ -71,7 +77,7 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
   } = useVoice({ text: term });
   if (!definition && !isLoading) return <InitialView />;
   return (
-    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 px-2 pb-2 pt-6 text-slate-300 md:px-6">
+    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 pb-2 pl-4 pr-2 pt-6 text-slate-300">
       {isLoading ? (
         <Loader type="dots" className="mx-auto" size="lg" />
       ) : (

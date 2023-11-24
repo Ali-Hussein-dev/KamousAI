@@ -10,7 +10,7 @@ const Home: NextPage = () => {
       <div className="mx-auto space-y-5">
         <div className="">
           <h1 className="mb-2 text-center text-2xl font-extrabold text-primary-100 md:text-4xl">
-            Learn Languages With AI
+            Tools for language learners
           </h1>
           <h2 className="mt-0 text-center text-xl font-normal text-slate-300">
             Advanced your language skills with AI
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
                     <h3 className="mb-0 text-center text-2xl font-black tracking-wide text-primary-200/90">
                       {label}
                     </h3>
-                    <p className="text-center text-lg text-slate-400">
+                    <p className="mt-[2px] text-center text-lg text-slate-400">
                       {description}
                     </p>
                   </div>
