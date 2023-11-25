@@ -11,7 +11,7 @@ const instructions = [
 ];
 
 const explanation = [
-  "Provide short explanation for correction and don't explain irrelevant things",
+  "Justify the correction briefly & clearly",
   // "If the sentence is correct, return the same sentence with '✅'",
   // `
   // Examples: 
