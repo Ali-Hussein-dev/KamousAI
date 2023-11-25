@@ -12,7 +12,7 @@ const instructions = [
 
 const explanation = [
   "Provide short explanation for correction and don't explain irrelevant things",
-  "If the sentence is correct, return the same sentence with '✅'",
+  // "If the sentence is correct, return the same sentence with '✅'",
   // `
   // Examples: 
   // ❌: I has a question.\n
