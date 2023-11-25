@@ -33,8 +33,8 @@ export async function POST(req: Request) {
   const json = await req.json();
   const { messages, withExplanation } = json;
   const response = await openai.chat.completions.create({
-    // model: "gpt-3.5-turbo",
-    model: "gpt-3.5-turbo-1106",
+    model: "gpt-3.5-turbo",
+    // model: "gpt-3.5-turbo-1106",
     // model: "gpt-4-1106-preview",
     stream: true,
     messages: [
