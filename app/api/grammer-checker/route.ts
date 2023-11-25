@@ -23,7 +23,6 @@ export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
   const json = await req.json();
   const { messages, withExplanation } = json;
-  console.log(json);
   // Request the OpenAI API for the response based on the prompt
   const response = await openai.chat.completions.create({
     // model: "gpt-3.5-turbo",
@@ -37,7 +36,7 @@ export async function POST(req: Request) {
           ? [...instructions, ...explanation].join("\n")
           : [...instructions, explanation[1]].join("\n"),
       },
-      ...messages,
+      messages.at(-1),
     ],
     temperature: 0.3
   });
