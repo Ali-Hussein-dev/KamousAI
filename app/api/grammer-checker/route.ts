@@ -11,8 +11,16 @@ const instructions = [
 ];
 
 const explanation = [
-  "Provide short explanation for correction and don't explain the whole sentence",
+  "Provide short explanation for correction and don't explain irrelevant things",
   "If the sentence is correct, return the same sentence with '✅'",
+  // `
+  // Examples: 
+  // ❌: I has a question.\n
+  // ✅: I **have** a question.
+
+  // ❌: I have so much questions.\n
+  // ✅: I have so **many** questions.
+  // `,
   "Correct the grammar and spelling mistakes",
 ];
 
@@ -24,7 +32,6 @@ export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
   const json = await req.json();
   const { messages, withExplanation } = json;
-  // Request the OpenAI API for the response based on the prompt
   const response = await openai.chat.completions.create({
     // model: "gpt-3.5-turbo",
     model: "gpt-3.5-turbo-1106",
