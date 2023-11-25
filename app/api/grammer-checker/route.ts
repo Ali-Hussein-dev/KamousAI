@@ -12,6 +12,7 @@ const instructions = [
 
 const explanation = [
   "Provide short explanation for correction and don't explain the whole sentence",
+  "If the sentence is correct, return the same sentence with '✅'",
   "Correct the grammar and spelling mistakes",
 ];
 
