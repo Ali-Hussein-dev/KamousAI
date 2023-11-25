@@ -4,12 +4,16 @@ import { env } from "@/env.mjs";
 
 export const runtime = "edge";
 
-const prompt = [
-  "Act as a friendly-expert language teacher\n",
-  // "Use markdown to highlight the corrected text(bold) and wrong text(strike). \n",
-  // "Provide short explanation for only the correction in the next line and don't add irrelavant explanation.\n",
-  "Fix the following text grammar:\n",
-].join("")
+const instructions = [
+  "Follow these styling guide strictly:",
+  "Highlight the text with bolding the added text parts & strike through the deleted text parts",
+  // "For correction, bold the corrected text and strike through the deleted text",
+];
+
+const explanation = [
+  "Provide short explanation for correction and don't explain the whole sentence",
+  "Correct the grammar and spelling mistakes",
+];
 
 const openai = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
@@ -17,14 +21,25 @@ const openai = new OpenAI({
 
 export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
-  const { messages } = await req.json();
-
+  const json = await req.json();
+  const { messages, withExplanation } = json;
+  console.log(json);
   // Request the OpenAI API for the response based on the prompt
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    // model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-1106",
     // model: "gpt-4-1106-preview",
     stream: true,
-    messages: [{ role: "system", content: prompt }, ...messages],
+    messages: [
+      {
+        role: "system",
+        content: withExplanation
+          ? [...instructions, ...explanation].join("\n")
+          : [...instructions, explanation[1]].join("\n"),
+      },
+      ...messages,
+    ],
+    temperature: 0.3
   });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);

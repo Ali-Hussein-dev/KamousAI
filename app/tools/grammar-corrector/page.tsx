@@ -1,5 +1,5 @@
 "use client";
-import { ActionIcon, Button } from "@mantine/core";
+import { ActionIcon, Button, Checkbox } from "@mantine/core";
 import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { useInputFocus } from "@/hooks/use-input-focus";
 import { Markdown } from "@/components/Markdown";
 
 export default function GrammerCheckerPage() {
+  const [withExplanation, setWithExplanation] = React.useState(false);
   const {
     messages,
     input,
@@ -22,6 +23,9 @@ export default function GrammerCheckerPage() {
     onResponse: () => {
       setInput(input);
     },
+    body: {
+      withExplanation,
+    },
   });
   const { inputRef } = useInputFocus<HTMLTextAreaElement>();
   return (
@@ -33,9 +37,17 @@ export default function GrammerCheckerPage() {
           onChange={handleInputChange}
           placeholder="e.g I has an pen"
         />
-        <Button loading={isLoading} type="submit" radius="lg">
-          Check
-        </Button>
+        <div className="w-full flex-row-between">
+          <Checkbox
+            value={""}
+            label="With explanation"
+            checked={withExplanation}
+            onChange={() => setWithExplanation(!withExplanation)}
+          />
+          <Button loading={isLoading} type="submit" radius="lg">
+            Check
+          </Button>
+        </div>
       </form>
       <div
         hidden={messages.length < 1}
