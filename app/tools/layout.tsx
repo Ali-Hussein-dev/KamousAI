@@ -1,7 +1,6 @@
 "use client";
 import { ToolsMenu } from "@/components";
 import { capitalizeFirstLetter } from "@/utils/helpers";
-import { Title } from "@mantine/core";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 export default function LayoutG({ children }: { children: React.ReactNode }) {
@@ -12,17 +11,9 @@ export default function LayoutG({ children }: { children: React.ReactNode }) {
       <title>{title}</title>
       <section>
         <div className="mx-auto mb-6 w-full max-w-3xl border-b border-solid border-transparent border-b-slate-600 pb-2 flex-row-between">
-          <Title
-            order={2}
-            size="md"
-            styles={{
-              root: {
-                color: "var(--mantine-color-dark-4)",
-              },
-            }}
-          >
+          <h2 className="mb-0 text-lg font-extrabold capitalize text-slate-300/70">
             {title}
-          </Title>
+          </h2>
           <ToolsMenu />
         </div>
         <div className="mx-auto max-w-3xl">{children}</div>
