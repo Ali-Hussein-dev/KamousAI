@@ -136,8 +136,11 @@ export const CustomTones = () => {
           }}
         >
           <Drawer.Body>
-            <Drawer.Header>Customize text tones</Drawer.Header>
-            <div className="space-y-2 pt-3">
+            <Drawer.Header p="0">
+              Customize text tones
+              <Drawer.CloseButton onClick={close} />
+            </Drawer.Header>
+            <div className="space-y-2 pt-4">
               {tones.map((item, i) => (
                 <ToneItem key={i} {...item} />
               ))}
