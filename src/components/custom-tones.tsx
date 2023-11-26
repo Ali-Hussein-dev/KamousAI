@@ -97,12 +97,12 @@ const ToneItem = ({ id, label, value }: Tone) => {
       ) : (
         <div className="w-full gap-2 flex-row-between">
           <div
-            className="w-full"
+            className="w-full cursor-pointer capitalize"
             onClick={() => {
               setEditable(true);
             }}
           >
-            {label} - {id}
+            {label}
           </div>
           <div className="gap-2 flex-row-start">
             <ActionIcon variant="light" onClick={() => setEditable(true)}>
@@ -120,6 +120,7 @@ const ToneItem = ({ id, label, value }: Tone) => {
 export const CustomTones = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const tones = useTextOptimizer((s) => s.tones);
+  const add = useTextOptimizer((s) => s.add);
   return (
     <div className="">
       <Drawer
@@ -140,6 +141,11 @@ export const CustomTones = () => {
             mt="lg"
             onClick={() => {
               console.log("add new tone...");
+              add({
+                id: crypto.randomUUID(),
+                label: "New tone",
+                value: "added",
+              });
             }}
             leftSection={<HiOutlineDocumentPlus size="17" />}
             className="font-medium uppercase"
@@ -148,11 +154,10 @@ export const CustomTones = () => {
           </Button>
         </div>
       </Drawer>
-      {/* <ItemForm label={label} value={value} setValue={setToneForm} /> */}
+
       <ActionIcon onClick={open} radius="lg" variant="light" size="lg">
         <MdEdit />
       </ActionIcon>
-      {/* <Button>Save</Button> */}
     </div>
   );
 };

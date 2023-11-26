@@ -2,36 +2,41 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 const tones = [
   {
-    id: 1,
+    id: "1001",
     label: "Standard",
     value: "standard",
   },
   {
-    id: 2,
+    id: "2001",
     label: "Friendly",
     value: "friendly",
   },
   {
-    id: 3,
+    id: "3001",
     label: "Formal",
     value: "formal",
   },
   {
-    id: 4,
+    id: "4001",
     label: "Informal",
     value: "informal",
   },
   {
-    id: 5,
+    id: "5001",
     label: "Casual",
     value: "casual",
   },
 ];
-export type Tone = { value: string; label: string; id: number };
+export type Tone = {
+  value: string;
+  label: string;
+  id: string;
+  // createdAt: number;
+};
 type State = {
-  tones: { value: string; label: string; id: number }[];
+  tones: Tone[];
   update: (tone: Tone) => void;
-  remove: (id: number) => void;
+  remove: (id: string) => void;
   add: (tone: Tone) => void;
 };
 
