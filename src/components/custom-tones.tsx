@@ -6,6 +6,7 @@ import { ActionIcon, Button, Drawer, Fieldset } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import * as React from "react";
 import { CustomInput } from "./shared/custom-input";
+import { HiOutlineDocumentPlus } from "react-icons/hi2";
 
 //---------------------------------------------------
 const ItemForm = ({
@@ -128,11 +129,11 @@ export const CustomTones = () => {
         opened={opened}
         onClose={close}
       >
-        <div className="space-y-2">
+        <div className="space-y-2 pt-3">
           {tones.map((item, i) => (
             <ToneItem key={i} {...item} />
           ))}
-          {/* <Button
+          <Button
             w="100%"
             radius={"lg"}
             variant="light"
@@ -140,9 +141,11 @@ export const CustomTones = () => {
             onClick={() => {
               console.log("add new tone...");
             }}
+            leftSection={<HiOutlineDocumentPlus size="17" />}
+            className="font-medium uppercase"
           >
             Add new tone
-          </Button> */}
+          </Button>
         </div>
       </Drawer>
       {/* <ItemForm label={label} value={value} setValue={setToneForm} /> */}
