@@ -123,39 +123,56 @@ export const CustomTones = () => {
   const add = useTextOptimizer((s) => s.add);
   return (
     <div className="">
-      <Drawer
-        title={"Customize text tones"}
-        position="right"
-        size="sm"
-        opened={opened}
-        onClose={close}
-      >
-        <div className="space-y-2 pt-3">
-          {tones.map((item, i) => (
-            <ToneItem key={i} {...item} />
-          ))}
-          <Button
-            w="100%"
-            radius={"lg"}
-            variant="light"
-            mt="lg"
-            onClick={() => {
-              console.log("add new tone...");
-              add({
-                id: crypto.randomUUID(),
-                label: "New tone",
-                value: "added",
-              });
-            }}
-            leftSection={<HiOutlineDocumentPlus size="17" />}
-            className="font-medium uppercase"
-          >
-            Add new tone
-          </Button>
-        </div>
-      </Drawer>
+      <Drawer.Root position="right" size="sm" opened={opened} onClose={close}>
+        <Drawer.Overlay
+          onClick={(e) => {
+            e.stopPropagation();
+            close();
+          }}
+        />
+        <Drawer.Content
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <Drawer.Body>
+            <Drawer.Header>Customize text tones</Drawer.Header>
+            <div className="space-y-2 pt-3">
+              {tones.map((item, i) => (
+                <ToneItem key={i} {...item} />
+              ))}
+              <Button
+                w="100%"
+                radius={"lg"}
+                variant="light"
+                mt="lg"
+                onClick={() => {
+                  console.log("add new tone...");
+                  add({
+                    id: crypto.randomUUID(),
+                    label: "New tone",
+                    value: "added",
+                  });
+                }}
+                leftSection={<HiOutlineDocumentPlus size="17" />}
+                className="font-medium uppercase"
+              >
+                Add new tone
+              </Button>
+            </div>
+          </Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
 
-      <ActionIcon onClick={open} radius="lg" variant="light" size="lg">
+      <ActionIcon
+        onClick={(e) => {
+          e.stopPropagation();
+          open();
+        }}
+        radius="lg"
+        size="lg"
+        // variant="light"
+      >
         <MdEdit />
       </ActionIcon>
     </div>
