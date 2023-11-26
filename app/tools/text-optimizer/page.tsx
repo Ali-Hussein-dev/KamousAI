@@ -10,31 +10,11 @@ import { useInputFocus } from "@/hooks/use-input-focus";
 import { CustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
 import { Markdown } from "@/components/Markdown";
+import { CustomTones } from "@/components/custom-tones";
+import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 
 const instuctionPrompt =
   "Fix, rephrase and optimize the following text to make it ";
-const options = [
-  {
-    label: "Standard",
-    value: "standard",
-  },
-  {
-    label: "Friendly",
-    value: "friendly",
-  },
-  {
-    label: "Formal",
-    value: "formal",
-  },
-  {
-    label: "Informal",
-    value: "informal",
-  },
-  {
-    label: "Casual",
-    value: "casual",
-  },
-];
 
 //======================================
 const TextToneOptionsMenu = ({
@@ -45,14 +25,22 @@ const TextToneOptionsMenu = ({
   messages: Message[];
 }) => {
   const [selected, setSelected] = React.useState<string[]>([]);
+  const tones = useTextOptimizer((s) => s.tones);
   return (
     <CustomMenu width={"210"} position="bottom-start" closeOnItemClick={false}>
       <Menu.Target>
-        <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
+        <Button
+          radius="lg"
+          pl="0"
+          // left={{}}
+          leftSection={<CustomTones />}
+          rightSection={<TbChevronDown />}
+          variant="light"
+        >
           Text tone {selected.length > 0 && `(${selected.length})`}
         </Button>
       </Menu.Target>
-      <Menu.Dropdown p={5}>
+      <Menu.Dropdown p={5} mah="300px" className="!overflow-y-auto">
         <Checkbox.Group
           value={selected}
           onChange={(value) => {
@@ -67,7 +55,7 @@ const TextToneOptionsMenu = ({
             setMessages([instruction, ...filtered]);
           }}
         >
-          {options.map((item) => (
+          {tones.map((item) => (
             <Menu.Item key={item.label} p="xs">
               <Checkbox
                 key={item.label}
