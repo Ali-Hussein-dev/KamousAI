@@ -1,6 +1,6 @@
 "use client";
 import { type Tone, useTextOptimizer } from "@/hooks/use-text-optimizer";
-import { MdCheck, MdDelete, MdEdit } from "react-icons/md";
+import { MdCheck, MdDelete, MdEdit, MdClear } from "react-icons/md";
 import clsx from "clsx";
 import { ActionIcon, Button, Drawer, Fieldset } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -62,7 +62,7 @@ const ItemForm = ({
           }}
           w="100%"
         >
-          X
+          <MdClear />
         </Button>
         {/* // save button */}
         <Button
