@@ -70,7 +70,7 @@ export const ReverseDictionary = () => {
       </form>
       <div
         hidden={messages.length < 1}
-        className="space-y-2 rounded-lg bg-slate-800 px-4 pb-6 pt-5 text-slate-300"
+        className="space-y-2 rounded-lg bg-slate-800 pt-5 text-slate-300"
       >
         {convertToShape(messages)
           .reverse()
