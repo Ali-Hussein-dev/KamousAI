@@ -4,25 +4,20 @@ import { env } from "@/env.mjs";
 
 export const runtime = "edge";
 
-const instructions = [
-  "Follow these styling guide strictly:",
-  "Highlight the text with bolding the added text parts & strike through the deleted text parts",
-  // "For correction, bold the corrected text and strike through the deleted text",
-];
 
-const explanation = [
-  "Justify the correction briefly & clearly",
-  // "If the sentence is correct, return the same sentence with '✅'",
-  // `
-  // Examples: 
-  // ❌: I has a question.\n
-  // ✅: I **have** a question.
+/**
+ * Optimizations needed
+ * justification currently not really helpful!
+ * 
+ */
+const makeInstructions = (withExplanation: boolean) => `
+  Before you start, follow these rules strictly:
+  - Highlight the text with bolding the added text parts & strike through the deleted text parts
+  - Don't answer questions, just correct the grammar, spelling, and punctuation
+  ${withExplanation && "- Justify the correction briefly & clearly"}
 
-  // ❌: I have so much questions.\n
-  // ✅: I have so **many** questions.
-  // `,
-  "Correct the grammar and spelling mistakes",
-];
+  Correct the grammar and spelling mistakes of the following text
+`
 
 const openai = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
@@ -40,9 +35,7 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "system",
-        content: withExplanation
-          ? [...instructions, ...explanation].join("\n")
-          : [...instructions, explanation[1]].join("\n"),
+        content: makeInstructions(withExplanation),
       },
       messages.at(-1),
     ],
