@@ -6,7 +6,6 @@ import { TbChevronDown } from "react-icons/tb";
 import * as React from "react";
 import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
-import { useInputFocus } from "@/hooks/use-input-focus";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
 import { Markdown } from "@/components/Markdown";
@@ -104,15 +103,18 @@ export default function TextOptimizer() {
       setInput(input);
     },
   });
-  const { inputRef } = useInputFocus<HTMLTextAreaElement>();
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
-          ref={inputRef}
           value={input}
           onChange={handleInputChange}
           placeholder="Enter text to optimize"
+          cb={(e) =>
+            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+            handleSubmit(e)
+          }
+          loading={isLoading}
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />

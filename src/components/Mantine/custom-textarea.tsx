@@ -1,10 +1,27 @@
 import { useInputFocus } from "@/hooks/use-input-focus";
-import { Textarea } from "@mantine/core";
+import { isFunction } from "@/utils/helpers";
+import { Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 
+interface CustomTextareaProps extends TextareaProps {
+  loading?: boolean;
+  cb: (e: React.KeyboardEventHandler<Element>) => void;
+}
 //======================================
-export const CustomTextarea = ({ ...rest }) => {
+export const CustomTextarea = ({
+  loading,
+  cb,
+  ...rest
+}: CustomTextareaProps) => {
+  const onKeyDown: React.KeyboardEventHandler<Element> = (e) => {
+    if (e.code === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+      cb(e);
+    }
+  };
   const { inputRef } = useInputFocus<HTMLTextAreaElement>();
+
   return (
     <Textarea
       unstyled
@@ -17,6 +34,7 @@ export const CustomTextarea = ({ ...rest }) => {
         input:
           "font-medium placeholder:text-slate-500 !text-base tracking-wide bg-slate-700/50 focus:bg-slate-700/70 w-full focus:outline-none resize-none px-3 border-none rounded-lg py-4",
       }}
+      onKeyDown={loading && isFunction(cb) ? undefined : onKeyDown}
       {...rest}
     />
   );

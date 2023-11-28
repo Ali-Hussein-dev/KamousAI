@@ -5,7 +5,6 @@ import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
-import { useInputFocus } from "@/hooks/use-input-focus";
 import { Markdown } from "@/components/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
 export default function GrammerCheckerPage() {
@@ -28,15 +27,19 @@ export default function GrammerCheckerPage() {
       withExplanation,
     },
   });
-  const { inputRef } = useInputFocus<HTMLTextAreaElement>();
+
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
-          ref={inputRef}
           value={input}
           onChange={handleInputChange}
           placeholder="e.g I has an pen"
+          cb={(e) =>
+            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+            handleSubmit(e)
+          }
+          loading={isLoading}
         />
         <div className="w-full flex-row-between">
           <Checkbox
