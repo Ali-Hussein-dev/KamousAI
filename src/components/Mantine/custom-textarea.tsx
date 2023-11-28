@@ -1,5 +1,6 @@
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { Textarea } from "@mantine/core";
+import dynamic from "next/dynamic";
 
 //======================================
 export const CustomTextarea = ({ ...rest }) => {
@@ -20,3 +21,16 @@ export const CustomTextarea = ({ ...rest }) => {
     />
   );
 };
+
+export const DynamicCustomTextarea = dynamic(
+  () =>
+    import("@/components/Mantine/custom-textarea").then(
+      (c) => c.CustomTextarea
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-32 w-full animate-pulse rounded-lg bg-slate-700/70"></div>
+    ),
+  }
+);

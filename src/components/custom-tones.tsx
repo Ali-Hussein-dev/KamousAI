@@ -7,6 +7,7 @@ import { useDisclosure } from "@mantine/hooks";
 import * as React from "react";
 import { CustomInput } from "./shared/custom-input";
 import { HiOutlineDocumentPlus } from "react-icons/hi2";
+import dynamic from "next/dynamic";
 
 //---------------------------------------------------
 const ItemForm = ({
@@ -117,7 +118,7 @@ const ToneItem = ({ id, label, value }: Tone) => {
     </div>
   );
 };
-export const CustomTones = () => {
+export const Tones = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const tones = useTextOptimizer((s) => s.tones);
   const add = useTextOptimizer((s) => s.add);
@@ -181,3 +182,13 @@ export const CustomTones = () => {
     </div>
   );
 };
+
+export const CustomTones = dynamic(
+  () => import("@/components/custom-tones").then((c) => c.Tones),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-8 w-8 animate-pulse rounded-full bg-slate-600/50"></div>
+    ),
+  }
+);

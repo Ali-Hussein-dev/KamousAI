@@ -7,11 +7,11 @@ import * as React from "react";
 import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
 import { useInputFocus } from "@/hooks/use-input-focus";
-import { CustomTextarea } from "@/components/Mantine/custom-textarea";
+import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
 import { Markdown } from "@/components/Markdown";
-import { CustomTones } from "@/components/custom-tones";
 import { useTextOptimizer } from "@/hooks/use-text-optimizer";
+import { CustomTones } from "@/components/custom-tones";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -107,7 +107,7 @@ export default function TextOptimizer() {
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <CustomTextarea
+        <DynamicCustomTextarea
           ref={inputRef}
           value={input}
           onChange={handleInputChange}
