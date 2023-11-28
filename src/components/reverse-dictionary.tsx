@@ -44,6 +44,11 @@ export const ReverseDictionary = () => {
           value={input}
           onChange={handleInputChange}
           placeholder="Enter the meaning here"
+          cb={(e) =>
+            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+            handleSubmit(e)
+          }
+          loading={isLoading}
         />
         <div className="gap-3 flex-row-start">
           {isLoading && (

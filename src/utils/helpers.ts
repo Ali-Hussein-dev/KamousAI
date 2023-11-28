@@ -12,3 +12,8 @@ export function capitalizeFirstLetter(inputString: string): string {
     // Combine and return
     return firstLetter + restOfString;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isFunction(functionToCheck: any): boolean {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+}

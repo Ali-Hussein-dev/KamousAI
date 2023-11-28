@@ -9,8 +9,8 @@ const Home: NextPage = () => {
     <div className="mx-auto h-full w-full max-w-[52rem] pb-3 pt-5">
       <div className="mx-auto space-y-5">
         <div className="">
-          <h1 className="mb-2 text-center text-2xl font-extrabold text-primary-100 md:text-4xl">
-            Tools for language learners
+          <h1 className="mb-2 text-center text-2xl font-black capitalize text-primary-100 md:text-4xl">
+            Language Learning Tools
           </h1>
           <h2 className="mt-0 text-center text-xl font-normal text-slate-300">
             Advanced your language skills with AI
