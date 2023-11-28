@@ -3,7 +3,7 @@ import { capitalizeFirstLetter } from "@/utils/helpers";
 import { Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
-import { CustomTextarea } from "./Mantine/custom-textarea";
+import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
 import { AiOutlineClear } from "react-icons/ai";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
@@ -39,7 +39,7 @@ export const ReverseDictionary = () => {
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
-        <CustomTextarea
+        <DynamicCustomTextarea
           value={input}
           onChange={handleInputChange}
           placeholder="Enter the meaning here"

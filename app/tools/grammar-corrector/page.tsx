@@ -4,7 +4,7 @@ import { useChat } from "ai/react";
 import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
-import { CustomTextarea } from "@/components/Mantine/custom-textarea";
+import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { Markdown } from "@/components/Markdown";
 
@@ -31,7 +31,7 @@ export default function GrammerCheckerPage() {
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
-        <CustomTextarea
+        <DynamicCustomTextarea
           ref={inputRef}
           value={input}
           onChange={handleInputChange}
