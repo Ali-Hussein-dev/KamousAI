@@ -7,7 +7,7 @@ import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { Markdown } from "@/components/Markdown";
-
+import { IoStopCircleOutline } from "react-icons/io5";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -18,6 +18,7 @@ export default function GrammerCheckerPage() {
     isLoading,
     setMessages,
     setInput,
+    stop,
   } = useChat({
     api: "/api/grammer-checker",
     onResponse: () => {
@@ -44,9 +45,28 @@ export default function GrammerCheckerPage() {
             checked={withExplanation}
             onChange={() => setWithExplanation(!withExplanation)}
           />
-          <Button loading={isLoading} type="submit" radius="lg">
-            Check
-          </Button>
+          <div className="gap-3 flex-row-start">
+            {isLoading && (
+              <ActionIcon
+                type="button"
+                onClick={stop}
+                radius="lg"
+                size="lg"
+                variant="light"
+              >
+                <IoStopCircleOutline size="17" />
+              </ActionIcon>
+            )}
+            <Button
+              loading={isLoading}
+              type="submit"
+              radius="lg"
+              w="6rem"
+              disabled={!input}
+            >
+              Check
+            </Button>
+          </div>
         </div>
       </form>
       <div

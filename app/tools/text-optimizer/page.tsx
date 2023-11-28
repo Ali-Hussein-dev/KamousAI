@@ -12,6 +12,7 @@ import { CustomMenu } from "@/components/Mantine/custom-menu";
 import { Markdown } from "@/components/Markdown";
 import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 import { CustomTones } from "@/components/custom-tones";
+import { IoStopCircleOutline } from "react-icons/io5";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -115,9 +116,28 @@ export default function TextOptimizer() {
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
-          <Button type="submit" radius="lg" loading={isLoading}>
-            Optimize
-          </Button>
+          <div className="gap-3 flex-row-start">
+            {isLoading && (
+              <ActionIcon
+                type="button"
+                onClick={stop}
+                radius="lg"
+                size="lg"
+                variant="light"
+              >
+                <IoStopCircleOutline size="17" />
+              </ActionIcon>
+            )}
+            <Button
+              loading={isLoading}
+              type="submit"
+              radius="lg"
+              w="6rem"
+              disabled={!input}
+            >
+              Optimize
+            </Button>
+          </div>
         </div>
       </form>
       <div

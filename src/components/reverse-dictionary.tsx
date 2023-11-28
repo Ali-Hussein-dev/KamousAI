@@ -1,10 +1,11 @@
 "use client";
 import { capitalizeFirstLetter } from "@/utils/helpers";
-import { Button, Text } from "@mantine/core";
+import { ActionIcon, Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
 import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
 import { AiOutlineClear } from "react-icons/ai";
+import { IoStopCircleOutline } from "react-icons/io5";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -44,9 +45,28 @@ export const ReverseDictionary = () => {
           onChange={handleInputChange}
           placeholder="Enter the meaning here"
         />
-        <Button type="submit" radius="lg" loading={isLoading}>
-          Submit
-        </Button>
+        <div className="gap-3 flex-row-start">
+          {isLoading && (
+            <ActionIcon
+              type="button"
+              onClick={stop}
+              radius="lg"
+              size="lg"
+              variant="light"
+            >
+              <IoStopCircleOutline size="17" />
+            </ActionIcon>
+          )}
+          <Button
+            loading={isLoading}
+            type="submit"
+            radius="lg"
+            w="6rem"
+            disabled={!input}
+          >
+            Submit
+          </Button>
+        </div>
       </form>
       <div
         hidden={messages.length < 1}
