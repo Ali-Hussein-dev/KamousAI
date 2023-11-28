@@ -13,8 +13,15 @@ import { Markdown } from "@/components/Markdown";
 import { CustomTones } from "@/components/custom-tones";
 import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 
-const instuctionPrompt =
-  "Fix, rephrase and optimize the following text to make it ";
+const makeInstruction = (tones: string) => `
+  Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
+  here is some expample:
+
+  example 2:
+  input: einen Fehler machen
+  output: einen Fehler begehen
+  text:
+`;
 
 //======================================
 const TextToneOptionsMenu = ({
@@ -45,7 +52,8 @@ const TextToneOptionsMenu = ({
           value={selected}
           onChange={(value) => {
             setSelected(value);
-            const content = instuctionPrompt + value.join(" ");
+            const content = makeInstruction(value.join(" "));
+            console.log("🚀 ", content);
             const instruction: Message = {
               id: "instruction",
               role: "system",
@@ -87,7 +95,7 @@ export default function TextOptimizer() {
     initialMessages: [
       {
         role: "system",
-        content: `${instuctionPrompt} standard`,
+        content: makeInstruction("standard"),
         id: "instruction-4040",
       },
     ],
