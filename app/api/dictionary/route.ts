@@ -3,7 +3,8 @@ import OpenAI from "openai"
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { env } from "@/env.mjs";
 import { type ChatCompletionMessageParam } from "openai/resources/chat";
-import { type Preferences, type WordEntryKey } from "@/hooks/use-history-store";
+import { type WordEntryKey } from "@/hooks/use-history-store";
+import { type PreferencesT } from "@/hooks/use-response";
 
 const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY,
@@ -40,7 +41,7 @@ const systemMessages = {
         `Reply with "No related idioms found" if there are no idioms\n`,
     ]
 };
-interface Options extends Preferences {
+interface Options extends PreferencesT {
     wordEntryKey: WordEntryKey
 }
 
