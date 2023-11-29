@@ -104,7 +104,7 @@ export const useResponse = create<Store>()(
         set((s) => {
           const isTermExist = (s.history || []).find((o) => o.value == value)
           if (!isTermExist) {
-            return { history: [...(s.history || []), { value }] };
+            return { history: [...(s.history), { value }].slice(-10) };
           } else return {};
         }),
     }),

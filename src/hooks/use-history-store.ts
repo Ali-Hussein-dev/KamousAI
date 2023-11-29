@@ -17,25 +17,25 @@ export type WordEntryKey = "definition" | "synonyms" | "antonyms" | "examples" |
 export type DictionaryMode = "mono" | "bili";
 export type Preferences = {
     mode: DictionaryMode;
-    inputLanguage: string;
-    outputLanguage?: string;
+    // inputLanguage: string;
+    // outputLanguage?: string;
 };
 
 type State = {
     lexicalEntries: Record<string, LexicalEntry>;
     setLexicalEntries: (key: string, value: LexicalEntry | undefined) => void;
 
-    preferences: Preferences;
-    setPreferences: (settings: Partial<Preferences>) => void;
+    // preferences: Preferences;
+    // setPreferences: (settings: Partial<Preferences>) => void;
 };
 
 export const useHistoryStore = create<State>()(
     persist(
         (set) => ({
-            preferences: {
-                mode: "mono",
-                inputLanguage: "en",
-            },
+            // preferences: {
+            //     mode: "mono",
+            //     inputLanguage: "en",
+            // },
             lexicalEntries: {},
             setLexicalEntries: (key, value) =>
                 set((s) => {
@@ -50,8 +50,8 @@ export const useHistoryStore = create<State>()(
                         },
                     };
                 }),
-            setPreferences: (settings) =>
-                set((s) => ({ preferences: { ...s.preferences, ...settings } })),
+            // setPreferences: (settings) =>
+            //     set((s) => ({ preferences: { ...s.preferences, ...settings } })),
         }),
         {
             name: "kamous-ai-history",

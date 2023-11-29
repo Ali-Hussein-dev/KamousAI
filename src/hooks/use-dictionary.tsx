@@ -8,12 +8,13 @@ import {
 } from "./use-history-store";
 import { useRouter } from "next/navigation";
 import { useInputFocus } from "./use-input-focus";
+import { useResponse } from "./use-response";
 
 //------------------------------
 export const useDefinition = () => {
   const setCache = useHistoryStore((s) => s.setLexicalEntries);
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
-  const preferences = useHistoryStore((s) => s.preferences);
+  const preferences = useResponse((s) => s.preferences);
   const { inputRef } = useInputFocus<HTMLInputElement>();
   const router = useRouter();
   const res = useCompletion({
@@ -49,7 +50,8 @@ export const useDefinition = () => {
 };
 //------------------------------
 export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
-  const { setLexicalEntries, lexicalEntries, preferences } = useHistoryStore();
+  const { setLexicalEntries, lexicalEntries } = useHistoryStore();
+  const preferences = useResponse((s) => s.preferences);
   const [wordEntryKey, setWordEntryKey] = React.useState<WordEntryKey>();
   const [isFinished, setIsFinished] = React.useState(false);
   // const keywordRef = React.useRef<string>();
