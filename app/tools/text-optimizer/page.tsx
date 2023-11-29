@@ -12,6 +12,7 @@ import { Markdown } from "@/components/Markdown";
 import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 import { CustomTones } from "@/components/custom-tones";
 import { IoStopCircleOutline } from "react-icons/io5";
+import { MdClear } from "react-icons/md";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -115,6 +116,17 @@ export default function TextOptimizer() {
             handleSubmit(e)
           }
           loading={isLoading}
+          rightSection={
+            !!input ? (
+              <ActionIcon
+                variant="subtle"
+                radius="lg"
+                onClick={() => setInput("")}
+              >
+                <MdClear size="20" />
+              </ActionIcon>
+            ) : undefined
+          }
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />

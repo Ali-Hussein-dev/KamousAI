@@ -7,6 +7,7 @@ import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { Markdown } from "@/components/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
+import { MdClear } from "react-icons/md";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -40,6 +41,17 @@ export default function GrammerCheckerPage() {
             handleSubmit(e)
           }
           loading={isLoading}
+          rightSection={
+            !!input ? (
+              <ActionIcon
+                variant="subtle"
+                radius="lg"
+                onClick={() => setInput("")}
+              >
+                <MdClear size="20" />
+              </ActionIcon>
+            ) : undefined
+          }
         />
         <div className="w-full flex-row-between">
           <Checkbox

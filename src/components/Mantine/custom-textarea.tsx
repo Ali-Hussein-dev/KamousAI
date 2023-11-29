@@ -1,8 +1,9 @@
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { isFunction } from "@/utils/helpers";
-import { Textarea, type TextareaProps } from "@mantine/core";
+import { ActionIcon, Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useMediaQuery } from "@mantine/hooks";
+import { MdClear } from "react-icons/md";
 interface CustomTextareaProps extends TextareaProps {
   loading?: boolean;
   cb: (e: React.KeyboardEventHandler<Element>) => void;
@@ -29,10 +30,12 @@ export const CustomTextarea = ({
       autosize
       minRows={4}
       maxRows={9}
-      className="w-full"
       classNames={{
+        root: "w-full",
+        wrapper:
+          "flex justify-center items-start px-2 py-3 bg-slate-700/50 rounded-lg focus-within:bg-slate-700/70",
         input:
-          "font-medium placeholder:text-slate-500 !text-base tracking-wide bg-slate-700/50 focus:bg-slate-700/70 w-full focus:outline-none resize-none px-3 border-none rounded-lg py-4",
+          "border-none focus:outline-none w-full bg-transparent resize-none font-medium placeholder:text-slate-500 text-base tracking-wide",
       }}
       onKeyDown={loading || !isFunction(cb) || isMobile ? undefined : onKeyDown}
       {...rest}
