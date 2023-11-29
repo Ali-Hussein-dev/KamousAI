@@ -6,6 +6,7 @@ import { useChat } from "ai/react";
 import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
 import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
+import { MdClear } from "react-icons/md";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -49,6 +50,17 @@ export const ReverseDictionary = () => {
             handleSubmit(e)
           }
           loading={isLoading}
+          rightSection={
+            !!input ? (
+              <ActionIcon
+                variant="subtle"
+                radius="lg"
+                onClick={() => setInput("")}
+              >
+                <MdClear size="20" />
+              </ActionIcon>
+            ) : undefined
+          }
         />
         <div className="gap-3 flex-row-start">
           {isLoading && (
