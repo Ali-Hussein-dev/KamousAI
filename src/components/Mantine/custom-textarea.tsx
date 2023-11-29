@@ -2,7 +2,7 @@ import { useInputFocus } from "@/hooks/use-input-focus";
 import { isFunction } from "@/utils/helpers";
 import { Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
-
+import { useMediaQuery } from "@mantine/hooks";
 interface CustomTextareaProps extends TextareaProps {
   loading?: boolean;
   cb: (e: React.KeyboardEventHandler<Element>) => void;
@@ -21,7 +21,7 @@ export const CustomTextarea = ({
     }
   };
   const { inputRef } = useInputFocus<HTMLTextAreaElement>();
-
+  const isMobile = useMediaQuery("(max-width: 640px)");
   return (
     <Textarea
       unstyled
@@ -34,7 +34,7 @@ export const CustomTextarea = ({
         input:
           "font-medium placeholder:text-slate-500 !text-base tracking-wide bg-slate-700/50 focus:bg-slate-700/70 w-full focus:outline-none resize-none px-3 border-none rounded-lg py-4",
       }}
-      onKeyDown={loading && isFunction(cb) ? undefined : onKeyDown}
+      onKeyDown={loading || !isFunction(cb) || isMobile ? undefined : onKeyDown}
       {...rest}
     />
   );
