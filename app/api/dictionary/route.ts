@@ -47,8 +47,8 @@ interface Options extends PreferencesT {
 
 const getMessages = (messages: string, options: Options): Array<ChatCompletionMessageParam> => {
     const { wordEntryKey = "definition", mode = "mono", inputLanguage, outputLanguage } = options
-    const outputLang = mode == "bili" ? `* Generate response in the following language ${outputLanguage}` : `* Generate response in the following language ${inputLanguage}`
-
+    const outputLang = mode == "bili" ? `* Generate response in the following language code ${outputLanguage}` : `* Generate response in the following language code ${inputLanguage}`
+    console.log({ inputLanguage, outputLanguage });
     // const term = messages[0]?.content as string;
     const term = messages;
     const systemInstructions = {
