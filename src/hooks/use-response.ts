@@ -33,11 +33,6 @@ interface Store {
 
   resType?: ResType;
   history: { value: string }[];
-  translator: {
-    inputLanguage: string;
-    outputLanguage: string;
-  };
-  setTranslator: (settings: Partial<Omit<PreferencesT, "mode">>) => void;
   preferences: PreferencesT;
   setPreferences: (settings: Partial<PreferencesT>) => void;
   /**
@@ -85,11 +80,6 @@ export const useResponse = create<Store>()(
         inputLanguage: "en",
         outputLanguage: "de",
       },
-      translator: {
-        inputLanguage: "en",
-        outputLanguage: "de",
-      },
-      setTranslator: (langPair) => set((s) => ({ translator: { ...s.translator, ...langPair } })),
       history: [],
       setPreferences: (settings) =>
         set((s) => ({ preferences: { ...s.preferences, ...settings } })),
@@ -104,7 +94,9 @@ export const useResponse = create<Store>()(
         set((s) => {
           const isTermExist = (s.history || []).find((o) => o.value == value)
           if (!isTermExist) {
-            return { history: [...(s.history), { value }].slice(-10) };
+            const history = [...(s.history), { value }].splice(-2) as { value: string }[]
+            console.log("🚀->", history)
+            return { history };
           } else return {};
         }),
     }),

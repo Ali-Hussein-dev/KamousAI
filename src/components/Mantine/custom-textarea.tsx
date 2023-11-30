@@ -1,9 +1,8 @@
 import { useInputFocus } from "@/hooks/use-input-focus";
 import { isFunction } from "@/utils/helpers";
-import { ActionIcon, Textarea, type TextareaProps } from "@mantine/core";
+import { Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useMediaQuery } from "@mantine/hooks";
-import { MdClear } from "react-icons/md";
 interface CustomTextareaProps extends TextareaProps {
   loading?: boolean;
   cb: (e: React.KeyboardEventHandler<Element>) => void;
