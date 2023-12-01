@@ -18,6 +18,7 @@ const Monolingual = () => {
         data={languages}
         value={inputLanguage}
         onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
+        comboboxProps={{ withinPortal: false }}
       />
     </div>
   );
@@ -36,6 +37,7 @@ const Bilingual = () => {
           data={languages}
           value={inputLanguage}
           onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
+          comboboxProps={{ withinPortal: false }}
         />
         <ActionIcon
           onClick={() => {
@@ -56,6 +58,7 @@ const Bilingual = () => {
           data={languages}
           value={outputLanguage || "de"}
           onChange={(lang) => setSettings({ outputLanguage: lang || "de" })}
+          comboboxProps={{ withinPortal: false }}
         />
       </div>
     </div>
@@ -81,7 +84,6 @@ const SettingsDropdown = () => {
       width={350}
       position="bottom-start"
       closeOnItemClick={false}
-      closeOnClickOutside={false}
     >
       <Menu.Target>
         <div className="flex h-full w-full pl-1">
