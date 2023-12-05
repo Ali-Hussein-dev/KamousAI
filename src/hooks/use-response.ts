@@ -94,9 +94,7 @@ export const useResponse = create<Store>()(
         set((s) => {
           const isTermExist = (s.history || []).find((o) => o.value == value)
           if (!isTermExist) {
-            const history = [...(s.history), { value }].splice(-2) as { value: string }[]
-            console.log("🚀->", history)
-            return { history };
+            return { history: [...(s.history), { value }].slice(-15) };
           } else return {};
         }),
     }),
