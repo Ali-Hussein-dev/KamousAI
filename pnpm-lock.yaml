@@ -19,7 +19,7 @@ specifiers:
   '@types/react-dom': ^18.0.11
   '@typescript-eslint/eslint-plugin': ^5.57.1
   '@typescript-eslint/parser': ^5.57.1
-  ai: ^2.2.15
+  ai: ^2.2.27
   autoprefixer: ^10.4.14
   clsx: ^2.0.0
   eslint: ^8.37.0
@@ -62,7 +62,7 @@ dependencies:
   '@trpc/next': 10.18.0_whrowicpdkdshrx733bswkryme
   '@trpc/react-query': 10.18.0_7hyybzymwioxujgmsujz2opi5q
   '@trpc/server': 10.18.0
-  ai: 2.2.15_react@18.2.0
+  ai: 2.2.27_react@18.2.0
   clsx: 2.0.0
   eventsource-parser: 1.0.0
   langchain: 0.0.152
@@ -791,8 +791,8 @@ packages:
       humanize-ms: 1.2.1
     dev: false
 
-  /ai/2.2.15_react@18.2.0:
-    resolution: {integrity: sha512-pl3cWgb2aM6HQo/heX/oIH0TlXXI9hOyT2n6KokNPjLTfWiPFGZ6thXLEi80xaS0tvtAc30qJqwt8VtSsfLNLA==}
+  /ai/2.2.27_react@18.2.0:
+    resolution: {integrity: sha512-s/F1CfduvLVAnrWHKqwvJLBeGadXNb7D4fmYQv+YcTxUTmqKZYPlQ5wikxteeKmJ1QajTpPI0lz0/zIm/4a7vw==}
     engines: {node: '>=14.6'}
     peerDependencies:
       react: ^18.2.0
