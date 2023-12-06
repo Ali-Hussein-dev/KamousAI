@@ -23,7 +23,9 @@ export const useVoiceContext = ({ text }: { text: string }) => {
   });
   const { refetch, isFetching } = res;
   const play = async () => {
-    await refetch();
+    if (!audioSource.current) {
+      await refetch();
+    }
     const playsound = audioContext.current?.createBufferSource();
     playsound.buffer = audioSource.current;
     playsound.connect(audioContext.current.destination);
