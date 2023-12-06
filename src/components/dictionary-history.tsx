@@ -5,10 +5,10 @@ import { ActionIcon, Button } from "@mantine/core";
 import React from "react";
 import { TbHistory } from "react-icons/tb";
 import { WordEntryTabs } from "./response-card";
-import { Audio } from "./Audio";
+import { AudioCtxButton } from "./Audio";
 import { Markdown } from "./Markdown";
 import { MdOutlineClear } from "react-icons/md";
-import { useVoice } from "@/hooks/use-voice";
+import { useVoiceContext } from "@/hooks/use-voice-context";
 
 const Card = ({
   definition,
@@ -21,13 +21,7 @@ const Card = ({
   term: string;
   remove: () => void;
 }) => {
-  const {
-    playAudio,
-    audioURL,
-    audioRef,
-    isFetching: isLoadingAudio,
-  } = useVoice({ text: term });
-
+  const { play, isFetching } = useVoiceContext({ text: term });
   return (
     <div className="mb-3 rounded-xl bg-slate-800/40 px-3 py-2 pt-6">
       <div className="mb-2 flex-row-between">
@@ -35,12 +29,7 @@ const Card = ({
           <span className="block font-bold uppercase text-primary-600">
             {term}
           </span>
-          <Audio
-            isLoadingAudio={isLoadingAudio}
-            playAudio={playAudio}
-            audioURL={audioURL}
-            audioRef={audioRef}
-          />
+          <AudioCtxButton isLoadingAudio={isFetching} playAudio={play} />
         </div>
         <ActionIcon
           radius="lg"

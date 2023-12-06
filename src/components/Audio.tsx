@@ -40,3 +40,25 @@ export const Audio = ({
     </div>
   );
 };
+
+/**
+ * @description
+ * Audio button component without aduio tag
+ */
+export const AudioCtxButton = ({
+  isLoadingAudio,
+  playAudio,
+}: Omit<AudioProp, "audioURL" | "audioRef">) => {
+  return (
+    <ActionIcon
+      onClick={playAudio}
+      disabled={isLoadingAudio}
+      radius="md"
+      size="lg"
+      role="button"
+      loading={isLoadingAudio}
+    >
+      <HiSpeakerWave />
+    </ActionIcon>
+  );
+};

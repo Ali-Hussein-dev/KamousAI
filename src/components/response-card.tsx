@@ -9,8 +9,8 @@ import { useWordEntries } from "@/hooks/use-dictionary";
 import { useSearchParams } from "next/navigation";
 import { InitialView } from "./initial-view";
 import { Markdown } from "./Markdown";
-import { useVoice } from "@/hooks/use-voice";
-import { Audio } from "./Audio";
+import { AudioCtxButton } from "./Audio";
+import { useVoiceContext } from "@/hooks/use-voice-context";
 
 export const wordEntriesTabs: { label: string; wordEntryKey: WordEntryKey }[] =
   [
@@ -69,12 +69,7 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
   const searchParams = useSearchParams();
   const key = searchParams?.get("key") || "";
   const term = useHistoryStore((s) => s.lexicalEntries)[key]?.term || "";
-  const {
-    playAudio,
-    isFetching: isLoadingAudio,
-    audioURL,
-    audioRef,
-  } = useVoice({ text: term });
+  const { isFetching: isLoadingAudio, play } = useVoiceContext({ text: term });
   if (!definition && !isLoading) return <InitialView />;
   return (
     <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 pb-2 pl-4 pr-2 pt-6 text-slate-300">
@@ -86,12 +81,7 @@ export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
             <span className="block text-lg font-bold first-letter:capitalize">
               {term}
             </span>
-            <Audio
-              isLoadingAudio={isLoadingAudio}
-              playAudio={playAudio}
-              audioURL={audioURL}
-              audioRef={audioRef}
-            />
+            <AudioCtxButton isLoadingAudio={isLoadingAudio} playAudio={play} />
           </div>
           <Markdown>{definition}</Markdown>
           <WordEntryTabs term={term} id={key} />
