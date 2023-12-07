@@ -1,5 +1,4 @@
 "use client";
-import { capitalizeFirstLetter } from "@/utils/helpers";
 import { ActionIcon, Button, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
@@ -96,9 +95,9 @@ export const ReverseDictionary = () => {
             <div key={i} className="">
               <div className="flex justify-between gap-2">
                 <div className="">
-                  <span className="first-letter:uppercase">
-                    {capitalizeFirstLetter(arr[1]?.content || "")}
-                  </span>
+                  <p className="my-0 first-letter:uppercase">
+                    {arr[1]?.content || ""}
+                  </p>
                   <Text
                     styles={{
                       root: {
@@ -107,7 +106,9 @@ export const ReverseDictionary = () => {
                     }}
                     mb={4}
                   >
-                    {capitalizeFirstLetter(arr[0]?.content || "")}
+                    <p className="my-0 first-letter:uppercase">
+                      {arr[0]?.content || ""}
+                    </p>
                   </Text>
                 </div>
                 <CopyButton text={"msg.content"} />
