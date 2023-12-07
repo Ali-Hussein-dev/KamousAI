@@ -1,6 +1,5 @@
 "use client";
 import { Checkbox, Menu, ActionIcon, Button } from "@mantine/core";
-import { IoCopy } from "react-icons/io5";
 import { useChat } from "ai/react";
 import { TbChevronDown } from "react-icons/tb";
 import * as React from "react";
@@ -13,6 +12,7 @@ import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 import { CustomTones } from "@/components/custom-tones";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
+import { CopyButton } from "@/components/copy-button";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -167,15 +167,7 @@ export default function TextOptimizer() {
               className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 py-4 text-slate-200"
             >
               <Markdown>{msg.content}</Markdown>
-              <ActionIcon
-                onClick={() => {
-                  navigator.clipboard.writeText(msg.content);
-                }}
-                variant="light"
-                radius="md"
-              >
-                <IoCopy />
-              </ActionIcon>
+              <CopyButton text={msg.content} />
             </div>
           ))}
         {messages.length > 1 && (

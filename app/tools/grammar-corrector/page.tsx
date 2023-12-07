@@ -1,13 +1,13 @@
 "use client";
 import { ActionIcon, Button, Checkbox } from "@mantine/core";
 import { useChat } from "ai/react";
-import { IoCopy } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { Markdown } from "@/components/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
+import { CopyButton } from "@/components/copy-button";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -97,16 +97,7 @@ export default function GrammerCheckerPage() {
               key={i}
             >
               <Markdown>{msg.content}</Markdown>
-              <ActionIcon
-                radius="md"
-                type="button"
-                variant="light"
-                onClick={() => {
-                  navigator.clipboard.writeText(msg.content);
-                }}
-              >
-                <IoCopy />
-              </ActionIcon>
+              <CopyButton text={msg.content} />
             </div>
           ))}
         {messages.length > 0 && (

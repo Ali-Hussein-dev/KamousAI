@@ -7,6 +7,7 @@ import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
 import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
+import { CopyButton } from "./copy-button";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -92,18 +93,25 @@ export const ReverseDictionary = () => {
         {convertToShape(messages)
           .reverse()
           .map((arr, i) => (
-            <div key={i}>
-              {capitalizeFirstLetter(arr[1]?.content || "")}
-              <Text
-                styles={{
-                  root: {
-                    color: "var(--mantine-color-dark-5)",
-                  },
-                }}
-                mb={4}
-              >
-                {capitalizeFirstLetter(arr[0]?.content || "")}
-              </Text>
+            <div key={i} className="">
+              <div className="flex justify-between gap-2">
+                <div className="">
+                  <span className="first-letter:uppercase">
+                    {capitalizeFirstLetter(arr[1]?.content || "")}
+                  </span>
+                  <Text
+                    styles={{
+                      root: {
+                        color: "var(--mantine-color-dark-5)",
+                      },
+                    }}
+                    mb={4}
+                  >
+                    {capitalizeFirstLetter(arr[0]?.content || "")}
+                  </Text>
+                </div>
+                <CopyButton text={"msg.content"} />
+              </div>
               <div className="h-[0.4px] w-full bg-slate-600" />
             </div>
           ))}
