@@ -1,22 +1,12 @@
-import OpenAI from "openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { env } from "@/env.mjs";
+import { createChatStream } from "@/utils/openai";
 
 export const runtime = "edge";
-
-const prompt = "I will give you the meaning of a word and you will suggest all the words that mean the same. Don't repeat what I say, just the give the results without explanation.";
-const openai = new OpenAI({
-    apiKey: env.OPENAI_API_KEY,
-});
+const prompt = `
+I will give you the meaning of a word and you will suggest only commonly-used words that mean the same, maximum suggestions (4) Do not reiterate my words; simply provide the outcomes without elaboration. Include sentiment for each word using parenthises
+`
 
 export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
-    const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        stream: true,
-        messages: [{ role: "system", content: prompt }, ...messages],
-    });
-    const stream = OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+    return await createChatStream({ messages: [{ role: "system", content: prompt }, ...messages] });
 }

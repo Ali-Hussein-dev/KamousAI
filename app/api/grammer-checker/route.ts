@@ -1,6 +1,4 @@
-import OpenAI from "openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { env } from "@/env.mjs";
+import { createChatStream } from "@/utils/openai";
 
 export const runtime = "edge";
 
@@ -19,31 +17,17 @@ const makeInstructions = (withExplanation: boolean) => `
   Correct the grammar and spelling mistakes of the following text
 `
 
-const openai = new OpenAI({
-  apiKey: env.OPENAI_API_KEY,
-});
-
 export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
   const json = await req.json();
   const { messages, withExplanation } = json;
-  console.log(makeInstructions(withExplanation))
-  const response = await openai.chat.completions.create({
-    // model: "gpt-3.5-turbo",
-    model: "gpt-3.5-turbo-1106",
-    // model: "gpt-4-1106-preview",
-    stream: true,
+  return await createChatStream({
     messages: [
       {
         role: "system",
         content: makeInstructions(withExplanation),
       },
       messages.at(-1),
-    ],
-    temperature: 0.3
+    ], temperature: 0.3
   });
-  // Convert the response into a friendly text-stream
-  const stream = OpenAIStream(response);
-  // Respond with the stream
-  return new StreamingTextResponse(stream);
 }

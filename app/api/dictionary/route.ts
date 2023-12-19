@@ -1,14 +1,7 @@
-
-import OpenAI from "openai"
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { env } from "@/env.mjs";
 import { type ChatCompletionMessageParam } from "openai/resources/chat";
 import { type WordEntryKey } from "@/hooks/use-history-store";
 import { type PreferencesT } from "@/hooks/use-response";
-
-const openai = new OpenAI({
-    apiKey: env.OPENAI_API_KEY,
-});
+import { createChatStream } from "@/utils/openai";
 
 export const runtime = "edge";
 
@@ -29,7 +22,10 @@ const systemMessages = {
         "* Example must be short and real-world\n",
         "* if no context specified, use general context\n",
     ],
-    synonyms: ["Act as a dictionary. Follow the following rules strictly:\n", "Use table format with 3 columns (synonyms, context, tone)\n"],
+    synonyms: [
+        "Act as a dictionary. Follow the following rules strictly:\n",
+        "Use table format with 3 columns (synonyms, context, tone)\n",
+    ],
     antonyms: [
         "Act as a dictionary. Follow the following rules strictly:\n",
         "Use table format with 3 columns (antonyms, context, tone)\n",
@@ -39,16 +35,26 @@ const systemMessages = {
         "Bold idiom text\n",
         "Do not explain the idioms or provide related examples\n",
         `Reply with "No related idioms found" if there are no idioms\n`,
-    ]
+    ],
 };
 interface Options extends PreferencesT {
-    wordEntryKey: WordEntryKey
+    wordEntryKey: WordEntryKey;
 }
 
-const getMessages = (messages: string, options: Options): Array<ChatCompletionMessageParam> => {
-    const { wordEntryKey = "definition", mode = "mono", inputLanguage, outputLanguage } = options
-    const outputLang = mode == "bili" ? `* Generate response in the following language code ${outputLanguage}` : `* Generate response in the following language code ${inputLanguage}`
-    console.log({ inputLanguage, outputLanguage });
+const getMessages = (
+    messages: string,
+    options: Options
+): Array<ChatCompletionMessageParam> => {
+    const {
+        wordEntryKey = "definition",
+        mode = "mono",
+        inputLanguage,
+        outputLanguage,
+    } = options;
+    const outputLang =
+        mode == "bili"
+            ? `* Generate response in the following language code ${outputLanguage}`
+            : `* Generate response in the following language code ${inputLanguage}`;
     // const term = messages[0]?.content as string;
     const term = messages;
     const systemInstructions = {
@@ -117,19 +123,11 @@ const getMessages = (messages: string, options: Options): Array<ChatCompletionMe
     }
 };
 export const POST = async (req: Request) => {
-    const {
-        prompt,
-        wordEntryKey,
-        preferences
-    } = await req.json();
-    console.log("-----------------REQ", prompt, wordEntryKey);
-    const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        stream: true,
-        messages: getMessages(prompt, { wordEntryKey: wordEntryKey || "definition", ...preferences }),
+    const { prompt, wordEntryKey, preferences } = await req.json();
+    return await createChatStream({
+        messages: getMessages(prompt, {
+            wordEntryKey: wordEntryKey || "definition",
+            ...preferences,
+        }),
     });
-    // Convert the response into a friendly text-stream
-    const stream = OpenAIStream(response);
-    // Respond with the stream
-    return new StreamingTextResponse(stream);
-}
+};
