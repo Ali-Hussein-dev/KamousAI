@@ -1,10 +1,10 @@
 import { ActionIcon, Divider, Menu, SegmentedControl } from "@mantine/core";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
-import languages from "../content/languages.json";
+import languages from "../../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
-import { CustomSelect } from "./Mantine/custom-select";
-import { CustomMenu } from "./Mantine/custom-menu";
+import { CustomSelect } from "../Mantine/custom-select";
+import { CustomMenu } from "../Mantine/custom-menu";
 
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
@@ -70,7 +70,7 @@ function uppercaseFirstLetter(str: string) {
 }
 
 //======================================
-const SettingsDropdown = () => {
+const LanguagesMenu = () => {
   const { inputLanguage, outputLanguage, mode } = useResponse(
     (s) => s.preferences
   );
@@ -114,4 +114,4 @@ const SettingsDropdown = () => {
     </CustomMenu>
   );
 };
-export default SettingsDropdown;
+export default LanguagesMenu;

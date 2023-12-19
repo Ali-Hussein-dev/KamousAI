@@ -1,6 +1,6 @@
 "use client";
 import { ActionIcon, Badge, Loader, Autocomplete } from "@mantine/core";
-import SettingsDropdown from "./Dropdown";
+import LanguagesMenu from "./languages-menu";
 import { MdClear } from "react-icons/md";
 import clsx from "clsx";
 import { BsFillSendFill, BsStopCircle } from "react-icons/bs";
@@ -73,7 +73,7 @@ export const DictionarySearchbar = (props: Props) => {
                 <Loader color="white" size="sm" variant="dots" />
               </div>
             ) : (
-              <SettingsDropdown />
+              <LanguagesMenu />
             )}
           </div>
         }
@@ -125,4 +125,3 @@ export const DictionarySearchbar = (props: Props) => {
     </form>
   );
 };
-
