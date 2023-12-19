@@ -8,7 +8,7 @@ import { Loader, Tabs } from "@mantine/core";
 import { useWordEntries } from "@/hooks/use-dictionary";
 import { useSearchParams } from "next/navigation";
 import { InitialView } from "./initial-view";
-import { Markdown } from "./Markdown";
+import { Markdown } from "../Markdown";
 import { AudioCtxButton } from "./Audio";
 import { useVoiceContext } from "@/hooks/use-voice-context";
 
@@ -65,7 +65,10 @@ type LastResponseProps = {
   isLoading: boolean;
 };
 //---------------------------------------------------
-export const ResponseCard = ({ definition, isLoading }: LastResponseProps) => {
+export const DefinitionsCard = ({
+  definition,
+  isLoading,
+}: LastResponseProps) => {
   const searchParams = useSearchParams();
   const key = searchParams?.get("key") || "";
   const term = useHistoryStore((s) => s.lexicalEntries)[key]?.term || "";

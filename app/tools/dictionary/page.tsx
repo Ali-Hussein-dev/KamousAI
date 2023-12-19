@@ -8,7 +8,7 @@ import * as React from "react";
 
 const Searchbar = dynamic(
   () =>
-    import("../../../src/components/Searchbar").then(
+    import("../../../src/components/dictionary/Searchbar").then(
       (c) => c.DictionarySearchbar
     ),
   {
@@ -20,7 +20,9 @@ const Searchbar = dynamic(
 );
 const ResponseCard = dynamic(
   () =>
-    import("../../../src/components/response-card").then((c) => c.ResponseCard),
+    import("../../../src/components/dictionary/definitions-card").then(
+      (c) => c.DefinitionsCard
+    ),
   {
     ssr: false,
     loading: () => (
@@ -28,9 +30,9 @@ const ResponseCard = dynamic(
     ),
   }
 );
-const DictionaryHistory = dynamic(
+const History = dynamic(
   () =>
-    import("../../../src/components/dictionary-history").then(
+    import("../../../src/components/dictionary/History").then(
       (c) => c.DictionaryHistory
     ),
   {
@@ -55,7 +57,7 @@ export default function DictionaryPage() {
         isLoading={s.isLoading}
       />
       <ResponseCard definition={s.completion} isLoading={s.isLoading} />
-      <DictionaryHistory />
+      <History />
     </div>
   );
 }

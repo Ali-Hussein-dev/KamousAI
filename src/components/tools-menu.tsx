@@ -1,28 +1,28 @@
 "use client";
 import { Button, Menu } from "@mantine/core";
 import Link from "next/link";
-import { TbChevronDown } from "react-icons/tb";
-import { TbPencilMinus } from "react-icons/tb";
-import { PiBooksLight } from "react-icons/pi";
+import { usePathname } from "next/navigation";
+import { TbPencilMinus, TbChevronDown } from "react-icons/tb";
 import { GiSpellBook } from "react-icons/gi";
 import { GoGoal } from "react-icons/go";
-import { SiMicrosofttranslator } from "react-icons/si";
-import { usePathname } from "next/navigation";
 import { LuCheck } from "react-icons/lu";
 import { CustomMenu } from "./Mantine/custom-menu";
+import { AiOutlineSwap } from "react-icons/ai";
+import { BsTranslate } from "react-icons/bs";
+
 export const languagetoolsList = [
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
     status: "done",
-    icon: <TbPencilMinus />,
+    icon: <TbPencilMinus className="text-white" />,
     description: "Correct grammar and punctuation errors in text.",
   },
   {
     label: "KamousAI",
     href: "/tools/dictionary",
     status: "done",
-    icon: <PiBooksLight />,
+    icon: <GiSpellBook className="text-white" />,
     description:
       "An AI-based Dictionary for looking up the meanings and definitions of words.",
   },
@@ -30,14 +30,14 @@ export const languagetoolsList = [
     label: "Text Optimizer",
     href: "/tools/text-optimizer",
     status: "done",
-    icon: <GoGoal />,
+    icon: <GoGoal className="text-white" />,
     description: "Optimize and improve written text for clarity and style.",
   },
   {
     label: "Reverse Dictionary",
     href: "/tools/reverse-dictionary",
     status: "done",
-    icon: <GiSpellBook />,
+    icon: <AiOutlineSwap className="text-white" />,
     description:
       "Find words or idioms based on meanings or descriptions you give.",
   },
@@ -45,7 +45,7 @@ export const languagetoolsList = [
     label: "Long text translator",
     href: "/tools/translator",
     status: "done",
-    icon: <SiMicrosofttranslator />,
+    icon: <BsTranslate className="text-white" />,
     description: "Translate long text from one language to another.",
   },
 ];
@@ -66,7 +66,14 @@ export const ToolsMenu = () => {
             href={item.href}
             className="w-full no-underline"
           >
-            <Menu.Item key={item.label} leftSection={item.icon}>
+            <Menu.Item
+              key={item.label}
+              leftSection={
+                <span className="center h-7 w-7 rounded-lg bg-primary-500">
+                  {item.icon}
+                </span>
+              }
+            >
               <div className="w-full flex-row-between">
                 <span>{item.label}</span>
                 {pathname == item.href && (

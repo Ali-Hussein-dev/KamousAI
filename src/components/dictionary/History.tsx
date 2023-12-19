@@ -4,9 +4,9 @@ import { useHistoryStore } from "@/hooks/use-history-store";
 import { ActionIcon, Button } from "@mantine/core";
 import React from "react";
 import { TbHistory } from "react-icons/tb";
-import { WordEntryTabs } from "./response-card";
+import { WordEntryTabs } from "./definitions-card";
 import { AudioCtxButton } from "./Audio";
-import { Markdown } from "./Markdown";
+import { Markdown } from "../Markdown";
 import { MdOutlineClear } from "react-icons/md";
 import { useVoiceContext } from "@/hooks/use-voice-context";
 
