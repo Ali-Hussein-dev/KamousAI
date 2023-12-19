@@ -1,28 +1,28 @@
 "use client";
 import { Button, Menu } from "@mantine/core";
 import Link from "next/link";
-import { TbChevronDown } from "react-icons/tb";
-import { TbPencilMinus } from "react-icons/tb";
-import { PiBooksLight } from "react-icons/pi";
+import { usePathname } from "next/navigation";
+import { TbPencilMinus, TbChevronDown } from "react-icons/tb";
 import { GiSpellBook } from "react-icons/gi";
 import { GoGoal } from "react-icons/go";
-import { SiMicrosofttranslator } from "react-icons/si";
-import { usePathname } from "next/navigation";
 import { LuCheck } from "react-icons/lu";
 import { CustomMenu } from "./Mantine/custom-menu";
+import { AiOutlineSwap } from "react-icons/ai";
+import { BsTranslate } from "react-icons/bs";
+
 export const languagetoolsList = [
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
     status: "done",
-    icon: <TbPencilMinus />,
+    icon: <TbPencilMinus className="text-primary-400" size="17" />,
     description: "Correct grammar and punctuation errors in text.",
   },
   {
     label: "KamousAI",
     href: "/tools/dictionary",
     status: "done",
-    icon: <PiBooksLight />,
+    icon: <GiSpellBook className="text-primary-400" size="17" />,
     description:
       "An AI-based Dictionary for looking up the meanings and definitions of words.",
   },
@@ -30,14 +30,14 @@ export const languagetoolsList = [
     label: "Text Optimizer",
     href: "/tools/text-optimizer",
     status: "done",
-    icon: <GoGoal />,
+    icon: <GoGoal className="text-primary-400" size="17" />,
     description: "Optimize and improve written text for clarity and style.",
   },
   {
     label: "Reverse Dictionary",
     href: "/tools/reverse-dictionary",
     status: "done",
-    icon: <GiSpellBook />,
+    icon: <AiOutlineSwap className="text-primary-400" size="17" />,
     description:
       "Find words or idioms based on meanings or descriptions you give.",
   },
@@ -45,7 +45,7 @@ export const languagetoolsList = [
     label: "Long text translator",
     href: "/tools/translator",
     status: "done",
-    icon: <SiMicrosofttranslator />,
+    icon: <BsTranslate className="text-primary-400" size="17" />,
     description: "Translate long text from one language to another.",
   },
 ];
