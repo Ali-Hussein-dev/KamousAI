@@ -1,3 +1,5 @@
+import { useResponse } from "@/hooks";
+import { textToSpeechLanguagesElevenlabs } from "@/utils/eleven-labs";
 import { ActionIcon, Loader } from "@mantine/core";
 import { HiSpeakerWave } from "react-icons/hi2";
 type AudioProp = {
@@ -49,7 +51,8 @@ export const AudioCtxButton = ({
   isLoadingAudio,
   playAudio,
 }: Omit<AudioProp, "audioURL" | "audioRef">) => {
-  return (
+  const inputLanguage = useResponse((s) => s.preferences.inputLanguage);
+  return textToSpeechLanguagesElevenlabs.includes(inputLanguage) ? (
     <ActionIcon
       onClick={playAudio}
       disabled={isLoadingAudio}
@@ -60,5 +63,5 @@ export const AudioCtxButton = ({
     >
       <HiSpeakerWave />
     </ActionIcon>
-  );
+  ) : null;
 };
