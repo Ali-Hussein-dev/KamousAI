@@ -56,7 +56,7 @@ export default function GrammerCheckerPage() {
         <div className="w-full flex-row-between">
           <Checkbox
             value={""}
-            label="With explanation"
+            label="With explanation (beta)"
             checked={withExplanation}
             onChange={() => setWithExplanation(!withExplanation)}
           />
