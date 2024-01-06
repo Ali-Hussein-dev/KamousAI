@@ -1,3 +1,4 @@
+import { type Message } from "ai";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 const tones = [
@@ -38,12 +39,16 @@ type State = {
   update: (tone: Tone) => void;
   remove: (id: string) => void;
   add: (tone: Tone) => void;
+  history: Message[];
+  setHistory: (history: Message[]) => void;
 };
 
 export const useTextOptimizer = create<State>()(
   persist(
     (set) => ({
       tones,
+      history: [],
+      setHistory: (history) => set((s) => ({ ...s, history })),
       update: (updatedTone) =>
         set((s) => ({
           ...s,
