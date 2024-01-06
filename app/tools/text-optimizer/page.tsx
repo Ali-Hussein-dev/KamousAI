@@ -83,6 +83,8 @@ const TextToneOptionsMenu = ({
 };
 
 export default function TextOptimizer() {
+  const history = useTextOptimizer((s) => s.history);
+  const setHistory = useTextOptimizer((s) => s.setHistory);
   const {
     messages,
     input,
@@ -99,9 +101,13 @@ export default function TextOptimizer() {
         content: makeInstruction("standard"),
         id: "instruction-4040",
       },
+      ...history,
     ],
     onResponse: () => {
       setInput(input);
+    },
+    onFinish: (d) => {
+      setHistory([...history.slice(-5), d]);
     },
   });
   return (
