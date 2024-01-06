@@ -107,7 +107,7 @@ export default function TextOptimizer() {
       setInput(input);
     },
     onFinish: (d) => {
-      setHistory([d, ...history]);
+      setHistory([...history.slice(-5), d]);
     },
   });
   return (
