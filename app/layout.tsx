@@ -1,6 +1,6 @@
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript } from "@mantine/core";
-import { Layout } from "@/components";
+import { AppLayout } from "@/components/app-layout";
 import { Nunito } from "next/font/google";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
@@ -79,9 +79,9 @@ export default function RootLayout({
       </head>
       <body className={fontFamily.className}>
         <NextTopLoader color="#6672b0" showSpinner={false} speed={300} />
-        <Layout>
+        <AppLayout>
           <Providers>{children}</Providers>
-        </Layout>
+        </AppLayout>
       </body>
     </html>
   );

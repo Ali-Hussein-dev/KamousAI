@@ -5,7 +5,7 @@ import * as React from "react";
 import { theme } from "../../theme";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const AppLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <MantineProvider defaultColorScheme="dark" theme={theme}>
