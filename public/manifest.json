@@ -81,6 +81,28 @@
             "navigate-existing"
         ]
     },
-    "screenshots": [],
+    "screenshots": [
+        {
+            "src": "/screenshots/1.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        },
+        {
+            "src": "/screenshots/2.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        },
+        {
+            "src": "/screenshots/3.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        }
+    ],
     "handle_links": "auto"
 }
