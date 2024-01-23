@@ -58,9 +58,6 @@
     "display": "standalone",
     "orientation": "portrait",
     "categories": [
-        "politics",
-        "news",
-        "lifestyle",
         "education"
     ],
     "prefer_related_applications": false,
@@ -72,6 +69,18 @@
         {
             "name": "KamousAI",
             "url": "/tools/dictionary"
+        },
+        {
+            "name": "Reverse Dictionary",
+            "url": "/tools/reverse-dictionary"
+        },
+        {
+            "name": "Grammar Corrector",
+            "url": "/tools/grammar-corrector"
+        },
+        {
+            "name": "Long text translator",
+            "url": "/tools/translator"
         }
     ],
     "dir": "auto",
@@ -104,5 +113,7 @@
             "platform": "ios"
         }
     ],
-    "handle_links": "auto"
+    "handle_links": "auto",
+    "lang": "en",
+    "scope": "/"
 }
