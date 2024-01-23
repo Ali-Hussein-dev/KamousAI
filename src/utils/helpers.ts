@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 // Writen by: Chatpgt
 export function capitalizeFirstLetter(inputString: string): string {
     if (inputString.length === 0) {
@@ -16,4 +19,11 @@ export function capitalizeFirstLetter(inputString: string): string {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isFunction(functionToCheck: any): boolean {
     return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+}
+
+
+
+
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs))
 }

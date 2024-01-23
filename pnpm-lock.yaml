@@ -45,6 +45,7 @@ specifiers:
   remark-gfm: ^3.0.1
   superjson: 1.12.2
   tailwind-custom-utilities: ^1.0.3
+  tailwind-merge: ^2.2.1
   tailwindcss: ^3.3.3
   typescript: ^5.0.3
   typewriter-effect: ^2.20.1
@@ -59,7 +60,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   '@tanstack/react-query': 5.12.2_react@18.2.0
   '@trpc/client': 10.18.0_@trpc+server@10.18.0
-  '@trpc/next': 10.18.0_whrowicpdkdshrx733bswkryme
+  '@trpc/next': 10.18.0_v7ekhgifnahvjradq5ha2rgxe4
   '@trpc/react-query': 10.18.0_7hyybzymwioxujgmsujz2opi5q
   '@trpc/server': 10.18.0
   ai: 2.2.27_react@18.2.0
@@ -67,9 +68,9 @@ dependencies:
   eventsource-parser: 1.0.0
   langchain: 0.0.152
   next: 14.0.2_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.22.1_jkbxmum2k66uczeeyfa2ahwyou
-  nextjs-google-analytics: 2.3.3_next@14.0.2+react@18.2.0
-  nextjs-toploader: 1.6.4_jkbxmum2k66uczeeyfa2ahwyou
+  next-auth: 4.22.1_biqbaboplfbrettd7655fr4n2y
+  nextjs-google-analytics: 2.3.3_react@18.2.0
+  nextjs-toploader: 1.6.4_biqbaboplfbrettd7655fr4n2y
   openai: 4.20.1
   prisma: 5.1.1
   react: 18.2.0
@@ -101,6 +102,7 @@ devDependencies:
   prettier: 2.8.7
   prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.7
   tailwind-custom-utilities: 1.0.3
+  tailwind-merge: 2.2.1
   tailwindcss: 3.3.3
   typescript: 5.0.3
 
@@ -130,6 +132,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@babel/runtime/7.23.8:
+    resolution: {integrity: sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
 
   /@eslint-community/eslint-utils/4.4.0_eslint@8.37.0:
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -292,7 +301,7 @@ packages:
       next-auth: ^4
     dependencies:
       '@prisma/client': 4.13.0_prisma@5.1.1
-      next-auth: 4.22.1_jkbxmum2k66uczeeyfa2ahwyou
+      next-auth: 4.22.1_biqbaboplfbrettd7655fr4n2y
     dev: false
 
   /@next/env/14.0.2:
@@ -499,7 +508,7 @@ packages:
       '@trpc/server': 10.18.0
     dev: false
 
-  /@trpc/next/10.18.0_whrowicpdkdshrx733bswkryme:
+  /@trpc/next/10.18.0_v7ekhgifnahvjradq5ha2rgxe4:
     resolution: {integrity: sha512-GftAMy3K9AEATmsVTdc5zhCTLzSYpZ9bene7+sTlCF7QX/AMxIsd0ZUFrRnF6yg3jnxN+SvdNcF9IXeETXtGUw==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -514,7 +523,6 @@ packages:
       '@trpc/client': 10.18.0_@trpc+server@10.18.0
       '@trpc/react-query': 10.18.0_7hyybzymwioxujgmsujz2opi5q
       '@trpc/server': 10.18.0
-      next: 14.0.2_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-ssr-prepass: 1.5.0_react@18.2.0
@@ -1701,7 +1709,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.8
       aria-query: 5.1.3
       array-includes: 3.1.6
       array.prototype.flatmap: 1.3.1
@@ -3390,7 +3398,7 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-auth/4.22.1_jkbxmum2k66uczeeyfa2ahwyou:
+  /next-auth/4.22.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
     peerDependencies:
       next: ^12.2.5 || ^13
@@ -3405,7 +3413,6 @@ packages:
       '@panva/hkdf': 1.0.4
       cookie: 0.5.0
       jose: 4.14.1
-      next: 14.0.2_biqbaboplfbrettd7655fr4n2y
       oauth: 0.9.15
       openid-client: 5.4.1
       preact: 10.13.2
@@ -3454,19 +3461,18 @@ packages:
       - babel-plugin-macros
     dev: false
 
-  /nextjs-google-analytics/2.3.3_next@14.0.2+react@18.2.0:
+  /nextjs-google-analytics/2.3.3_react@18.2.0:
     resolution: {integrity: sha512-Y6sI6A7wt5dji8hYBnVkOh9LTyImSLFZXx3FpyQgVW7W4b4qEFHjH2u3fhDJsrRZeLlUGM8/RuHD/mhHc2Axfg==}
     peerDependencies:
       next: '>=11.0.0'
       react: '>=17.0.0'
     dependencies:
-      next: 14.0.2_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: false
 
-  /nextjs-toploader/1.6.4_jkbxmum2k66uczeeyfa2ahwyou:
+  /nextjs-toploader/1.6.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-KYLQ+0MvGdFk9JwOQfRtaYBAsyuX67Ca5QTa51RGNO4gQx64KLSE+ryHjUQ5LcDczHotp0l32GgksQW9vucUkw==}
     peerDependencies:
       next: '>= 6.0.0'
@@ -3474,7 +3480,6 @@ packages:
       react-dom: '>= 16.0.0'
     dependencies:
       '@types/nprogress': 0.2.3
-      next: 14.0.2_biqbaboplfbrettd7655fr4n2y
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 18.2.0
@@ -4181,7 +4186,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.8
       react: 18.2.0
       use-composed-ref: 1.3.0_react@18.2.0
       use-latest: 1.2.1_pofolu2o2erjq4lhyzl3hqovzq
@@ -4220,6 +4225,10 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
+  /regenerator-runtime/0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
@@ -4636,6 +4645,12 @@ packages:
 
   /tailwind-custom-utilities/1.0.3:
     resolution: {integrity: sha512-efEyvyT6azTwS4/D4cd2zAwDJ6JoyCtN7wqvXqayp4Fv9l9ofqpK4hm3E2hhadfm1C4Em602ZZ8fUWKrwNUq9w==}
+    dev: true
+
+  /tailwind-merge/2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
+    dependencies:
+      '@babel/runtime': 7.23.8
     dev: true
 
   /tailwindcss/3.3.3:

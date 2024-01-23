@@ -1,12 +1,10 @@
-"use client";
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript } from "@mantine/core";
 import { Layout } from "@/components";
 import { Nunito } from "next/font/google";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
-import { GoogleAnalytics } from "nextjs-google-analytics";
-import { Providers } from "./Providers";
+import { Providers } from "@/context/Providers";
 import NextTopLoader from "nextjs-toploader";
 
 const fontFamily = Nunito({
@@ -31,7 +29,6 @@ export default function RootLayout({
         <Layout>
           <Providers>{children}</Providers>
         </Layout>
-        <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       </body>
     </html>
   );
