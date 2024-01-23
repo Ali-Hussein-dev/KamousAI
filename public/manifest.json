@@ -1,0 +1,108 @@
+{
+    "name": "KamousAI",
+    "short_name": "KamousAI",
+    "description": "Language Learning Tools",
+    "icons": [
+        {
+            "src": "/icons/icon-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "theme_color": "#FFFFFF",
+    "background_color": "#5c68ac",
+    "start_url": "/",
+    "id": "/",
+    "display_override": "fullscreen",
+    "display": "standalone",
+    "orientation": "portrait",
+    "categories": [
+        "politics",
+        "news",
+        "lifestyle",
+        "education"
+    ],
+    "prefer_related_applications": false,
+    "shortcuts": [
+        {
+            "name": "Text Optimizer",
+            "url": "/tools/text-optimizer"
+        },
+        {
+            "name": "KamousAI",
+            "url": "/tools/dictionary"
+        }
+    ],
+    "dir": "auto",
+    "iarc_rating_id": "13",
+    "launch_handler": {
+        "client_mode": [
+            "navigate-existing"
+        ]
+    },
+    "screenshots": [
+        {
+            "src": "/screenshots/1.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        },
+        {
+            "src": "/screenshots/2.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        },
+        {
+            "src": "/screenshots/3.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "platform": "ios"
+        }
+    ],
+    "handle_links": "auto"
+}

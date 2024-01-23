@@ -36,7 +36,7 @@ export const Header = () => {
         header: "!h-12",
       }}
     >
-      <div className="mx-auto w-full max-w-[1520px] flex-row-start">
+      <div className="mx-auto w-full max-w-[1520px] flex-row-start md:px-4">
         <Anchor c="white" href="/">
           <Image src="/logo.svg" width={100} height={40} alt="logo" />
         </Anchor>
