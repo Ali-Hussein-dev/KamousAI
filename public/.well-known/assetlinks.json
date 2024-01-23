@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.noorai.kamous.twa",
+        "sha256_cert_fingerprints": ["40:55:3F:F9:96:79:FE:E7:99:AE:2A:7B:AA:19:34:A4:7C:4D:D0:41:21:F7:15:28:DC:D5:3A:0B:FD:59:F7:4E"]
+      }
+    }]
