@@ -76,6 +76,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
+        <meta name="theme-color" content="#334155" />
       </head>
       <body className={fontFamily.className}>
         <NextTopLoader color="#6672b0" showSpinner={false} speed={300} />
