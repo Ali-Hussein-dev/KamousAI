@@ -54,7 +54,9 @@
     "background_color": "#5c68ac",
     "start_url": "/",
     "id": "/",
-    "display_override": "fullscreen",
+    "display_override": [
+        "fullscreen"
+    ],
     "display": "standalone",
     "orientation": "portrait",
     "categories": [
