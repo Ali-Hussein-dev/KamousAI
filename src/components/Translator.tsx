@@ -54,9 +54,9 @@ const Translator = () => {
     <form className=" w-full space-y-4" onSubmit={handleSubmit}>
       <div className="mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg ">
         {/* // DIRECT WRAPPER */}
-        <div className="mb-2 flex flex-wrap border-0 border-b border-solid border-slate-500 md:flex-nowrap ">
+        <div className="mb-2 flex flex-wrap items-start border-0 border-b border-solid border-slate-500 pb-2 md:flex-nowrap">
           {/* // INPUT language pane */}
-          <div className="w-full gap-1 flex-col-start">
+          <div className="w-full gap-1 pb-2 flex-col-start">
             <SelectLanguage
               value={tr.input.value}
               setValue={(value: string) => {
@@ -73,7 +73,7 @@ const Translator = () => {
                 value={input}
                 onChange={handleInputChange}
                 minRows={matches ? 6 : 14}
-                maxRows={matches ? 8 : 14}
+                // maxRows={matches ? 8 : 14}
                 autosize
                 w="100%"
                 placeholder="Enter text to translate"
@@ -102,7 +102,7 @@ const Translator = () => {
                 }}
               />
             </div>
-            <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-300 ">
+            <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-100 ">
               {completion}
             </div>
           </div>
