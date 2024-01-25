@@ -11,7 +11,7 @@ export default function LayoutG({ children }: { children: React.ReactNode }) {
       <title>{title}</title>
       <section>
         <div className="mx-auto mb-6 w-full max-w-3xl border-b border-solid border-transparent border-b-slate-600 pb-2 flex-row-between">
-          <h2 className="mb-0 text-lg font-extrabold capitalize text-slate-300/70">
+          <h2 className="mb-0 text-lg font-extrabold capitalize text-slate-300">
             {title}
           </h2>
           <ToolsMenu />
