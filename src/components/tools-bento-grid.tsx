@@ -24,10 +24,10 @@ export const ToolsBentoTools = () => {
           <div className="h-full rounded-2xl bg-gradient-radial from-slate-800/80 to-slate-800 p-4 pb-2 pt-6 duration-200">
             <div className="h-full flex-col-end">
               <div className="mx-auto ">
-                <h3 className="mb-0 text-center text-2xl font-black tracking-wide text-primary-200/90">
+                <h3 className="text-gradient mb-0 text-center text-2xl font-black tracking-wide">
                   {label}
                 </h3>
-                <p className="mt-[2px] text-center text-lg text-slate-400">
+                <p className="mt-[2px] text-center text-lg text-slate-300">
                   {description}
                 </p>
               </div>

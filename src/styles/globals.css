@@ -6,3 +6,7 @@
 display: grid;
     place-items: center;
 }
+
+.text-gradient {
+    @apply bg-clip-text bg-gradient-to-tr from-primary-600 via-primary-500 to-violet-400 text-transparent
+}
