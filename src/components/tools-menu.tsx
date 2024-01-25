@@ -19,7 +19,7 @@ export const languagetoolsList = [
     description: "Correct grammar and punctuation errors in text.",
   },
   {
-    label: "KamousAI",
+    label: "AI Dictionary",
     href: "/tools/dictionary",
     status: "done",
     icon: <GiSpellBook className="text-white" />,
@@ -27,7 +27,7 @@ export const languagetoolsList = [
       "An AI-based Dictionary for looking up the meanings and definitions of words.",
   },
   {
-    label: "Text Optimizer",
+    label: "Paraphraser",
     href: "/tools/text-optimizer",
     status: "done",
     icon: <GoGoal className="text-white" />,
@@ -42,7 +42,7 @@ export const languagetoolsList = [
       "Find words or idioms based on meanings or descriptions you give.",
   },
   {
-    label: "Long text translator",
+    label: "Translator",
     href: "/tools/translator",
     status: "done",
     icon: <BsTranslate className="text-white" />,
