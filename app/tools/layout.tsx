@@ -1,5 +1,5 @@
 "use client";
-import { languagetoolsList, ToolsBar } from "@/components";
+import { toolsLinks, ToolsBar } from "@/components";
 import { capitalizeFirstLetter, cn } from "@/utils/helpers";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { MantineProvider, AppShell, Burger } from "@mantine/core";
@@ -71,7 +71,7 @@ export default function ToolsLayout({
               <Image src="/logo.svg" fill alt="logo" />
             </div> */}
             <div className="h-full space-y-2 border-0 border-r border-solid border-slate-500 pr-4 pt-1">
-              {languagetoolsList.map((item) => (
+              {toolsLinks.map((item) => (
                 <Link
                   href={item.href}
                   key={item.label}

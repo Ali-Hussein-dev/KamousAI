@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 import { AiOutlineSwap } from "react-icons/ai";
-import { BsTranslate } from "react-icons/bs";
-import { RxFileText } from "react-icons/rx";
+import { BsJournalText, BsTranslate } from "react-icons/bs";
 import { TbPencilMinus } from "react-icons/tb";
 import { GiSpellBook } from "react-icons/gi";
 import { cn } from "@/utils/helpers";
+import { MdOutlineShortText } from "react-icons/md";
 
 const languageTools = [
   {
@@ -37,13 +37,13 @@ const languageTools = [
   {
     label: "Paraphraser",
     href: "/tools/text-optimizer",
-    icon: <RxFileText className="text-white" />,
+    icon: <BsJournalText className="text-white" />,
     description: "Optimize and improve written text for clarity and style.",
   },
   {
     label: "Summarizer",
     href: "/tools/summarizer",
-    icon: <RxFileText className="text-white" />,
+    icon: <MdOutlineShortText className="text-white" />,
     description: "Summarize long text into a short summary.",
     isNew: true,
   },
