@@ -2,8 +2,9 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 // Writen by: Chatpgt
-export function capitalizeFirstLetter(inputString: string): string {
+export function capitalizeFirstLetter(inputString = ""): string {
     if (inputString.length === 0) {
+        console.warn('capitalizeFirstLetter: Empty string passed in', inputString)
         return inputString; // Return the original string if it's empty
     }
 

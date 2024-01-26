@@ -1,5 +1,5 @@
 "use client";
-import { languagetoolsList, ToolsBar } from "@/components";
+import { toolsLinks, ToolsBar } from "@/components";
 import { capitalizeFirstLetter, cn } from "@/utils/helpers";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { MantineProvider, AppShell, Burger } from "@mantine/core";
@@ -15,11 +15,21 @@ export default function ToolsLayout({
   children: React.ReactNode;
 }) {
   const segment = useSelectedLayoutSegment();
-  const title = capitalizeFirstLetter(segment?.replaceAll("-", " ") as string);
   const [mobileOpened] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const pathname = usePathname();
-
+  const title = capitalizeFirstLetter(
+    (segment || "TOOLS").replaceAll("-", " ") as string
+  );
+  if (pathname == "/tools")
+    return (
+      <>
+        <title>{title}</title>
+        <MantineProvider defaultColorScheme="dark" theme={theme}>
+          {children}
+        </MantineProvider>
+      </>
+    );
   return (
     <>
       <title>{title}</title>
@@ -61,7 +71,7 @@ export default function ToolsLayout({
               <Image src="/logo.svg" fill alt="logo" />
             </div> */}
             <div className="h-full space-y-2 border-0 border-r border-solid border-slate-500 pr-4 pt-1">
-              {languagetoolsList.map((item) => (
+              {toolsLinks.map((item) => (
                 <Link
                   href={item.href}
                   key={item.label}
