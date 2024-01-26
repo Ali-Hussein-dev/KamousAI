@@ -15,11 +15,21 @@ export default function ToolsLayout({
   children: React.ReactNode;
 }) {
   const segment = useSelectedLayoutSegment();
-  const title = capitalizeFirstLetter(segment?.replaceAll("-", " ") as string);
   const [mobileOpened] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const pathname = usePathname();
-
+  const title = capitalizeFirstLetter(
+    (segment || "TOOLS").replaceAll("-", " ") as string
+  );
+  if (pathname == "/tools")
+    return (
+      <>
+        <title>{title}</title>
+        <MantineProvider defaultColorScheme="dark" theme={theme}>
+          {children}
+        </MantineProvider>
+      </>
+    );
   return (
     <>
       <title>{title}</title>
