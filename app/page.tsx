@@ -7,8 +7,8 @@ const Home: NextPage = () => {
   return (
     <AppLayout>
       <div className="mx-auto h-full w-full max-w-4xl pb-3 pt-5">
-        <div className="mx-auto space-y-5">
-          <div className="">
+        <div className="mx-auto space-y-12">
+          <div className="mb-12">
             <h1 className="mb-2 text-center text-2xl font-black capitalize text-primary-100 md:text-4xl">
               Language Learning Tools
             </h1>
