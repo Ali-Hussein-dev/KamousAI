@@ -30,7 +30,7 @@ const SummarizerPage = () => {
         <DynamicCustomTextarea
           value={input}
           onChange={handleInputChange}
-          placeholder="Enter the meaning here"
+          placeholder="Enter your text to summarize"
           cb={(e) =>
             // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
             handleSubmit(e)
