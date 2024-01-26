@@ -16,7 +16,7 @@ export default function ToolsLayout({
 }) {
   const segment = useSelectedLayoutSegment();
   const title = capitalizeFirstLetter(segment?.replaceAll("-", " ") as string);
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [mobileOpened] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const pathname = usePathname();
 
@@ -48,7 +48,9 @@ export default function ToolsLayout({
                   size="sm"
                 />
                 <div className="relative aspect-video h-12 ">
-                  <Image src="/logo.svg" fill alt="logo" />
+                  <Link href="/">
+                    <Image src="/logo.svg" fill alt="logo" />
+                  </Link>
                 </div>
               </div>
             </div>
