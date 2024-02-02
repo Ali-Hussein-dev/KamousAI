@@ -1,3 +1,4 @@
+import { CreatePrompt } from "@/utils/prompt-builder";
 import { createChatStream } from "@/utils/openai";
 
 export const runtime = "edge";
@@ -11,7 +12,7 @@ export const POST = async (req: Request) => {
     return await createChatStream({
         messages: [{
             role: "system",
-            content: `Act as translator, translate from ${inputLanguage} to ${outputLanguage}`,
+            content: CreatePrompt.translate(inputLanguage, outputLanguage)
         }, { role: "user", content: prompt }]
     });
 }
