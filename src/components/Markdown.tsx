@@ -5,7 +5,7 @@ export const Markdown = ({ children }: { children: string }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-      className="prose mb-2 max-w-full tracking-wide prose-p:mt-2 prose-strong:font-extrabold prose-thead:bg-slate-400/80"
+      className="prose prose-slate mb-2 max-w-full tracking-wide prose-p:mt-2 prose-strong:font-extrabold prose-th:py-1 prose-th:uppercase prose-th:text-teal-400"
     >
       {children}
     </ReactMarkdown>
