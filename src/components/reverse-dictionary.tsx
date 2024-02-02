@@ -7,6 +7,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "./copy-button";
+import { Markdown } from "./Markdown";
 
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
@@ -95,20 +96,20 @@ export const ReverseDictionary = () => {
             <div key={i} className="">
               <div className="flex justify-between gap-2">
                 <div className="">
-                  <p className="my-0 first-letter:uppercase">
+                  {/* <p className="my-0 first-letter:uppercase">
                     {arr[1]?.content || ""}
-                  </p>
+                  </p> */}
+                  <Markdown>{arr[1]?.content || ""}</Markdown>
                   <Text
                     styles={{
                       root: {
                         color: "var(--mantine-color-dark-5)",
                       },
                     }}
+                    className="first-letter:uppercase"
                     mb={4}
                   >
-                    <p className="my-0 first-letter:uppercase">
-                      {arr[0]?.content || ""}
-                    </p>
+                    {arr[0]?.content || ""}
                   </Text>
                 </div>
                 <CopyButton text={"msg.content"} />
