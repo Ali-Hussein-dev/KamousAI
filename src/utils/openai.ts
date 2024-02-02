@@ -16,7 +16,7 @@ export async function getOpenaiAudio({ input }: { input: string }) {
 
 export const createChatStream = async (configs: Partial<ChatCompletionCreateParamsBase>) => {
     const customconfigs: ChatCompletionCreateParamsBase = {
-        model: "gpt-3.5-turbo-1106",
+        model: "gpt-3.5-turbo-0125",
         stream: true,
         messages: [],
         ...configs,

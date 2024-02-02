@@ -2,14 +2,15 @@
 import { CopyButton } from "@/components/copy-button";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { Markdown } from "@/components/Markdown";
-import { ActionIcon, Button } from "@mantine/core";
+import { ActionIcon, Button, SegmentedControl } from "@mantine/core";
 import { useChat } from "ai/react";
 import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
-
+import * as React from "react";
 //======================================
 const SummarizerPage = () => {
+  const [value, setValue] = React.useState("paragraph");
   const {
     messages,
     input,
@@ -23,6 +24,7 @@ const SummarizerPage = () => {
     onResponse: () => {
       setInput(input);
     },
+    body: { mode: value },
   });
   return (
     <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
@@ -48,30 +50,40 @@ const SummarizerPage = () => {
             ) : undefined
           }
         />
-        <div className="gap-3 flex-row-start">
-          {isLoading && (
-            <ActionIcon
-              type="button"
-              onClick={stop}
+        <div className="w-full gap-3 flex-row-between ">
+          <SegmentedControl
+            value={value}
+            onChange={setValue}
+            data={[
+              { label: "Paragraph", value: "paragraph" },
+              { label: "Bullet points", value: "bullet points" },
+            ]}
+            color="#424e88"
+          />
+          <div className="gap-3 flex-row-end">
+            {isLoading && (
+              <ActionIcon
+                type="button"
+                onClick={stop}
+                radius="lg"
+                size="lg"
+                variant="light"
+              >
+                <IoStopCircleOutline size="17" />
+              </ActionIcon>
+            )}
+            <Button
+              loading={isLoading}
+              type="submit"
               radius="lg"
-              size="lg"
-              variant="light"
+              // w="7rem"
+              disabled={!input}
             >
-              <IoStopCircleOutline size="17" />
-            </ActionIcon>
-          )}
-          <Button
-            loading={isLoading}
-            type="submit"
-            radius="lg"
-            // w="7rem"
-            disabled={!input}
-          >
-            Summarize
-          </Button>
+              Summarize
+            </Button>
+          </div>
         </div>
       </form>
-
       <div
         hidden={messages.length < 1}
         className="space-y-2 rounded-lg bg-slate-800 pt-5 text-slate-300"
@@ -80,14 +92,12 @@ const SummarizerPage = () => {
           .filter((msg) => msg.role === "assistant")
           .reverse()
           .map((msg, i) => (
-            <div key={i} className="">
-              <div
-                className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 pb-2 pt-4 text-slate-200"
-                key={i}
-              >
-                <Markdown>{msg.content}</Markdown>
-                <CopyButton text={msg.content} />
-              </div>
+            <div
+              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 pb-2 pt-4 text-slate-200"
+              key={i}
+            >
+              <Markdown>{msg.content}</Markdown>
+              <CopyButton text={msg.content} />
             </div>
           ))}
         {messages.length > 0 && (
