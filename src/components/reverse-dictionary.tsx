@@ -1,5 +1,5 @@
 "use client";
-import { ActionIcon, Button, Text } from "@mantine/core";
+import { ActionIcon, Button, SegmentedControl, Text } from "@mantine/core";
 import { type Message } from "ai";
 import { useChat } from "ai/react";
 import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
@@ -8,7 +8,7 @@ import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "./copy-button";
 import { Markdown } from "./Markdown";
-
+import * as React from "react";
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
   const result = [];
@@ -25,6 +25,7 @@ function convertToShape(a: Message[]) {
   return result;
 }
 export const ReverseDictionary = () => {
+  const [value, setValue] = React.useState("3");
   const {
     messages,
     input,
@@ -37,6 +38,10 @@ export const ReverseDictionary = () => {
     api: "/api/reverse-dictionary",
     onResponse: () => {
       setInput(input);
+    },
+    body: {
+      // suggestions count
+      count: value,
     },
   });
   return (
@@ -63,27 +68,38 @@ export const ReverseDictionary = () => {
             ) : undefined
           }
         />
-        <div className="gap-3 flex-row-start">
-          {isLoading && (
-            <ActionIcon
-              type="button"
-              onClick={stop}
+        <div className="w-full gap-3 flex-row-between ">
+          <SegmentedControl
+            value={value}
+            onChange={setValue}
+            data={[
+              { label: "3 suggestions", value: "3" },
+              { label: "5 suggestions", value: "5" },
+            ]}
+            color="#424e88"
+          />
+          <div className="gap-3 flex-row-end">
+            {isLoading && (
+              <ActionIcon
+                type="button"
+                onClick={stop}
+                radius="lg"
+                size="lg"
+                variant="light"
+              >
+                <IoStopCircleOutline size="17" />
+              </ActionIcon>
+            )}
+            <Button
+              loading={isLoading}
+              type="submit"
               radius="lg"
-              size="lg"
-              variant="light"
+              // w="6rem"
+              disabled={!input}
             >
-              <IoStopCircleOutline size="17" />
-            </ActionIcon>
-          )}
-          <Button
-            loading={isLoading}
-            type="submit"
-            radius="lg"
-            // w="6rem"
-            disabled={!input}
-          >
-            Get definition
-          </Button>
+              Get definition
+            </Button>
+          </div>
         </div>
       </form>
       <div
