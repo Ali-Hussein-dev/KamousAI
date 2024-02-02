@@ -78,10 +78,10 @@ export const ReverseDictionary = () => {
             loading={isLoading}
             type="submit"
             radius="lg"
-            w="6rem"
+            // w="6rem"
             disabled={!input}
           >
-            Submit
+            Get definition
           </Button>
         </div>
       </form>
