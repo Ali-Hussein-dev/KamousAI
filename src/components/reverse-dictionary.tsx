@@ -69,15 +69,19 @@ export const ReverseDictionary = () => {
           }
         />
         <div className="w-full gap-3 flex-row-between ">
-          <SegmentedControl
-            value={value}
-            onChange={setValue}
-            data={[
-              { label: "3 suggestions", value: "3" },
-              { label: "5 suggestions", value: "5" },
-            ]}
-            color="#424e88"
-          />
+          <div className="">
+            <p className="m-0">Max suggestions</p>
+            <SegmentedControl
+              value={value}
+              onChange={setValue}
+              data={[
+                { label: "3", value: "3" },
+                { label: "5", value: "5" },
+              ]}
+              color="#424e88"
+              className="w-full"
+            />
+          </div>
           <div className="gap-3 flex-row-end">
             {isLoading && (
               <ActionIcon
