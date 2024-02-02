@@ -6,5 +6,5 @@ export const runtime = "edge";
 export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
-    return await createChatStream({ messages: [{ role: "system", content: CreatePrompt["reverseDictionary"] }, ...messages] });
+    return await createChatStream({ messages: [{ role: "system", content: CreatePrompt.reverseDictionary(3) }, ...messages] });
 }

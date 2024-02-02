@@ -1,8 +1,6 @@
 export class CreatePrompt {
     static summarizeBulletsPoints = "Summarize the following bullet points";
 
-    static reverseDictionary = `I will give you the definition of a word and you will suggest only commonly-used words that mean the same, maximum suggestions (4) Do not reiterate my words; simply provide the outcomes without elaboration. Include sentiment for each word using parenthises
-`;
     static fixGrammar(withExplanation: boolean) {
         return `Before you start, follow these rules strictly:
   - Highlight the text with bolding the added text parts & strike through the deleted text parts
@@ -15,6 +13,9 @@ export class CreatePrompt {
     }
     static summarize(mode: "paraghraph" | "bulletsPoint" = "paraghraph") {
         return `Summarize the following ${mode === "paraghraph" ? "text" : "bullet points"} into a paragraph`;
+    }
+    static reverseDictionary(suggestionsCount: 3 | 5 = 3) {
+        return `I will provide you with the definition of a word, and your task is to suggest up to ${suggestionsCount} commonly-used synonyms. Make sure not to include the original word in your suggestions. The results should be presented in a table with three columns: the first column for the synonym, the second for its sentiment, and the third for the context in which the synonym is most frequently used.`;
     }
 
     static translate(inputLanguage: string, outputLanguage: string) {
