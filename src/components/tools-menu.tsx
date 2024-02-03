@@ -87,8 +87,8 @@ export const ToolsBar = () => {
   const pathname = usePathname();
   return (
     <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pt-5 sm:hidden">
-      <nav className="mx-auto mb-3 w-full max-w-lg rounded-lg bg-slate-800 px-2 py-1">
-        <ScrollArea className="w-full max-w-lg">
+      <nav className="mx-auto mb-3 w-full rounded-lg bg-slate-800 px-2 py-1">
+        <ScrollArea className="w-full max-w-xl">
           <div className="gap-1 flex-row-between">
             {toolsLinks.map((item) => (
               <Link
