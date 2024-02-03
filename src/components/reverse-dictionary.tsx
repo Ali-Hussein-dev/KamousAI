@@ -9,6 +9,7 @@ import { MdClear } from "react-icons/md";
 import { CopyButton } from "./copy-button";
 import { Markdown } from "./Markdown";
 import * as React from "react";
+import { ToolContainer } from "./tool-container";
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
   const result = [];
@@ -45,7 +46,7 @@ export const ReverseDictionary = () => {
     },
   });
   return (
-    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
+    <ToolContainer title="reverseDictionary">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <DynamicCustomTextarea
           value={input}
@@ -149,6 +150,6 @@ export const ReverseDictionary = () => {
           </Button>
         )}
       </div>
-    </section>
+    </ToolContainer>
   );
 };

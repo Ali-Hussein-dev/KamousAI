@@ -8,6 +8,7 @@ import { Markdown } from "@/components/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
+import { ToolContainer } from "@/components/tool-container";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -30,7 +31,7 @@ export default function GrammerCheckerPage() {
   });
 
   return (
-    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
+    <ToolContainer title="grammarCorrector">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}
@@ -112,6 +113,6 @@ export default function GrammerCheckerPage() {
           </Button>
         )}
       </div>
-    </section>
+    </ToolContainer>
   );
 }

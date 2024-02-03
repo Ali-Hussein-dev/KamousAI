@@ -13,6 +13,7 @@ import { CustomTones } from "@/components/custom-tones";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
+import { ToolContainer } from "@/components/tool-container";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -111,7 +112,7 @@ export default function TextOptimizer() {
     },
   });
   return (
-    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
+    <ToolContainer title="paraphraser">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}
@@ -188,6 +189,6 @@ export default function TextOptimizer() {
           </Button>
         )}
       </div>
-    </section>
+    </ToolContainer>
   );
 }

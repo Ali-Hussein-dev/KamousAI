@@ -8,6 +8,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import * as React from "react";
+import { ToolContainer } from "@/components/tool-container";
 //======================================
 const SummarizerPage = () => {
   const [value, setValue] = React.useState("paragraph");
@@ -27,7 +28,7 @@ const SummarizerPage = () => {
     body: { mode: value },
   });
   return (
-    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
+    <ToolContainer title="summarizer">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <DynamicCustomTextarea
           value={input}
@@ -112,7 +113,7 @@ const SummarizerPage = () => {
           </Button>
         )}
       </div>
-    </section>
+    </ToolContainer>
   );
 };
 export default SummarizerPage;
