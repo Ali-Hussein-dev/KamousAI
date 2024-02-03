@@ -3,10 +3,10 @@ import * as React from "react";
 
 export const useClipboardPaste = ({
   onPaste,
-  onDenied,
+  onDeny: onDenied,
 }: {
   onPaste: (str: string) => void;
-  onDenied?: () => void;
+  onDeny?: () => void;
 }) => {
   const [isPermissionGranted, setIsPermissionGranted] = React.useState(false);
   React.useEffect(() => {
