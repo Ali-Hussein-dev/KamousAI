@@ -25,8 +25,8 @@ export const useTranslator = create<State>()(
                     label: "English",
                 },
                 output: {
-                    value: "es",
-                    label: "Spanish",
+                    value: "de",
+                    label: "German",
                 },
                 setLanguage: (type, value) =>
                     set((state) => {
