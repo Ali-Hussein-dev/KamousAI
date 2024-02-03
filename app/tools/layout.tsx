@@ -105,7 +105,9 @@ export default function ToolsLayout({
                 )}
               ></div>
               <div className="grow px-4 py-1">
-                <div className="mx-auto max-w-4xl pt-10">{children}</div>
+                <div className="mx-auto max-w-4xl pb-28 pt-10 sm:pb-4">
+                  {children}
+                </div>
               </div>
             </div>
             <DynamicToolsBar />
