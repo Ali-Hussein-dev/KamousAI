@@ -7,6 +7,7 @@ import * as React from "react";
 import { theme } from "../../theme";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
+import { Notifications } from "@mantine/notifications";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -36,6 +37,7 @@ export default function ToolsLayout({
     <>
       <title>{title}</title>
       <MantineProvider defaultColorScheme="dark" theme={theme}>
+        <Notifications position="top-right" />
         <AppShell
           header={{ height: 60 }}
           navbar={{

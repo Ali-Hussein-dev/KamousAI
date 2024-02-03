@@ -7,6 +7,7 @@ import "@mantine/core/styles.css";
 import { Providers } from "@/context/Providers";
 import NextTopLoader from "nextjs-toploader";
 import { type Metadata } from "next";
+import "@mantine/notifications/styles.css";
 
 const fontFamily = Nunito({
   subsets: ["latin"],
