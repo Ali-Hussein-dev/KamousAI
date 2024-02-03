@@ -86,28 +86,30 @@ export const toolsLinks = [
 export const ToolsBar = () => {
   const pathname = usePathname();
   return (
-    <nav className="mx-auto mb-3 max-w-lg rounded-lg bg-slate-900/60 px-2 py-1 sm:hidden">
-      <ScrollArea className="w-full max-w-lg">
-        <div className="gap-1 flex-row-between">
-          {toolsLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn("pb-1 pt-1 no-underline duration-500")}
-            >
-              {/* <ActionIcon >{item.icon}</ActionIcon> */}
-              <span
-                className={cn(
-                  "center h-9 w-9 rounded-lg border border-solid border-slate-600 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
-                  pathname == item.href && "border-transparent bg-primary-600"
-                )}
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pt-5 sm:hidden">
+      <nav className="mx-auto mb-3 w-full max-w-lg rounded-lg bg-slate-800 px-2 py-1">
+        <ScrollArea className="w-full max-w-lg">
+          <div className="gap-1 flex-row-between">
+            {toolsLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn("pb-1 pt-1 no-underline duration-500")}
               >
-                {item.icon}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </ScrollArea>
-    </nav>
+                {/* <ActionIcon >{item.icon}</ActionIcon> */}
+                <span
+                  className={cn(
+                    "center h-9 w-9 rounded-lg border border-solid border-slate-600 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
+                    pathname == item.href && "border-transparent bg-primary-600"
+                  )}
+                >
+                  {item.icon}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </ScrollArea>
+      </nav>
+    </div>
   );
 };

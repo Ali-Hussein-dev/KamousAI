@@ -94,21 +94,19 @@ export default function ToolsLayout({
             </div>
           </AppShell.Navbar>
 
-          <AppShell.Main py="lg" px="0">
+          <AppShell.Main py="lg" px="0" pb="0">
             <div className="flex">
               <div
                 className={cn(
-                  "hidden h-full w-[240px] md:block"
-                  // !desktopOpened && "hidden"
+                  "hidden h-full md:block",
+                  !desktopOpened ? "hidden" : "w-[240px]"
                 )}
               ></div>
               <div className="grow px-4 py-1">
-                <div className="mx-auto max-w-4xl pt-10">
-                  <ToolsBar />
-                  {children}
-                </div>
+                <div className="mx-auto max-w-4xl pt-10">{children}</div>
               </div>
             </div>
+            <ToolsBar />
           </AppShell.Main>
         </AppShell>
       </MantineProvider>
