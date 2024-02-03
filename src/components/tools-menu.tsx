@@ -59,13 +59,13 @@ export const ToolsBar = () => {
             <SwiperSlide
               key={i}
               className={cn(
-                "mr-3 h-full w-fit px-1.5 py-2 duration-500",
+                "w-fit px-1 py-2 duration-500",
                 pathname == item.href && "bg-slate-950/60"
               )}
             >
               <Link
                 href={item.href}
-                className="h-full w-full gap-1 no-underline flex-col-center"
+                className="w-full gap-1 whitespace-nowrap text-center text-[10px] text-slate-300 no-underline flex-col-center"
               >
                 <span
                   className={cn(
@@ -75,9 +75,7 @@ export const ToolsBar = () => {
                 >
                   {item.icon}
                 </span>
-                <span className="w-full whitespace-nowrap text-center text-[9px] text-slate-300">
-                  {item.label}
-                </span>
+                <span>{item.label}</span>
               </Link>
             </SwiperSlide>
           ))}
