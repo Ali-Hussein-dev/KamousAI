@@ -49,11 +49,16 @@ export const ToolsBar = () => {
   const pathname = usePathname();
   return (
     <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 backdrop-blur-sm sm:hidden">
-      <nav className="w-full max-w-fit overflow-hidden rounded-lg bg-slate-800 px-2">
+      <nav className="w-full max-w-fit overflow-hidden rounded-lg bg-slate-800">
         <Swiper
-          className=""
           slidesPerView={3}
-          freeMode={{ enabled: true, sticky: true }}
+          freeMode={{
+            enabled: true,
+            momentum: true,
+            momentumBounce: true,
+            momentumBounceRatio: 1,
+            minimumVelocity: 1,
+          }}
         >
           {toolsLinks.map((item, i) => (
             <SwiperSlide
@@ -91,7 +96,7 @@ export const DynamicToolsBar = dynamic(
     ssr: false,
     loading: () => (
       <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
-        <Skeleton />
+        <Skeleton cls="h-16" />
       </div>
     ),
   }
