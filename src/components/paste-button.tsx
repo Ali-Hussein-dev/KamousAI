@@ -1,7 +1,6 @@
 import { Button } from "@mantine/core";
 import * as React from "react";
 import { MdOutlineContentPaste } from "react-icons/md";
-import { BiSolidErrorAlt } from "react-icons/bi";
 import dynamic from "next/dynamic";
 import { notifications } from "@mantine/notifications";
 import { useClipboardPaste } from "@/hooks/use-clipboard-paste";
@@ -14,9 +13,9 @@ export const PasteButton = ({
   show: boolean;
   setInput: (s: string) => void;
 }) => {
-  const { isPermissionGranted, handlePaste } = useClipboardPaste({
+  const { handlePaste } = useClipboardPaste({
     onPaste: setInput,
-    onDenied: () => {
+    onDeny: () => {
       notifications.show({
         title: "Permission Denied",
         message: "Please allow clipboard access to use this feature",
@@ -28,11 +27,6 @@ export const PasteButton = ({
     <div className="center absolute inset-0 w-full">
       <Button
         leftSection={<MdOutlineContentPaste size="17" />}
-        rightSection={
-          !isPermissionGranted ? (
-            <BiSolidErrorAlt size="17" className="text-orange-600" />
-          ) : undefined
-        }
         type="button"
         variant="light"
         radius="md"
