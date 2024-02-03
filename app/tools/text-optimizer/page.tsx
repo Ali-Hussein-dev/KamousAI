@@ -14,6 +14,7 @@ import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
 import { ToolContainer } from "@/components/tool-container";
+import { DynamicPasteButton } from "@/components/paste-button";
 
 const makeInstruction = (tones: string) => `
   Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
@@ -114,27 +115,30 @@ export default function TextOptimizer() {
   return (
     <ToolContainer title="paraphraser">
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <DynamicCustomTextarea
-          value={input}
-          onChange={handleInputChange}
-          placeholder="Enter text to optimize"
-          cb={(e) =>
-            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
-            handleSubmit(e)
-          }
-          loading={isLoading}
-          rightSection={
-            !!input ? (
-              <ActionIcon
-                variant="subtle"
-                radius="lg"
-                onClick={() => setInput("")}
-              >
-                <MdClear size="20" />
-              </ActionIcon>
-            ) : undefined
-          }
-        />
+        <div className="relative w-full">
+          <DynamicCustomTextarea
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Enter text to optimize"
+            cb={(e) =>
+              // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+              handleSubmit(e)
+            }
+            loading={isLoading}
+            rightSection={
+              !!input ? (
+                <ActionIcon
+                  variant="subtle"
+                  radius="lg"
+                  onClick={() => setInput("")}
+                >
+                  <MdClear size="20" />
+                </ActionIcon>
+              ) : undefined
+            }
+          />
+          <DynamicPasteButton show={!input} setInput={setInput} />
+        </div>
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
           <div className="gap-3 flex-row-start">

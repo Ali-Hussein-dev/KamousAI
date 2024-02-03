@@ -9,6 +9,7 @@ import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
 import { ToolContainer } from "@/components/tool-container";
+import { DynamicPasteButton } from "@/components/paste-button";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -33,27 +34,30 @@ export default function GrammerCheckerPage() {
   return (
     <ToolContainer title="grammarCorrector">
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
-        <DynamicCustomTextarea
-          value={input}
-          onChange={handleInputChange}
-          placeholder="e.g I has an pen"
-          cb={(e) =>
-            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
-            handleSubmit(e)
-          }
-          loading={isLoading}
-          rightSection={
-            !!input ? (
-              <ActionIcon
-                variant="subtle"
-                radius="lg"
-                onClick={() => setInput("")}
-              >
-                <MdClear size="20" />
-              </ActionIcon>
-            ) : undefined
-          }
-        />
+        <div className="relative w-full">
+          <DynamicCustomTextarea
+            value={input}
+            onChange={handleInputChange}
+            placeholder="e.g I has an pen"
+            cb={(e) =>
+              // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+              handleSubmit(e)
+            }
+            loading={isLoading}
+            rightSection={
+              !!input ? (
+                <ActionIcon
+                  variant="subtle"
+                  radius="lg"
+                  onClick={() => setInput("")}
+                >
+                  <MdClear size="20" />
+                </ActionIcon>
+              ) : undefined
+            }
+          />
+          <DynamicPasteButton show={!input} setInput={setInput} />
+        </div>
         <div className="w-full flex-row-between">
           <Checkbox
             value={""}

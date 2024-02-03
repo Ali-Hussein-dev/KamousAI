@@ -9,6 +9,7 @@ import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import * as React from "react";
 import { ToolContainer } from "@/components/tool-container";
+import { DynamicPasteButton } from "@/components/paste-button";
 //======================================
 const SummarizerPage = () => {
   const [value, setValue] = React.useState("paragraph");
@@ -30,27 +31,30 @@ const SummarizerPage = () => {
   return (
     <ToolContainer title="summarizer">
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
-        <DynamicCustomTextarea
-          value={input}
-          onChange={handleInputChange}
-          placeholder="Enter your text to summarize"
-          cb={(e) =>
-            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
-            handleSubmit(e)
-          }
-          loading={isLoading}
-          rightSection={
-            !!input ? (
-              <ActionIcon
-                variant="subtle"
-                radius="lg"
-                onClick={() => setInput("")}
-              >
-                <MdClear size="20" />
-              </ActionIcon>
-            ) : undefined
-          }
-        />
+        <div className="relative w-full">
+          <DynamicCustomTextarea
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Enter your text to summarize"
+            cb={(e) =>
+              // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+              handleSubmit(e)
+            }
+            loading={isLoading}
+            rightSection={
+              !!input ? (
+                <ActionIcon
+                  variant="subtle"
+                  radius="lg"
+                  onClick={() => setInput("")}
+                >
+                  <MdClear size="20" />
+                </ActionIcon>
+              ) : undefined
+            }
+          />
+          <DynamicPasteButton show={!input} setInput={setInput} />
+        </div>
         <div className="w-full gap-3 flex-row-between ">
           <SegmentedControl
             value={value}
