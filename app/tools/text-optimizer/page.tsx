@@ -138,26 +138,27 @@ export default function TextOptimizer() {
         <div className="w-full gap-2 pb-2 flex-row-between">
           <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
           <div className="gap-3 flex-row-start">
-            {isLoading && (
+            {isLoading ? (
               <ActionIcon
                 type="button"
                 onClick={stop}
                 radius="lg"
-                size="lg"
+                size="xl"
                 variant="light"
               >
-                <IoStopCircleOutline size="17" />
+                <IoStopCircleOutline size="20" />
               </ActionIcon>
+            ) : (
+              <Button
+                loading={isLoading}
+                type="submit"
+                radius="lg"
+                w="fit-content"
+                disabled={!input}
+              >
+                Paraphrase
+              </Button>
             )}
-            <Button
-              loading={isLoading}
-              type="submit"
-              radius="lg"
-              w="6rem"
-              disabled={!input}
-            >
-              Optimize
-            </Button>
           </div>
         </div>
       </form>

@@ -84,26 +84,21 @@ export const ReverseDictionary = () => {
             />
           </div>
           <div className="gap-3 flex-row-end">
-            {isLoading && (
+            {isLoading ? (
               <ActionIcon
                 type="button"
                 onClick={stop}
                 radius="lg"
-                size="lg"
+                size="xl"
                 variant="light"
               >
-                <IoStopCircleOutline size="17" />
+                <IoStopCircleOutline size="20" />
               </ActionIcon>
+            ) : (
+              <Button type="submit" radius="lg" disabled={!input}>
+                Get definition
+              </Button>
             )}
-            <Button
-              loading={isLoading}
-              type="submit"
-              radius="lg"
-              // w="6rem"
-              disabled={!input}
-            >
-              Get definition
-            </Button>
           </div>
         </div>
       </form>

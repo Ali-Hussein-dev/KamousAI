@@ -62,26 +62,27 @@ export default function GrammerCheckerPage() {
             onChange={() => setWithExplanation(!withExplanation)}
           />
           <div className="gap-3 flex-row-start">
-            {isLoading && (
+            {isLoading ? (
               <ActionIcon
                 type="button"
                 onClick={stop}
                 radius="lg"
-                size="lg"
+                size="xl"
                 variant="light"
               >
-                <IoStopCircleOutline size="17" />
+                <IoStopCircleOutline size="20" />
               </ActionIcon>
+            ) : (
+              <Button
+                loading={isLoading}
+                type="submit"
+                radius="lg"
+                w="6rem"
+                disabled={!input}
+              >
+                Check
+              </Button>
             )}
-            <Button
-              loading={isLoading}
-              type="submit"
-              radius="lg"
-              w="6rem"
-              disabled={!input}
-            >
-              Check
-            </Button>
           </div>
         </div>
       </form>
