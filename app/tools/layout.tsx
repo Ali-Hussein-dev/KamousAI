@@ -37,16 +37,19 @@ export default function ToolsLayout({
       <title>{title}</title>
       <MantineProvider defaultColorScheme="dark" theme={theme}>
         <AppShell
-          header={{ height: 60 }}
+          header={{ height: 55 }}
           navbar={{
             width: "240px",
             breakpoint: "sm",
             collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
           }}
         >
-          <AppShell.Header withBorder={false}>
+          <AppShell.Header
+            withBorder={false}
+            classNames={{ header: "bg-slate-700/80 backdrop-blur" }}
+          >
             <div className="h-full px-4">
-              <div className="h-full gap-2 flex-row-start">
+              <div className="h-full gap-2  flex-row-start">
                 {/* <Burger
                   opened={mobileOpened}
                   onClick={toggleMobile}
@@ -59,7 +62,7 @@ export default function ToolsLayout({
                   visibleFrom="sm"
                   size="sm"
                 />
-                <div className="relative aspect-video h-12 ">
+                <div className="relative aspect-video h-10">
                   <Link href="/">
                     <Image src="/logo.svg" fill alt="logo" />
                   </Link>
