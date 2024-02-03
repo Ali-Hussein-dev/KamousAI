@@ -9,6 +9,7 @@ import { MdOutlineShortText } from "react-icons/md";
 import { cn } from "@/utils/helpers";
 import dynamic from "next/dynamic";
 import { Skeleton } from "./Skeleton";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export const toolsLinks = [
   {
@@ -47,17 +48,22 @@ export const toolsLinks = [
 export const ToolsBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
-      <nav className="mx-auto w-full rounded-lg bg-slate-800 px-2 py-1">
-        <div className="w-full max-w-xl">
-          <div className="gap-1 flex-row-between">
-            {toolsLinks.map((item) => (
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 backdrop-blur-sm sm:hidden">
+      <nav className="w-full max-w-fit overflow-hidden rounded-lg bg-slate-800 px-2">
+        <Swiper
+          className=""
+          slidesPerView={3}
+          freeMode={{ enabled: true, sticky: true }}
+        >
+          {toolsLinks.map((item, i) => (
+            <SwiperSlide key={i} className="mr-3 h-full max-w-fit grow">
               <Link
-                key={item.label}
                 href={item.href}
-                className={cn("pb-1 pt-1 no-underline duration-500")}
+                className={cn(
+                  "h-full w-full gap-1 px-1.5 py-2 no-underline duration-500 flex-col-center",
+                  pathname == item.href && "bg-slate-950/60"
+                )}
               >
-                {/* <ActionIcon >{item.icon}</ActionIcon> */}
                 <span
                   className={cn(
                     "center h-9 w-9 rounded-lg border border-solid border-slate-600 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
@@ -66,10 +72,13 @@ export const ToolsBar = () => {
                 >
                   {item.icon}
                 </span>
+                <span className="w-full whitespace-nowrap text-center text-xs text-slate-300">
+                  {item.label}
+                </span>
               </Link>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </nav>
     </div>
   );

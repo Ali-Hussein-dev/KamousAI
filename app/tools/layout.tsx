@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
 import Image from "next/image";
 import "swiper/css";
+import "swiper/css/free-mode";
 
 export default function ToolsLayout({
   children,
