@@ -1,5 +1,4 @@
 "use client";
-import {  ScrollArea } from "@mantine/core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TbPencilMinus } from "react-icons/tb";
@@ -8,6 +7,9 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { BsTranslate, BsJournalText } from "react-icons/bs";
 import { MdOutlineShortText } from "react-icons/md";
 import { cn } from "@/utils/helpers";
+import dynamic from "next/dynamic";
+import { Skeleton } from "./Skeleton";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export const toolsLinks = [
   {
@@ -42,61 +44,26 @@ export const toolsLinks = [
     isNew: true,
   },
 ];
-//======================================
-// export const ToolsMenu = () => {
-//   const pathname = usePathname();
-//   return (
-//     <CustomMenu>
-//       <Menu.Target>
-//         <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
-//           Tools
-//         </Button>
-//       </Menu.Target>
-//       <Menu.Dropdown p="sm">
-//         {languagetoolsList.map((item) => (
-//           <Link
-//             key={item.label}
-//             href={item.href}
-//             className="w-full no-underline"
-//           >
-//             <Menu.Item
-//               key={item.label}
-//               leftSection={
-//                 <span className="center h-7 w-7 rounded-lg bg-primary-500">
-//                   {item.icon}
-//                 </span>
-//               }
-//             >
-//               <div className="w-full flex-row-between">
-//                 <span>{item.label}</span>
-//                 {pathname == item.href && (
-//                   <span className="">
-//                     <LuCheck />
-//                   </span>
-//                 )}
-//               </div>
-//             </Menu.Item>
-//           </Link>
-//         ))}
-//       </Menu.Dropdown>
-//     </CustomMenu>
-//   );
-// };
 
 export const ToolsBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pt-5 sm:hidden">
-      <nav className="mx-auto mb-3 w-full rounded-lg bg-slate-800 px-2 py-1">
-        <ScrollArea className="w-full max-w-xl">
-          <div className="gap-1 flex-row-between">
-            {toolsLinks.map((item) => (
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 backdrop-blur-sm sm:hidden">
+      <nav className="w-full max-w-fit overflow-hidden rounded-lg bg-slate-800 px-2">
+        <Swiper
+          className=""
+          slidesPerView={3}
+          freeMode={{ enabled: true, sticky: true }}
+        >
+          {toolsLinks.map((item, i) => (
+            <SwiperSlide key={i} className="mr-3 h-full max-w-fit grow">
               <Link
-                key={item.label}
                 href={item.href}
-                className={cn("pb-1 pt-1 no-underline duration-500")}
+                className={cn(
+                  "h-full w-full gap-1 px-1.5 py-2 no-underline duration-500 flex-col-center",
+                  pathname == item.href && "bg-slate-950/60"
+                )}
               >
-                {/* <ActionIcon >{item.icon}</ActionIcon> */}
                 <span
                   className={cn(
                     "center h-9 w-9 rounded-lg border border-solid border-slate-600 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
@@ -105,11 +72,26 @@ export const ToolsBar = () => {
                 >
                   {item.icon}
                 </span>
+                <span className="w-full whitespace-nowrap text-center text-xs text-slate-300">
+                  {item.label}
+                </span>
               </Link>
-            ))}
-          </div>
-        </ScrollArea>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </nav>
     </div>
   );
 };
+
+export const DynamicToolsBar = dynamic(
+  () => import("./tools-menu").then((c) => c.ToolsBar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
+        <Skeleton />
+      </div>
+    ),
+  }
+);

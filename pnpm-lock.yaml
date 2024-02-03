@@ -47,6 +47,7 @@ specifiers:
   react-markdown: ^8.0.7
   remark-gfm: ^3.0.1
   superjson: 1.12.2
+  swiper: ^11.0.5
   tailwind-custom-utilities: ^1.0.3
   tailwind-merge: ^2.2.1
   tailwindcss: ^3.3.3
@@ -87,6 +88,7 @@ dependencies:
   react-markdown: 8.0.7_pofolu2o2erjq4lhyzl3hqovzq
   remark-gfm: 3.0.1
   superjson: 1.12.2
+  swiper: 11.0.5
   typewriter-effect: 2.20.1_biqbaboplfbrettd7655fr4n2y
   zod: 3.21.4
   zustand: 4.4.3_pofolu2o2erjq4lhyzl3hqovzq
@@ -5156,6 +5158,11 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /swiper/11.0.5:
+    resolution: {integrity: sha512-rhCwupqSyRnWrtNzWzemnBLMoyYuoDgGgspAm/8iBD3jCvAWycPLH4Z3TB0O5520DHLzMx94yUMH/B9Efpa48w==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /swr-store/0.10.6:
     resolution: {integrity: sha512-xPjB1hARSiRaNNlUQvWSVrG5SirCjk2TmaUyzzvk69SZQan9hCJqw/5rG9iL7xElHU784GxRPISClq4488/XVw==}

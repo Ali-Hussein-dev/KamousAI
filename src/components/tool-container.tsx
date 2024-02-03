@@ -20,7 +20,7 @@ export const ToolContainer = ({
       <Title
         order={1}
         mb="5px"
-        className="center text-lg uppercase"
+        className="center font-sans text-lg uppercase tracking-wide"
         c="#cbd5e1"
       >
         {titles[title]}

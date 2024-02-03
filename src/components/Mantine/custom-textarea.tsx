@@ -3,6 +3,7 @@ import { isFunction } from "@/utils/helpers";
 import { Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useMediaQuery } from "@mantine/hooks";
+import { Skeleton } from "../Skeleton";
 interface CustomTextareaProps extends TextareaProps {
   loading?: boolean;
   cb: (e: React.KeyboardEventHandler<Element>) => void;
@@ -49,8 +50,6 @@ export const DynamicCustomTextarea = dynamic(
     ),
   {
     ssr: false,
-    loading: () => (
-      <div className="h-32 w-full animate-pulse rounded-lg bg-slate-700/70"></div>
-    ),
+    loading: () => <Skeleton cls="h-32 !mt-0" />,
   }
 );

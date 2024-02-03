@@ -1,5 +1,5 @@
 "use client";
-import { toolsLinks, ToolsBar } from "@/components";
+import { toolsLinks, DynamicToolsBar } from "@/components";
 import { capitalizeFirstLetter, cn } from "@/utils/helpers";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { MantineProvider, AppShell, Burger } from "@mantine/core";
@@ -8,6 +8,8 @@ import { theme } from "../../theme";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
 import Image from "next/image";
+import "swiper/css";
+import "swiper/css/free-mode";
 
 export default function ToolsLayout({
   children,
@@ -103,10 +105,12 @@ export default function ToolsLayout({
                 )}
               ></div>
               <div className="grow px-4 py-1">
-                <div className="mx-auto max-w-4xl pt-10">{children}</div>
+                <div className="mx-auto max-w-4xl pb-28 pt-10 sm:pb-4">
+                  {children}
+                </div>
               </div>
             </div>
-            <ToolsBar />
+            <DynamicToolsBar />
           </AppShell.Main>
         </AppShell>
       </MantineProvider>
