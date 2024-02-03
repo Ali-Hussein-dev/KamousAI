@@ -1,5 +1,4 @@
 "use client";
-import {  ScrollArea } from "@mantine/core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TbPencilMinus } from "react-icons/tb";
@@ -8,6 +7,8 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { BsTranslate, BsJournalText } from "react-icons/bs";
 import { MdOutlineShortText } from "react-icons/md";
 import { cn } from "@/utils/helpers";
+import dynamic from "next/dynamic";
+import { Skeleton } from "./Skeleton";
 
 export const toolsLinks = [
   {
@@ -42,53 +43,13 @@ export const toolsLinks = [
     isNew: true,
   },
 ];
-//======================================
-// export const ToolsMenu = () => {
-//   const pathname = usePathname();
-//   return (
-//     <CustomMenu>
-//       <Menu.Target>
-//         <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
-//           Tools
-//         </Button>
-//       </Menu.Target>
-//       <Menu.Dropdown p="sm">
-//         {languagetoolsList.map((item) => (
-//           <Link
-//             key={item.label}
-//             href={item.href}
-//             className="w-full no-underline"
-//           >
-//             <Menu.Item
-//               key={item.label}
-//               leftSection={
-//                 <span className="center h-7 w-7 rounded-lg bg-primary-500">
-//                   {item.icon}
-//                 </span>
-//               }
-//             >
-//               <div className="w-full flex-row-between">
-//                 <span>{item.label}</span>
-//                 {pathname == item.href && (
-//                   <span className="">
-//                     <LuCheck />
-//                   </span>
-//                 )}
-//               </div>
-//             </Menu.Item>
-//           </Link>
-//         ))}
-//       </Menu.Dropdown>
-//     </CustomMenu>
-//   );
-// };
 
 export const ToolsBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pt-5 sm:hidden">
-      <nav className="mx-auto mb-3 w-full rounded-lg bg-slate-800 px-2 py-1">
-        <ScrollArea className="w-full max-w-xl">
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
+      <nav className="mx-auto w-full rounded-lg bg-slate-800 px-2 py-1">
+        <div className="w-full max-w-xl">
           <div className="gap-1 flex-row-between">
             {toolsLinks.map((item) => (
               <Link
@@ -108,8 +69,20 @@ export const ToolsBar = () => {
               </Link>
             ))}
           </div>
-        </ScrollArea>
+        </div>
       </nav>
     </div>
   );
 };
+
+export const DynamicToolsBar = dynamic(
+  () => import("./tools-menu").then((c) => c.ToolsBar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
+        <Skeleton />
+      </div>
+    ),
+  }
+);
