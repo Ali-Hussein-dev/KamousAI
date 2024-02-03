@@ -16,7 +16,7 @@ export const ToolContainer = ({
   title: keyof typeof titles;
 }) => {
   return (
-    <section className="w-full rounded-lg bg-slate-800 px-3 py-6">
+    <section className="animate-in w-full rounded-lg bg-slate-800 px-3 py-6 shadow-lg">
       <Title
         order={1}
         mb="5px"

@@ -52,7 +52,7 @@ const Translator = () => {
   const matches = useMediaQuery("(max-width: 500px)");
   return (
     <form className=" w-full space-y-4" onSubmit={handleSubmit}>
-      <div className="mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg ">
+      <div className="animate-in mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg">
         {/* // DIRECT WRAPPER */}
         <div className="mb-2 flex flex-wrap items-start border-0 border-b border-solid border-slate-500 pb-2 md:flex-nowrap">
           {/* // INPUT language pane */}
