@@ -56,13 +56,16 @@ export const ToolsBar = () => {
           freeMode={{ enabled: true, sticky: true }}
         >
           {toolsLinks.map((item, i) => (
-            <SwiperSlide key={i} className="mr-3 h-full max-w-fit grow">
+            <SwiperSlide
+              key={i}
+              className={cn(
+                "w-fit px-1 py-2 duration-500",
+                pathname == item.href && "bg-slate-950/60"
+              )}
+            >
               <Link
                 href={item.href}
-                className={cn(
-                  "h-full w-full gap-1 px-1.5 py-2 no-underline duration-500 flex-col-center",
-                  pathname == item.href && "bg-slate-950/60"
-                )}
+                className="w-full gap-1 whitespace-nowrap text-center text-[10px] text-slate-300 no-underline flex-col-center"
               >
                 <span
                   className={cn(
@@ -72,9 +75,7 @@ export const ToolsBar = () => {
                 >
                   {item.icon}
                 </span>
-                <span className="w-full whitespace-nowrap text-center text-xs text-slate-300">
-                  {item.label}
-                </span>
+                <span>{item.label}</span>
               </Link>
             </SwiperSlide>
           ))}
