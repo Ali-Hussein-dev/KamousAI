@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@mantine/core': ^7.1.2
   '@mantine/hooks': ^7.1.2
+  '@mantine/notifications': ^7.5.1
   '@next-auth/prisma-adapter': ^1.0.6
   '@prisma/client': ^4.13.0
   '@serwist/next': ^8.4.3
@@ -60,6 +61,7 @@ specifiers:
 dependencies:
   '@mantine/core': 7.1.2_7n6qzwu2dssnhhctlo3d376rae
   '@mantine/hooks': 7.1.2_react@18.2.0
+  '@mantine/notifications': 7.5.1_n2xkfiisxykuiougnmooliorga
   '@next-auth/prisma-adapter': 1.0.6_mj4zmq54qgbwr7klxt7lbfwdhu
   '@prisma/client': 4.13.0_prisma@5.1.1
   '@serwist/next': 8.4.3_next@14.1.0+webpack@5.89.0
@@ -324,6 +326,30 @@ packages:
 
   /@mantine/hooks/7.1.2_react@18.2.0:
     resolution: {integrity: sha512-2sqfBKse/aJq93zEpIn4OY+jRACmDIWBixfBgobRfltDyeL8G+3223LSAaeT6ZD8+h2YBJVmbCD5QY7bx2l11Q==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@mantine/notifications/7.5.1_n2xkfiisxykuiougnmooliorga:
+    resolution: {integrity: sha512-IQDOAz+U9G6IkYXAXG9qL5EESmnhWV3JBJrxwBOPPdi1e9S/akQlsmABWS/voB9WFnOnbMbrkF067RVBA7W4dg==}
+    peerDependencies:
+      '@mantine/core': 7.5.1
+      '@mantine/hooks': 7.5.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@mantine/core': 7.1.2_7n6qzwu2dssnhhctlo3d376rae
+      '@mantine/hooks': 7.1.2_react@18.2.0
+      '@mantine/store': 7.5.1_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
+    dev: false
+
+  /@mantine/store/7.5.1_react@18.2.0:
+    resolution: {integrity: sha512-sDaPXB3v9JlJghNTnRTFT2hC3HN6pdBcCXj0CqO/QrJgtRA7A3FxW+mnY7YQOaBxHJ1MIRr+zsv0Qy1f/pu1dw==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -1818,6 +1844,13 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.23.8
+      csstype: 3.1.2
+    dev: false
 
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -4689,6 +4722,20 @@ packages:
       use-latest: 1.2.1_pofolu2o2erjq4lhyzl3hqovzq
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.23.8
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:
