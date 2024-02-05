@@ -1,5 +1,6 @@
 "use client";
 
+import { ToolRating } from "@/components/tool-rating";
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useDefinition } from "@/hooks/use-dictionary";
 import { Skeleton } from "@mantine/core";
@@ -58,6 +59,9 @@ export default function DictionaryPage() {
       />
       <ResponseCard definition={s.completion} isLoading={s.isLoading} />
       <History />
+      <div className="my-8">
+        <ToolRating />
+      </div>
     </div>
   );
 }
