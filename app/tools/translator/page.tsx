@@ -1,4 +1,5 @@
 // import { Translator } from "@/components/Translator";
+import { ToolRating } from "@/components/tool-rating";
 import dynamic from "next/dynamic";
 
 const DynamicTranslator = dynamic(
@@ -12,6 +13,13 @@ const DynamicTranslator = dynamic(
 );
 
 const TranslatorPage = () => {
-  return <DynamicTranslator />;
+  return (
+    <>
+      <DynamicTranslator />
+      <div className="my-8">
+        <ToolRating />
+      </div>
+    </>
+  );
 };
 export default TranslatorPage;
