@@ -103,7 +103,7 @@ export function ToolRating() {
             <Textarea
               autosize
               minRows={4}
-              placeholder="What can we do better"
+              placeholder="What can we do better?"
               className="w-full"
               variant="filled"
               name="note"
