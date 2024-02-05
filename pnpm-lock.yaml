@@ -8,6 +8,8 @@ specifiers:
   '@serwist/next': ^8.4.3
   '@serwist/precaching': ^8.4.3
   '@serwist/sw': ^8.4.3
+  '@supabase/ssr': ^0.1.0
+  '@supabase/supabase-js': ^2.39.3
   '@tailwindcss/typography': ^0.5.9
   '@tanstack/react-query': ^5.12.2
   '@tanstack/react-query-devtools': ^5.13.3
@@ -66,6 +68,8 @@ dependencies:
   '@serwist/next': 8.4.3_next@14.1.0+webpack@5.89.0
   '@serwist/precaching': 8.4.3
   '@serwist/sw': 8.4.3
+  '@supabase/ssr': 0.1.0_yeyeavehwu7yvzhzsgd774ebdu
+  '@supabase/supabase-js': 2.39.3
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   '@tanstack/react-query': 5.12.2_react@18.2.0
   '@trpc/client': 10.18.0_@trpc+server@10.18.0
@@ -76,7 +80,7 @@ dependencies:
   ai: 2.2.27_react@18.2.0
   clsx: 2.0.0
   eventsource-parser: 1.0.0
-  langchain: 0.0.152_@upstash+redis@1.28.3
+  langchain: 0.0.152_yqpdrndaknke6eork2qj5tapbe
   next: 14.1.0_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.22.1_hipqgvz32dfk24avoqah5l7veq
   nextjs-google-analytics: 2.3.3_next@14.1.0+react@18.2.0
@@ -748,6 +752,73 @@ packages:
       '@types/trusted-types': 2.0.7
     dev: false
 
+  /@supabase/functions-js/2.2.0:
+    resolution: {integrity: sha512-lAmxD/mZ8vk2mg1CmXQWzK5mOHk7kDxAnxoyqUj2BVPvacEZ52P8nFkInEuSMqx6P6FKy64selW1Vyhui9racA==}
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+    dev: false
+
+  /@supabase/gotrue-js/2.62.2:
+    resolution: {integrity: sha512-AP6e6W9rQXFTEJ7sTTNYQrNf0LCcnt1hUW+RIgUK+Uh3jbWvcIST7wAlYyNZiMlS9+PYyymWQ+Ykz/rOYSO0+A==}
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+    dev: false
+
+  /@supabase/node-fetch/2.6.15:
+    resolution: {integrity: sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==}
+    engines: {node: 4.x || >=6.0.0}
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: false
+
+  /@supabase/postgrest-js/1.9.2:
+    resolution: {integrity: sha512-I6yHo8CC9cxhOo6DouDMy9uOfW7hjdsnCxZiaJuIVZm1dBGTFiQPgfMa9zXCamEWzNyWRjZvupAUuX+tqcl5Sw==}
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+    dev: false
+
+  /@supabase/realtime-js/2.9.3:
+    resolution: {integrity: sha512-lAp50s2n3FhGJFq+wTSXLNIDPw5Y0Wxrgt44eM5nLSA3jZNUUP3Oq2Ccd1CbZdVntPCWLZvJaU//pAd2NE+QnQ==}
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+      '@types/phoenix': 1.6.4
+      '@types/ws': 8.5.10
+      ws: 8.16.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /@supabase/ssr/0.1.0_yeyeavehwu7yvzhzsgd774ebdu:
+    resolution: {integrity: sha512-bIVrkqjAK5G3KjkIMKYKtAOlCgRRplEWjrlyRyXSOYtgDieiOhk2ZyNAPsEOa1By9OZVxuX5eAW1fitdnuxayw==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.33.1
+    dependencies:
+      '@supabase/supabase-js': 2.39.3
+      cookie: 0.5.0
+      ramda: 0.29.1
+    dev: false
+
+  /@supabase/storage-js/2.5.5:
+    resolution: {integrity: sha512-OpLoDRjFwClwc2cjTJZG8XviTiQH4Ik8sCiMK5v7et0MDu2QlXjCAW3ljxJB5+z/KazdMOTnySi+hysxWUPu3w==}
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+    dev: false
+
+  /@supabase/supabase-js/2.39.3:
+    resolution: {integrity: sha512-NoltJSaJNKDJNutO5sJPAAi5RIWrn1z2XH+ig1+cHDojT6BTN7TvZPNa3Kq3gFQWfO5H1N9El/bCTZJ3iFW2kQ==}
+    dependencies:
+      '@supabase/functions-js': 2.2.0
+      '@supabase/gotrue-js': 2.62.2
+      '@supabase/node-fetch': 2.6.15
+      '@supabase/postgrest-js': 1.9.2
+      '@supabase/realtime-js': 2.9.3
+      '@supabase/storage-js': 2.5.5
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /@swc/helpers/0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
@@ -910,10 +981,13 @@ packages:
     resolution: {integrity: sha512-gKb0enTmRCzXSSUJDq6/sPcqrfCv2mkkG6Jt/clpn5eiCbKTY+SgZUxo+p8ZKMof5dCp9vHQUAB7wOUTod22wQ==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
 
   /@types/nprogress/0.2.3:
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
+    dev: false
+
+  /@types/phoenix/1.6.4:
+    resolution: {integrity: sha512-B34A7uot1Cv0XtaHRYDATltAdKx0BvVKNgYNqE4WjtPUa4VQJM7kxeXcVKaH+KS+kCmZ+6w+QaUdcljiheiBJA==}
     dev: false
 
   /@types/prettier/2.7.2:
@@ -957,6 +1031,12 @@ packages:
 
   /@types/uuid/9.0.4:
     resolution: {integrity: sha512-zAuJWQflfx6dYJM62vna+Sn5aeSWhh3OB+wfUEACNcqUSc0AGc5JKl+ycL1vrH7frGTXhJchYjE1Hak8L819dA==}
+    dev: false
+
+  /@types/ws/8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.11.16
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.57.1_jwd5v5vphzanfmajybkjq25ld4:
@@ -3022,7 +3102,7 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /langchain/0.0.152_@upstash+redis@1.28.3:
+  /langchain/0.0.152_yqpdrndaknke6eork2qj5tapbe:
     resolution: {integrity: sha512-/G7eF+ojrA7hCgMs2S9Lb23z3aA+1NhoS0Z1cKNre/mV6hyNTxvt/Lvo1tFsNAPwV8KdH5Jeyp7LFcmjhvMFEw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3272,6 +3352,7 @@ packages:
         optional: true
     dependencies:
       '@anthropic-ai/sdk': 0.6.2
+      '@supabase/supabase-js': 2.39.3
       '@upstash/redis': 1.28.3
       ansi-styles: 5.2.0
       binary-extensions: 2.2.0
@@ -4559,6 +4640,10 @@ packages:
       performance-now: 2.1.0
     dev: false
 
+  /ramda/0.29.1:
+    resolution: {integrity: sha512-OfxIeWzd4xdUNxlWhgFazxsA/nl3mS4/jGZI5n00uWOoSSFRhC1b6gl6xvmzUamgmqELraWp0J/qqVlXYPDPyA==}
+    dev: false
+
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -5455,7 +5540,6 @@ packages:
 
   /undici-types/5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: true
 
   /unified/10.1.2:
     resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}
@@ -5804,6 +5888,19 @@ packages:
 
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  /ws/8.16.0:
+    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
