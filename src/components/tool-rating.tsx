@@ -76,7 +76,7 @@ export function ToolRating() {
         <input type="hidden" name="os" value={os} />
         {!state.msg && (
           <div className="gap-4 flex-row-between">
-            <Text className="mb-1 text-2xl">Is this helpful?</Text>
+            <Text className="mb-1 text-lg sm:text-2xl">Is this helpful?</Text>
             <Rating
               name="rating"
               emptySymbol={getEmptyIcon}
@@ -86,7 +86,7 @@ export function ToolRating() {
               onChange={setValue}
               count={4}
               classNames={{
-                root: "flex gap-4",
+                root: "flex gap-2 sm:gap-4",
                 symbolBody: "text-slate-200",
               }}
               aria-required
