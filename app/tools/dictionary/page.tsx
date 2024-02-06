@@ -57,7 +57,7 @@ export default function DictionaryPage() {
         stop={s.stop}
         isLoading={s.isLoading}
       />
-      <ResponseCard definition={s.completion} isLoading={s.isLoading} />
+      <ResponseCard definition={s.completion} isLoading={s.isLoading} setInput={s.setInput} />
       <History />
       <div className="my-8">
         <ToolRating />
