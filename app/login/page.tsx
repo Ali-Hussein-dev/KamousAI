@@ -3,7 +3,7 @@ import { Button, Title } from "@mantine/core";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import * as React from "react";
-import { FaInfoCircle, FaLock } from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa";
 import { type Metadata } from "next";
 
 // const useSigninOAuth = () => {
@@ -45,7 +45,16 @@ import { type Metadata } from "next";
 //     </form>
 //   );
 // };
-const useSigninWithOTP = () => {
+
+export const metadata: Metadata = {
+  title: "Login",
+};
+//======================================
+const LoginPage = async ({
+  searchParams,
+}: {
+  searchParams: { message: string };
+}) => {
   const signInWithOtp = async (formData: FormData) => {
     "use server";
     const origin = headers().get("origin");
@@ -66,19 +75,12 @@ const useSigninWithOTP = () => {
     }
     return redirect("/login?message=Check email to continue login process");
   };
-  return { signInWithOtp };
-};
 
-export const metadata: Metadata = {
-  title: "Login",
-};
-//======================================
-const SigninPage = ({
-  searchParams,
-}: {
-  searchParams: { message: string };
-}) => {
-  const { signInWithOtp } = useSigninWithOTP();
+  const supabase = createClient(cookies());
+  const { data } = await supabase.auth.getSession();
+  if (data?.session) {
+    redirect("/profile");
+  }
   return (
     <div className="center h-screen pt-10 md:pt-16">
       <div className="w-full max-w-xl rounded-xl border-[0.5px] border-solid border-primary-400/80 bg-gradient-to-t from-slate-900 to-slate-800/90 px-5 pb-4 pt-10 shadow-xl sm:mb-20">
@@ -117,4 +119,4 @@ const SigninPage = ({
     </div>
   );
 };
-export default SigninPage;
+export default LoginPage;
