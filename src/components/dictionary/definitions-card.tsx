@@ -63,17 +63,19 @@ export const WordEntryTabs = ({
 type LastResponseProps = {
   definition: string;
   isLoading: boolean;
+  setInput: (s: string) => void;
 };
 //---------------------------------------------------
 export const DefinitionsCard = ({
   definition,
+  setInput,
   isLoading,
 }: LastResponseProps) => {
   const searchParams = useSearchParams();
   const key = searchParams?.get("key") || "";
   const term = useHistoryStore((s) => s.lexicalEntries)[key]?.term || "";
   const { isFetching: isLoadingAudio, play } = useVoiceContext({ text: term });
-  if (!definition && !isLoading) return <InitialView />;
+  if (!definition && !isLoading) return <InitialView setInput={setInput} />;
   return (
     <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 pb-2 pl-4 pr-2 pt-6 text-slate-300">
       {isLoading ? (
