@@ -41,7 +41,10 @@ export const InitialView = ({
               value: "It's raining cats and dogs",
             },
             { label: "Word vs word: loose vs lose", value: "loose vs lose" },
-            { label: "Word or word: top or tap", value: "top or tap" },
+            {
+              label: "Word or word: capital or capitol",
+              value: "capital or capitol",
+            },
             { label: "Misspelled words: attension", value: "attension" },
           ].map((o) => (
             <Button
