@@ -30,7 +30,7 @@ export const InitialView = ({
       <H1 />
       <div className="mx-auto mb-4">
         <Text className="mb-4 text-center text-xl font-bold" c="dimmed">
-          Try the folowing examples
+          Try the following examples
         </Text>
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
           {[
@@ -41,10 +41,7 @@ export const InitialView = ({
               value: "It's raining cats and dogs",
             },
             { label: "Word vs word: loose vs lose", value: "loose vs lose" },
-            {
-              label: "Word or word: capital or capitol",
-              value: "capital or capitol",
-            },
+            { label: "Word or word: top or tap", value: "top or tap" },
             { label: "Misspelled words: attension", value: "attension" },
           ].map((o) => (
             <Button
