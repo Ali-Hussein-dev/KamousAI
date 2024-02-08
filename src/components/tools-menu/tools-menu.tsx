@@ -8,8 +8,10 @@ import { BsTranslate, BsJournalText } from "react-icons/bs";
 import { MdOutlineShortText } from "react-icons/md";
 import { cn } from "@/utils/helpers";
 import dynamic from "next/dynamic";
-import { Skeleton } from "./Skeleton";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Skeleton } from "../Skeleton";
+import css from "./tools-menu.module.css";
+
+// https://codepen.io/ali-hussein-dev/pen/BabOdxY
 
 export const toolsLinks = [
   {
@@ -48,30 +50,23 @@ export const toolsLinks = [
 export const ToolsBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 backdrop-blur-sm sm:hidden">
-      <nav className="w-full max-w-fit overflow-hidden rounded-lg bg-slate-800">
-        <Swiper
-          slidesPerView={3}
-          freeMode={{
-            enabled: true,
-            momentum: true,
-            momentumBounce: true,
-            momentumBounceRatio: 1,
-            minimumVelocity: 1,
-          }}
-        >
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
+      <div
+        className={
+          "h-[4.2rem] w-full max-w-lg overflow-hidden rounded-t bg-slate-800 shadow-inner"
+        }
+      >
+        <nav className={css.nav}>
           {toolsLinks.map((item, i) => (
-            <SwiperSlide
+            <Link
+              href={item.href}
               key={i}
               className={cn(
-                "w-fit px-1 py-2 duration-500",
+                "w-fit px-2 pb-4 pt-2 text-slate-300 no-underline duration-500",
                 pathname == item.href && "bg-slate-950/60"
               )}
             >
-              <Link
-                href={item.href}
-                className="w-full gap-1 whitespace-nowrap text-center text-[10px] text-slate-300 no-underline flex-col-center"
-              >
+              <div className={"w-full gap-1 flex-col-center"}>
                 <span
                   className={cn(
                     "center h-9 w-9 rounded-lg border border-solid border-slate-600 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
@@ -80,12 +75,14 @@ export const ToolsBar = () => {
                 >
                   {item.icon}
                 </span>
-                <span>{item.label}</span>
-              </Link>
-            </SwiperSlide>
+                <span className="whitespace-nowrap text-center text-[10px]">
+                  {item.label}
+                </span>
+              </div>
+            </Link>
           ))}
-        </Swiper>
-      </nav>
+        </nav>
+      </div>
     </div>
   );
 };
@@ -95,7 +92,7 @@ export const DynamicToolsBar = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-4 pb-5 pt-5 sm:hidden">
+      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 pt-4 sm:hidden">
         <Skeleton cls="h-16" />
       </div>
     ),

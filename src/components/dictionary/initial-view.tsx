@@ -30,7 +30,7 @@ export const InitialView = ({
       <H1 />
       <div className="mx-auto mb-4">
         <Text className="mb-4 text-center text-xl font-bold" c="dimmed">
-          Try the folowing examples
+          Try the following examples
         </Text>
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
           {[

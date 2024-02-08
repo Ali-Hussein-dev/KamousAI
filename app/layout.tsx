@@ -76,6 +76,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
+        <script
+          async
+          src="https://eu.umami.is/script.js"
+          data-website-id="047d58c2-2c44-4b61-933a-99167b4bac90"
+        ></script>
         <meta name="theme-color" content="#334155" />
       </head>
       <body className={fontFamily.className}>
