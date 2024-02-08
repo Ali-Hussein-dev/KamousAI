@@ -53,7 +53,7 @@ export const ToolsBar = () => {
     <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
       <div
         className={
-          "h-[4.2rem] w-full max-w-lg overflow-hidden rounded-t bg-slate-800 shadow-inner"
+          "h-[4.9rem] w-full max-w-lg overflow-hidden rounded-t bg-slate-800 shadow-inner"
         }
       >
         <nav className={css.nav}>
@@ -62,7 +62,7 @@ export const ToolsBar = () => {
               href={item.href}
               key={i}
               className={cn(
-                "w-fit px-2 pb-4 pt-2 text-slate-300 no-underline duration-500",
+                "w-fit px-2 pb-8 pt-2 text-slate-300 no-underline duration-500",
                 pathname == item.href && "bg-slate-950/60"
               )}
             >
