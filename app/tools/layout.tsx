@@ -1,5 +1,8 @@
 "use client";
-import { toolsLinks, DynamicToolsBar } from "@/components";
+import {
+  toolsLinks,
+  DynamicToolsBar,
+} from "@/components/tools-menu/tools-menu";
 import { capitalizeFirstLetter, cn } from "@/utils/helpers";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { MantineProvider, AppShell, Burger } from "@mantine/core";
@@ -8,8 +11,6 @@ import { theme } from "../../theme";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/free-mode";
 
 export default function ToolsLayout({
   children,

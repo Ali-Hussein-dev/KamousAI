@@ -1,0 +1,13 @@
+/* https://codepen.io/ali-hussein-dev/pen/BabOdxY */
+
+.nav {
+    width: 100%;
+    display: flex;
+    column-gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: transparent;
+    scrollbar-width: thin;
+}
