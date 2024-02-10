@@ -1,10 +1,12 @@
 // app/providers.jsx
 "use client";
 
+import { MantineProvider } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import React from "react";
+import { theme } from "theme";
 // import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 export function Providers(props: { children: React.ReactNode }) {
@@ -23,7 +25,9 @@ export function Providers(props: { children: React.ReactNode }) {
     <>
       <QueryClientProvider client={queryClient}>
         {/* <ReactQueryStreamedHydration> */}
-        {props.children}
+        <MantineProvider defaultColorScheme="dark" theme={theme}>
+          {props.children}
+        </MantineProvider>
         {/* </ReactQueryStreamedHydration> */}
         {<ReactQueryDevtools initialIsOpen={false} />}
       </QueryClientProvider>

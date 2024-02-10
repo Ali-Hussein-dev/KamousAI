@@ -24,6 +24,7 @@ const server = z.object({
   DATABASE_URL: z.string().min(1),
   DIRECT_URL: z.string().min(1),
   ELEVEN_LABS_KEY: z.string(),
+  // UPSTASH
   UPSTASH_REDIS_REST_URL: z.string(),
   UPSTASH_REDIS_REST_TOKEN: z.string(),
 });
@@ -34,6 +35,10 @@ const server = z.object({
  */
 const client = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+
+  // SUPABASE
+  NEXT_PUBLIC_SUPABASE_URL: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
 });
 
 /**
@@ -50,11 +55,18 @@ const processEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+
   DATABASE_URL: process.env.DATABASE_URL,
   DIRECT_URL: process.env.DIRECT_URL,
+
   ELEVEN_LABS_KEY: process.env.ELEVEN_LABS_KEY,
+
+  // UPSTASH
   UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
-  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN
+  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
+  // SUPABASE
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
 };
 
 // Don't touch the part below
