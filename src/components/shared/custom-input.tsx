@@ -1,12 +1,20 @@
+import { cn } from "@/utils/helpers";
+import { Input, type InputProps } from "@mantine/core";
+
 //======================================
 export const CustomInput = (
-  props: React.ComponentPropsWithoutRef<"input">
-  //   ref: React.RefObject<HTMLInputElement> | null | undefined
+  props: InputProps & React.ComponentPropsWithoutRef<"input">
 ) => {
   return (
-    <input
+    <Input
       //   ref={ref}
-      className="h-10 w-full rounded border-none border-slate-500 bg-slate-800/30 px-2 text-slate-100 focus:bg-slate-800/60 focus:outline-none"
+      classNames={{
+        input: cn(
+          "h-10 w-full rounded px-2 text-slate-100 focus:bg-slate-800/80 focus:outline-none font-medium text-slate-200 shadow-inner",
+          "from-slate-800 to-slate-800/90 bg-gradient-to-t"
+        ),
+      }}
+      variant="filled"
       {...props}
     />
   );
