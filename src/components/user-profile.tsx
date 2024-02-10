@@ -1,7 +1,8 @@
 "use client";
-import { ActionIcon, Button, Select, Title } from "@mantine/core";
+import { ActionIcon, Button, Title } from "@mantine/core";
 import { useListState } from "@mantine/hooks";
 import * as React from "react";
+import { CustomSelect } from "./Mantine/custom-select";
 
 const Pairs = ({
   remove,
@@ -20,7 +21,7 @@ const Pairs = ({
       className="w-full flex-wrap gap-3 flex-row-between sm:flex-nowrap"
       key={i}
     >
-      <Select
+      <CustomSelect
         className="w-full"
         placeholder="Pick a language"
         value={lang}
@@ -31,10 +32,10 @@ const Pairs = ({
         data={["Arabic", "English", "German", "French", "Spanish", "Italian"]}
         searchable
       />
-      <Select
+      <CustomSelect
         className="w-full"
         placeholder="Select your proficiency level"
-        data={["Beginner", "Intermediate", "Advanced", "Native"]}
+        data={["Beginner", "Intermediate", "Advanced", "Native", "Fluent"]}
         value={level}
         onChange={(level: string) => {
           setLevel(level);

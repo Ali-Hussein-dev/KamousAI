@@ -34,13 +34,18 @@ const Profile = async () => {
             User Info
           </Title>
           <div className="flex-wrap gap-2 flex-row-between sm:flex-nowrap">
-            <CustomInput placeholder="name" className="w-full" />
+            <CustomInput
+              placeholder="name"
+              className="w-full"
+              classNames={{ input: "bg-slate-700" }}
+            />
             <CustomInput
               placeholder="email"
               value={user.user?.email}
               disabled
               type="email"
               className="w-full"
+              classNames={{ input: "bg-slate-700" }}
             />
           </div>
           <UserLanguages />
