@@ -3,10 +3,11 @@
  * This is especially useful for Docker builds.
  */
 import withSerwistInit from "@serwist/next";
-
+const dev = process.env.NODE_ENV == "development";
 const withSerwist = withSerwistInit({
   swSrc: "app/sw.ts",
   swDest: "public/sw.js",
+  disable: dev,
 });
 
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
