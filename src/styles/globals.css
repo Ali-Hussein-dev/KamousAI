@@ -26,3 +26,14 @@ display: grid;
         transform: translateY(0);
     }
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-slate-800/60;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-slate-300/90 hover:bg-slate-300;
+}
