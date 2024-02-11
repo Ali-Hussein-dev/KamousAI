@@ -4,8 +4,8 @@ import { persist } from "zustand/middleware";
 const tones = [
   {
     id: "1001",
-    label: "Standard",
-    value: "standard",
+    label: "Professional",
+    value: "professional",
   },
   {
     id: "2001",
@@ -18,14 +18,19 @@ const tones = [
     value: "formal",
   },
   {
-    id: "4001",
-    label: "Informal",
-    value: "informal",
-  },
-  {
     id: "5001",
     label: "Casual",
     value: "casual",
+  },
+  {
+    id: "4001",
+    label: "Confident",
+    value: "confident",
+  },
+  {
+    id: "4001",
+    label: "Straightforward",
+    value: "straightforward",
   },
 ];
 export type Tone = {
