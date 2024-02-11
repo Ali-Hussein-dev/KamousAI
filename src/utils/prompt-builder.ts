@@ -15,7 +15,7 @@ export class CreatePrompt {
         return `Summarize the following into ${mode} with a title (bold formated)`;
     }
     static reverseDictionary(suggestionsCount: "3" | "5" = "3") {
-        return `I will provide you with the definition of a word, and your task is to suggest up to ${suggestionsCount} commonly-used synonyms. Make sure not to include the original word in your suggestions. The results should be presented in a table with three columns: the first column for the synonym, the second for its sentiment, and the third for the context in which the synonym is most frequently used.`;
+        return `I will provide you with the definition of a word, and your task is to suggest up to ${suggestionsCount} commonly-used synonyms. Make sure not to include the original word in your suggestions. The results should be presented in a table with three columns: the first column for the synonym, the second for its sentiment, and the third for the context in which the synonym is most frequently used. The output language should be the same language of the user input`;
     }
 
     static translate(inputLanguage: string, outputLanguage: string) {
