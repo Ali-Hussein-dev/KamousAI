@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import { useTranslator } from "@/hooks/use-translator";
 import { CopyButton } from "./copy-button";
+import { Markdown } from "./Markdown";
 
 const SelectLanguage = ({
   value,
@@ -52,7 +53,7 @@ const Translator = () => {
   const matches = useMediaQuery("(max-width: 500px)");
   return (
     <form className=" w-full space-y-4" onSubmit={handleSubmit}>
-      <div className="animate-in mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg">
+      <div className="animate-in mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg md:px-4">
         {/* // DIRECT WRAPPER */}
         <div className="mb-2 flex flex-wrap items-start border-0 border-b border-solid border-slate-500 pb-2 md:flex-nowrap">
           {/* // INPUT language pane */}
@@ -68,7 +69,7 @@ const Translator = () => {
               }}
             />
 
-            <div className="w-full border-0 border-t border-solid border-slate-500 pl-1 pt-2">
+            <div className="w-full border-0 border-t border-solid border-slate-500 pt-2 md:pr-4">
               <Textarea
                 value={input}
                 onChange={handleInputChange}
@@ -79,7 +80,7 @@ const Translator = () => {
                 placeholder="Enter text to translate"
                 classNames={{
                   input:
-                    "!bg-transparent !border-none !p-0 !font-medium !text-base",
+                    "bg-transparent border-none p-0 text-base prose prose-slate leading-7 text-primary-100",
                 }}
               />
             </div>
@@ -102,8 +103,8 @@ const Translator = () => {
                 }}
               />
             </div>
-            <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 p-2 font-semibold text-primary-100 ">
-              {completion}
+            <div className="min-h-[5rem] w-full border-0 border-t border-solid border-slate-500 px-2 font-semibold text-primary-100 md:pl-2">
+              <Markdown>{completion}</Markdown>
             </div>
           </div>
         </div>
