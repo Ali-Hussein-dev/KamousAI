@@ -3,7 +3,6 @@ import { Checkbox, Menu, ActionIcon, Button } from "@mantine/core";
 import { useChat } from "ai/react";
 import { TbChevronDown } from "react-icons/tb";
 import * as React from "react";
-import { type Message } from "ai";
 import { AiOutlineClear } from "react-icons/ai";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
@@ -15,25 +14,14 @@ import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
 import { ToolContainer } from "@/components/tool-container";
 
-const makeInstruction = (tones: string) => `
-  Fix, optimize the following text to make it ${tones}, use the same language, don't answer questions, don't explain it, use more suitable synonyms if needed or as required.
-  here is some expample:
-
-  example 2:
-  input: einen Fehler machen
-  output: einen Fehler begehen
-  text:
-`;
-
 //======================================
 const TextToneOptionsMenu = ({
-  setMessages,
-  messages,
+  selected,
+  setSelected,
 }: {
-  setMessages: (m: Message[]) => void;
-  messages: Message[];
+  selected: string[];
+  setSelected: (s: string[]) => void;
 }) => {
-  const [selected, setSelected] = React.useState<string[]>([]);
   const tones = useTextOptimizer((s) => s.tones);
   return (
     <CustomMenu width={"210"} position="bottom-start" closeOnItemClick={false}>
@@ -54,15 +42,6 @@ const TextToneOptionsMenu = ({
           value={selected}
           onChange={(value) => {
             setSelected(value);
-            const content = makeInstruction(value.join(" "));
-            console.log("🚀 ", content);
-            const instruction: Message = {
-              id: "instruction",
-              role: "system",
-              content,
-            };
-            const filtered = messages.filter((msg) => msg.role !== "system");
-            setMessages([instruction, ...filtered]);
           }}
         >
           {tones.map((item) => (
@@ -86,6 +65,7 @@ const TextToneOptionsMenu = ({
 export default function TextOptimizer() {
   const history = useTextOptimizer((s) => s.history);
   const setHistory = useTextOptimizer((s) => s.setHistory);
+  const [selected, setSelected] = React.useState<string[]>([]);
   const {
     messages,
     input,
@@ -96,19 +76,15 @@ export default function TextOptimizer() {
     setInput,
   } = useChat({
     api: "/api/text-optimizer",
-    initialMessages: [
-      {
-        role: "system",
-        content: makeInstruction("standard"),
-        id: "instruction-4040",
-      },
-      ...history,
-    ],
+    initialMessages: history,
     onResponse: () => {
       setInput(input);
     },
     onFinish: (d) => {
       setHistory([...history.slice(-5), d]);
+    },
+    body: {
+      tones: selected.join(", "),
     },
   });
   return (
@@ -136,7 +112,7 @@ export default function TextOptimizer() {
           }
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
-          <TextToneOptionsMenu setMessages={setMessages} messages={messages} />
+          <TextToneOptionsMenu selected={selected} setSelected={setSelected} />
           <div className="gap-3 flex-row-start">
             {isLoading ? (
               <ActionIcon
