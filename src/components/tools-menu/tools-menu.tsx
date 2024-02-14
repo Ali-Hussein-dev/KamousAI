@@ -36,7 +36,7 @@ export const toolsLinks = [
   },
   {
     label: "Paraphraser",
-    href: "/tools/text-optimizer",
+    href: "/tools/paraphraser",
     icon: <BsJournalText className="text-white" />,
   },
   {

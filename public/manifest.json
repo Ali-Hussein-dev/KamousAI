@@ -65,8 +65,8 @@
     "prefer_related_applications": false,
     "shortcuts": [
         {
-            "name": "Text Optimizer",
-            "url": "/tools/text-optimizer"
+            "name": "Paraphraser",
+            "url": "/tools/paraphraser"
         },
         {
             "name": "KamousAI",
