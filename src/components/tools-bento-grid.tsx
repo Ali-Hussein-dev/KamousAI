@@ -36,7 +36,7 @@ const languageTools = [
   },
   {
     label: "Paraphraser",
-    href: "/tools/text-optimizer",
+    href: "/tools/paraphraser",
     icon: <BsJournalText className="text-white" />,
     description: "Optimize and improve written text for clarity and style.",
   },
