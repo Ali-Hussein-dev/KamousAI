@@ -41,7 +41,7 @@ function Temperature() {
   );
 }
 //======================================
-const TextToneOptionsMenu = ({
+const CustomizationMenu = ({
   selected,
   setSelected,
 }: {
@@ -52,7 +52,16 @@ const TextToneOptionsMenu = ({
   return (
     <CustomMenu width={"270"} position="bottom-start" closeOnItemClick={false}>
       <Menu.Target>
-        <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
+        <Button
+          radius="lg"
+          pl="0"
+          leftSection={<CustomTones />}
+          rightSection={<TbChevronDown />}
+          variant="light"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           Customize
         </Button>
       </Menu.Target>
@@ -76,7 +85,6 @@ const TextToneOptionsMenu = ({
               />
             </Menu.Item>
           ))}
-          <CustomTones />
         </Checkbox.Group>
         <Divider color="#475569" my="sm" />
         <Temperature />
@@ -142,7 +150,7 @@ export default function Paraphraser() {
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
           {/* //---------------------------------------------------CUSTOMIZATION */}
-          <TextToneOptionsMenu selected={selected} setSelected={setSelected} />
+          <CustomizationMenu selected={selected} setSelected={setSelected} />
           <div className="gap-3 flex-row-start">
             {isLoading ? (
               <ActionIcon
