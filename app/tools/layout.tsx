@@ -104,7 +104,7 @@ export default function ToolsLayout({
                 !desktopOpened ? "hidden" : "w-[240px]"
               )}
             ></div>
-            <div className="grow px-4 py-1">
+            <div className="grow p-1">
               <div className="mx-auto max-w-4xl pb-28 pt-10 sm:pb-4">
                 {children}
               </div>
