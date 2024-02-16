@@ -64,8 +64,8 @@ export function ToolRating() {
         action={formAction}
         method="POST"
         className={cn(
-          "mx-auto max-w-lg gap-3 rounded-xl border-[0.5px] border-solid border-slate-500 px-3 pb-2 pt-3 transition-all duration-500 ease-linear flex-col-center",
-          value == 0 ? "" : "shadow-xl"
+          "mx-auto gap-3 rounded-xl border-[0.5px] border-solid border-slate-500 px-3 pb-2 pt-3 transition-all duration-500 ease-linear flex-col-center",
+          value == 0 ? "max-w-md" : "max-w-lg bg-slate-800 shadow-xl"
         )}
       >
         <input
@@ -75,7 +75,7 @@ export function ToolRating() {
         />
         <input type="hidden" name="os" value={os} />
         {!state.msg && (
-          <div className="gap-4 flex-row-between">
+          <div className="w-full gap-2 flex-col-center">
             <Text className="mb-1 text-lg sm:text-2xl">Is this helpful?</Text>
             <Rating
               name="rating"
@@ -113,7 +113,7 @@ export function ToolRating() {
               <Button
                 onClick={() => setValue(0)}
                 className="rounded-xl"
-                variant="outline"
+                variant="subtle"
                 w="100%"
               >
                 Cancel
