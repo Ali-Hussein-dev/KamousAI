@@ -46,7 +46,10 @@ export const ReverseDictionary = () => {
     },
   });
   return (
-    <ToolContainer title="reverseDictionary">
+    <ToolContainer
+      title="reverseDictionary"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <DynamicCustomTextarea
           value={input}

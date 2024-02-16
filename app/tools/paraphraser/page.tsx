@@ -88,12 +88,15 @@ export default function TextOptimizer() {
     },
   });
   return (
-    <ToolContainer title="paraphraser">
+    <ToolContainer
+      title="paraphraser"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
       <form className="space-y-4" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}
           onChange={handleInputChange}
-          placeholder="Enter text to optimize"
+          placeholder="Enter text"
           cb={(e) =>
             // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
             handleSubmit(e)

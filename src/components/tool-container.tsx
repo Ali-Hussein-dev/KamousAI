@@ -12,9 +12,11 @@ const titles = {
 export const ToolContainer = ({
   children,
   title,
+  showRating = false,
 }: {
   children: React.ReactNode;
   title: keyof typeof titles;
+  showRating: boolean;
 }) => {
   return (
     <>
@@ -29,7 +31,7 @@ export const ToolContainer = ({
         </Title>
         {children}
       </section>
-      <ToolRating />
+      {showRating && <ToolRating />}
     </>
   );
 };

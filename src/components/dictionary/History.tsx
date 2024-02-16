@@ -9,6 +9,7 @@ import { AudioCtxButton } from "./Audio";
 import { Markdown } from "../Markdown";
 import { MdOutlineClear } from "react-icons/md";
 import { useVoiceContext } from "@/hooks/use-voice-context";
+import { ToolRating } from "../tool-rating";
 
 const Card = ({
   definition,
@@ -84,6 +85,9 @@ export const DictionaryHistory = () => {
       </Button>
       <div hidden={!open} className="px-1 pt-2 text-slate-300">
         {cached}
+      </div>
+      <div className="my-8">
+        <ToolRating />
       </div>
     </>
   );
