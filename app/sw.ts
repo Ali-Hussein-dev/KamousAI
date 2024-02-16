@@ -18,5 +18,19 @@ installSerwist({
     skipWaiting: true,
     clientsClaim: true,
     navigationPreload: true,
-    runtimeCaching: defaultCache,
+    runtimeCaching: [
+        {
+            // To disable caching for all/api/auth/ routes
+            urlPattern: /\/api\/auth\/.*/,
+            handler: 'NetworkOnly',
+            options: {}, // needed to avoid serwist crash
+        },
+        ...defaultCache,
+    ],
+    disableDevLogs: true,
+    fallbacks: {
+        entries: [
+
+        ]
+    }
 });
