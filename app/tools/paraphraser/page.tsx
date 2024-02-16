@@ -1,5 +1,13 @@
 "use client";
-import { Checkbox, Menu, ActionIcon, Button } from "@mantine/core";
+import {
+  Checkbox,
+  Menu,
+  ActionIcon,
+  Button,
+  Slider,
+  Text,
+  Divider,
+} from "@mantine/core";
 import { useChat } from "ai/react";
 import { TbChevronDown } from "react-icons/tb";
 import * as React from "react";
@@ -14,6 +22,24 @@ import { MdClear } from "react-icons/md";
 import { CopyButton } from "@/components/copy-button";
 import { ToolContainer } from "@/components/tool-container";
 
+function Temperature() {
+  const temperature = useTextOptimizer((s) => s.temperature);
+  const setTemperature = useTextOptimizer((s) => s.setTemperature);
+  return (
+    <div className="pb-4">
+      <Text size="sm" mb="4px">
+        Creativity Level ({temperature}/2)
+      </Text>
+      <Slider
+        value={temperature}
+        onChange={setTemperature}
+        min={0.1}
+        max={2}
+        step={0.1}
+      />
+    </div>
+  );
+}
 //======================================
 const TextToneOptionsMenu = ({
   selected,
@@ -24,19 +50,14 @@ const TextToneOptionsMenu = ({
 }) => {
   const tones = useTextOptimizer((s) => s.tones);
   return (
-    <CustomMenu width={"210"} position="bottom-start" closeOnItemClick={false}>
+    <CustomMenu width={"270"} position="bottom-start" closeOnItemClick={false}>
       <Menu.Target>
-        <Button
-          radius="lg"
-          pl="0"
-          leftSection={<CustomTones />}
-          rightSection={<TbChevronDown />}
-          variant="light"
-        >
-          Select Text Tone {selected.length > 0 && `(${selected.length})`}
+        <Button radius="lg" rightSection={<TbChevronDown />} variant="light">
+          Customize
         </Button>
       </Menu.Target>
-      <Menu.Dropdown p={5} mah="300px" className="!overflow-y-auto">
+      <Menu.Dropdown p={8} mah="320px" className="!overflow-y-auto">
+        <Text>Select Output Tone</Text>
         <Checkbox.Group
           value={selected}
           onChange={(value) => {
@@ -44,7 +65,7 @@ const TextToneOptionsMenu = ({
           }}
         >
           {tones.map((item) => (
-            <Menu.Item key={item.label} p="xs">
+            <Menu.Item key={item.label} py="xs" px="4px">
               <Checkbox
                 key={item.label}
                 value={item.value}
@@ -55,7 +76,10 @@ const TextToneOptionsMenu = ({
               />
             </Menu.Item>
           ))}
+          <CustomTones />
         </Checkbox.Group>
+        <Divider color="#475569" my="sm" />
+        <Temperature />
       </Menu.Dropdown>
     </CustomMenu>
   );
@@ -64,15 +88,16 @@ const TextToneOptionsMenu = ({
 export default function Paraphraser() {
   const history = useTextOptimizer((s) => s.history);
   const setHistory = useTextOptimizer((s) => s.setHistory);
+  const temperature = useTextOptimizer((s) => s.temperature);
   const [selected, setSelected] = React.useState<string[]>([]);
   const {
     messages,
+    setMessages,
     input,
+    setInput,
     handleInputChange,
     handleSubmit,
     isLoading,
-    setMessages,
-    setInput,
   } = useChat({
     api: "/api/text-optimizer",
     initialMessages: history,
@@ -84,6 +109,7 @@ export default function Paraphraser() {
     },
     body: {
       tones: selected.join(", "),
+      temperature,
     },
   });
   return (

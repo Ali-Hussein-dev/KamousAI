@@ -168,17 +168,19 @@ export const Tones = () => {
         </Drawer.Content>
       </Drawer.Root>
 
-      <ActionIcon
+      <Button
         onClick={(e) => {
           e.stopPropagation();
           open();
         }}
         radius="lg"
-        size="lg"
-        // variant="light"
+        w="100%"
+        mt="xs"
+        leftSection={<MdEdit />}
+        variant="light"
       >
-        <MdEdit />
-      </ActionIcon>
+        Add More Tones
+      </Button>
     </div>
   );
 };

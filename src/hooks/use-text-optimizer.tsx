@@ -41,30 +41,37 @@ export type Tone = {
 };
 type State = {
   tones: Tone[];
+  temperature: number;
+  setTemperature: (temperature: number) => void;
+  history: Message[];
+  setHistory: (history: Message[]) => void;
   update: (tone: Tone) => void;
   remove: (id: string) => void;
   add: (tone: Tone) => void;
-  history: Message[];
-  setHistory: (history: Message[]) => void;
 };
 
 export const useTextOptimizer = create<State>()(
   persist(
     (set) => ({
       tones,
+      temperature: 1,
       history: [],
+      setTemperature: (temperature) => set((s) => ({ ...s, temperature })),
       setHistory: (history) => set((s) => ({ ...s, history })),
       update: (updatedTone) =>
+        set(
+          (s) =>
+            ({
+              ...s,
+              tones: s.tones.map((tone) =>
+                tone.id === updatedTone.id ? updatedTone : tone
+              ) as Tone[],
+            } as State)
+        ),
+      remove: (id) =>
         set((s) => ({
           ...s,
-          tones: s.tones.map((current) =>
-            current.id === updatedTone.id ? updatedTone : current
-          ),
-        })),
-      remove: (id) =>
-        set((state) => ({
-          ...state,
-          tones: state.tones.filter((tone) => tone.id !== id),
+          tones: s.tones.filter((tone) => tone.id !== id),
         })),
       add: (tone) =>
         set((state) => ({ ...state, tones: [...state.tones, tone] })),
