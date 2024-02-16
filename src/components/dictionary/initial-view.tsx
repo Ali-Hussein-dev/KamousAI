@@ -37,8 +37,8 @@ export const InitialView = ({
             { label: "Slang words: Telly", value: "Telly" },
             { label: "Idioms: I'm on fire", value: "I'm on fire" },
             {
-              label: "Expressions: I'm on fire",
-              value: "It's raining cats and dogs",
+              label: "Expressions: Out of the blue",
+              value: "Out of the blue",
             },
             { label: "Word vs word: loose vs lose", value: "loose vs lose" },
             { label: "Word or word: top or tap", value: "top or tap" },
