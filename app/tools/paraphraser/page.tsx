@@ -165,7 +165,10 @@ export default function Paraphraser() {
             opacity={isLoading ? 0 : 1}
             color="red"
             leftSection={<AiOutlineClear />}
-            onClick={() => setMessages([])}
+            onClick={() => {
+              setMessages([]);
+              setHistory([]);
+            }}
           >
             Clear
           </Button>
