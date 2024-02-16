@@ -33,7 +33,7 @@ export const CustomTextarea = ({
       classNames={{
         root: "w-full",
         wrapper:
-          "flex justify-center items-start p-1 bg-slate-700/50 rounded focus-within:bg-slate-700/70",
+          "flex justify-center items-start p-2 bg-slate-700/50 rounded focus-within:bg-slate-700/70",
         input:
           "border-none focus:outline-none w-full bg-transparent resize-none font-medium placeholder:text-slate-500 text-base tracking-wide",
       }}
