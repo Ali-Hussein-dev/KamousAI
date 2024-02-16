@@ -29,12 +29,11 @@ const TextToneOptionsMenu = ({
         <Button
           radius="lg"
           pl="0"
-          // left={{}}
           leftSection={<CustomTones />}
           rightSection={<TbChevronDown />}
           variant="light"
         >
-          Text tone {selected.length > 0 && `(${selected.length})`}
+          Select Text Tone {selected.length > 0 && `(${selected.length})`}
         </Button>
       </Menu.Target>
       <Menu.Dropdown p={5} mah="300px" className="!overflow-y-auto">
@@ -62,7 +61,7 @@ const TextToneOptionsMenu = ({
   );
 };
 
-export default function TextOptimizer() {
+export default function Paraphraser() {
   const history = useTextOptimizer((s) => s.history);
   const setHistory = useTextOptimizer((s) => s.setHistory);
   const [selected, setSelected] = React.useState<string[]>([]);
@@ -92,6 +91,7 @@ export default function TextOptimizer() {
       title="paraphraser"
       showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
     >
+      {/* //---------------------------------------------------INPUT AREA */}
       <form className="space-y-4" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}
@@ -115,6 +115,7 @@ export default function TextOptimizer() {
           }
         />
         <div className="w-full gap-2 pb-2 flex-row-between">
+          {/* //---------------------------------------------------CUSTOMIZATION */}
           <TextToneOptionsMenu selected={selected} setSelected={setSelected} />
           <div className="gap-3 flex-row-start">
             {isLoading ? (
@@ -141,6 +142,7 @@ export default function TextOptimizer() {
           </div>
         </div>
       </form>
+      {/* //---------------------------------------------------OUTPUT AREA */}
       <div
         hidden={messages.length < 2}
         className="mt-4 space-y-2 rounded-lg px-1 py-4"
