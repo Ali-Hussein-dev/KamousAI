@@ -31,7 +31,10 @@ export default function GrammerCheckerPage() {
   });
 
   return (
-    <ToolContainer title="grammarCorrector">
+    <ToolContainer
+      title="grammarCorrector"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
       <form className="gap-4 flex-col-end" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}

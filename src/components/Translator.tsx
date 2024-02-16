@@ -8,6 +8,7 @@ import { TbSwitchHorizontal } from "react-icons/tb";
 import { useTranslator } from "@/hooks/use-translator";
 import { CopyButton } from "./copy-button";
 import { Markdown } from "./Markdown";
+import { ToolRating } from "./tool-rating";
 
 const SelectLanguage = ({
   value,
@@ -125,6 +126,11 @@ const Translator = () => {
       >
         {isLoading ? "Translating..." : "Translate"}
       </Button>
+      {!!completion && !isLoading && (
+        <div className="pb-6 pt-8">
+          <ToolRating />
+        </div>
+      )}
     </form>
   );
 };

@@ -88,7 +88,10 @@ export default function TextOptimizer() {
     },
   });
   return (
-    <ToolContainer title="paraphraser">
+    <ToolContainer
+      title="paraphraser"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
       <form className="space-y-4" onSubmit={handleSubmit}>
         <DynamicCustomTextarea
           value={input}

@@ -28,12 +28,15 @@ const SummarizerPage = () => {
     body: { mode: value },
   });
   return (
-    <ToolContainer title="summarizer">
+    <ToolContainer
+      title="summarizer"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
       <form onSubmit={handleSubmit} className="mb-4 w-full gap-3 flex-col-end ">
         <DynamicCustomTextarea
           value={input}
           onChange={handleInputChange}
-          placeholder="Enter your text to summarize"
+          placeholder="Enter text"
           cb={(e) =>
             // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
             handleSubmit(e)
