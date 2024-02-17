@@ -1,51 +1,12 @@
 import { createClient } from "@/utils/supabase/server";
 import { Button, Title } from "@mantine/core";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import * as React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { type Metadata } from "next";
 import { CustomInput } from "@/components/shared/custom-input";
-
-// const useSigninOAuth = () => {
-//   const signInWithOAuth = async () => {
-//     "use server";
-//     const cookieStore = cookies();
-//     const origin = headers().get("origin");
-//     const supabase = createClient(cookieStore);
-//     console.log(`${origin}/auth/callback`);
-//     const { error } = await supabase.auth.signInWithOAuth({
-//       provider: "google",
-//       options: {
-//         redirectTo: `${origin}/auth/callback`,
-//       },
-//     });
-//     if (error) {
-//       console.warn(error);
-//       return redirect("/login?message=Could not authenticate user");
-//     }
-//     // return redirect("/login?message=Check email to continue login process");
-//   };
-//   return { signInWithOAuth };
-// };
-// const OAuthButton = () => {
-//   const { signInWithOAuth } = useSigninOAuth();
-//   return (
-//     <form action={signInWithOAuth}>
-//       <Button
-//         // onClick={() => signInWithOAuth("google")}
-//         type="submit"
-//         // formAction={signInWithOAuth}
-//         w="100%"
-//         size="lg"
-//         // bg="white"
-//         color="gray"
-//       >
-//         Google
-//       </Button>
-//     </form>
-//   );
-// };
+import { signInWithOtp } from "@/actions/sign-in";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -56,27 +17,6 @@ const LoginPage = async ({
 }: {
   searchParams: { message: string };
 }) => {
-  const signInWithOtp = async (formData: FormData) => {
-    "use server";
-    const origin = headers().get("origin");
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    const email = formData.get("email") as string;
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        shouldCreateUser: true,
-        // emailRedirectTo: location.origin,
-        emailRedirectTo: `${origin}/auth/callback`,
-      },
-    });
-    if (error) {
-      console.warn(error);
-      return redirect("/login?message=Could not authenticate user");
-    }
-    return redirect("/login?message=Check email to continue login process");
-  };
-
   const supabase = createClient(cookies());
   const { data } = await supabase.auth.getSession();
   if (data?.session) {
