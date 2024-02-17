@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    /* slate-600 */
+    border: 0 solid #475569;
+}
 .center {
 display: grid;
     place-items: center;
