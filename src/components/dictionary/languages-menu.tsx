@@ -75,8 +75,8 @@ const LanguagesMenu = () => {
     (s) => s.preferences
   );
   const setSettings = useResponse((s) => s.setPreferences);
-  const onChange = (mode: DictionaryMode) => {
-    setSettings({ mode });
+  const onChange = (mode: string) => {
+    setSettings({ mode: mode as DictionaryMode });
   };
   return (
     <CustomMenu

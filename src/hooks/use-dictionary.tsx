@@ -93,9 +93,11 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
   }, [isFinished, id, wordEntryKey]);
 
   const onTabChange = React.useCallback(
-    (activeWordEntryKey: WordEntryKey) => {
-      setWordEntryKey(activeWordEntryKey);
-      const cache = lexicalEntries[id]?.[activeWordEntryKey];
+    (activeWordEntryKey: string | null) => {
+      if (activeWordEntryKey === null) return;
+
+      setWordEntryKey(activeWordEntryKey as WordEntryKey);
+      const cache = lexicalEntries[id]?.[activeWordEntryKey as WordEntryKey];
       console.log("-----------onTabChange", {
         term,
         id,

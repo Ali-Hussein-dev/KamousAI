@@ -1,28 +1,27 @@
 import {
-  ActionIcon,
+  // ActionIcon,
   Anchor,
-  Avatar,
-  Tooltip,
+  // Avatar,
+  // Tooltip,
   AppShell
 } from "@mantine/core";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 // import Link from "next/link";
 
 //======================================
-export const UserDropdown = () => {
-  const { data: sessionData } = useSession();
-  // const [opened, { toggle }] = useDisclosure(false);
-  return (
-    <ActionIcon onClick={() => void signOut()}>
-      <Tooltip label="Logout">
-        <Avatar src={sessionData?.user?.image as string} radius="xl">
-          {sessionData?.user?.name}
-        </Avatar>
-      </Tooltip>
-    </ActionIcon>
-  );
-};
+// export const UserDropdown = () => {
+//   const { data: sessionData } = useSession();
+//   // const [opened, { toggle }] = useDisclosure(false);
+//   return (
+//     <ActionIcon onClick={() => void signOut()}>
+//       <Tooltip label="Logout">
+//         <Avatar src={sessionData?.user?.image as string} radius="xl">
+//           {sessionData?.user?.name}
+//         </Avatar>
+//       </Tooltip>
+//     </ActionIcon>
+//   );
+// };
 //======================================
 export const Header = () => {
   // const { data: sessionData } = useSession();
