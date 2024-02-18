@@ -20,7 +20,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.57.1
   '@typescript-eslint/parser': ^5.57.1
   '@upstash/redis': ^1.28.3
-  ai: ^2.2.35
+  ai: ^2.2.27
   autoprefixer: ^10.4.14
   clsx: ^2.0.0
   eslint: ^8.37.0
@@ -61,7 +61,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   '@tanstack/react-query': 5.12.2_react@18.2.0
   '@upstash/redis': 1.28.3
-  ai: 2.2.35_react@18.2.0
+  ai: 2.2.27_react@18.2.0
   clsx: 2.0.0
   next: 14.1.0_biqbaboplfbrettd7655fr4n2y
   nextjs-google-analytics: 2.3.3_next@14.1.0+react@18.2.0
@@ -1192,8 +1192,8 @@ packages:
       humanize-ms: 1.2.1
     dev: false
 
-  /ai/2.2.35_react@18.2.0:
-    resolution: {integrity: sha512-YzR56VAMjqvGIVzMUFwH7jjo7K+Z3Old4nXcigiWsuqXnWQeQi3iPR8p2/xOZzmuZyMTOC+6jjbIJ8hoEOhfcQ==}
+  /ai/2.2.27_react@18.2.0:
+    resolution: {integrity: sha512-s/F1CfduvLVAnrWHKqwvJLBeGadXNb7D4fmYQv+YcTxUTmqKZYPlQ5wikxteeKmJ1QajTpPI0lz0/zIm/4a7vw==}
     engines: {node: '>=14.6'}
     peerDependencies:
       react: ^18.2.0
