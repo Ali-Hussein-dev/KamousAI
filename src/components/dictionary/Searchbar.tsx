@@ -51,7 +51,7 @@ export const DictionarySearchbar = (props: Props) => {
       <Autocomplete
         ref={inputRef}
         value={input}
-        data={list}
+        data={[...new Set(list)]}
         onChange={onChange}
         onKeyDown={onKeyDown}
         onOptionSubmit={onOptionSubmit}
