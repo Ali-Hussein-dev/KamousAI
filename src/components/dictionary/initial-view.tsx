@@ -34,15 +34,15 @@ export const InitialView = ({
         </Text>
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
           {[
-            { label: "Slang words: Telly", value: "Telly" },
-            { label: "Idioms: I'm on fire", value: "I'm on fire" },
+            { label: "Slang", value: "Telly" },
+            { label: "Idioms", value: "I'm on fire" },
             {
-              label: "Expressions: Out of the blue",
-              value: "Out of the blue",
+              label: "Acronyms",
+              value: "MSM",
             },
-            { label: "Word vs word: loose vs lose", value: "loose vs lose" },
-            { label: "Word or word: top or tap", value: "top or tap" },
-            { label: "Misspelled words: attension", value: "attension" },
+            { label: "Word vs word", value: "loose vs lose" },
+            { label: "Word or word", value: "top or tap" },
+            { label: "Misspelled words", value: "attension" },
           ].map((o) => (
             <Button
               key={o.label}
@@ -51,8 +51,10 @@ export const InitialView = ({
               variant="light"
               radius="lg"
               onClick={() => setInput(o.value)}
+              className="flex"
             >
-              {o.label}
+              <span className="uppercase">{o.label}: </span>
+              <span className="ml-1 text-slate-500">{o.value}</span>
             </Button>
           ))}
         </div>
