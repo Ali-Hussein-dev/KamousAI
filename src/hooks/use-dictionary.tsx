@@ -29,21 +29,22 @@ export const useDefinition = () => {
       const term = Object.values(lexicalEntries).find(
         (o) => o.term === cleanedTerm
       );
-      const key = term?.id ?? (Math.random() * 10000).toFixed(0);
-      const createdAt = new Date().getTime();
-      if (term) {
-        setCache(key, { ...term, definition: completion, createdAt });
+      const id = term?.id ?? cleanedTerm;
+      console.log("onFinish runing...", cleanedTerm);
+      if (!!term) {
+        // update word definition
+        setCache(term.id, { ...term, definition: completion });
       } else {
         const block = {
+          id,
           term: cleanedTerm,
-          id: key,
-          createdAt,
           definition: completion,
+          createdAt: new Date().getTime(),
         };
-        setCache(key, block);
+        setCache(id, block);
       }
       inputRef.current?.blur();
-      router.push(`/tools/dictionary?key=${key}`);
+      router.push(`/tools/dictionary?key=${id}`, { scroll: false });
     },
   });
   return { ...res, inputRef };
