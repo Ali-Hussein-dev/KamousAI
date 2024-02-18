@@ -26,13 +26,13 @@ export const InitialView = ({
   setInput: (s: string) => void;
 }) => {
   return (
-    <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-solid border-primary-300/50 bg-gradient-to-t from-slate-800 to-slate-800/60 px-2 py-2 flex-col-start sm:px-7 sm:pb-2 sm:pt-5">
+    <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-solid border-primary-300/50 bg-gradient-to-t from-slate-800 to-slate-800/60 px-2 py-3 shadow-lg flex-col-start sm:px-7 sm:pb-6 sm:pt-12">
       <H1 />
       <div className="mx-auto mb-4">
-        <Text className="mb-4 text-center text-xl font-bold" c="dimmed">
+        <Text className="mb-4 text-center text-xl font-medium" c="dimmed">
           Try the following examples
         </Text>
-        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
           {[
             { label: "Slang", value: "Telly" },
             { label: "Idioms", value: "I'm on fire" },
