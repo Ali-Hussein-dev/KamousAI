@@ -34,7 +34,8 @@ const Pairs = ({
         placeholder="Pick a language"
         name="lang"
         value={lang}
-        onChange={(lang: string) => {
+        onChange={(lang: null | string) => {
+          if (lang === null) return;
           setLang(lang);
           set(i, { lang, level });
         }}
@@ -45,7 +46,8 @@ const Pairs = ({
         placeholder="Select your proficiency level"
         name="level"
         value={level}
-        onChange={(level: string) => {
+        onChange={(level: string | null) => {
+          if (level === null) return;
           setLevel(level);
           set(i, { lang, level });
         }}
