@@ -79,7 +79,7 @@ export default function RootLayout({
         <script
           async
           src="https://eu.umami.is/script.js"
-          data-website-id="047d58c2-2c44-4b61-933a-99167b4bac90"
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI}
         ></script>
         <meta name="theme-color" content="#334155" />
       </head>
