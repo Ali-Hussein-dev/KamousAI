@@ -12,40 +12,40 @@ const languageTools = [
   {
     label: "AI Dictionary",
     href: "/tools/dictionary",
-    icon: <GiSpellBook className="h-full w-full text-slate-200" />,
+    Icon: GiSpellBook,
     description:
       "Unlock the power of AI to find definitions, synonyms, antonyms, and more.",
   },
   {
     label: "Reverse Dictionary",
     href: "/tools/reverse-dictionary",
-    icon: <AiOutlineSwap className="h-full w-full text-slate-200" />,
+    Icon: AiOutlineSwap,
     description:
       "Get help finding the right word to express your thoughts and ideas.",
   },
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
-    icon: <TbPencilMinus className="h-full w-full text-slate-200" />,
+    Icon: TbPencilMinus,
     description: "Check grammar and punctuation errors in your text.",
   },
   {
     label: "Translator",
     href: "/tools/translator",
-    icon: <BsTranslate className="h-full w-full text-slate-200" />,
+    Icon: BsTranslate,
     description: "Translate long text from one language to another.",
   },
   {
     label: "Paraphraser",
     href: "/tools/paraphraser",
-    icon: <BsJournalText className="h-full w-full text-slate-200" />,
+    Icon: BsJournalText,
     description:
       "Rewrite sentences to avoid plagiarism and improve readability.",
   },
   {
     label: "Summarizer",
     href: "/tools/summarizer",
-    icon: <MdOutlineShortText className="h-full w-full text-slate-200" />,
+    Icon: MdOutlineShortText,
     description: "Summarize long text into a short summary.",
   },
 ];
@@ -53,7 +53,7 @@ const languageTools = [
 export const ToolsBentoTools = () => {
   return (
     <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4  sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
-      {languageTools.map(({ icon, label, href, description }) => (
+      {languageTools.map(({ Icon, label, href, description }) => (
         <Link
           key={label}
           href={href}
@@ -66,9 +66,7 @@ export const ToolsBentoTools = () => {
             <div className="px-3 pb-4 pt-8 md:px-4">
               <div className="h-full flex-col-end">
                 <div className="mx-auto flex-col-center">
-                  <div className="center mx-auto h-24 max-w-fit sm:h-14">
-                    {icon}
-                  </div>
+                  <Icon size="40" className="text-slate-200" />
                   <h3 className="mb-0 text-center text-xl font-extrabold tracking-wide text-primary-600">
                     {label}
                   </h3>
