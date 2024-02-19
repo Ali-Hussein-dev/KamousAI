@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <div className="animate-in mb-12 flex-col-center">
           <h1 className="h1 text-balance">Language Learning Tools</h1>
           <h2 className="text-pretty mt-0 text-center text-base text-slate-400 md:text-2xl">
-            Advanced your language skills with AI
+            Advance your language skills with AI
           </h2>
           <Link href="/tools/dictionary">
             <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] shadow-lg focus:outline-none focus:ring-1 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
