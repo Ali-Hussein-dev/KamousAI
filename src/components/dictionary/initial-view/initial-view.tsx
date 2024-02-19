@@ -27,8 +27,8 @@ export const InitialView = ({
   setInput: (s: string) => void;
 }) => {
   return (
-    <div className={css.bg + " rounded-3xl"}>
-      <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-solid border-primary-300/50 bg-gradient-to-t from-slate-800/90 via-slate-800/80 to-slate-800/90 px-2 py-3 shadow-lg flex-col-start sm:px-7 sm:pb-7 sm:pt-12">
+    <div className={`${css.bg} rounded-3xl`}>
+      <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-slate-300/40 bg-gradient-to-t from-slate-800/90 via-slate-800/60 to-slate-800/90 px-2 py-3 shadow-lg flex-col-center sm:px-7 sm:pb-7 sm:pt-12">
         <H1 />
         <div className="mx-auto mb-4">
           <Text className="mb-4 text-center text-xl font-medium" c="dimmed">
@@ -50,13 +50,15 @@ export const InitialView = ({
                 key={o.label}
                 size="lg"
                 w="100%"
-                variant="light"
                 radius="lg"
+                variant="light"
                 onClick={() => setInput(o.value)}
                 className="flex"
+                c="gray"
+                bg="dark"
               >
                 <span className="uppercase">{o.label}: </span>
-                <span className="ml-1 text-slate-500">{o.value}</span>
+                <span className="ml-1">{o.value}</span>
               </Button>
             ))}
           </div>
