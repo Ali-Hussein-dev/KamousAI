@@ -86,7 +86,7 @@ const getMessages = (
                 systemInstructions,
                 {
                     role: "user",
-                    content: `List 3 examples of the following term "${term}"`,
+                    content: `Generate 3 examples including the phrase "${term}"`,
                 },
             ];
         case "synonyms":
