@@ -14,14 +14,14 @@ const languageTools = [
     href: "/tools/dictionary",
     icon: <GiSpellBook className="h-full w-full text-slate-200" />,
     description:
-      "An AI-based Dictionary for looking up the meanings and definitions of words.",
+      "Unlock the power of AI to find definitions, synonyms, antonyms, and more.",
   },
   {
     label: "Reverse Dictionary",
     href: "/tools/reverse-dictionary",
     icon: <AiOutlineSwap className="h-full w-full text-slate-200" />,
     description:
-      "Find words and idioms based on meanings or descriptions you give.",
+      "Get help finding the right word to express your thoughts and ideas.",
   },
   {
     label: "Grammar Corrector",
@@ -39,7 +39,8 @@ const languageTools = [
     label: "Paraphraser",
     href: "/tools/paraphraser",
     icon: <BsJournalText className="h-full w-full text-slate-200" />,
-    description: "Paraphrase and improve written text for clarity and style.",
+    description:
+      "Rewrite sentences to avoid plagiarism and improve readability.",
   },
   {
     label: "Summarizer",
@@ -65,7 +66,9 @@ export const ToolsBentoTools = () => {
             <div className="px-3 pb-4 pt-8 md:px-4">
               <div className="h-full flex-col-end">
                 <div className="mx-auto flex-col-center">
-                  <div className="center mx-auto h-14 max-w-fit">{icon}</div>
+                  <div className="center mx-auto h-24 max-w-fit sm:h-14">
+                    {icon}
+                  </div>
                   <h3 className="mb-0 text-center text-xl font-extrabold tracking-wide text-primary-600">
                     {label}
                   </h3>
