@@ -1,12 +1,16 @@
+import { cn } from "@/utils/helpers";
 import {
   // ActionIcon,
   Anchor,
   // Avatar,
   // Tooltip,
-  AppShell
+  AppShell,
+  Button,
 } from "@mantine/core";
+import { useScroll } from "framer-motion";
 import Image from "next/image";
-// import Link from "next/link";
+import Link from "next/link";
+import * as React from "react";
 
 //======================================
 // export const UserDropdown = () => {
@@ -24,30 +28,37 @@ import Image from "next/image";
 // };
 //======================================
 export const Header = () => {
-  // const { data: sessionData } = useSession();
+  const ref = React.useRef<HTMLHeadingElement>();
+  const [y, setY] = React.useState(0);
+  const { height = 0 } = ref.current?.getBoundingClientRect() ?? {};
+
+  const { scrollY } = useScroll();
+  React.useEffect(
+    () => scrollY.on("change", () => setY(scrollY.get())),
+    [scrollY]
+  );
   return (
     <AppShell.Header
       py={4}
       px={10}
       withBorder={false}
-      pos="relative"
+      pos="fixed"
       classNames={{
-        header: "!h-12",
+        header: cn(
+          "h-14 w-full top-0",
+          y > height ? "bg-slate-900/50 backdrop-blur-lg" : ""
+        ),
       }}
     >
-      <div className="mx-auto w-full max-w-[1520px] flex-row-start md:px-4">
+      <div className="mx-auto w-full max-w-[1520px] flex-row-between md:px-6">
         <Anchor c="white" href="/">
           <Image src="/logo.svg" width={100} height={40} alt="logo" />
         </Anchor>
-        {/* {sessionData ? (
-          <UserDropdown />
-        ) : (
-          <Link href="/signin">
-            <Button variant="outline" color="gray" radius="md">
-              Login
-            </Button>
-          </Link>
-        )} */}
+        <Link href="/login" className="hidden">
+          <Button variant="light" radius="md">
+            Login
+          </Button>
+        </Link>
       </div>
     </AppShell.Header>
   );
