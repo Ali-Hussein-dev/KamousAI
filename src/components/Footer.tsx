@@ -10,11 +10,11 @@ export const Footer = () => {
   return (
     <AppShell.Footer p="xs" className="!relative" withBorder={false}>
       {/* <div className="mx-auto mb-1 h-[0.5px] max-w-4xl bg-gradient-to-r from-transparent via-white to-transparent" /> */}
-      <div className="mx-auto mb-2 h-[0.5px] max-w-4xl bg-white/40" />
+      {/* <div className="mx-auto mb-2 h-[0.5px] max-w-4xl bg-slate-100/30" /> */}
       <div className="mx-auto w-full max-w-4xl flex-row-between">
         <Link
           href="/privacy-policy"
-          className="font-medium text-gray-200 no-underline"
+          className="font-medium text-slate-200 no-underline"
         >
           Privacy Policy
         </Link>
@@ -23,7 +23,7 @@ export const Footer = () => {
           <a
             href="https://ali-hussein.com"
             target="_blank"
-            className="font-bold text-gray-200 no-underline"
+            className="font-bold text-slate-200 no-underline"
           >
             AH
           </a>

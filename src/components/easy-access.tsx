@@ -5,14 +5,17 @@ import Image from "next/image";
 //======================================
 export const EasyAccess = () => {
   return (
-    <div className="mx-auto rounded-xl bg-slate-900/30 pt-10">
+    <div className="mx-auto rounded-xl pb-6 pt-10 md:pt-16">
       <div className="mx-auto max-w-fit ">
         <Title order={2} ta="center">
           Easy Access
         </Title>
-        <Text ta="center">
-          KamousAI is a PWA app, you can install it on all platforms through the
-          browser
+        <Text
+          ta="center"
+          className="text-balance max-w-xl pt-1 text-lg font-medium"
+        >
+          KamousAI is a progressive web app(PWA), simply install it on any
+          device using the browser.
         </Text>
       </div>
       <div className="gap-8 pt-6 flex-row-center">

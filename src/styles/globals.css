@@ -10,11 +10,21 @@
 display: grid;
     place-items: center;
 }
+.bg {
+    width: 100%;
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    background-image: url("/grid.svg");
+    /* opacity: 1; */
+}
 
 .text-gradient {
 @apply bg-gradient-to-tr from-primary-600 via-primary-500 to-violet-400 bg-clip-text text-transparent;
 }
 
+.h1 {
+    @apply mb-2 text-2xl sm:text-4xl font-black capitalize md:text-6xl tracking-wide text-center bg-gradient-to-b from-slate-100 to-slate-200/70 bg-clip-text text-transparent;
+}
 .animate-in {
     animation: animateIn 0.3s ease 0.15s both;
 }
