@@ -66,20 +66,6 @@ const Onboarding = ({ setInput }: { setInput: (s: string) => void }) => {
           >
             <Card.Section className="m-0 font-semibold">{o.label}</Card.Section>
             <Card.Section className="m-0 ">{o.value}</Card.Section>
-            {/* <Button
-              onClick={() => setInput(o.value)}
-              radius="md"
-              size="lg"
-              px="0"
-              variant="subtle"
-              classNames={{
-                label: "text-pretty whitespace-normal",
-                root: "h-full min-h-full",
-                inner: "py-3",
-              }}
-            >
-              {o.value}
-            </Button> */}
           </Card>
         ))}
       </div>
@@ -196,7 +182,7 @@ export const ReverseDictionary = () => {
                       {arr[0]?.content || ""}
                     </Text>
                   </div>
-                  <CopyButton text={"msg.content"} />
+                  <CopyButton text={arr[1]?.content ?? ""} />
                 </div>
                 <div className="h-[0.4px] w-full bg-slate-600" />
               </div>
