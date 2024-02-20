@@ -47,7 +47,7 @@ export const toolsLinks = [
   },
 ];
 
-export const ToolsBar = () => {
+export const ToolsMobileBar = () => {
   const pathname = usePathname();
   return (
     <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
@@ -89,8 +89,8 @@ export const ToolsBar = () => {
   );
 };
 
-export const DynamicToolsBar = dynamic(
-  () => import("./tools-menu").then((c) => c.ToolsBar),
+export const DynamicToolsMobileBar = dynamic(
+  () => import("./tools-mobile-bar").then((c) => c.ToolsMobileBar),
   {
     ssr: false,
     loading: () => (

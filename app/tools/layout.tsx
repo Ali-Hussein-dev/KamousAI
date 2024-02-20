@@ -1,8 +1,8 @@
 "use client";
 import {
   toolsLinks,
-  DynamicToolsBar,
-} from "@/components/tools-menu/tools-menu";
+  DynamicToolsMobileBar,
+} from "@/components/tools-menu/tools-mobile-bar";
 import { capitalizeFirstLetter, cn } from "@/utils/helpers";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { AppShell, Burger } from "@mantine/core";
@@ -118,7 +118,7 @@ export default function ToolsLayout({
                 </div>
               </div>
             </div>
-            <DynamicToolsBar />
+            <DynamicToolsMobileBar />
           </AppShell.Main>
         </AppShell>
       </div>
