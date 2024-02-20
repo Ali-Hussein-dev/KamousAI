@@ -20,7 +20,7 @@ export const ToolContainer = ({
 }) => {
   return (
     <>
-      <section className="animate-in mb-6 w-full rounded-lg bg-slate-800 px-2 py-6 shadow-lg sm:px-4">
+      <section className="animate-in mb-6 w-full rounded-lg bg-slate-900/40 px-2 py-6 shadow-lg sm:px-4">
         <Title
           order={1}
           mb="5px"

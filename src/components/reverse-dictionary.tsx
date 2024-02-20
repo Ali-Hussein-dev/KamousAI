@@ -50,15 +50,15 @@ const examples = [
 ];
 const Onboarding = ({ setInput }: { setInput: (s: string) => void }) => {
   return (
-    <div className="mx-auto rounded-xl border px-4 py-8">
+    <div className="mx-auto px-4 py-7">
       <Title order={3} className="mb-3 text-center">
         Try the following Examples
       </Title>
-      <div className="mx-auto max-w-xl space-y-3 pt-4 flex-col-center">
+      <div className="mx-auto max-w-xl space-y-3 pt-1 flex-col-center">
         {examples.map((o, i) => (
           <Card
             classNames={{
-              root: "hover:bg-slate-800/50 cursor-pointer bg-slate-800/20 duration-300 w-full rounded-lg rounded border p-3",
+              root: "hover:border-slate-500 border border-transparent cursor-pointer bg-slate-700 duration-300 w-full rounded-lg p-4",
             }}
             key={i}
             onClick={() => setInput(o.value)}

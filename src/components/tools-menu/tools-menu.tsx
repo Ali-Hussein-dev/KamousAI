@@ -62,8 +62,10 @@ export const ToolsBar = () => {
               href={item.href}
               key={i}
               className={cn(
-                "w-fit px-2 pb-8 pt-2 text-slate-300 no-underline duration-500",
-                pathname == item.href && "bg-slate-950/60"
+                "w-fit px-2 pb-8 pt-2 no-underline duration-500",
+                pathname == item.href
+                  ? "bg-slate-100 text-slate-800"
+                  : "text-slate-300"
               )}
             >
               <div className={"w-full gap-1 flex-col-center"}>

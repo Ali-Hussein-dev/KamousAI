@@ -28,7 +28,7 @@ export const InitialView = ({
 }) => {
   return (
     <div className={`${css.bg} rounded-3xl`}>
-      <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-slate-300/40 bg-gradient-to-t from-slate-800/90 via-slate-800/60 to-slate-800/90 px-2 py-3 shadow-lg flex-col-center sm:px-7 sm:pb-7 sm:pt-12">
+      <div className="mb-4 w-full gap-2 rounded-3xl border-[0.5px] border-slate-300/30 bg-gradient-to-t from-slate-900/90 via-slate-900/60 to-slate-900/90 px-2 py-3 shadow-lg flex-col-center sm:px-7 sm:pb-7 sm:pt-12">
         <H1 />
         <div className="mx-auto mb-4">
           <Text className="mb-4 text-center text-xl font-medium" c="dimmed">
@@ -36,7 +36,7 @@ export const InitialView = ({
           </Text>
           <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
             {[
-              { label: "Slang", value: "Telly" },
+              { label: "Slang", value: "Hype" },
               { label: "Idioms", value: "I'm on fire" },
               {
                 label: "Acronyms",
