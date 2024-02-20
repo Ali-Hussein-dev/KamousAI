@@ -32,7 +32,7 @@ export const WordEntryTabs = ({
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   return (
     <Tabs variant="outline" onChange={onTabChange}>
-      <Tabs.List>
+      <Tabs.List grow>
         {wordEntriesTabs.map((o) => (
           <Tabs.Tab
             size="lg"
