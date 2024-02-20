@@ -10,6 +10,7 @@ import { Markdown } from "../Markdown";
 import { MdOutlineClear } from "react-icons/md";
 import { useVoiceContext } from "@/hooks/use-voice-context";
 import { ToolRating } from "../tool-rating";
+import { cn } from "@/utils/helpers";
 
 const Card = ({
   definition,
@@ -24,7 +25,7 @@ const Card = ({
 }) => {
   const { play, isFetching } = useVoiceContext({ text: term });
   return (
-    <div className="mb-3 rounded-xl bg-slate-800/40 px-3 py-2 pt-6">
+    <div className="rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow">
       <div className="mb-2 flex-row-between">
         <div className="gap-3 flex-row-start">
           <span className="block font-bold uppercase text-primary-600">
@@ -67,8 +68,7 @@ export const DictionaryHistory = () => {
         }}
       />
     ));
-
-  if (!Object.keys(lexicalEntries).length) return null;
+  if (cached.length < 1) return null;
 
   return (
     <>
@@ -81,11 +81,18 @@ export const DictionaryHistory = () => {
         onClick={() => setOpen(!open)}
         leftSection={<TbHistory />}
       >
-        {open ? "Hide history" : "View history"}
+        {open ? "Hide" : "View"} History
       </Button>
-      <div hidden={!open} className="px-1 pt-2 text-slate-300">
-        {cached}
-      </div>
+      {open ? (
+        <div
+          className={cn(
+            "grid grid-cols-1 gap-3 px-1 pt-6 text-slate-300",
+            cached.length > 1 ? "md:grid-cols-2" : ""
+          )}
+        >
+          {cached}
+        </div>
+      ) : null}
       <div className="my-8">
         <ToolRating />
       </div>

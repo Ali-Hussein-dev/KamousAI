@@ -47,10 +47,10 @@ export const toolsLinks = [
   },
 ];
 
-export const ToolsBar = () => {
+export const ToolsMobileBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-800 to-slate-800/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
       <div
         className={
           "h-[4.9rem] w-full max-w-lg overflow-hidden rounded-t bg-slate-800 shadow-inner"
@@ -62,8 +62,10 @@ export const ToolsBar = () => {
               href={item.href}
               key={i}
               className={cn(
-                "w-fit px-2 pb-8 pt-2 text-slate-300 no-underline duration-500",
-                pathname == item.href && "bg-slate-950/60"
+                "w-fit px-2 pb-8 pt-2 no-underline duration-500",
+                pathname == item.href
+                  ? "bg-slate-100 text-slate-800"
+                  : "text-slate-300"
               )}
             >
               <div className={"w-full gap-1 flex-col-center"}>
@@ -87,12 +89,12 @@ export const ToolsBar = () => {
   );
 };
 
-export const DynamicToolsBar = dynamic(
-  () => import("./tools-menu").then((c) => c.ToolsBar),
+export const DynamicToolsMobileBar = dynamic(
+  () => import("./tools-mobile-bar").then((c) => c.ToolsMobileBar),
   {
     ssr: false,
     loading: () => (
-      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 pt-4 sm:hidden">
+      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-800 to-slate-800/10 pt-4 sm:hidden">
         <Skeleton cls="h-16" />
       </div>
     ),

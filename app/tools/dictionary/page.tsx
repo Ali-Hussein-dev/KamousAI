@@ -37,9 +37,6 @@ const History = dynamic(
     ),
   {
     ssr: false,
-    loading: () => (
-      <Skeleton h={48} radius="xl" my="md" w="100%" opacity="0.3" />
-    ),
   }
 );
 

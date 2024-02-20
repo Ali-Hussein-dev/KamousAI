@@ -31,22 +31,22 @@ export const WordEntryTabs = ({
   });
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   return (
-    <Tabs variant="default" inverted onChange={onTabChange}>
-      <Tabs.List>
+    <Tabs variant="outline" onChange={onTabChange}>
+      <Tabs.List grow>
         {wordEntriesTabs.map((o) => (
           <Tabs.Tab
             size="lg"
             key={o.label}
             value={o.wordEntryKey}
             fw="bold"
-            px={{ base: "6px", md: "xs" }}
+            px={{ base: "4px", sm: "md" }}
           >
             {o.label}
           </Tabs.Tab>
         ))}
       </Tabs.List>
       {wordEntriesTabs.map(({ label, wordEntryKey }) => (
-        <Tabs.Panel key={label} value={wordEntryKey}>
+        <Tabs.Panel key={label} value={wordEntryKey} pt="md">
           {isLoading ? (
             <Loader type="dots" mx="auto" size="lg" />
           ) : (
@@ -77,7 +77,7 @@ export const DefinitionsCard = ({
   const { isFetching: isLoadingAudio, play } = useVoiceContext({ text: term });
   if (!definition && !isLoading) return <InitialView setInput={setInput} />;
   return (
-    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-800/50 pb-2 pl-4 pr-2 pt-6 text-slate-300">
+    <div className="mb-4 overflow-hidden rounded-2xl bg-slate-900/40 pb-4 pl-4 pr-2 pt-6 text-slate-300">
       {isLoading ? (
         <Loader type="dots" className="mx-auto" size="lg" />
       ) : (
