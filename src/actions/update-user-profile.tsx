@@ -11,27 +11,40 @@ export const updateUserProfile = async (formData: FormData) => {
   if (!data) {
     return redirect("/login");
   }
+  //--------------start updating user profile
   try {
     const id = data.user?.id;
+    if (!id) return redirect("/login");
+    //---> handle user laguages data from form
+    const languages: Record<string, LangPair> = {};
+    formData.forEach((value, key) => {
+      const index = key.split("-")[1]; // "lang-index" or "level-index"
+      if (index == undefined) return;
+
+      if (key.startsWith("lang-")) {
+        languages[index] = { lang: value as string } as LangPair;
+      } else if (key.startsWith("level-")) {
+        languages[index] = {
+          ...languages[index],
+          level: value as string,
+        } as LangPair;
+      }
+    });
+
+    //---> update user profile
     await supabase
       .from("profiles")
       .update({
         name: formData.get("name"),
-        // todo: update other fields (userLanguages)
+        languages: Object.values(languages),
       })
-      .eq("user_id", id);
+      .eq("id", id);
 
     revalidatePath("/profile");
   } catch (error) {
     throw new Error("Error updating profile. Please try again.");
   }
-  // console.log(
-  //   "------------server-action: updateProfile------------",
-  //   new Date().getMinutes()
-  // );
-
-  // console.log(res);
-  // const userLanguages = FormData
-  // console.log(userLanguages);
-  // console.log(formData);
 };
+
+
+
