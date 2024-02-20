@@ -64,8 +64,8 @@ export function ToolRating() {
         action={formAction}
         method="POST"
         className={cn(
-          "mx-auto gap-3 rounded-xl border-[0.5px] border-solid border-slate-500 px-3 pb-2 pt-3 transition-all duration-500 ease-linear flex-col-center",
-          value == 0 ? "max-w-md" : "max-w-lg bg-slate-800 shadow-xl"
+          "mx-auto gap-3 rounded-xl border-[0.5px] border-solid border-slate-500 px-2 pb-2 pt-3 transition-all duration-500 ease-linear flex-col-center md:px-3",
+          value == 0 ? "max-w-md" : "max-w-lg bg-slate-900 shadow-xl"
         )}
       >
         <input

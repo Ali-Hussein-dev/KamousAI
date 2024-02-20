@@ -50,7 +50,7 @@ export const toolsLinks = [
 export const ToolsMobileBar = () => {
   const pathname = usePathname();
   return (
-    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
+    <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-800 to-slate-800/10 px-2 pt-4 backdrop-blur-sm sm:hidden">
       <div
         className={
           "h-[4.9rem] w-full max-w-lg overflow-hidden rounded-t bg-slate-800 shadow-inner"
@@ -94,7 +94,7 @@ export const DynamicToolsMobileBar = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-700 to-slate-700/10 pt-4 sm:hidden">
+      <div className="center fixed bottom-0 w-full bg-gradient-to-t from-slate-800 to-slate-800/10 pt-4 sm:hidden">
         <Skeleton cls="h-16" />
       </div>
     ),

@@ -157,16 +157,16 @@ export const ReverseDictionary = () => {
             </div>
           </div>
         </form>
-        <div
-          hidden={messages.length < 1}
-          className="space-y-2 rounded-lg bg-slate-800 pt-5 text-slate-300"
-        >
+        <div hidden={messages.length < 1} className="space-y-2 pb-2 pt-5">
           {convertToShape(messages)
             .reverse()
             .map((arr, i) => (
-              <div key={i}>
+              <div
+                key={i}
+                className="rounded-lg bg-slate-700/60 p-2 text-slate-200"
+              >
                 <div className="flex justify-between gap-2">
-                  <div className="px-2">
+                  <div>
                     <Markdown>{arr[1]?.content || ""}</Markdown>
                     <Text
                       styles={{
