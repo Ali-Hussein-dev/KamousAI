@@ -7,7 +7,7 @@ import {
 import { Loader, Tabs } from "@mantine/core";
 import { useWordEntries } from "@/hooks/use-dictionary";
 import { useSearchParams } from "next/navigation";
-import { InitialView } from "./initial-view";
+import { InitialView } from "./initial-view/initial-view";
 import { Markdown } from "../Markdown";
 import { AudioCtxButton } from "./Audio";
 import { useVoiceContext } from "@/hooks/use-voice-context";

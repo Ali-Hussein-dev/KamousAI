@@ -1,4 +1,4 @@
-// SCRIPT: npx supabase gen types typescript--project-id [id] > src/lib/db.types.ts
+// SCRIPT: npx supabase gen types typescript --project-id [id] > src/lib/db.types.ts
 
 export type Json =
   | string
@@ -63,23 +63,26 @@ export type Database = {
       }
       profiles: {
         Row: {
+          email: string
           id: string
           languages: Json[] | null
           name: string | null
         }
         Insert: {
+          email: string
           id: string
           languages?: Json[] | null
           name?: string | null
         }
         Update: {
+          email?: string
           id?: string
           languages?: Json[] | null
           name?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "profiles_id_fkey"
+            foreignKeyName: "public_profiles_id_fkey"
             columns: ["id"]
             isOneToOne: true
             referencedRelation: "users"
