@@ -23,7 +23,7 @@ const LoginPage = async ({
     redirect("/profile");
   }
   return (
-    <div className="center h-screen px-2 pt-10 md:pt-16">
+    <div className="center h-screen bg-slate-800 px-2 pt-10 md:pt-16">
       <div className="w-full max-w-xl rounded-xl border-[0.5px] border-solid border-primary-400/80 bg-gradient-to-t from-slate-900 to-slate-800/90 px-5 pb-4 pt-10 shadow-xl sm:mb-20">
         <div className="flex grow flex-col gap-1">
           <div className="gap-2 flex-row-center">
@@ -33,16 +33,17 @@ const LoginPage = async ({
             </Title>
           </div>
           <form action={signInWithOtp} className="space-y-4">
-            <label htmlFor="email" className="ml-1">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <CustomInput
-              required
-              name="email"
-              type="email"
-              placeholder="you@example.com"
-              // className="h-12 w-full rounded-lg border border-solid border-slate-700 bg-slate-800/80 px-3 text-slate-100 outline-none duration-100 placeholder:text-slate-500 focus:border-slate-500 focus:bg-slate-900/30"
-            />
+            <div>
+              <label htmlFor="email" className="ml-1">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <CustomInput
+                required
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+              />
+            </div>
             <Button type="submit" formAction={signInWithOtp} w="100%" size="lg">
               Send magic link
             </Button>

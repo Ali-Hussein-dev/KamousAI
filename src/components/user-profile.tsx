@@ -1,6 +1,5 @@
 "use client";
 import { ActionIcon, Button } from "@mantine/core";
-import { useListState } from "@mantine/hooks";
 import * as React from "react";
 import { CustomSelect } from "./Mantine/custom-select";
 import { MdDelete } from "react-icons/md";
@@ -9,86 +8,64 @@ import { Fieldset } from "./Mantine/CustomFieldset";
 import { useForm } from "@mantine/form";
 import { updateUserProfile } from "@/actions/update-user-profile";
 
+type UserProfileForm = Omit<UserProfile, "email" | "id">;
 const Pairs = ({
-  remove,
   i,
-  set,
-  initialLang,
-  initialLevel,
+  form,
 }: {
-  initialLang: string;
-  initialLevel: string;
-  remove: (s: number) => void;
   i: number;
-  set: (index: number, pair: { lang?: string; level?: string }) => void;
+  form: ReturnType<typeof useForm<UserProfileForm>>;
 }) => {
-  const [lang, setLang] = React.useState<string>(initialLang);
-  const [level, setLevel] = React.useState<string>(initialLevel);
   return (
     <div
       className="w-full flex-wrap gap-3 flex-row-between sm:flex-nowrap"
       key={i}
     >
       <CustomSelect
+        name={"lang-" + i}
+        {...form.getInputProps(`languages.${i}.lang`, {})}
         className="w-full"
         placeholder="Pick a language"
-        name="lang"
-        value={lang}
-        onChange={(lang: null | string) => {
-          if (lang === null) return;
-          setLang(lang);
-          set(i, { lang, level });
-        }}
         data={["Arabic", "English", "German", "French", "Spanish", "Italian"]}
       />
       <CustomSelect
+        name={"level-" + i}
+        {...form.getInputProps(`languages.${i}.level`)}
         className="w-full"
         placeholder="Select your proficiency level"
-        name="level"
-        value={level}
-        onChange={(level: string | null) => {
-          if (level === null) return;
-          setLevel(level);
-          set(i, { lang, level });
-        }}
-        data={["Beginner", "Intermediate", "Advanced", "Native", "Fluent"]}
+        data={["Beginner", "Intermediate", "Advanced", "Fluent", "Native"]}
       />
       <ActionIcon
         size="lg"
         radius="md"
         variant="light"
         c="yellow"
-        onClick={() => remove(i)}
+        onClick={() => {
+          form.removeListItem("languages", i);
+        }}
       >
         <MdDelete />
       </ActionIcon>
     </div>
   );
 };
-const initialPair = {};
 type Props = {
-  profile: {
-    name: string;
-    email: string;
-    languages: { lang?: string; level?: string }[];
-  };
+  profile: UserProfile;
 };
 //======================================
 export const UserProfile = ({ profile }: Props) => {
-  const [values, handlers] = useListState(profile?.languages ?? []);
-  const form = useForm({
+  const form = useForm<UserProfileForm>({
     initialValues: {
       name: profile.name,
-      userLanguages: profile.languages,
+      languages: profile.languages,
     },
   });
-
   return (
     <form
       action={updateUserProfile}
       className="mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
     >
-      <Fieldset legend="Personal Info">
+      <Fieldset legend="Personal Info" className="space-y-3">
         <div className="flex-wrap gap-2 flex-row-between sm:flex-nowrap">
           <CustomInput
             placeholder="name"
@@ -100,27 +77,16 @@ export const UserProfile = ({ profile }: Props) => {
           />
         </div>
       </Fieldset>
-      <Fieldset
-        legend="What languages do speak?"
-        className="space-y-3"
-        name="user languages"
-      >
+      <Fieldset legend="What languages do you speak?" className="space-y-3">
         <div className="space-y-2">
-          {values.map((v, i) => (
-            <Pairs
-              key={i}
-              i={i}
-              remove={() => handlers.remove(i)}
-              set={handlers.setItem}
-              initialLang={v.lang ?? ""}
-              initialLevel={v.level ?? ""}
-            />
+          {form.values.languages.map((v, i) => (
+            <Pairs key={i} i={i} form={form} />
           ))}
         </div>
         <Button
           variant="light"
           onClick={() => {
-            handlers.append(initialPair);
+            form.insertListItem("languages", form.values.languages);
           }}
         >
           Add Language
