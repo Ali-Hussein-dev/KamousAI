@@ -55,7 +55,7 @@ export const InitialView = ({
                 onClick={() => setInput(o.value)}
                 className="flex"
                 c="gray"
-                bg="dark"
+                bg="#1e293b" // slate 800
               >
                 <span className="uppercase">{o.label}: </span>
                 <span className="ml-1">{o.value}</span>

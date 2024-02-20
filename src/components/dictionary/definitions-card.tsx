@@ -34,7 +34,13 @@ export const WordEntryTabs = ({
     <Tabs variant="outline" onChange={onTabChange}>
       <Tabs.List>
         {wordEntriesTabs.map((o) => (
-          <Tabs.Tab size="lg" key={o.label} value={o.wordEntryKey} fw="bold">
+          <Tabs.Tab
+            size="lg"
+            key={o.label}
+            value={o.wordEntryKey}
+            fw="bold"
+            px={{ base: "4px", sm: "md" }}
+          >
             {o.label}
           </Tabs.Tab>
         ))}

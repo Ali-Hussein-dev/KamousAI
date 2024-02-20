@@ -164,12 +164,9 @@ export const ReverseDictionary = () => {
           {convertToShape(messages)
             .reverse()
             .map((arr, i) => (
-              <div key={i} className="">
+              <div key={i}>
                 <div className="flex justify-between gap-2">
-                  <div className="">
-                    {/* <p className="my-0 first-letter:uppercase">
-                    {arr[1]?.content || ""}
-                  </p> */}
+                  <div className="px-2">
                     <Markdown>{arr[1]?.content || ""}</Markdown>
                     <Text
                       styles={{
