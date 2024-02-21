@@ -7,8 +7,10 @@ import { CustomInput } from "./shared/custom-input";
 import { Fieldset } from "./Mantine/CustomFieldset";
 import { useForm } from "@mantine/form";
 import { updateUserProfile } from "@/actions/update-user-profile";
+import languages from "@/content/languages.json";
 
 type UserProfileForm = Omit<UserProfile, "email" | "id">;
+const levels = ["Beginner", "Intermediate", "Advanced", "Fluent", "Native"];
 const Pairs = ({
   i,
   form,
@@ -26,14 +28,14 @@ const Pairs = ({
         {...form.getInputProps(`languages.${i}.lang`, {})}
         className="w-full"
         placeholder="Pick a language"
-        data={["Arabic", "English", "German", "French", "Spanish", "Italian"]}
+        data={languages}
       />
       <CustomSelect
         name={"level-" + i}
         {...form.getInputProps(`languages.${i}.level`)}
         className="w-full"
         placeholder="Select your proficiency level"
-        data={["Beginner", "Intermediate", "Advanced", "Fluent", "Native"]}
+        data={levels}
       />
       <ActionIcon
         size="lg"
