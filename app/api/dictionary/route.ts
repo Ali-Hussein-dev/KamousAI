@@ -39,7 +39,11 @@ const systemMessages = {
 };
 interface Options extends PreferencesT {
     wordEntryKey: WordEntryKey;
+    context?: string;
 }
+
+const contextPrompt = (context?: string) => context ? `, use the following context "${context}" for more relevant output, don't add unrelated info` : "";
+
 
 const getMessages = (
     messages: string,
@@ -50,6 +54,7 @@ const getMessages = (
         mode = "mono",
         inputLanguage,
         outputLanguage,
+        context
     } = options;
     const outputLang =
         mode == "bili"
@@ -68,7 +73,7 @@ const getMessages = (
                     systemInstructions,
                     {
                         role: "user",
-                        content: `Explain "${term}"`,
+                        content: `Explain "${term}" ${contextPrompt(context)}`,
                     },
                 ];
             } else {
@@ -76,7 +81,7 @@ const getMessages = (
                     systemInstructions,
                     {
                         role: "user",
-                        content: `Translate the following "${term}" from ${inputLanguage} to ${outputLanguage}`,
+                        content: `Translate the following "${term}" from ${inputLanguage} to ${outputLanguage} ${contextPrompt(context)}`,
                     },
                 ];
             }
@@ -86,7 +91,7 @@ const getMessages = (
                 systemInstructions,
                 {
                     role: "user",
-                    content: `Generate 3 examples including the phrase "${term}"`,
+                    content: `Generate 3 examples including the phrase "${term}" ${contextPrompt(context)}`,
                 },
             ];
         case "synonyms":
@@ -94,7 +99,7 @@ const getMessages = (
                 systemInstructions,
                 {
                     role: "user",
-                    content: `Generate mostly-used synonyms (max 5 synonyms) and with its mostly used context of the following "${term}"`,
+                    content: `Generate mostly-used synonyms (max 5 synonyms) and with its mostly used context of the following "${term} " ${contextPrompt(context)}`,
                 },
             ];
         case "antonyms":
@@ -102,7 +107,7 @@ const getMessages = (
                 systemInstructions,
                 {
                     role: "user",
-                    content: `Generate mostly-used antonyms (max 5 antonyms) of the following "${term}"`,
+                    content: `Generate mostly-used antonyms (max 5 antonyms) of the following "${term}" ${contextPrompt(context)}`,
                 },
             ];
         case "idioms":
@@ -110,7 +115,7 @@ const getMessages = (
                 systemInstructions,
                 {
                     role: "user",
-                    content: `Generate mostly-used idioms (max 3 idioms) that contains "${term}"`,
+                    content: `Generate mostly-used idioms (max 3 idioms) that contains "${term}" ${contextPrompt(context)}`,
                 },
             ];
         default:
@@ -123,11 +128,12 @@ const getMessages = (
     }
 };
 export const POST = async (req: Request) => {
-    const { prompt, wordEntryKey, preferences } = await req.json();
+    const { prompt, wordEntryKey, preferences, context } = await req.json();
     return await createChatStream({
         messages: getMessages(prompt, {
             wordEntryKey: wordEntryKey || "definition",
             ...preferences,
+            context,
         }),
     });
 };

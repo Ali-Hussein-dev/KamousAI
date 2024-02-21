@@ -52,6 +52,8 @@ export default function DictionaryPage() {
         handleSubmit={s.handleSubmit}
         stop={s.stop}
         isLoading={s.isLoading}
+        context={s.context}
+        setContext={s.setContext}
       />
       <ResponseCard
         definition={s.completion}
