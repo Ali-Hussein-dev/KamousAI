@@ -50,7 +50,12 @@ const getFullIcon = (value: number) => {
       return null;
   }
 };
-
+const customizedLabels = {
+  1: "😢 What are we doing wrong?",
+  2: "😞 What don't you like?",
+  3: "😊 What are we missing?",
+  4: "😍  What can we do better?",
+};
 export function ToolRating() {
   const [value, setValue] = React.useState(0);
   const pathname = usePathname();
@@ -96,14 +101,19 @@ export function ToolRating() {
         {value > 0 && !state.msg && (
           <div
             className={cn(
-              "animate-in w-full gap-3 px-2 py-3 delay-1000 flex-col-center",
+              "animate-in w-full gap-3 px-1 py-3 delay-1000 flex-col-center",
               value == 0 ? "hidden" : ""
             )}
           >
             <Textarea
+              label={
+                <p className="mb-1 mt-0 text-lg font-medium">
+                  {customizedLabels[value as keyof typeof customizedLabels]}
+                </p>
+              }
               autosize
               minRows={4}
-              placeholder="What can we do better?"
+              placeholder="Could you provide more details?"
               className="w-full"
               variant="filled"
               name="note"
