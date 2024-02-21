@@ -16,12 +16,14 @@ export const useDefinition = () => {
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const preferences = useResponse((s) => s.preferences);
   const { inputRef } = useInputFocus<HTMLInputElement>();
+  const [context, setContext] = React.useState("");
   const router = useRouter();
   const res = useCompletion({
     api: "/api/dictionary",
     body: {
       wordEntryKey: "definition",
       preferences,
+      context,
     },
     onFinish: (prompt, completion) => {
       // cache response...
@@ -47,7 +49,7 @@ export const useDefinition = () => {
       router.push(`/tools/dictionary?key=${id}`, { scroll: false });
     },
   });
-  return { ...res, inputRef };
+  return { ...res, inputRef, setContext, context };
 };
 //------------------------------
 export const useWordEntries = ({ id, term }: { id: string; term: string }) => {

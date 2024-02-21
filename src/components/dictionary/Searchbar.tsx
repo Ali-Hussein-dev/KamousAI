@@ -2,11 +2,13 @@
 import { ActionIcon, Badge, Loader, Autocomplete } from "@mantine/core";
 import LanguagesMenu from "./languages-menu";
 import { MdClear } from "react-icons/md";
-import clsx from "clsx";
 import { BsFillSendFill, BsStopCircle } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import * as React from "react";
 import { useHistoryStore } from "@/hooks/use-history-store";
+import { cn } from "@/utils/helpers";
+import { FaClipboardQuestion } from "react-icons/fa6";
+import { CustomTextarea } from "../Mantine/custom-textarea";
 
 type Props = {
   input: string;
@@ -16,10 +18,21 @@ type Props = {
   stop: () => void;
   isLoading: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
+  context: string;
+  setContext: React.Dispatch<React.SetStateAction<string>>;
 };
 export const DictionarySearchbar = (props: Props) => {
-  const { input, setInput, handleSubmit, stop, isLoading, inputRef, complete } =
-    props;
+  const {
+    input,
+    setInput,
+    handleSubmit,
+    stop,
+    isLoading,
+    inputRef,
+    complete,
+    context,
+    setContext,
+  } = props;
   const history = useHistoryStore((s) => s.lexicalEntries);
   const list = React.useMemo(
     () =>
@@ -43,6 +56,7 @@ export const DictionarySearchbar = (props: Props) => {
       !!input && complete(input);
     }
   };
+  const [isContextOpen, setIsContextOpen] = React.useState(false);
   return (
     <form
       className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-600 duration-300 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
@@ -79,24 +93,39 @@ export const DictionarySearchbar = (props: Props) => {
         }
         rightSection={
           <div className="gap-x-2 pr-1 flex-row-start">
-            {input && (
-              <ActionIcon
-                size="xl"
-                onClick={() => setInput("")}
-                radius="lg"
-                variant="outline"
-              >
-                <MdClear size="20" />
-              </ActionIcon>
-            )}
-            {!input && (
+            {input ? (
+              <>
+                <ActionIcon
+                  size="xl"
+                  onClick={() => setInput("")}
+                  radius="xl"
+                  variant="outline"
+                >
+                  <MdClear size="20" />
+                </ActionIcon>
+                <ActionIcon
+                  size="xl"
+                  onClick={() => setIsContextOpen(!isContextOpen)}
+                  radius="md"
+                  variant="light"
+                  pos="relative"
+                  className="overflow-visible"
+                >
+                  {!!context && (
+                    <span className="absolute right-0 top-0 isolate z-10 inline-flex size-3 -translate-y-1 translate-x-1 rounded-full bg-primary-600"></span>
+                  )}
+                  <FaClipboardQuestion />
+                </ActionIcon>
+              </>
+            ) : (
               <Badge
                 bg="transparent"
+                c="gray"
                 h="100%"
                 fw={400}
-                className={clsx(
+                className={cn(
                   "hidden",
-                  !!input || isLoading ? "hidden" : "md:opacity-100"
+                  !!input || isLoading ? "hidden" : "md:inline-block"
                 )}
               >
                 {navigator.userAgent.includes("Mac") ? "cmd+K" : "ctrl+K"}
@@ -122,6 +151,38 @@ export const DictionarySearchbar = (props: Props) => {
           </div>
         }
       />
+      {isContextOpen && (
+        <div className="px-2 pb-2 pt-3">
+          <CustomTextarea
+            value={context}
+            onChange={(e) => setContext(e.currentTarget.value)}
+            minRows={2}
+            maxRows={3}
+            rightSection={
+              !!context && (
+                <ActionIcon
+                  onClick={() => setContext("")}
+                  radius="md"
+                  variant="outline"
+                >
+                  <MdClear size="20" />
+                </ActionIcon>
+              )
+            }
+            placeholder="Provide a context for more relevant output"
+            classNames={{
+              wrapper:
+                "flex justify-center items-start p-3 bg-slate-700/40 rounded-2xl focus-within:bg-slate-700/70",
+              input:
+                "border-none focus:outline-none w-full bg-transparent resize-none font-medium placeholder:text-slate-500 text-base tracking-wide",
+            }}
+            cb={() => {
+              complete(input);
+              setIsContextOpen(false);
+            }}
+          />
+        </div>
+      )}
     </form>
   );
 };
