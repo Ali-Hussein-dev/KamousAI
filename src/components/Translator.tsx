@@ -54,7 +54,7 @@ const Translator = () => {
   const matches = useMediaQuery("(max-width: 500px)");
   return (
     <form className=" w-full space-y-4" onSubmit={handleSubmit}>
-      <div className="animate-in mx-auto flex w-full flex-col rounded-xl bg-slate-800 px-2 py-4 shadow-lg md:px-4">
+      <div className="animate-in mx-auto flex w-full flex-col rounded-xl bg-slate-900/40 px-2 py-4 shadow-lg md:px-4">
         {/* // DIRECT WRAPPER */}
         <div className="mb-2 flex flex-wrap items-start border-0 border-b border-solid border-slate-500 pb-2 md:flex-nowrap">
           {/* // INPUT language pane */}
@@ -120,11 +120,11 @@ const Translator = () => {
         size="lg"
         mx="auto"
         radius="xl"
-        w="100%"
+        className="block w-full md:max-w-xs"
         loading={isLoading}
         disabled={!input}
       >
-        {isLoading ? "Translating..." : "Translate"}
+        Translate
       </Button>
       {!!completion && !isLoading && (
         <div className="pb-6 pt-8">
