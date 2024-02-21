@@ -8,7 +8,7 @@ import { Fieldset } from "./Mantine/CustomFieldset";
 import { useForm } from "@mantine/form";
 import { updateUserProfile } from "@/actions/update-user-profile";
 import languages from "@/content/languages.json";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 
 type UserProfileForm = Omit<UserProfile, "email" | "id">;
 const levels = ["Beginner", "Intermediate", "Advanced", "Fluent", "Native"];
@@ -72,22 +72,22 @@ export const UserProfile = ({ profile }: Props) => {
       languages: profile.languages,
     },
   });
-  // useForm + useFormState are not compaitble yet!
-  // const [formState, formAction] = useFormState(updateUserProfile, {});
+  // @ts-expect-error - we know that the data is valid
+  const [formState, formAction] = useFormState(updateUserProfile, {});
   return (
     <form
-      action={updateUserProfile}
-      className="mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8 animate-in"
+      action={formAction}
+      className="animate-in mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
     >
-      {/* {formState?.msg && (
+      {formState?.msg && (
         <p className="rounded border border-amber-700/20 p-3 text-center font-medium text-amber-600">
           {formState?.msg}
         </p>
-      )} */}
+      )}
       <Fieldset legend="Personal Info" className="space-y-3">
         <div className="flex-wrap gap-2 flex-row-between sm:flex-nowrap">
           <CustomInput
-            placeholder="name"
+            placeholder="Your first name"
             type="text"
             className="w-full"
             classNames={{ input: "bg-slate-700" }}
