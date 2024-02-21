@@ -8,6 +8,7 @@ import { Fieldset } from "./Mantine/CustomFieldset";
 import { useForm } from "@mantine/form";
 import { updateUserProfile } from "@/actions/update-user-profile";
 import languages from "@/content/languages.json";
+import { useFormStatus } from "react-dom";
 
 type UserProfileForm = Omit<UserProfile, "email" | "id">;
 const levels = ["Beginner", "Intermediate", "Advanced", "Fluent", "Native"];
@@ -54,6 +55,14 @@ const Pairs = ({
 type Props = {
   profile: UserProfile;
 };
+const SubmitBtn = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+  const { pending } = useFormStatus();
+  return (
+    <Button loading={pending} type="submit" {...props}>
+      Save
+    </Button>
+  );
+};
 //======================================
 export const UserProfile = ({ profile }: Props) => {
   const form = useForm<UserProfileForm>({
@@ -95,9 +104,7 @@ export const UserProfile = ({ profile }: Props) => {
         </Button>
       </Fieldset>
       <div className="pt-3 flex-row-end">
-        <Button type="submit" disabled={!form.isDirty()}>
-          Save
-        </Button>
+        <SubmitBtn disabled={!form.isDirty()} />
       </div>
     </form>
   );
