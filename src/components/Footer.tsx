@@ -4,6 +4,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { FaTwitter } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa6";
 
 //======================================
 export const Footer = () => {
@@ -29,6 +30,13 @@ export const Footer = () => {
           </a>
         </span>
         <div className="gap-3 flex-row-start">
+          <Anchor
+            c="white"
+            href="https://discord.gg/abk8R7PdjH"
+            target="_blank"
+          >
+            <FaDiscord size="24" />
+          </Anchor>
           <Anchor
             c="white"
             href="https://twitter.com/AliHussein_20"
