@@ -7,7 +7,7 @@ import { CustomInput } from "./shared/custom-input";
 import { Fieldset } from "./Mantine/CustomFieldset";
 import { useForm } from "@mantine/form";
 import { updateUserProfile } from "@/actions/update-user-profile";
-import languages from "@/content/languages.json";
+import languages from "@/content/languages-names.json";
 import { useFormState, useFormStatus } from "react-dom";
 
 type UserProfileForm = Omit<UserProfile, "email" | "id">;
