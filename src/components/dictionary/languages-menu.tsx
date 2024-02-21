@@ -5,6 +5,7 @@ import languages from "../../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
 import { CustomSelect } from "../Mantine/custom-select";
 import { CustomMenu } from "../Mantine/custom-menu";
+import { useMediaQuery } from "@mantine/hooks";
 
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
@@ -78,17 +79,23 @@ const LanguagesMenu = () => {
   const onChange = (mode: string) => {
     setSettings({ mode: mode as DictionaryMode });
   };
+  const isMobile = useMediaQuery("(max-width: 520px)");
+
   return (
     <CustomMenu
       shadow="lg"
-      width={350}
+      width={isMobile ? "98%" : 350}
       position="bottom-start"
       closeOnItemClick={false}
     >
       <Menu.Target>
         <div className="flex h-full w-full pl-1">
           <div className="center h-full w-full">
-            <ActionIcon size="xl" radius="lg" fz="xs">
+            <ActionIcon
+              size={isMobile ? "md" : "xl"}
+              radius={isMobile ? "md" : "lg"}
+              fz="xs"
+            >
               {uppercaseFirstLetter(inputLanguage)}
               {mode === "bili" &&
                 "-" + uppercaseFirstLetter(outputLanguage as string)}

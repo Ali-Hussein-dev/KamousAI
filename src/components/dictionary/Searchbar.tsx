@@ -9,6 +9,7 @@ import { useHistoryStore } from "@/hooks/use-history-store";
 import { cn } from "@/utils/helpers";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { CustomTextarea } from "../Mantine/custom-textarea";
+import { useMediaQuery } from "@mantine/hooks";
 
 type Props = {
   input: string;
@@ -57,6 +58,12 @@ export const DictionarySearchbar = (props: Props) => {
     }
   };
   const [isContextOpen, setIsContextOpen] = React.useState(false);
+  const isMobile = useMediaQuery("(max-width: 520px)");
+  const iconSize = isMobile ? "15" : "20";
+  const sharedBtnProps = {
+    size: isMobile ? "md" : "xl",
+    radius: isMobile ? "md" : "lg",
+  };
   return (
     <form
       className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-600 duration-300 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
@@ -70,7 +77,7 @@ export const DictionarySearchbar = (props: Props) => {
         onKeyDown={onKeyDown}
         onOptionSubmit={onOptionSubmit}
         placeholder="Enter your words..."
-        size="xl"
+        size={isMobile ? "lg" : "xl"}
         leftSectionPointerEvents="all"
         rightSectionWidth="auto"
         autoComplete="off"
@@ -92,21 +99,19 @@ export const DictionarySearchbar = (props: Props) => {
           </div>
         }
         rightSection={
-          <div className="gap-x-2 pr-1 flex-row-start">
-            {input ? (
+          <div className="gap-x-2 pr-2 flex-row-start">
+            {!!input ? (
               <>
                 <ActionIcon
-                  size="xl"
+                  {...sharedBtnProps}
                   onClick={() => setInput("")}
-                  radius="xl"
                   variant="outline"
                 >
-                  <MdClear size="20" />
+                  <MdClear size={iconSize} />
                 </ActionIcon>
                 <ActionIcon
-                  size="xl"
+                  {...sharedBtnProps}
                   onClick={() => setIsContextOpen(!isContextOpen)}
-                  radius="md"
                   variant="light"
                   pos="relative"
                   className="overflow-visible"
@@ -124,7 +129,7 @@ export const DictionarySearchbar = (props: Props) => {
                 h="100%"
                 fw={400}
                 className={cn(
-                  "hidden",
+                  "hidden tracking-wider",
                   !!input || isLoading ? "hidden" : "md:inline-block"
                 )}
               >
@@ -132,18 +137,18 @@ export const DictionarySearchbar = (props: Props) => {
               </Badge>
             )}
             {isLoading ? (
-              <ActionIcon size="xl" type="button" onClick={stop} radius="lg">
-                <BsStopCircle size="24" />
+              <ActionIcon {...sharedBtnProps} type="button" onClick={stop}>
+                <BsStopCircle size={iconSize} />
               </ActionIcon>
             ) : (
               <div className="">
                 {input ? (
-                  <ActionIcon size="xl" type="submit" radius="lg">
-                    <BsFillSendFill size="17" />
+                  <ActionIcon type="submit" {...sharedBtnProps}>
+                    <BsFillSendFill size={iconSize} />
                   </ActionIcon>
                 ) : (
-                  <div className="p-2">
-                    <FaSearch size="20" />
+                  <div className="center size-8">
+                    <FaSearch size={iconSize} className=" text-slate-500" />
                   </div>
                 )}
               </div>
@@ -165,7 +170,7 @@ export const DictionarySearchbar = (props: Props) => {
                   radius="md"
                   variant="outline"
                 >
-                  <MdClear size="20" />
+                  <MdClear size={iconSize} />
                 </ActionIcon>
               )
             }
