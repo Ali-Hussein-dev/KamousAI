@@ -3,19 +3,31 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
-export const updateUserProfile = async (formData: FormData) => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+const schema = z.object({
+  // name: z.number(),
+  name: z.string().optional(),
+  languages: z
+    .array(
+      z.object({ lang: z.string().optional(), level: z.string().optional() })
+    )
+    .optional(),
+});
+
+export const updateUserProfile = async (
+  _currentState: { msg: string },
+  formData: FormData
+) => {
+  const supabase = createClient(cookies());
   const { data } = await supabase.auth.getUser();
-  if (!data) {
+  const id = data.user?.id;
+  if (!data || !id) {
     return redirect("/login");
   }
-  //--------------start updating user profile
+
   try {
-    const id = data.user?.id;
-    if (!id) return redirect("/login");
-    //---> handle user laguages data from form
+    //---> Parse form data
     const languages: Record<string, LangPair> = {};
     formData.forEach((value, key) => {
       const index = key.split("-")[1]; // "lang-index" or "level-index"
@@ -31,20 +43,30 @@ export const updateUserProfile = async (formData: FormData) => {
       }
     });
 
-    //---> update user profile
-    await supabase
-      .from("profiles")
-      .update({
-        name: formData.get("name"),
-        languages: Object.values(languages),
-      })
-      .eq("id", id);
+    // validate form data
+    const validatedData = schema.safeParse({
+      name: formData.get("name"),
+      languages: Object.values(languages),
+    }) as {
+      data: UserProfile;
+      error: Record<string, string>[];
+      success: boolean;
+    };
+
+    if (!!validatedData.error) {
+      console.warn("Validation Error", validatedData.error, id);
+      return {
+        msg: "Form data validation failed. Please send correct data.",
+      };
+    }
+    //---> update user profile on Supabase
+    await supabase.from("profiles").update(validatedData.data).eq("id", id);
 
     revalidatePath("/profile");
   } catch (error) {
-    throw new Error("Error updating profile. Please try again.");
+    console.error("Error updating profile:", error);
+    return {
+      msg: "Error updating profile. Please try again.",
+    };
   }
 };
-
-
-
