@@ -55,6 +55,7 @@ const Pairs = ({
 type Props = {
   profile: UserProfile;
 };
+//======================================
 const SubmitBtn = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { pending } = useFormStatus();
   return (
@@ -71,16 +72,23 @@ export const UserProfile = ({ profile }: Props) => {
       languages: profile.languages,
     },
   });
+  // useForm + useFormState are not compaitble yet!
+  // const [formState, formAction] = useFormState(updateUserProfile, {});
   return (
     <form
       action={updateUserProfile}
-      className="mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
+      className="mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8 animate-in"
     >
+      {/* {formState?.msg && (
+        <p className="rounded border border-amber-700/20 p-3 text-center font-medium text-amber-600">
+          {formState?.msg}
+        </p>
+      )} */}
       <Fieldset legend="Personal Info" className="space-y-3">
         <div className="flex-wrap gap-2 flex-row-between sm:flex-nowrap">
           <CustomInput
             placeholder="name"
-            defaultValue={profile.name}
+            type="text"
             className="w-full"
             classNames={{ input: "bg-slate-700" }}
             name="name"
