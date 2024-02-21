@@ -42,7 +42,7 @@ export default function ToolsLayout({
             collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
           }}
           classNames={{
-            root: "from-slate-800 via-slate-800/80 to-slate-800 bg-gradient-to-r relative",
+            root: "bg-slate-800 relative",
             // main: "",
             header: "bg-transparent",
             navbar: "bg-slate-800",
