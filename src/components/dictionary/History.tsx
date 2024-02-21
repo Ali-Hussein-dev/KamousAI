@@ -25,26 +25,28 @@ const Card = ({
 }) => {
   const { play, isFetching } = useVoiceContext({ text: term });
   return (
-    <div className="rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow">
-      <div className="mb-2 flex-row-between">
-        <div className="gap-3 flex-row-start">
-          <span className="block font-bold uppercase text-primary-600">
-            {term}
-          </span>
-          <AudioCtxButton isLoadingAudio={isFetching} playAudio={play} />
+    <div className="flex flex-col rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow">
+      <div className="grow">
+        <div className="mb-2 flex-row-between">
+          <div className="gap-3 flex-row-start">
+            <span className="block font-bold uppercase text-primary-600">
+              {term}
+            </span>
+            <AudioCtxButton isLoadingAudio={isFetching} playAudio={play} />
+          </div>
+          <ActionIcon
+            radius="lg"
+            variant="outline"
+            onClick={() => remove()}
+            classNames={{
+              root: "!border-slate-500",
+            }}
+          >
+            <MdOutlineClear />
+          </ActionIcon>
         </div>
-        <ActionIcon
-          radius="lg"
-          variant="outline"
-          onClick={() => remove()}
-          classNames={{
-            root: "!border-slate-500",
-          }}
-        >
-          <MdOutlineClear />
-        </ActionIcon>
+        <Markdown>{definition}</Markdown>
       </div>
-      <Markdown>{definition}</Markdown>
       <WordEntryTabs term={term} id={id} />
     </div>
   );
