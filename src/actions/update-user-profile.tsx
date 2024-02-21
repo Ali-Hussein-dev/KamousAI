@@ -47,18 +47,20 @@ export const updateUserProfile = async (
     const validatedData = schema.safeParse({
       name: formData.get("name"),
       languages: Object.values(languages),
-    });
+    }) as {
+      data: UserProfile;
+      error: Record<string, string>[];
+      success: boolean;
+    };
 
-    // @ts-expect-error - we know that the data is valid
     if (!!validatedData.error) {
-      // @ts-expect-error - we know that the data is valid
       console.warn("Validation Error", validatedData.error, id);
       return {
         msg: "Form data validation failed. Please send correct data.",
       };
     }
     //---> update user profile on Supabase
-    await supabase.from("profiles").update(validatedData).eq("id", id);
+    await supabase.from("profiles").update(validatedData.data).eq("id", id);
 
     revalidatePath("/profile");
   } catch (error) {
@@ -68,6 +70,3 @@ export const updateUserProfile = async (
     };
   }
 };
-
-
-
