@@ -80,7 +80,7 @@ export default function RootLayout({
           async
           src="https://eu.umami.is/script.js"
           data-website-id={process.env.NEXT_PUBLIC_UMAMI}
-          data-host-url="https://kamous.noorai.io"
+          // data-host-url="https://kamous.noorai.io"
         ></script>
         <meta name="theme-color" content="#334155" />
       </head>
