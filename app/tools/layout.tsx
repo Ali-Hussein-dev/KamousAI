@@ -67,11 +67,9 @@ export default function ToolsLayout({
                   visibleFrom="sm"
                   size="sm"
                 />
-                <div className="relative aspect-video h-10">
-                  <Link href="/">
-                    <Image src="/logo.svg" fill alt="logo" />
-                  </Link>
-                </div>
+                <Link href="/" className="relative aspect-video h-10">
+                  <Image src="/logo.svg" fill alt="logo" />
+                </Link>
               </div>
             </div>
           </AppShell.Header>
