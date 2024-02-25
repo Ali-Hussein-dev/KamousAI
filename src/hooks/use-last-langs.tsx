@@ -30,7 +30,10 @@ export const useLastLangs = create<State>()(
             ({
               ...s,
               [property as keyof State]: [
-                ...new Set([newLast, ...s.last]),
+                ...new Set([
+                  newLast,
+                  ...s[property as keyof Omit<State, "setLast">],
+                ]),
               ].slice(-limit),
             } as State)
         ),
