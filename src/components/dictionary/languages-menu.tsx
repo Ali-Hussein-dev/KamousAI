@@ -108,7 +108,7 @@ const Bilingual = () => {
         <div className="rounded border p-2">
           <div className="mb-2 text-sm text-gray-300">Recently Used</div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="flex-wrap gap-3 flex-row-start">
+            <div className="flex flex-col flex-wrap items-start gap-3">
               {lastInput.map((lang) => (
                 <Button
                   w="120"
@@ -121,7 +121,7 @@ const Bilingual = () => {
                 </Button>
               ))}
             </div>
-            <div className="flex-wrap gap-3 flex-row-end">
+            <div className="flex flex-col flex-wrap items-end gap-3">
               {lastOutput.map((lang) => (
                 <Button
                   w="120"
