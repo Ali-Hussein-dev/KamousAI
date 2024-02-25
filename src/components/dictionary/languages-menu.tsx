@@ -1,51 +1,93 @@
-import { ActionIcon, Divider, Menu, SegmentedControl } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  Divider,
+  Menu,
+  SegmentedControl,
+} from "@mantine/core";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
+import languagesLabels from "../../content/languages-names.json";
 import languages from "../../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
 import { CustomSelect } from "../Mantine/custom-select";
 import { CustomMenu } from "../Mantine/custom-menu";
-import { useMediaQuery } from "@mantine/hooks";
+import {  useMediaQuery } from "@mantine/hooks";
+import { useLastLangs } from "@/hooks/use-last-langs";
 
+//---------------------------------------------------MONOLINGUAL
 const Monolingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
   const { inputLanguage } = useResponse((s) => s.preferences);
+  const { last, setLast } = useLastLangs();
   return (
-    <div className="">
+    <div className="space-y-3">
       <CustomSelect
         label="Your language"
         placeholder="Pick one"
         defaultValue={inputLanguage}
-        data={languages}
+        data={languagesLabels}
         value={inputLanguage}
-        onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
+        onChange={(lang) => {
+          setSettings({ inputLanguage: lang || "en" });
+          setLast(lang || "English", "last", 5);
+        }}
         comboboxProps={{ withinPortal: false }}
       />
+      {last.length > 0 && (
+        <div className="rounded border p-2">
+          <div className="mb-2 text-sm text-gray-300">Recently Used</div>
+          <div className="flex-wrap gap-3 flex-row-start">
+            {last.map((lang) => (
+              <Button
+                variant="light"
+                size="compact-md"
+                key={lang}
+                onClick={() => setSettings({ inputLanguage: lang })}
+              >
+                {lang}
+              </Button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
+//---------------------------------------------------BILINGUAL
 const Bilingual = () => {
   const setSettings = useResponse((s) => s.setPreferences);
   const inputLanguage = useResponse((s) => s.preferences.inputLanguage);
   const outputLanguage = useResponse((s) => s.preferences.outputLanguage);
+  const { lastInput, lastOutput, setLast } = useLastLangs();
+  const onChange = (
+    lang: string | null,
+    type: "inputLanguage" | "outputLanguage"
+  ) => {
+    setSettings({ [type]: lang });
+    setLast(
+      lang || "English",
+      type === "inputLanguage" ? "lastInput" : "lastOutput",
+      3
+    );
+  };
   return (
     <div>
-      <div className="flex items-end gap-2 ">
+      <div className="mb-2 flex items-end gap-2">
         <CustomSelect
-          label="Translate from "
+          label="Translate from"
           placeholder="Pick a language"
           defaultValue={"en"}
-          data={languages}
+          data={languagesLabels}
           value={inputLanguage}
-          onChange={(lang) => setSettings({ inputLanguage: lang || "en" })}
+          onChange={(lang) => onChange(lang, "inputLanguage")}
           comboboxProps={{ withinPortal: false }}
         />
         <ActionIcon
           onClick={() => {
-            setSettings({
-              inputLanguage: outputLanguage,
-              outputLanguage: inputLanguage,
-            });
+            onChange(outputLanguage, "inputLanguage");
+            onChange(inputLanguage, "outputLanguage");
           }}
           mb={5}
           radius="md"
@@ -56,12 +98,45 @@ const Bilingual = () => {
           label="To"
           placeholder="Pick a language"
           defaultValue={"de"}
-          data={languages}
+          data={languagesLabels}
           value={outputLanguage || "de"}
-          onChange={(lang) => setSettings({ outputLanguage: lang || "de" })}
+          onChange={(lang) => onChange(lang, "outputLanguage")}
           comboboxProps={{ withinPortal: false }}
         />
       </div>
+      {lastInput.length > 0 && (
+        <div className="rounded border p-2">
+          <div className="mb-2 text-sm text-gray-300">Recently Used</div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="flex-wrap gap-3 flex-row-start">
+              {lastInput.map((lang) => (
+                <Button
+                  w="120"
+                  variant="light"
+                  size="compact-md"
+                  key={lang}
+                  onClick={() => onChange(lang, "inputLanguage")}
+                >
+                  {lang}
+                </Button>
+              ))}
+            </div>
+            <div className="flex-wrap gap-3 flex-row-end">
+              {lastOutput.map((lang) => (
+                <Button
+                  w="120"
+                  variant="light"
+                  size="compact-md"
+                  key={lang}
+                  onClick={() => onChange(lang, "outputLanguage")}
+                >
+                  {lang}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -70,7 +145,7 @@ function uppercaseFirstLetter(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-//======================================
+//======================================LANGUAGES MENU
 const LanguagesMenu = () => {
   const { inputLanguage, outputLanguage, mode } = useResponse(
     (s) => s.preferences
@@ -96,9 +171,16 @@ const LanguagesMenu = () => {
               radius={isMobile ? "md" : "lg"}
               fz="xs"
             >
-              {uppercaseFirstLetter(inputLanguage)}
+              {uppercaseFirstLetter(
+                languages.find((l) => l.label === inputLanguage)
+                  ?.value as string
+              )}
               {mode === "bili" &&
-                "-" + uppercaseFirstLetter(outputLanguage as string)}
+                "-" +
+                  uppercaseFirstLetter(
+                    languages.find((l) => l.label === outputLanguage)
+                      ?.value as string
+                  )}
             </ActionIcon>
           </div>
           <Divider orientation="vertical" mx={4} my={12} />
