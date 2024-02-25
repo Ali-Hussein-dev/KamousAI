@@ -141,10 +141,6 @@ const Bilingual = () => {
   );
 };
 
-function uppercaseFirstLetter(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 //======================================LANGUAGES MENU
 const LanguagesMenu = () => {
   const { inputLanguage, outputLanguage, mode } = useResponse(
@@ -169,18 +165,18 @@ const LanguagesMenu = () => {
             <ActionIcon
               size={isMobile ? "md" : "xl"}
               radius={isMobile ? "md" : "lg"}
-              fz="xs"
+              fz={mode === "bili" ? "xs" : "sm"}
+              fw="bold"
             >
-              {uppercaseFirstLetter(
+              {
                 languages.find((l) => l.label === inputLanguage)
                   ?.value as string
-              )}
+              }
+
               {mode === "bili" &&
-                "-" +
-                  uppercaseFirstLetter(
-                    languages.find((l) => l.label === outputLanguage)
-                      ?.value as string
-                  )}
+                (("-" +
+                  languages.find((l) => l.label === outputLanguage)
+                    ?.value) as string)}
             </ActionIcon>
           </div>
           <Divider orientation="vertical" mx={4} my={12} />
