@@ -32,28 +32,34 @@ export type Database = {
         }
         Relationships: []
       }
-      "paraphraser-configs": {
+      paraphraser: {
         Row: {
-          configs: Json[]
+          configs: Json | null
           created_at: string
+          history: Json
           id: number
-          user_id: string | null
+          updated_at: string | null
+          user_id: string
         }
         Insert: {
-          configs?: Json[]
+          configs?: Json | null
           created_at?: string
+          history?: Json
           id?: number
-          user_id?: string | null
+          updated_at?: string | null
+          user_id: string
         }
         Update: {
-          configs?: Json[]
+          configs?: Json | null
           created_at?: string
+          history?: Json
           id?: number
-          user_id?: string | null
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "paraphraser-configs_user_id_fkey"
+            foreignKeyName: "public_paraphraser_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
