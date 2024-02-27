@@ -15,11 +15,12 @@ declare global {
         created_at: Date;
         updated_at: Date;
         user_id: string;
-        configs: {
+        configs: Json | {
             temperature: number;
             tones: Tone[];
         };
-        history: Message[];
+        history: Message[] | Json;
     }
+    type PromiseType<T extends Promise<unknown>> = T extends Promise<infer U> ? U : never;
 }
 

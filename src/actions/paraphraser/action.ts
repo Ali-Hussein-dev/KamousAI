@@ -8,7 +8,7 @@ import { cookies } from "next/headers";
 /**
  * TODO:
  * - [ ] Add zod schema for paraphraser
- * - [ ] Add types for paraphraser
+ * - [X] Add types for paraphraser
  * - [ ] relvalidatePath
  */
 
@@ -25,13 +25,17 @@ const authSupabase = async () => {
 
 export const getParaphraser = async () => {
     const { supabase, id } = await authSupabase()
-    const data = await supabase.from("paraphraser")
+    const { error, data, } = await supabase.from("paraphraser")
         .select().eq("user_id", id)
-    return data
+    if (!!error) {
+        return error
+    }
+    return data[0]
 }
 
-export const updateParaphraser = async (data: any) => {
+
+export const updateParaphraser = async (data: Pick<Paraphraser, "configs">) => {
     const { supabase, id } = await authSupabase()
     return await supabase.from("paraphraser")
-        .update([data]).eq("user_id", id)
+        .update(data).eq("user_id", id)
 }
