@@ -2,37 +2,37 @@
 import { createStore, useStore } from "zustand";
 import * as React from "react";
 import { useQueryParaphraser } from "@/actions/paraphraser/hooks";
-const presetTones = [
+const defaultTones = [
   {
     id: "1001",
     label: "Professional",
-    value: "professional",
+    value: "professional without jargon ",
   },
-  // {
-  //   id: "2001",
-  //   label: "Friendly",
-  //   value: "friendly",
-  // },
-  // {
-  //   id: "3001",
-  //   label: "Formal",
-  //   value: "formal",
-  // },
-  // {
-  //   id: "5001",
-  //   label: "Casual",
-  //   value: "casual",
-  // },
-  // {
-  //   id: "4001",
-  //   label: "Confident",
-  //   value: "confident",
-  // },
-  // {
-  //   id: "4001",
-  //   label: "Straightforward",
-  //   value: "straightforward",
-  // },
+  {
+    id: "2001",
+    label: "Friendly",
+    value: "friendly and approachable",
+  },
+  {
+    id: "3001",
+    label: "Formal",
+    value: "formal and meaningful",
+  },
+  {
+    id: "5001",
+    label: "Casual",
+    value: "casual",
+  },
+  {
+    id: "4001",
+    label: "Confident",
+    value: "confident and assertive",
+  },
+  {
+    id: "4001",
+    label: "Straightforward",
+    value: "straightforward, clarity",
+  },
 ];
 
 //---------------------------------------------------INTIAL-STATE
@@ -43,7 +43,7 @@ export type Tone = {
 };
 const initialState = {
   temperature: 1,
-  tones: presetTones,
+  tones: defaultTones,
 };
 
 //---------------------------------------------------STORE-TYPES
@@ -123,7 +123,8 @@ export const ParaphraserProvider: React.FC<ProviderProps> = ({ children }) => {
   return (
     <ParaphraserContext.Provider value={storeRef.current}>
       {children}
-      <pre>{JSON.stringify(data || {}, null, 2)}</pre>
+      {/* <h2>ParaphraserContext.Provider</h2>
+      <pre>{JSON.stringify(data || {}, null, 2)}</pre> */}
     </ParaphraserContext.Provider>
   );
 };
