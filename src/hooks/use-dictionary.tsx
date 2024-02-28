@@ -16,6 +16,7 @@ export const useDefinition = () => {
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const preferences = useResponse((s) => s.preferences);
   const { inputRef } = useInputFocus<HTMLInputElement>();
+  // word context
   const [context, setContext] = React.useState("");
   const router = useRouter();
   const res = useCompletion({
@@ -101,13 +102,6 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
 
       setWordEntryKey(activeWordEntryKey as WordEntryKey);
       const cache = lexicalEntries[id]?.[activeWordEntryKey as WordEntryKey];
-      console.log("-----------onTabChange", {
-        term,
-        id,
-        activeWordEntryKey,
-        wordEntryKey,
-        cache: !!cache,
-      });
       if (
         !cache &&
         ["examples", "synonyms", "antonyms", "idioms"].includes(
@@ -124,7 +118,7 @@ export const useWordEntries = ({ id, term }: { id: string; term: string }) => {
         console.log("cached", { activeWordEntryKey });
       }
     },
-    [lexicalEntries, id, term, wordEntryKey, res, preferences]
+    [lexicalEntries, id, term, res, preferences]
   );
   return { ...res, wordEntryKey, onTabChange };
 };
