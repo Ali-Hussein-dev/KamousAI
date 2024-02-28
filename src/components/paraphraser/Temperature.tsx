@@ -1,20 +1,19 @@
 "use client";
+
 import { Slider, Text } from "@mantine/core";
 import * as React from "react";
-import { useParaphraserContext } from "@/hooks/use-paraphraser";
+import { useParaphraserFormCtx } from "@/context/form-paraphraser-context";
 
 export function Temperature() {
-  const temperature = useParaphraserContext((s) => s.temperature);
-  const setTemperature = useParaphraserContext((s) => s.setTemperature);
-
+  const form = useParaphraserFormCtx();
   return (
     <div className="py-1">
       <Text size="sm" mb="4px">
-        Creativity Level ({temperature}/2)
+        Creativity Level ({form.getInputProps("configs.temperature").value}/2)
       </Text>
       <Slider
-        value={temperature}
-        onChange={setTemperature}
+        name="temperature"
+        {...form.getInputProps("configs.temperature")}
         min={0.1}
         max={2}
         step={0.1}
