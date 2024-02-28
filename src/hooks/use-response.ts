@@ -77,8 +77,8 @@ export const useResponse = create<Store>()(
       definition: "",
       preferences: {
         mode: "mono",
-        inputLanguage: "en",
-        outputLanguage: "de",
+        inputLanguage: "English",
+        outputLanguage: "German",
       },
       history: [],
       setPreferences: (settings) =>
