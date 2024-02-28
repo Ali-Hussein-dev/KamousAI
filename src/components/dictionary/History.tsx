@@ -25,7 +25,7 @@ const Card = ({
 }) => {
   const { play, isFetching } = useVoiceContext({ text: term });
   return (
-    <div className="flex flex-col rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow">
+    <div className="flex break-inside-avoid flex-col rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow">
       <div className="grow">
         <div className="mb-2 flex-row-between">
           <div className="gap-3 flex-row-start">
@@ -88,8 +88,8 @@ export const DictionaryHistory = () => {
       {open ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-3 px-1 pt-6 text-slate-300",
-            cached.length > 1 ? "md:grid-cols-2" : ""
+            "grid grid-cols-1 gap-4 pt-6 text-slate-300",
+            cached.length > 1 ? "md:masonry-cols-2 md:block md:space-y-4" : ""
           )}
         >
           {cached}

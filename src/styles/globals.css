@@ -51,3 +51,23 @@ display: grid;
 ::-webkit-scrollbar-thumb {
     @apply rounded-sm bg-slate-300/90 hover:bg-slate-300;
 }
+@layer utilities {
+    .masonry-cols-4 {
+        column-count: 4;
+        column-gap: 1em;
+    }
+
+    .masonry-cols-3 {
+        column-count: 3;
+        column-gap: 1em;
+    }
+
+    .masonry-cols-2 {
+        column-count: 2;
+        column-gap: 1em;
+    }
+
+    .break-inside {
+        break-inside: avoid;
+    }
+}
