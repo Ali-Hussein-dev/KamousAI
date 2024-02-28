@@ -9,7 +9,7 @@ export const CustomInput = (
     <Input
       classNames={{
         input: cn(
-          "h-10 w-full rounded px-2 text-slate-100 font-medium text-slate-200 focus:shadow-inner placeholder:text-slate-600",
+          "h-10 w-full rounded px-2 text-slate-100 font-medium text-slate-200 focus:shadow-inner placeholder:text-slate-600 text-base",
           "bg-slate-800 "
         ),
       }}
