@@ -55,8 +55,11 @@ type Props = {
 type Actions = {
   setTemperature: (temperature: number) => void;
   //   setHistory: (history: Message[]) => void;
+  /** add a tone */
   add: (tone: Tone) => void;
+  /** modify a tone */
   update: (tone: Tone) => void;
+  /** remove a tone */
   remove: (id: string) => void;
 };
 type State = Props & Actions;
