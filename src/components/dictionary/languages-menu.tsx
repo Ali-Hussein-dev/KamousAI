@@ -163,10 +163,11 @@ const LanguagesMenu = () => {
         <div className="flex h-full w-full pl-1">
           <div className="center h-full w-full">
             <ActionIcon
-              size={isMobile ? "md" : "xl"}
+              size={isMobile ? "lg" : "xl"}
               radius={isMobile ? "md" : "lg"}
               fz={mode === "bili" ? "xs" : "sm"}
               fw="bold"
+              ta="center"
             >
               {
                 languages.find((l) => l.label === inputLanguage)
