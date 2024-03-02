@@ -17,6 +17,11 @@ export function Temperature() {
         min={0.1}
         max={2}
         step={0.1}
+        classNames={{
+          thumb: "bg-slate-900",
+          bar: "bg-slate-800",
+          track: "h-2.5 !bg-slate-100",
+        }}
       />
     </div>
   );
