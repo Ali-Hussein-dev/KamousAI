@@ -16,7 +16,7 @@ const fontFamily = Nunito({
 const APP_NAME = "KamousAI";
 const APP_DEFAULT_TITLE = "KamousAI";
 const APP_TITLE_TEMPLATE = "%s - KamousAI";
-const APP_DESCRIPTION = "AI Language Tools";
+const APP_DESCRIPTION = "Language Learning Tools";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kamous.noorai.io"),
@@ -46,11 +46,8 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
   },
   twitter: {
-    card: "summary",
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
+    title: APP_DEFAULT_TITLE,
+    card: "summary_large_image",
     description: APP_DESCRIPTION,
   },
   robots: {
