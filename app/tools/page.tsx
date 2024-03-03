@@ -3,8 +3,10 @@ import { ToolsBentoTools } from "@/components/tools-bento-grid";
 //======================================
 const ToolsPage = () => {
   return (
-    <section className="center mx-auto max-w-4xl px-2 pt-10 md:pt-20">
-      <ToolsBentoTools />
+    <section className="center mx-auto min-h-screen bg-slate-800 px-2 py-10">
+      <div className="mx-auto max-w-4xl">
+        <ToolsBentoTools />
+      </div>
     </section>
   );
 };
