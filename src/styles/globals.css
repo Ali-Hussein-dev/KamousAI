@@ -25,6 +25,9 @@ display: grid;
 .h1 {
     @apply mb-2 text-2xl sm:text-4xl font-black capitalize md:text-6xl tracking-wide text-center bg-gradient-to-b from-slate-100 to-slate-200/70 bg-clip-text text-transparent;
 }
+.next-link {
+    @apply font-medium px-4 py-1 text-slate-100 rounded no-underline flex-row-start gap-2 duration-200;
+}
 .animate-in {
     animation: animateIn 0.3s ease 0.15s both;
 }
