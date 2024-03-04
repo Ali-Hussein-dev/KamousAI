@@ -77,7 +77,7 @@ export const UserProfile = ({ profile }: Props) => {
   return (
     <form
       action={formAction}
-      className="animate-in mx-auto h-full max-w-3xl space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
+      className="animate-in mx-auto h-full space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
     >
       {formState?.msg && (
         <p className="rounded border border-amber-700/20 p-3 text-center font-medium text-amber-600">

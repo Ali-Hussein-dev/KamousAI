@@ -18,7 +18,9 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <AppShell.Main py="lg" px="xs">
           {children}
         </AppShell.Main>
-        <Footer />
+        <AppShell.Footer p="xs" className="!relative" withBorder={false}>
+          <Footer />
+        </AppShell.Footer>
       </AppShell>
     </div>
   );

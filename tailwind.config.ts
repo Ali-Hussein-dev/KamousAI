@@ -47,6 +47,16 @@ export default {
           700: "#4c5897",
           800: "#424e88",
           900: "#364379",
+        },
+        theme: {
+          primary: "#5c68ac", // primary-600
+          secondary: "#E5DCB4", // light-amber
+          accent: "#E5CE5C", // amber
+          base: "#424e88", // slate-800
+          light: "#4c5897", // slate-700
+          dark: "#364379", // slate-900
+          destructive: "#f6ad55",
+          success: "#48bb78",
         }
       }
     },

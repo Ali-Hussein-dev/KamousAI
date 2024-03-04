@@ -1,24 +1,51 @@
 import { createClient } from "@/utils/supabase/server";
-import { Button } from "@mantine/core";
+import { Button, type ButtonProps } from "@mantine/core";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import * as React from "react";
+import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 //======================================
-export const LogoutButton = () => {
+export const LogoutButton = (props: ButtonProps) => {
   const logout = async () => {
     "use server";
-    console.log("logging out...");
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
+    const supabase = createClient(cookies());
     await supabase.auth.signOut();
     return redirect("/login");
   };
   return (
     <form action={logout}>
-      <Button type="submit" variant="light" color="primary">
+      <Button
+        type="submit"
+        variant="light"
+        c="orange"
+        w="120px"
+        leftSection={<IoMdLogOut size="20" />}
+        {...props}
+      >
         Log out
       </Button>
     </form>
+  );
+};
+
+/**
+ * coniditional link to login or logout
+ */
+//======================================
+export const LoginLink = async ({ login = "Login" }: { login?: string }) => {
+  const supabase = createClient(cookies());
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  return session ? (
+    <LogoutButton />
+  ) : (
+    <Link href="/login">
+      <Button variant="light" w="120px" leftSection={<IoMdLogIn size="20" />}>
+        {login}
+      </Button>
+    </Link>
   );
 };
