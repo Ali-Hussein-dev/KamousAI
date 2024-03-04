@@ -4,6 +4,7 @@ specifiers:
   '@mantine/core': ^7.5.3
   '@mantine/form': ^7.5.3
   '@mantine/hooks': ^7.5.3
+  '@radix-ui/react-slot': ^1.0.2
   '@serwist/next': ^8.4.3
   '@serwist/precaching': ^8.4.3
   '@serwist/sw': ^8.4.3
@@ -22,10 +23,12 @@ specifiers:
   '@upstash/redis': ^1.28.3
   ai: ^2.2.27
   autoprefixer: ^10.4.14
+  class-variance-authority: ^0.7.0
   clsx: ^2.0.0
   eslint: ^8.37.0
   eslint-config-next: ^14.1.0
   framer-motion: ^11.0.5
+  lucide-react: ^0.344.0
   next: ^14.1.0
   nextjs-google-analytics: ^2.3.3
   nextjs-toploader: ^1.6.4
@@ -44,6 +47,7 @@ specifiers:
   tailwind-custom-utilities: ^1.0.3
   tailwind-merge: ^2.2.1
   tailwindcss: ^3.4.1
+  tailwindcss-animate: ^1.0.7
   typescript: ^5.0.3
   typewriter-effect: ^2.20.1
   webpack: ^5.89.0
@@ -54,6 +58,7 @@ dependencies:
   '@mantine/core': 7.5.3_3c5y3abfn24cuiiryjx3pkjyre
   '@mantine/form': 7.5.3_react@18.2.0
   '@mantine/hooks': 7.5.3_react@18.2.0
+  '@radix-ui/react-slot': 1.0.2_qqvacn34z7knifokimedy337fa
   '@serwist/next': 8.4.3_next@14.1.0+webpack@5.89.0
   '@serwist/precaching': 8.4.3
   '@serwist/sw': 8.4.3
@@ -63,8 +68,10 @@ dependencies:
   '@tanstack/react-query': 5.12.2_react@18.2.0
   '@upstash/redis': 1.28.3
   ai: 2.2.27_react@18.2.0
+  class-variance-authority: 0.7.0
   clsx: 2.0.0
   framer-motion: 11.0.5_biqbaboplfbrettd7655fr4n2y
+  lucide-react: 0.344.0_react@18.2.0
   next: 14.1.0_biqbaboplfbrettd7655fr4n2y
   nextjs-google-analytics: 2.3.3_next@14.1.0+react@18.2.0
   nextjs-toploader: 1.6.4_hipqgvz32dfk24avoqah5l7veq
@@ -75,6 +82,7 @@ dependencies:
   react-markdown: 9.0.1_qqvacn34z7knifokimedy337fa
   remark-gfm: 4.0.0
   superjson: 1.12.2
+  tailwindcss-animate: 1.0.7_tailwindcss@3.4.1
   typewriter-effect: 2.20.1_biqbaboplfbrettd7655fr4n2y
   zod: 3.21.4
   zustand: 4.4.3_qqvacn34z7knifokimedy337fa
@@ -443,6 +451,35 @@ packages:
       tiny-glob: 0.2.9
       tslib: 2.5.0
     dev: true
+
+  /@radix-ui/react-compose-refs/1.0.1_qqvacn34z7knifokimedy337fa:
+    resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.8
+      '@types/react': 18.2.52
+      react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-slot/1.0.2_qqvacn34z7knifokimedy337fa:
+    resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.8
+      '@radix-ui/react-compose-refs': 1.0.1_qqvacn34z7knifokimedy337fa
+      '@types/react': 18.2.52
+      react: 18.2.0
+    dev: false
 
   /@rollup/rollup-android-arm-eabi/4.9.1:
     resolution: {integrity: sha512-6vMdBZqtq1dVQ4CWdhFwhKZL6E4L1dV6jUjuBvsavvNJSppzi6dLBbuV+3+IyUREaj9ZFvQefnQm28v4OCXlig==}
@@ -1566,6 +1603,12 @@ packages:
   /chrome-trace-event/1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
+
+  /class-variance-authority/0.7.0:
+    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+    dependencies:
+      clsx: 2.0.0
+    dev: false
 
   /clean-webpack-plugin/4.0.0_webpack@5.89.0:
     resolution: {integrity: sha512-WuWE1nyTNAyW5T7oNyys2EN0cfP2fdRxhxnIQWiAp0bMabPdHhoGxM8A6YL2GhqwgrPnnaemVE7nv5XJ2Fhh2w==}
@@ -3089,6 +3132,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react/0.344.0_react@18.2.0:
+    resolution: {integrity: sha512-6YyBnn91GB45VuVT96bYCOKElbJzUHqp65vX8cDcu55MQL9T969v4dhGClpljamuI/+KMO9P6w9Acq1CVQGvIQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /markdown-table/3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
@@ -4792,6 +4843,14 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.8
     dev: true
+
+  /tailwindcss-animate/1.0.7_tailwindcss@3.4.1:
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.1
+    dev: false
 
   /tailwindcss/3.4.1:
     resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
