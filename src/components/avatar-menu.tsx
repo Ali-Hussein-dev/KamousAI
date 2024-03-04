@@ -20,7 +20,7 @@ export const AvatarMenu = ({
         <Menu.Item>
           <Link
             href="/profile"
-            className="gap-2 rounded px-3 py-2 font-medium tracking-wide text-slate-200 no-underline flex-row-start hover:bg-primary-700/20"
+            className="next-link px-3 py-2 hover:bg-slate-500/20"
           >
             <RiAccountPinCircleFill className="text-slate-300" size="20" />
             Profile
