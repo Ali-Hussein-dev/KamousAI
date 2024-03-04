@@ -4,6 +4,7 @@ specifiers:
   '@mantine/core': ^7.5.3
   '@mantine/form': ^7.5.3
   '@mantine/hooks': ^7.5.3
+  '@radix-ui/react-slot': ^1.0.2
   '@serwist/next': ^8.4.3
   '@serwist/precaching': ^8.4.3
   '@serwist/sw': ^8.4.3
@@ -57,6 +58,7 @@ dependencies:
   '@mantine/core': 7.5.3_3c5y3abfn24cuiiryjx3pkjyre
   '@mantine/form': 7.5.3_react@18.2.0
   '@mantine/hooks': 7.5.3_react@18.2.0
+  '@radix-ui/react-slot': 1.0.2_qqvacn34z7knifokimedy337fa
   '@serwist/next': 8.4.3_next@14.1.0+webpack@5.89.0
   '@serwist/precaching': 8.4.3
   '@serwist/sw': 8.4.3
@@ -449,6 +451,35 @@ packages:
       tiny-glob: 0.2.9
       tslib: 2.5.0
     dev: true
+
+  /@radix-ui/react-compose-refs/1.0.1_qqvacn34z7knifokimedy337fa:
+    resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.8
+      '@types/react': 18.2.52
+      react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-slot/1.0.2_qqvacn34z7knifokimedy337fa:
+    resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.8
+      '@radix-ui/react-compose-refs': 1.0.1_qqvacn34z7knifokimedy337fa
+      '@types/react': 18.2.52
+      react: 18.2.0
+    dev: false
 
   /@rollup/rollup-android-arm-eabi/4.9.1:
     resolution: {integrity: sha512-6vMdBZqtq1dVQ4CWdhFwhKZL6E4L1dV6jUjuBvsavvNJSppzi6dLBbuV+3+IyUREaj9ZFvQefnQm28v4OCXlig==}
