@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
@@ -16,26 +16,37 @@ const authSupabase = async () => {
     const supabase = createClient(cookies());
     const { data, error } = await supabase.auth.getUser();
     if (error) {
-        console.warn("Error", error)
-        return redirect("/login");
-    }
-    return { supabase, id: data.user?.id as string }
-}
-
+        console.warn("Auth Error", error);
+      return redirect("/login");
+  }
+    return { supabase, id: data.user?.id as string };
+};
 
 export const getParaphraser = async () => {
-    const { supabase, id } = await authSupabase()
-    const { error, data, } = await supabase.from("paraphraser")
-        .select().eq("user_id", id)
+    const { supabase, id } = await authSupabase();
+    const { error, data } = await supabase
+        .from("paraphraser")
+        .select()
+        .eq("user_id", id);
     if (!!error) {
-        return error
+        throw Error(error.message);
+  }
+    return data[0] || {};
+};
+
+
+export const updateParaphraser = async (
+    inputs: Pick<Paraphraser, "configs">
+) => {
+    const { supabase, id } = await authSupabase();
+    const { data, error } = await supabase
+        .from("paraphraser")
+        .upsert(
+            { user_id: id, configs: inputs, updated_at: new Date().toDateString() },
+            { onConflict: "user_id" }
+        );
+    if (!!error) {
+        throw Error(error.message);
     }
-    return data[0]
-}
-
-
-export const updateParaphraser = async (data: Pick<Paraphraser, "configs">) => {
-    const { supabase, id } = await authSupabase()
-    return await supabase.from("paraphraser")
-        .update(data).eq("user_id", id)
-}
+    return data;
+};
