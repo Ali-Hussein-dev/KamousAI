@@ -3,7 +3,7 @@ import { isFunction } from "@/utils/helpers";
 import { Textarea, type TextareaProps } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useMediaQuery } from "@mantine/hooks";
-import { Skeleton } from "../Skeleton";
+import { Skeleton } from "../shared/Skeleton";
 interface CustomTextareaProps extends TextareaProps {
   loading?: boolean;
   cb: (e: React.KeyboardEventHandler<Element>) => void;

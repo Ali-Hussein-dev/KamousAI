@@ -1,7 +1,7 @@
 "use client";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/shared/copy-button";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
-import { Markdown } from "@/components/Markdown";
+import { Markdown } from "@/components/shared/Markdown";
 import { ActionIcon, Button, SegmentedControl } from "@mantine/core";
 import { useChat } from "ai/react";
 import { AiOutlineClear } from "react-icons/ai";

@@ -6,7 +6,7 @@ import React from "react";
 import { TbHistory } from "react-icons/tb";
 import { WordEntryTabs } from "./definitions-card";
 import { AudioCtxButton } from "./Audio";
-import { Markdown } from "../Markdown";
+import { Markdown } from "../shared/Markdown";
 import { MdOutlineClear } from "react-icons/md";
 import { useVoiceContext } from "@/hooks/use-voice-context";
 import { ToolRating } from "../tool-rating";

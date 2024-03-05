@@ -1,7 +1,4 @@
-import {
-  Anchor,
-  AppShell,
-} from "@mantine/core";
+import { Anchor } from "@mantine/core";
 import Link from "next/link";
 import { FaTwitter } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa6";
@@ -9,7 +6,7 @@ import { FaDiscord } from "react-icons/fa6";
 //======================================
 export const Footer = () => {
   return (
-    <AppShell.Footer p="xs" className="!relative" withBorder={false}>
+    <>
       {/* <div className="mx-auto mb-1 h-[0.5px] max-w-4xl bg-gradient-to-r from-transparent via-white to-transparent" /> */}
       {/* <div className="mx-auto mb-2 h-[0.5px] max-w-4xl bg-slate-100/30" /> */}
       <div className="mx-auto w-full max-w-4xl flex-row-between">
@@ -46,6 +43,6 @@ export const Footer = () => {
           </Anchor>
         </div>
       </div>
-    </AppShell.Footer>
+    </>
   );
 };

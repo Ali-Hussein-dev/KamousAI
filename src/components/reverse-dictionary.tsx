@@ -13,8 +13,8 @@ import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
 import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
-import { CopyButton } from "./copy-button";
-import { Markdown } from "./Markdown";
+import { CopyButton } from "./shared/copy-button";
+import { Markdown } from "./shared/Markdown";
 import * as React from "react";
 import { ToolContainer } from "./tool-container";
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]

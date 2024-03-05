@@ -6,51 +6,17 @@
     /* slate-600 */
     border: 0 solid #475569;
 }
-.center {
-display: grid;
-    place-items: center;
-}
-.bg {
-    width: 100%;
-    background-repeat: repeat;
-    background-size: 250px 250px;
-    background-image: url("/grid.svg");
-    /* opacity: 1; */
-}
-
-.text-gradient {
-@apply bg-gradient-to-tr from-primary-600 via-primary-500 to-violet-400 bg-clip-text text-transparent;
-}
-
-.h1 {
-    @apply mb-2 text-2xl sm:text-4xl font-black capitalize md:text-6xl tracking-wide text-center bg-gradient-to-b from-slate-100 to-slate-200/70 bg-clip-text text-transparent;
-}
-.animate-in {
-    animation: animateIn 0.3s ease 0.15s both;
-}
-
-@keyframes animateIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+/* --------------------------------------------------------COMPONENTS-&-UTILITIES */
+@layer components {
+    .next-link {
+        @apply font-medium px-4 py-1 text-slate-100 rounded no-underline flex-row-start gap-2 duration-200 tracking-wide;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .h1 {
+        @apply mb-2 text-2xl sm:text-4xl font-black capitalize md:text-6xl tracking-wide text-center bg-gradient-to-b from-slate-100 to-slate-200/70 bg-clip-text text-transparent;
     }
 }
-::-webkit-scrollbar {
-    width: 10px;
-}
 
-::-webkit-scrollbar-track {
-    @apply bg-slate-800/60;
-}
-
-::-webkit-scrollbar-thumb {
-    @apply rounded-sm bg-slate-300/90 hover:bg-slate-300;
-}
 @layer utilities {
     .masonry-cols-4 {
         column-count: 4;
@@ -70,4 +36,48 @@ display: grid;
     .break-inside {
         break-inside: avoid;
     }
+}
+
+/* --------------------------------------------------------GLOBAL-GLASSES-SHOULDNOT BE-MODIFABLE */
+.text-gradient {
+    @apply bg-gradient-to-tr from-primary-600 via-primary-500 to-violet-400 bg-clip-text text-transparent;
+}
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.bg {
+    width: 100%;
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    background-image: url("/grid.svg");
+    /* opacity: 1; */
+}
+/* --------------------------------------------------------ANIMATION */
+.animate-in {
+    animation: animateIn 0.3s ease 0.15s both;
+}
+
+@keyframes animateIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* --------------------------------------------------------SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    @apply bg-slate-800/60;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-slate-300/90 hover:bg-slate-300;
 }

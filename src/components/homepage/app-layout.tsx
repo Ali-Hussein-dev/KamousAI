@@ -1,6 +1,7 @@
 "use client";
 import { AppShell } from "@mantine/core";
-import { Footer, Header } from "@/components";
+import { Header } from "@/components/homepage/Header";
+import { Footer, } from "@/components/homepage/Footer";
 import * as React from "react";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
@@ -18,7 +19,9 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <AppShell.Main py="lg" px="xs">
           {children}
         </AppShell.Main>
-        <Footer />
+        <AppShell.Footer p="xs" className="!relative" withBorder={false}>
+          <Footer />
+        </AppShell.Footer>
       </AppShell>
     </div>
   );

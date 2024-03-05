@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
+
 export const useVoiceContext = ({ text }: { text: string }) => {
   const audioContext = React.useRef(new AudioContext());
   const audioSource = React.useRef<AudioBuffer | null>(null);
@@ -22,6 +23,17 @@ export const useVoiceContext = ({ text }: { text: string }) => {
     staleTime: Infinity,
   });
   const { refetch, isFetching } = res;
+
+  React.useEffect(() => {
+    if (audioSource.current) {
+      return;
+    }
+    // clean up audio source on unmount
+    return () => {
+      audioSource.current = null;
+    };
+  }, [text]);
+
   const play = async () => {
     if (!audioSource.current) {
       await refetch();
