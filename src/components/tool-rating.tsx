@@ -54,7 +54,7 @@ const customizedLabels = {
   1: "😢 What are we doing wrong?",
   2: "😞 What don't you like?",
   3: "😊 What are we missing?",
-  4: "😍  What can we do better?",
+  4: "😍 What can we do better?",
 };
 export function ToolRating() {
   const [value, setValue] = React.useState(0);

@@ -4,10 +4,10 @@ import { useChat } from "ai/react";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
-import { Markdown } from "@/components/Markdown";
+import { Markdown } from "@/components/shared/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/shared/copy-button";
 import { ToolContainer } from "@/components/tool-container";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);

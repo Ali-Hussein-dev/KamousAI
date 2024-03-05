@@ -5,7 +5,7 @@ import { type Metadata } from "next";
 import { LogoutButton } from "@/components/auth-buttons";
 import { UserProfile } from "@/components/user-profile";
 import * as React from "react";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/homepage/Footer";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 

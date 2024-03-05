@@ -8,7 +8,7 @@ import { BsTranslate, BsJournalText } from "react-icons/bs";
 import { MdOutlineShortText } from "react-icons/md";
 import { cn } from "@/utils/helpers";
 import dynamic from "next/dynamic";
-import { Skeleton } from "../Skeleton";
+import { Skeleton } from "../shared/Skeleton";
 import css from "./tools-menu.module.css";
 
 // https://codepen.io/ali-hussein-dev/pen/BabOdxY
