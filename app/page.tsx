@@ -1,7 +1,7 @@
 "use client";
-import { AppLayout } from "@/components/app-layout";
-import { EasyAccess } from "@/components/easy-access";
-import { ToolsBentoTools } from "@/components/tools-bento-grid";
+import { AppLayout } from "@/components/homepage/app-layout";
+import { EasyAccess } from "@/components/homepage/easy-access";
+import { ToolsBentoTools } from "@/components/homepage/tools-grid";
 import { type NextPage } from "next";
 import Link from "next/link";
 

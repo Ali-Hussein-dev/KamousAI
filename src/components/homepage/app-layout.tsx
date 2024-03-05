@@ -1,6 +1,7 @@
 "use client";
 import { AppShell } from "@mantine/core";
-import { Footer, Header } from "@/components";
+import { Header } from "@/components/homepage/Header";
+import { Footer, } from "@/components/homepage/Footer";
 import * as React from "react";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {

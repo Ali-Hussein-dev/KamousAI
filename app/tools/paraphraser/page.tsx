@@ -14,12 +14,12 @@ import * as React from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
-import { Markdown } from "@/components/Markdown";
+import { Markdown } from "@/components/shared/Markdown";
 import { useTextOptimizer } from "@/hooks/use-text-optimizer";
 import { CustomTones } from "@/components/custom-tones";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/shared/copy-button";
 import { ToolContainer } from "@/components/tool-container";
 
 function Temperature() {

@@ -1,4 +1,4 @@
-import { ToolsBentoTools } from "@/components/tools-bento-grid";
+import { ToolsBentoTools } from "@/components/homepage/tools-grid";
 
 //======================================
 const ToolsPage = () => {

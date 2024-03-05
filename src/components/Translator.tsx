@@ -6,8 +6,8 @@ import { useCompletion } from "ai/react";
 import { useMediaQuery } from "@mantine/hooks";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import { useTranslator } from "@/hooks/use-translator";
-import { CopyButton } from "./copy-button";
-import { Markdown } from "./Markdown";
+import { CopyButton } from "./shared/copy-button";
+import { Markdown } from "./shared/Markdown";
 import { ToolRating } from "./tool-rating";
 
 const SelectLanguage = ({
