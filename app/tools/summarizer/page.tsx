@@ -2,12 +2,12 @@
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
 import { ActionIcon, Button, SegmentedControl } from "@mantine/core";
 import { useChat } from "ai/react";
-import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import * as React from "react";
 import { ToolContainer } from "@/components/tool-container";
 import { TextCard } from "@/components/shared/text-card";
+import { ClearButton } from "@/components/shared/clear-button";
 //======================================
 const SummarizerPage = () => {
   const [value, setValue] = React.useState("paragraph");
@@ -98,17 +98,11 @@ const SummarizerPage = () => {
           .map((msg, i) => (
             <TextCard key={i} content={msg.content} />
           ))}
-        {messages.length > 0 && (
-          <Button
-            variant="light"
-            color="red"
-            opacity={isLoading ? 0 : 1}
-            leftSection={<AiOutlineClear />}
-            onClick={() => setMessages([])}
-          >
-            Clear
-          </Button>
-        )}
+        <ClearButton
+          isLoading={isLoading}
+          visible={messages.length > 0}
+          onClick={() => setMessages([])}
+        />
       </div>
     </ToolContainer>
   );

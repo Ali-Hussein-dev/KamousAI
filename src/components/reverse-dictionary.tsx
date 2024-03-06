@@ -10,13 +10,13 @@ import {
 import { type Message } from "ai";
 import { useChat } from "ai/react";
 import { DynamicCustomTextarea } from "./Mantine/custom-textarea";
-import { AiOutlineClear } from "react-icons/ai";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import { CopyButton } from "./shared/copy-button";
 import { Markdown } from "./shared/Markdown";
 import * as React from "react";
 import { ToolContainer } from "./tool-container";
+import { ClearButton } from "./shared/clear-button";
 // convert array to [1,2,3,4] --> [[1,2],[3,4]]
 function convertToShape(a: Message[]) {
   const result = [];
@@ -185,17 +185,14 @@ export const ReverseDictionary = () => {
                 <div className="h-[0.4px] w-full bg-slate-600" />
               </div>
             ))}
-          {messages.length > 0 && (
-            <Button
-              variant="light"
-              color="red"
-              opacity={isLoading ? 0 : 1}
-              leftSection={<AiOutlineClear />}
-              onClick={() => setMessages([])}
-            >
-              Clear
-            </Button>
-          )}
+          <ClearButton
+            isLoading={isLoading}
+            visible={messages.length > 0}
+            onClick={() => {
+              setMessages([]);
+              setInput("");
+            }}
+          />
         </div>
       </ToolContainer>
       <Onboarding setInput={setInput} />
