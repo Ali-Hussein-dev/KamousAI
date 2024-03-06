@@ -10,7 +10,7 @@ export const AvatarMenu = ({
   LogoutButton: React.ReactNode;
 }) => {
   return (
-    <CustomMenu position="bottom-end" opened>
+    <CustomMenu position="bottom-end">
       <Menu.Target>
         <ActionIcon size="lg" radius="lg">
           <RiAccountPinCircleFill size="20" />
