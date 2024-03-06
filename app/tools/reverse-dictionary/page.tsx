@@ -1,6 +1,5 @@
-"use client"
 import { ReverseDictionary } from "@/components/reverse-dictionary";
 
-export default function ReverseDictionaryPage() { 
-    return <ReverseDictionary />;
+export default function ReverseDictionaryPage() {
+  return <ReverseDictionary />;
 }
