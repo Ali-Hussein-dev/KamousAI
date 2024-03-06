@@ -94,7 +94,7 @@ export const ReverseDictionary = () => {
     },
   });
   return (
-    <section className="space-y-4">
+    <div className="space-y-4">
       <ToolContainer
         title="reverseDictionary"
         showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
@@ -199,6 +199,6 @@ export const ReverseDictionary = () => {
         </div>
       </ToolContainer>
       <Onboarding setInput={setInput} />
-    </section>
+    </div>
   );
 };
