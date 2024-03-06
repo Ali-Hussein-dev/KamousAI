@@ -1,7 +1,5 @@
 "use client";
-import { CopyButton } from "@/components/shared/copy-button";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
-import { Markdown } from "@/components/shared/Markdown";
 import { ActionIcon, Button, SegmentedControl } from "@mantine/core";
 import { useChat } from "ai/react";
 import { AiOutlineClear } from "react-icons/ai";
@@ -9,6 +7,7 @@ import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
 import * as React from "react";
 import { ToolContainer } from "@/components/tool-container";
+import { TextCard } from "@/components/shared/text-card";
 //======================================
 const SummarizerPage = () => {
   const [value, setValue] = React.useState("paragraph");
@@ -91,19 +90,13 @@ const SummarizerPage = () => {
       </form>
       <div
         hidden={messages.length < 1}
-        className="space-y-2 rounded-lg bg-slate-800 pt-5 text-slate-300"
+        className="space-y-2 rounded-lg pt-5 text-slate-300"
       >
         {messages
           .filter((msg) => msg.role === "assistant")
           .reverse()
           .map((msg, i) => (
-            <div
-              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 pb-2 pt-4 text-slate-200"
-              key={i}
-            >
-              <Markdown>{msg.content}</Markdown>
-              <CopyButton text={msg.content} />
-            </div>
+            <TextCard key={i} content={msg.content} />
           ))}
         {messages.length > 0 && (
           <Button
