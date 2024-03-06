@@ -4,11 +4,10 @@ import { useChat } from "ai/react";
 import { AiOutlineClear } from "react-icons/ai";
 import * as React from "react";
 import { DynamicCustomTextarea } from "@/components/Mantine/custom-textarea";
-import { Markdown } from "@/components/shared/Markdown";
 import { IoStopCircleOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
-import { CopyButton } from "@/components/shared/copy-button";
 import { ToolContainer } from "@/components/tool-container";
+import { TextCard } from "@/components/shared/text-card";
 export default function GrammerCheckerPage() {
   const [withExplanation, setWithExplanation] = React.useState(false);
   const {
@@ -97,13 +96,7 @@ export default function GrammerCheckerPage() {
           .filter((msg) => msg.role === "assistant")
           .reverse()
           .map((msg, i) => (
-            <div
-              className="flex items-start justify-between gap-2 rounded bg-slate-700/60 px-3 pb-2 pt-4 text-slate-200"
-              key={i}
-            >
-              <Markdown>{msg.content}</Markdown>
-              <CopyButton text={msg.content} />
-            </div>
+            <TextCard key={i} content={msg.content} />
           ))}
         {messages.length > 0 && (
           <Button
