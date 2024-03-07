@@ -1,108 +1,128 @@
-import { ParaphraserProvider } from "@/hooks/use-paraphraser";
-import { ActionIcon, Button, Divider, Drawer } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import dynamic from "next/dynamic";
-import { MdEdit } from "react-icons/md";
-import { useMutationParaphraser } from "@/actions/paraphraser/hooks";
-import { Temperature } from "./Temperature";
-import { TonesForms } from "./tones-form";
-import { ParaphraserFormProv } from "@/context/form-paraphraser-context";
+"use client";
+import * as React from "react";
+import { useChat } from "ai/react";
+import { ActionIcon, Button } from "@mantine/core";
+import { MdClear } from "react-icons/md";
+import { IoStopCircleOutline } from "react-icons/io5";
+import { useTextOptimizer } from "@/hooks/use-text-optimizer";
+import { ToolContainer } from "../tool-container";
+import { DynamicCustomTextarea } from "../Mantine/custom-textarea";
+import { TonesSelect } from "./paraphraser-drawer-customization";
+import { TextCard } from "../shared/text-card";
+import { ClearButton } from "../shared/clear-button";
+import { useQueryParaphraser } from "@/actions/paraphraser/hooks";
 
-const ConfigsDrawer = () => {
-  const [opened, { open, close }] = useDisclosure(true);
+//======================================
+export const ParaphraserMain = () => {
+  // tones select
+  const [selected, setSelected] = React.useState<string[]>([]);
 
-  const { form, mutate, isPending, isSuccess, isError } =
-    useMutationParaphraser();
-  // const form = useForm({
-  //   initialValues: { configs: { temperature, tones } },
-  // });
-  const onSubmit = (configs: Pick<Paraphraser, "configs">) => {
-    mutate({ configs });
-  };
+  const history = useTextOptimizer((s) => s.history);
+  const setHistory = useTextOptimizer((s) => s.setHistory);
+  const { data } = useQueryParaphraser();
+  const {
+    messages,
+    setMessages,
+    input,
+    setInput,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+  } = useChat({
+    api: "/api/text-optimizer",
+    initialMessages: history,
+    onResponse: () => {
+      setInput(input);
+    },
+    onFinish: (d) => {
+      setHistory([...history.slice(-5), d]);
+    },
+    body: {
+      tones: selected.join(", "),
+      temperature: data?.configs?.temperature ?? 1,
+    },
+  });
   return (
-    <>
-      <Drawer.Root position="right" size="sm" opened={opened} onClose={close}>
-        <Drawer.Overlay
-          onClick={(e) => {
-            e.stopPropagation();
-            close();
+    <ToolContainer
+      title="paraphraser"
+      showRating={messages.length > 0 && (!isLoading || messages.length > 1)}
+    >
+      {/* //---------------------------------------------------INPUT AREA */}
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <DynamicCustomTextarea
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Enter text"
+          cb={(e) =>
+            // @ts-expect-error waiting for update from the libray maintainer link: https://github.com/vercel/ai/discussions/799
+            handleSubmit(e)
+          }
+          loading={isLoading}
+          rightSection={
+            !!input ? (
+              <ActionIcon
+                variant="subtle"
+                radius="lg"
+                size="lg"
+                onClick={() => setInput("")}
+              >
+                <MdClear size="20" />
+              </ActionIcon>
+            ) : undefined
+          }
+        />
+        <div className="w-full gap-2 pb-2 flex-row-between">
+          {/* //---------------------------------------------------CUSTOMIZATION */}
+          <TonesSelect
+            selected={selected}
+            setSelected={setSelected}
+            tones={data?.configs?.tones ?? []}
+          />
+          <div className="gap-3 flex-row-start">
+            {isLoading ? (
+              <ActionIcon
+                type="button"
+                onClick={stop}
+                radius="lg"
+                size="lg"
+                variant="light"
+              >
+                <IoStopCircleOutline size="20" />
+              </ActionIcon>
+            ) : (
+              <Button
+                loading={isLoading}
+                type="submit"
+                radius="lg"
+                w="fit-content"
+                disabled={!input}
+              >
+                Improve writing
+              </Button>
+            )}
+          </div>
+        </div>
+      </form>
+      {/* //---------------------------------------------------OUTPUT AREA */}
+      <div
+        hidden={messages.length < 2}
+        className="mt-4 space-y-2 rounded-lg px-1 py-4"
+      >
+        {messages
+          .filter((msg) => msg.role === "assistant")
+          .reverse()
+          .map((msg, i) => (
+            <TextCard key={i} content={msg.content} />
+          ))}
+        <ClearButton
+          isLoading={isLoading}
+          visible={messages.length > 0}
+          onClick={() => {
+            setMessages([]);
+            setInput("");
           }}
         />
-        <Drawer.Content
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <Drawer.Header>
-            Paraphraser Configurations
-            <Drawer.CloseButton onClick={close} />
-          </Drawer.Header>
-          <Drawer.Body py="md">
-            {/* {JSON.stringify({ temperature, tones }, null, 2)} */}
-            <ParaphraserFormProv form={form}>
-              <form
-                onSubmit={form.onSubmit(() => {
-                  onSubmit(form.values.configs);
-                })}
-                className="space-y-4"
-              >
-                <TonesForms />
-                <Divider color="dark" />
-                <Temperature />
-                {form.isDirty() && (
-                  <Button
-                    type="submit"
-                    w="100%"
-                    radius="xl"
-                    loading={isPending}
-                  >
-                    Save Changes
-                  </Button>
-                )}
-                {isSuccess && !form.isDirty() && (
-                  <div className="text-center font-medium text-teal-400">
-                    Saved successfully
-                  </div>
-                )}
-                {isError && (
-                  <div className="text-center font-medium text-red-800">
-                    Error saving
-                  </div>
-                )}
-              </form>
-            </ParaphraserFormProv>
-          </Drawer.Body>
-        </Drawer.Content>
-      </Drawer.Root>
-
-      <ActionIcon
-        onClick={(e) => {
-          open();
-          e.stopPropagation();
-        }}
-        radius="lg"
-        size="lg"
-      >
-        <MdEdit />
-      </ActionIcon>
-    </>
+      </div>
+    </ToolContainer>
   );
 };
-
-export const ParaphraserConfigs = () => {
-  return (
-    <ParaphraserProvider>
-      <ConfigsDrawer />
-    </ParaphraserProvider>
-  );
-};
-
-export const DynamicParaphraserConfigs = dynamic(
-  () => import("@/components/paraphraser").then((c) => c.ParaphraserConfigs),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-8 w-8 animate-pulse rounded-full bg-slate-600/50"></div>
-    ),
-  }
-);
