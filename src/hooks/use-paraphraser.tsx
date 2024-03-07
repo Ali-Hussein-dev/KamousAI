@@ -115,7 +115,6 @@ export const ParaphraserProvider: React.FC<ProviderProps> = ({ children }) => {
   const { data } = useQueryParaphraser();
   const storeRef = React.useRef<ParaphraserStore>();
   if (!storeRef.current) {
-    // @ts-expect-error data.configs is of type Json
     const props = data?.configs || initialState;
     storeRef.current = createParaphraserStore(props);
   }

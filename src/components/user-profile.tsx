@@ -77,7 +77,7 @@ export const UserProfile = ({ profile }: Props) => {
   return (
     <form
       action={formAction}
-      className="animate-in mx-auto h-full space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
+      className="mx-auto h-full space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg animate-in md:pt-8"
     >
       {formState?.msg && (
         <p className="rounded border border-amber-700/20 p-3 text-center font-medium text-amber-600">
@@ -98,7 +98,7 @@ export const UserProfile = ({ profile }: Props) => {
       </Fieldset>
       <Fieldset legend="What languages do you speak?" className="space-y-3">
         <div className="space-y-2">
-          {form.values.languages.map((v, i) => (
+          {form.values.languages.map((v: LangPair, i: number) => (
             <Pairs key={i} i={i} form={form} />
           ))}
         </div>

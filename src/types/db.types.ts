@@ -1,4 +1,4 @@
-// SCRIPT: npx supabase gen types typescript --project-id [id] > src/lib/db.types.ts
+// SCRIPT: npx supabase gen types typescript --project-id [id] > src/types/db.types.ts
 
 export type Json =
   | string
@@ -79,20 +79,20 @@ export type Database = {
         Row: {
           email: string
           id: string
-          languages: Json[] | null
-          name: string | null
+          languages: Json[]
+          name: string
         }
         Insert: {
           email: string
           id: string
-          languages?: Json[] | null
-          name?: string | null
+          languages?: Json[]
+          name?: string
         }
         Update: {
           email?: string
           id?: string
-          languages?: Json[] | null
-          name?: string | null
+          languages?: Json[]
+          name?: string
         }
         Relationships: [
           {
