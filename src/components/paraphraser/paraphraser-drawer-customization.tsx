@@ -256,7 +256,7 @@ const TonesItems = () => {
 
 //---------------------------------------------------
 export const ParaphraserBase = () => {
-  const [opened, { open, close }] = useDisclosure(true);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const { form, onSubmit, isPending, isSuccess, isError } =
     useMutationParaphraser();

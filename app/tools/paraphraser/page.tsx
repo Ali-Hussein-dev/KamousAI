@@ -1,5 +1,5 @@
 import { ParaphraserMain } from "@/components/paraphraser";
 
-export function Paraphraser() {
+export default function Paraphraser() {
   return <ParaphraserMain />;
 }
