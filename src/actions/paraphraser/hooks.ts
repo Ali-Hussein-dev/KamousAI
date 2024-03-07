@@ -5,7 +5,32 @@ import type {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getParaphraser, updateParaphraser } from "./action";
 import { useForm } from "@/context/form-paraphraser-context";
-import { useParaphraserContext } from "@/hooks/use-paraphraser";
+const defaultTones = [
+    {
+        label: "Professional",
+        value: "professional without jargon, knowledgeable, and respectful",
+    },
+    {
+        label: "Friendly",
+        value: "friendly, approachable and informal",
+    },
+    {
+        label: "Casual",
+        value: "casual, informal, and friendly",
+    },
+    {
+        label: "Simple",
+        value: "straightforward, clarity, simple, without jargon",
+    },
+    {
+        label: "Make longer",
+        value: "make longer, more detailed, and more descriptive",
+    },
+    {
+        label: "make shorter",
+        value: "make shorter, more concise, and more direct",
+    },
+];
 
 const queryKey = ["paraphraser"];
 //-------------------------------------------------------------QUERY
@@ -27,11 +52,15 @@ type TDataMutation = PromiseType<ReturnType<typeof updateParaphraser>>;
 export const useMutationParaphraser = (
     options: Omit<UseMutationOptions, "mutationKey" | "mutationFn"> = {}
 ) => {
-    // form 
-    const tones = useParaphraserContext((s) => s.tones);
-    const temperature = useParaphraserContext((s) => s.temperature);
+    // form
+    const { data } = useQueryParaphraser();
     const form = useForm({
-        initialValues: { configs: { temperature, tones } },
+        initialValues: {
+            configs: {
+                temperature: data?.configs.temperature ?? 1,
+                tones: data?.configs.tones ?? defaultTones,
+            },
+        },
     });
     // mutation
     const queryClient = useQueryClient();
@@ -52,6 +81,11 @@ export const useMutationParaphraser = (
             console.warn(error);
         },
         ...options,
-    })
-    return { form, ...res };
+    });
+    const onSubmit =
+        form.onSubmit((inputs) => {
+            res.mutate(inputs.configs)
+        })
+
+    return { form, ...res, onSubmit };
 };

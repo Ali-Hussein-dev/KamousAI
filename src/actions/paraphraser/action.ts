@@ -3,15 +3,6 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { z } from "zod";
-// import { revalidatePath } from "next/cache";
-// import { z } from "zod";
-
-/**
- * TODO:
- * - [ ] Add zod schema for paraphraser
- * - [X] Add types for paraphraser
- * - [ ] relvalidatePath
- */
 
 const authSupabase = async () => {
     const supabase = createClient(cookies());
@@ -23,7 +14,7 @@ const authSupabase = async () => {
     return { supabase, id: data.user?.id as string };
 };
 
-export const getParaphraser = async () => {
+export const getParaphraser = async (): Promise<Paraphraser | undefined> => {
     const { supabase, id } = await authSupabase();
     const { error, data } = await supabase
         .from("paraphraser")
@@ -32,7 +23,7 @@ export const getParaphraser = async () => {
     if (!!error) {
         throw Error(error.message);
   }
-    return data[0] || {};
+    return data[0];
 };
 
 const paraphraserSchema = z.object({
