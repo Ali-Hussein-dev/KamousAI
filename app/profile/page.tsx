@@ -29,7 +29,7 @@ const ProfilePage = async () => {
     alert(profile.error);
     console.warn(profile.error);
   }
-  if (!profile.data) {
+  if (!profile.data?.[0]) {
     return redirect("/login");
   }
   // const profileData = profile.data?.[0];
@@ -47,7 +47,7 @@ const ProfilePage = async () => {
           <LogoutButton />
         </div>
         <React.Suspense>
-          <UserProfile profile={profile.data?.[0] || {}} />
+          <UserProfile profile={profile.data?.[0]} />
         </React.Suspense>
       </section>
       <footer className="min-h-12 w-full border-0 border-t border-solid border-slate-600 flex-row-center">

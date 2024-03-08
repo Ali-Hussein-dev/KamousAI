@@ -7,7 +7,7 @@ declare global {
         id: string
         name: string
         email: string
-        languages: LangPair[]
+        languages: (Json | LangPair)[]
     }
 }
 
