@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SharedToolsLayout } from "@/components/shared-tools-layout";
-import { LogoutButton } from "@/components/auth-buttons";
+import { LoginLink, LogoutButton } from "@/components/auth-buttons";
 import { AvatarMenu } from "@/components/avatar-menu";
 
 export const metadata = {
@@ -24,6 +24,7 @@ export default function ToolsLayout({
               classNames={{ root: "flex-row-start" }}
             />
           }
+          LoginLink={<LoginLink />}
         />
       }
     >
