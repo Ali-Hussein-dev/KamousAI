@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { type Metadata } from "next";
-import { LogoutButton } from "@/components/auth-buttons";
+import { LogoutButton } from "@/components/auth/logout-button";
 import { UserProfile } from "@/components/user-profile";
 import * as React from "react";
 import { Footer } from "@/components/homepage/Footer";

@@ -2,9 +2,8 @@ import { createClient } from "@/utils/supabase/server";
 import { Button, type ButtonProps } from "@mantine/core";
 import { cookies } from "next/headers";
 import * as React from "react";
-import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 
 //======================================
 export const LogoutButton = (props: ButtonProps) => {
@@ -27,25 +26,5 @@ export const LogoutButton = (props: ButtonProps) => {
         Log out
       </Button>
     </form>
-  );
-};
-
-/**
- * coniditional link to login or logout
- */
-//======================================
-export const LoginLink = async ({ login = "Login" }: { login?: string }) => {
-  const supabase = createClient(cookies());
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  return session ? (
-    <LogoutButton />
-  ) : (
-    <Link href="/login">
-      <Button variant="light" w="120px" leftSection={<IoMdLogIn size="20" />}>
-        {login}
-      </Button>
-    </Link>
   );
 };
