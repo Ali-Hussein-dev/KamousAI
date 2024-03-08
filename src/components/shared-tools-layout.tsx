@@ -13,10 +13,10 @@ import Image from "next/image";
 
 //======================================
 export const SharedToolsLayout = ({
-  LoginLink,
+  AvatarMenu,
   children,
 }: {
-  LoginLink: React.ReactNode;
+  AvatarMenu: React.ReactNode;
   children: React.ReactNode;
 }) => {
   const segment = useSelectedLayoutSegment();
@@ -71,7 +71,7 @@ export const SharedToolsLayout = ({
               <Image src="/logo.svg" fill alt="logo" />
             </Link>
           </div>
-          {LoginLink}
+          {AvatarMenu}
         </div>
       </AppShell.Header>
 
