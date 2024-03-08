@@ -36,10 +36,10 @@ const defaultTones = [
 ];
 
 //---------------------------------------------------INTIAL-STATE
-export type Tone = {
+type Tone = {
   value: string;
   label: string;
-  id: string;
+  id?: string;
 };
 const initialState = {
   temperature: 1,

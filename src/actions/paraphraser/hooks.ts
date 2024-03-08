@@ -5,7 +5,9 @@ import type {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getParaphraser, updateParaphraser } from "./action";
 import { useForm } from "@/context/form-paraphraser-context";
-const defaultTones = [
+import { useAuth } from "@/hooks/use-auth";
+
+export const defaultTones = [
     {
         label: "Professional",
         value: "professional without jargon, knowledgeable, and respectful",
@@ -42,6 +44,7 @@ export const useQueryParaphraser = (
     return useQuery<TDataQuery>({
         queryKey,
         queryFn: () => getParaphraser(),
+        initialData: { tones: defaultTones, temperature: 1 },
         ...options,
     } as UseQueryOptions<TDataQuery>);
 };
@@ -52,14 +55,14 @@ type TDataMutation = PromiseType<ReturnType<typeof updateParaphraser>>;
 export const useMutationParaphraser = (
     options: Omit<UseMutationOptions, "mutationKey" | "mutationFn"> = {}
 ) => {
+    const { isAuth } = useAuth();
     // form
-    const { data } = useQueryParaphraser();
+    const { data } = useQueryParaphraser({
+        enabled: isAuth,
+    });
     const form = useForm({
         initialValues: {
-            configs: {
-                temperature: data?.configs.temperature ?? 1,
-                tones: data?.configs.tones ?? defaultTones,
-            },
+            configs: data?.configs ?? { tones: defaultTones, temperature: 1 },
         },
     });
     // mutation
@@ -87,5 +90,5 @@ export const useMutationParaphraser = (
             res.mutate(inputs.configs)
         })
 
-    return { form, ...res, onSubmit };
+    return { form, ...res, onSubmit, isAuth };
 };

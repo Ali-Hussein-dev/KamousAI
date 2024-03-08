@@ -5,14 +5,16 @@ import * as React from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdCheck, MdClear, MdDelete, MdEdit } from "react-icons/md";
 import { TbChevronDown } from "react-icons/tb";
-import { useMutationParaphraser } from "@/actions/paraphraser/hooks";
+import {
+  defaultTones,
+  useMutationParaphraser,
+} from "@/actions/paraphraser/hooks";
 import { CustomInput } from "@/components/shared/custom-input";
 import { CustomMenu } from "@/components/Mantine/custom-menu";
 import {
   ParaphraserFormProv,
   useParaphraserFormCtx,
 } from "@/context/form-paraphraser-context";
-import { type Tone } from "@/hooks/use-paraphraser";
 import {
   ActionIcon,
   Button,
@@ -31,6 +33,11 @@ import { useDisclosure } from "@mantine/hooks";
  * 1. check if the user is logged in before allowing them to customize the paraphraser
  * 2.
  */
+
+type Tone = {
+  value: string;
+  label: string;
+};
 //---------------------------------------------------TEMPERATURE
 function Temperature() {
   const form = useParaphraserFormCtx();
@@ -58,7 +65,7 @@ function Temperature() {
 export const TonesSelect = ({
   selected,
   setSelected,
-  tones,
+  tones = defaultTones,
 }: {
   selected: string[];
   setSelected: (s: string[]) => void;
@@ -81,14 +88,16 @@ export const TonesSelect = ({
         </Button>
       </Menu.Target>
       <Menu.Dropdown p={8} mah="320px" className="!overflow-y-auto">
-        <Text>Select Output Tone</Text>
         <Checkbox.Group
           value={selected}
           onChange={(value) => {
             setSelected(value);
           }}
         >
-          {tones.map((item) => (
+          <Text mt="xs" mb={3} ml={6}>
+            Select Output Tone
+          </Text>
+          {(tones.length < 1 ? defaultTones : tones).map((item) => (
             <Menu.Item key={item.label} py="xs" px="4px">
               <Checkbox
                 key={item.label}
@@ -107,7 +116,6 @@ export const TonesSelect = ({
 };
 //---------------------------------------------------TONES-FORM
 const ItemForm = ({
-  id,
   label,
   value,
   setOpen: setOpen,
@@ -116,7 +124,7 @@ const ItemForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   i: number;
 }) => {
-  const [toneForm, setToneForm] = React.useState({ id, value, label });
+  const [toneForm, setToneForm] = React.useState({ value, label });
   const form = useParaphraserFormCtx();
 
   return (
@@ -176,7 +184,7 @@ const ItemForm = ({
   );
 };
 //---------------------------------------------------
-const ToneItem = ({ id, label, value, i }: Tone & { i: number }) => {
+const ToneItem = ({ label, value, i }: Tone & { i: number }) => {
   const [editable, setEditable] = React.useState(false);
   const form = useParaphraserFormCtx();
   return (
@@ -187,13 +195,7 @@ const ToneItem = ({ id, label, value, i }: Tone & { i: number }) => {
       )}
     >
       {editable ? (
-        <ItemForm
-          i={i}
-          id={id}
-          label={label}
-          value={value}
-          setOpen={setEditable}
-        />
+        <ItemForm i={i} label={label} value={value} setOpen={setEditable} />
       ) : (
         <div className="flex w-full items-start gap-2 rounded border px-2 py-3">
           <div
@@ -207,7 +209,7 @@ const ToneItem = ({ id, label, value, i }: Tone & { i: number }) => {
             </span>
             <p className="my-1 font-medium text-slate-400">{value}</p>
           </div>
-          <div className="gap-2 flex-col-start">
+          <div className="gap-3 flex-col-start">
             <ActionIcon variant="light" onClick={() => setEditable(true)}>
               <MdEdit />
             </ActionIcon>
@@ -258,7 +260,7 @@ const TonesItems = () => {
 export const ParaphraserBase = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
-  const { form, onSubmit, isPending, isSuccess, isError } =
+  const { isAuth, form, onSubmit, isPending, isSuccess, isError } =
     useMutationParaphraser();
   return (
     <>
@@ -279,34 +281,39 @@ export const ParaphraserBase = () => {
             <Drawer.CloseButton onClick={close} />
           </Drawer.Header>
           <Drawer.Body py="md">
-            {/* {JSON.stringify({ temperature, tones }, null, 2)} */}
-            <ParaphraserFormProv form={form}>
-              <form onSubmit={onSubmit} className="space-y-4">
-                <TonesItems />
-                <Divider color="dark" />
-                <Temperature />
-                {form.isDirty() && (
-                  <Button
-                    type="submit"
-                    w="100%"
-                    radius="xl"
-                    loading={isPending}
-                  >
-                    Save Changes
-                  </Button>
-                )}
-                {isSuccess && !form.isDirty() && (
-                  <div className="text-center font-medium text-teal-400">
-                    Saved successfully
-                  </div>
-                )}
-                {isError && (
-                  <div className="text-center font-medium text-red-800">
-                    Something went wrong!
-                  </div>
-                )}
-              </form>
-            </ParaphraserFormProv>
+            {isAuth ? (
+              <ParaphraserFormProv form={form}>
+                <form onSubmit={onSubmit} className="space-y-4">
+                  <TonesItems />
+                  <Divider color="dark" />
+                  <Temperature />
+                  {form.isDirty() && (
+                    <Button
+                      type="submit"
+                      w="100%"
+                      radius="xl"
+                      loading={isPending}
+                    >
+                      Save Changes
+                    </Button>
+                  )}
+                  {isSuccess && !form.isDirty() && (
+                    <div className="text-center font-medium text-teal-400">
+                      Saved successfully
+                    </div>
+                  )}
+                  {isError && (
+                    <div className="text-center font-medium text-red-800">
+                      Something went wrong!
+                    </div>
+                  )}
+                </form>
+              </ParaphraserFormProv>
+            ) : (
+              <Text ta="center">
+                You need to login first to customize your paraphrasing tool
+              </Text>
+            )}
           </Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>

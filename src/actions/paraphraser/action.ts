@@ -16,6 +16,10 @@ const authSupabase = async () => {
 
 export const getParaphraser = async (): Promise<Paraphraser | undefined> => {
     const { supabase, id } = await authSupabase();
+    if (!id) {
+        console.warn("actions:getParaphraser", id);
+        return;
+    }
     const { error, data } = await supabase
         .from("paraphraser")
         .select()
