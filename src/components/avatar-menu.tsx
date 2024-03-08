@@ -4,7 +4,7 @@ import { CustomMenu } from "./Mantine/custom-menu";
 import { ActionIcon, Menu } from "@mantine/core";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { useAuth } from "@/hooks/use-auth";
-import { LoginLink } from "./auth-buttons";
+import { LoginLink } from "./login-link";
 //======================================
 export const AvatarMenu = ({
   LogoutButton,
