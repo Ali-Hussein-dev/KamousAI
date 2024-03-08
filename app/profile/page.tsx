@@ -47,7 +47,7 @@ const ProfilePage = async () => {
           <LogoutButton />
         </div>
         <React.Suspense>
-          <UserProfile profile={profile.data?.[0] || {}} />
+          <UserProfile profile={profile.data?.[0] as UserProfile} />
         </React.Suspense>
       </section>
       <footer className="min-h-12 w-full border-0 border-t border-solid border-slate-600 flex-row-center">

@@ -3,14 +3,17 @@ import Link from "next/link";
 import { CustomMenu } from "./Mantine/custom-menu";
 import { ActionIcon, Menu } from "@mantine/core";
 import { RiAccountPinCircleFill } from "react-icons/ri";
+import { useAuth } from "@/hooks/use-auth";
+import { LoginLink } from "./login-link";
 //======================================
 export const AvatarMenu = ({
   LogoutButton,
 }: {
   LogoutButton: React.ReactNode;
 }) => {
-  return (
-    <CustomMenu position="bottom-end" opened>
+  const { isAuth } = useAuth();
+  return isAuth ? (
+    <CustomMenu position="bottom-end">
       <Menu.Target>
         <ActionIcon size="lg" radius="lg">
           <RiAccountPinCircleFill size="20" />
@@ -29,5 +32,7 @@ export const AvatarMenu = ({
         <Menu.Item>{LogoutButton}</Menu.Item>
       </Menu.Dropdown>
     </CustomMenu>
+  ) : (
+    <LoginLink />
   );
 };
