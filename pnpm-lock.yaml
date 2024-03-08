@@ -25,6 +25,7 @@ specifiers:
   autoprefixer: ^10.4.14
   class-variance-authority: ^0.7.0
   clsx: ^2.0.0
+  dotenv: ^16.4.5
   eslint: ^8.37.0
   eslint-config-next: ^14.1.0
   framer-motion: ^11.0.5
@@ -70,6 +71,7 @@ dependencies:
   ai: 2.2.27_react@18.2.0
   class-variance-authority: 0.7.0
   clsx: 2.0.0
+  dotenv: 16.4.5
   framer-motion: 11.0.5_biqbaboplfbrettd7655fr4n2y
   lucide-react: 0.344.0_react@18.2.0
   next: 14.1.0_biqbaboplfbrettd7655fr4n2y
@@ -1847,6 +1849,11 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /dotenv/16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+    dev: false
 
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}

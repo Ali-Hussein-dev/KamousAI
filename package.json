@@ -9,8 +9,10 @@
     "lint": "next lint",
     "tc": "tsc --project ./tsconfig.json",
     "pre-commit": "pnpm tc & pnpm lint",
-    "start": "next start"
+    "start": "next start",
+    "schema": "node ./src/scripts/update-schema.js"
   },
+  "type": "module",
   "dependencies": {
     "@mantine/core": "^7.5.3",
     "@mantine/form": "^7.5.3",
@@ -27,6 +29,7 @@
     "ai": "^2.2.27",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.0.5",
     "lucide-react": "^0.344.0",
     "next": "^14.1.0",
