@@ -1,0 +1,26 @@
+[
+    {
+        "label": "Professional",
+        "value": "professional without jargon, knowledgeable, and respectful"
+    },
+    {
+        "label": "Friendly",
+        "value": "friendly, approachable and informal"
+    },
+    {
+        "label": "Casual",
+        "value": "casual, informal, and friendly"
+    },
+    {
+        "label": "Simple",
+        "value": "straightforward, clarity, simple, without jargon"
+    },
+    {
+        "label": "Make longer",
+        "value": "make longer, more detailed, and more descriptive"
+    },
+    {
+        "label": "make shorter",
+        "value": "make shorter, more concise, and more direct"
+    }
+]
