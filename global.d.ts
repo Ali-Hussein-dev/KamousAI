@@ -1,4 +1,5 @@
-import { type Database } from "./src/lib/db.types"
+import { type Database } from "./src/types/db.types"
+
 declare global {
     type DB = Database
     type LangPair = { lang: string; level: string }
