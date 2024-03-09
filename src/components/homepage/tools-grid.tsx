@@ -1,12 +1,10 @@
 "use client";
-import Link from "next/link";
 import { AiOutlineSwap } from "react-icons/ai";
 import { BsJournalText, BsTranslate } from "react-icons/bs";
 import { TbPencilMinus } from "react-icons/tb";
 import { GiSpellBook } from "react-icons/gi";
-import { cn } from "@/utils/helpers";
 import { MdOutlineShortText } from "react-icons/md";
-import { FaArrowRight } from "react-icons/fa";
+import { ToolCard } from "./tool-card";
 
 const languageTools = [
   {
@@ -14,7 +12,9 @@ const languageTools = [
     href: "/tools/dictionary",
     Icon: GiSpellBook,
     description:
-      "Unlock the power of AI to find definitions, synonyms, antonyms, and more.",
+      "Look up words, phrases, and idioms with AI dictionary. Use context field to get more accurate results.",
+    keywords: ["Learn new words"],
+    color: "bg-purple-800/80",
   },
   {
     label: "Reverse Dictionary",
@@ -22,18 +22,24 @@ const languageTools = [
     Icon: AiOutlineSwap,
     description:
       "Get help finding the right word to express your thoughts and ideas.",
+    keywords: ["Improve writing", "Discover new vocabularies"],
+    color: "bg-indigo-800/80",
   },
   {
     label: "Grammar Corrector",
     href: "/tools/grammar-corrector",
     Icon: TbPencilMinus,
     description: "Check grammar and punctuation errors in your text.",
+    keywords: ["Fix writing mistakes"],
+    color: "bg-teal-800/80",
   },
   {
     label: "Translator",
     href: "/tools/translator",
     Icon: BsTranslate,
     description: "Translate long text from one language to another.",
+    keywords: ["Translate long text"],
+    color: "bg-rose-800/80",
   },
   {
     label: "Paraphraser",
@@ -41,48 +47,29 @@ const languageTools = [
     Icon: BsJournalText,
     description:
       "Rewrite sentences to avoid plagiarism and improve readability.",
+    keywords: ["Avoid plagiarism", "Improve readability"],
+    color: "bg-green-800/80",
   },
   {
     label: "Summarizer",
     href: "/tools/summarizer",
     Icon: MdOutlineShortText,
     description: "Summarize long text into a short summary.",
+    keywords: ["Too long; didn't read", "Shorten text"],
+    color: "bg-amber-800/80",
   },
 ];
 //======================================
 export const ToolsBentoTools = () => {
   return (
-    <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4  sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
-      {languageTools.map(({ Icon, label, href, description }) => (
-        <Link
-          key={label}
-          href={href}
-          className={cn(
-            "group w-full rounded-2xl border-none p-[1px] no-underline shadow-primary-700/50 duration-500  hover:shadow-lg active:scale-95 md:hover:scale-105",
-            "bg-gradient-to-bl from-indigo-600/80 via-rose-600/40 to-indigo-600/80"
-          )}
-        >
-          <div className="h-full overflow-hidden rounded-2xl bg-slate-900/[0.99] backdrop-blur duration-200">
-            <div className="px-3 pb-4 pt-8 md:px-4">
-              <div className="h-full flex-col-end">
-                <div className="mx-auto flex-col-center">
-                  <Icon size="40" className="text-slate-200" />
-                  <h3 className="mb-0 text-center text-xl font-extrabold tracking-wide text-primary-600">
-                    {label}
-                  </h3>
-                  <p className="mt-[3px] text-center font-medium text-slate-300">
-                    {description}
-                  </p>
-                  <FaArrowRight
-                    size="17"
-                    className="mx-auto text-slate-500 group-hover:text-slate-200"
-                  />
-                </div>
-              </div>
-            </div>
+    <div className="mx-auto w-full max-w-4xl lg:gap-6">
+      <div className="w-full space-y-16">
+        {languageTools.map((o, i) => (
+          <div key={o.label}>
+            <ToolCard key={o.label} {...o} i={i} />
           </div>
-        </Link>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
