@@ -8,19 +8,18 @@ type Props = {
   href: string;
   Icon: IconType;
   keywords: string[];
-  color: string;
   i: number;
 };
 const Blob = ({ i, Icon }: Pick<Props, "Icon" | "i">) => (
   <div
     className={
-      "center order-first size-[5rem] rounded-full bg-no-repeat p-2 sm:order-last sm:size-24 md:size-[9rem]"
+      "center order-first size-[8rem] rounded-full bg-no-repeat p-2 sm:order-last sm:size-24 md:size-[9rem]"
     }
     style={{
       backgroundImage: `url(/blob_${i}.svg)`,
     }}
   >
-    <Icon className="size-7 sm:size-8 md:size-14" />
+    <Icon className="size-8 sm:size-9 md:size-14" />
   </div>
 );
 
@@ -31,7 +30,6 @@ export const ToolCard = ({
   description,
   Icon,
   keywords,
-  color,
   i,
 }: Props) => {
   return (
@@ -49,7 +47,7 @@ export const ToolCard = ({
             <h3 className="mb-1 text-xl font-extrabold text-theme-primary md:text-3xl">
               {label}
             </h3>
-            <p className="mt-0 text-sm text-slate-300 sm:max-w-md sm:text-base md:text-xl">
+            <p className="mt-0 tracking-wider text-slate-300 sm:max-w-md md:text-xl">
               {description}
             </p>
           </div>
