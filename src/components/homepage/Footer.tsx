@@ -9,7 +9,7 @@ export const Footer = () => {
     <>
       {/* <div className="mx-auto mb-1 h-[0.5px] max-w-4xl bg-gradient-to-r from-transparent via-white to-transparent" /> */}
       {/* <div className="mx-auto mb-2 h-[0.5px] max-w-4xl bg-slate-100/30" /> */}
-      <div className="mx-auto w-full max-w-4xl flex-row-between">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-2 sm:flex-row sm:justify-between">
         <Link
           href="/privacy-policy"
           className="font-medium text-slate-200 no-underline"
