@@ -63,11 +63,11 @@ const config = {
         },
         theme: {
           primary: "#5c68ac", // primary-600
-          secondary: "#E5DCB4", // light-amber
-          accent: "#E5CE5C", // amber
+          secondary: "#BFB173", // light-amber
+          accent: "#BFAA40", // amber
           base: "#424e88", // slate-800
-          light: "#4c5897", // slate-700
-          dark: "#364379", // slate-900
+          light: "#4c5897", // primary-700
+          dark: "#364379", // primary-900
           destructive: "#f6ad55",
           success: "#48bb78",
         }
