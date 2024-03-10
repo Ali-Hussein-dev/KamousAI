@@ -52,7 +52,7 @@ export const SharedToolsLayout = ({
         classNames={{ header: "bg-slate-700/80 backdrop-blur" }}
       >
         <div className="h-full px-4">
-          <div className="h-full gap-2  flex-row-start">
+          <div className="h-full gap-2 flex-row-start">
             {/* <Burger
                   opened={mobileOpened}
                   onClick={toggleMobile}
@@ -65,8 +65,8 @@ export const SharedToolsLayout = ({
               visibleFrom="sm"
               size="sm"
             />
-            <Link href="/" className="relative aspect-video h-10">
-              <Image src="/logo.svg" fill alt="logo" />
+            <Link href="/" className="relative mt-[3px]">
+              <Image src="/logo.svg" width={100} height={14} alt="logo" />
             </Link>
           </div>
         </div>
@@ -76,14 +76,14 @@ export const SharedToolsLayout = ({
         {/* <div className="relative h-10 w-32">
               <Image src="/logo.svg" fill alt="logo" />
             </div> */}
-        <div className="h-full space-y-2 border-0 border-r border-solid border-slate-500 pr-4 pt-1">
+        <div className="h-full space-y-2 border-0 border-t border-slate-600 pt-5">
           {toolsLinks.map((item) => (
             <Link
               href={item.href}
               key={item.label}
               className="group block rounded px-2 py-2 text-slate-200 no-underline"
             >
-              <div className="gap-2 flex-row-start">
+              <div className="gap-5 flex-row-start">
                 <span
                   className={cn(
                     "center h-8 w-8 rounded-lg border border-solid border-slate-500 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
@@ -92,7 +92,7 @@ export const SharedToolsLayout = ({
                 >
                   {item.icon}
                 </span>
-                <span className="font-medium">{item.label}</span>
+                <span className="font-medium tracking-wide">{item.label}</span>
               </div>
             </Link>
           ))}
