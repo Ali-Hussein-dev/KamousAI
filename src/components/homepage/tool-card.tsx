@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IconType } from "react-icons/lib";
+import { type IconType } from "react-icons/lib";
 import { PiCaretCircleDoubleRightThin } from "react-icons/pi";
 
 type Props = {
