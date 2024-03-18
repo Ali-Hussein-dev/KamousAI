@@ -20,7 +20,6 @@ export const useQueryParaphraser = (
   return useQuery<TDataQuery>({
     queryKey,
     queryFn: () => getParaphraser(),
-    initialData: { tones: defaultTones, temperature: 1 },
     ...options,
   } as UseQueryOptions<TDataQuery>);
 };
