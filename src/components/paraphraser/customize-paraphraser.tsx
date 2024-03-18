@@ -47,7 +47,7 @@ function Temperature() {
         classNames={{
           thumb: "bg-slate-900",
           bar: "bg-slate-800",
-          track: "h-2.5 !bg-slate-100",
+          track: "h-2.5 bg-slate-100",
         }}
       />
     </div>
@@ -275,7 +275,7 @@ export const ParaphraserBase = () => {
           <Drawer.Body py="md">
             {isAuth ? (
               <ParaphraserFormProv form={form}>
-                <form onSubmit={onSubmit} className="space-y-4">
+                <form onSubmit={onSubmit} className="space-y-4 pb-10">
                   <TonesItems />
                   <Divider color="dark" />
                   <Temperature />
