@@ -49,7 +49,11 @@ export const updateParaphraser = async (
         console.warn("actions:updateParaphraser", inputs);
         throw Error(validate.error.message);
     }
-    const { supabase, id } = await authSupabase();
+    const getSupabase = await authSupabase();
+    if (!getSupabase) {
+        return;
+    }
+    const { supabase, id } = getSupabase
     const { data, error } = await supabase
         .from("paraphraser")
         .upsert(
