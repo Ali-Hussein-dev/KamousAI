@@ -3,7 +3,7 @@ export const SupportedLanguages = () => {
   return (
     <div className="pb-3 pt-20">
       <div
-        className="mx-auto max-w-3xl rounded-lg border-[1px] border-theme-secondary/30 bg-slate-950/50 px-7"
+        className="mx-auto max-w-3xl rounded-lg border-[1px] border-theme-secondary/30 bg-slate-950/50 px-3 md:px-7"
         // style={{ boxShadow: "0px 5px #BFB173" }}
       >
         <div
