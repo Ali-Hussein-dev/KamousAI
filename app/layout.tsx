@@ -79,7 +79,7 @@ export default function RootLayout({
           data-website-id={process.env.NEXT_PUBLIC_UMAMI}
           // data-host-url="https://kamous.noorai.io"
         ></script>
-        <meta name="theme-color" content="#334155" />
+        <meta name="theme-color" content="#1e293b" />
       </head>
       <body className={fontFamily.className}>
         <NextTopLoader color="#6672b0" showSpinner={false} speed={300} />
