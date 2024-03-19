@@ -223,7 +223,7 @@ const TonesItems = () => {
   const form = useParaphraserFormCtx();
 
   return (
-    <div className="space-y-2 pt-4">
+    <div className="space-y-2">
       <h3 className="my-1 ">Tailor the tones to suit individually</h3>
       {(form.values.configs.tones as Tone[]).map((item, i) => (
         <ToneItem key={i} {...item} i={i} />

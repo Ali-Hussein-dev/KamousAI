@@ -10,6 +10,8 @@ import {
 import { useForm } from "@/context/paraphraser-form-ctx";
 import { useAuth } from "@/hooks/use-auth";
 import defaultTones from "@/content/default-tones.json";
+import * as React from "react";
+
 const queryKey = ["paraphraser"];
 //-------------------------------------------------------------QUERY
 type TDataQuery = PromiseType<ReturnType<typeof getParaphraser>>;
@@ -23,6 +25,7 @@ export const useQueryParaphraser = (
     queryKey,
     queryFn: () => getParaphraser(),
     enabled: isAuth,
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
     ...options,
   } as UseQueryOptions<TDataQuery>);
 };
@@ -35,14 +38,19 @@ export const useMutationParaphraser = (
 ) => {
   const { isAuth } = useAuth();
   // form
-  const { data } = useQueryParaphraser({
-    enabled: true,
-  });
+  const { data, status } = useQueryParaphraser();
   const form = useForm({
     initialValues: {
       configs: data?.configs ?? { tones: defaultTones, temperature: 1 },
     },
   });
+  // update form values when data is fetched
+  React.useEffect(() => {
+    if (status === "success") {
+      form.setValues({ configs: data?.configs });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
   // mutation
   const queryClient = useQueryClient();
   const res = useMutation<TDataMutation, Error, Pick<Paraphraser, "configs">>({
