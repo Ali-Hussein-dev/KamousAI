@@ -13,8 +13,10 @@ import Image from "next/image";
 
 //======================================
 export const SharedToolsLayout = ({
+  AvatarMenu,
   children,
 }: {
+  AvatarMenu: React.ReactNode;
   children: React.ReactNode;
 }) => {
   const segment = useSelectedLayoutSegment();
@@ -51,14 +53,14 @@ export const SharedToolsLayout = ({
         withBorder={false}
         classNames={{ header: "bg-slate-700/80 backdrop-blur" }}
       >
-        <div className="h-full px-4">
-          <div className="h-full gap-2 flex-row-start">
-            {/* <Burger
+        <div className="h-full gap-2 px-3 flex-row-between md:px-4">
+          {/* <Burger
                   opened={mobileOpened}
                   onClick={toggleMobile}
                   hiddenFrom="sm"
                   size="sm"
                 /> */}
+          <div className="gap-2 flex-row-start">
             <Burger
               opened={desktopOpened}
               onClick={toggleDesktop}
@@ -69,6 +71,7 @@ export const SharedToolsLayout = ({
               <Image src="/logo.svg" width={100} height={14} alt="logo" />
             </Link>
           </div>
+          {AvatarMenu}
         </div>
       </AppShell.Header>
 

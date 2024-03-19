@@ -77,7 +77,7 @@ export const UserProfile = ({ profile }: Props) => {
   return (
     <form
       action={formAction}
-      className="animate-in mx-auto h-full space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg md:pt-8"
+      className="mx-auto h-full space-y-6 rounded-lg bg-slate-800 p-4 pt-10 shadow-lg animate-in md:pt-8"
     >
       {formState?.msg && (
         <p className="rounded border border-amber-700/20 p-3 text-center font-medium text-amber-600">
@@ -93,6 +93,15 @@ export const UserProfile = ({ profile }: Props) => {
             classNames={{ input: "bg-slate-700" }}
             name="name"
             {...form.getInputProps("name")}
+          />
+          <CustomInput
+            value={profile.email}
+            placeholder="email"
+            name="email"
+            type="email"
+            className="w-full"
+            classNames={{ input: "bg-slate-700" }}
+            disabled
           />
         </div>
       </Fieldset>
