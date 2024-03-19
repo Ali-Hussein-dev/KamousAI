@@ -119,7 +119,7 @@ export const ParaphraserMain = () => {
           visible={messages.length > 0}
           onClick={() => {
             setMessages([]);
-            setInput("");
+            setHistory([]);
           }}
         />
       </div>
