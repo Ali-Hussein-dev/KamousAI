@@ -7,7 +7,7 @@ const authSupabase = async () => {
     const supabase = createClient(cookies());
     const { data, error } = await supabase.auth.getUser();
     if (error) {
-        console.warn("Auth Error", error);
+        console.warn("authSupabase fun: ", error);
         // return redirect("/login");
         return
     }
@@ -30,7 +30,7 @@ export const getParaphraser = async (): Promise<Paraphraser | undefined> => {
         .select()
         .eq("user_id", id);
     if (!!error) {
-        throw Error(error.message);
+        throw Error(`getParaphraser: ${error.message}`);
     }
     return data[0];
 };
@@ -47,7 +47,7 @@ export const updateParaphraser = async (
     const validate = paraphraserSchema.safeParse(inputs);
     if (!validate.success) {
         console.warn("actions:updateParaphraser", inputs);
-        throw Error(validate.error.message);
+        throw Error(`updateParaphraser: ${validate.error.message}`);
     }
     const getSupabase = await authSupabase();
     if (!getSupabase) {
@@ -61,7 +61,7 @@ export const updateParaphraser = async (
             { onConflict: "user_id" }
         );
     if (!!error) {
-        throw Error(error.message);
+        throw Error(`updateParaphraser: ${error.message}`);
     }
     return data;
 };
