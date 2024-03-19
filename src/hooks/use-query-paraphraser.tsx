@@ -35,7 +35,9 @@ export const useMutationParaphraser = (
 ) => {
   const { isAuth } = useAuth();
   // form
-  const { data } = useQueryParaphraser();
+  const { data } = useQueryParaphraser({
+    enabled: isAuth,
+  });
   const form = useForm({
     initialValues: {
       configs: data?.configs ?? { tones: defaultTones, temperature: 1 },
