@@ -17,13 +17,18 @@ export const metadata: Metadata = {
 const ProfilePage = async () => {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
-  const { data } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   // const { data: user } = await supabase.auth.getUser();
-  if (!data.session) {
+  if (!session) {
     return redirect("/login");
   }
 
-  const profile = await supabase.from("profiles").select("*");
+  const profile = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", session?.user.id);
   if (!!profile.error) {
     //  notifcation
     alert(profile.error);
