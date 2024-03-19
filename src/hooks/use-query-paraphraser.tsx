@@ -17,9 +17,12 @@ type TDataQuery = PromiseType<ReturnType<typeof getParaphraser>>;
 export const useQueryParaphraser = (
   options: Omit<UseQueryOptions, "queryKey" | "queryFn"> = {}
 ) => {
+  const { isAuth } = useAuth();
+
   return useQuery<TDataQuery>({
     queryKey,
     queryFn: () => getParaphraser(),
+    enabled: isAuth,
     ...options,
   } as UseQueryOptions<TDataQuery>);
 };
@@ -32,9 +35,7 @@ export const useMutationParaphraser = (
 ) => {
   const { isAuth } = useAuth();
   // form
-  const { data } = useQueryParaphraser({
-    enabled: isAuth,
-  });
+  const { data } = useQueryParaphraser();
   const form = useForm({
     initialValues: {
       configs: data?.configs ?? { tones: defaultTones, temperature: 1 },
