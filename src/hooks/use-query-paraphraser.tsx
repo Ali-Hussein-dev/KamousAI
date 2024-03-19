@@ -36,7 +36,7 @@ export const useMutationParaphraser = (
   const { isAuth } = useAuth();
   // form
   const { data } = useQueryParaphraser({
-    enabled: isAuth,
+    enabled: true,
   });
   const form = useForm({
     initialValues: {
