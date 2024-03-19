@@ -1,6 +1,7 @@
 "use client";
 import { AppLayout } from "@/components/homepage/app-layout";
 import { EasyAccess } from "@/components/homepage/easy-access";
+import { SupportedLanguages } from "@/components/homepage/supported-languages";
 import { ToolsBentoTools } from "@/components/homepage/tools-grid";
 import { type NextPage } from "next";
 import Link from "next/link";
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
 
       <div className="mx-auto w-full max-w-6xl space-y-12">
         <ToolsBentoTools />
+        <SupportedLanguages />
         <EasyAccess />
       </div>
     </AppLayout>
