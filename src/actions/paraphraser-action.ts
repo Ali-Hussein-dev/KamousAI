@@ -1,6 +1,5 @@
 "use server";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { z } from "zod";
 
@@ -9,13 +8,19 @@ const authSupabase = async () => {
     const { data, error } = await supabase.auth.getUser();
     if (error) {
         console.warn("Auth Error", error);
-        return redirect("/login");
+        // return redirect("/login");
+        return
     }
     return { supabase, id: data.user?.id as string };
 };
 
 export const getParaphraser = async (): Promise<Paraphraser | undefined> => {
-    const { supabase, id } = await authSupabase();
+
+    const getSupabase = await authSupabase();
+    if (!getSupabase) {
+        return;
+    }
+    const { supabase, id } = getSupabase
     if (!id) {
         console.warn("actions:getParaphraser", id);
         return;
