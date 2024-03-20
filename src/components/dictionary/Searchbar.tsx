@@ -66,7 +66,7 @@ export const DictionarySearchbar = (props: Props) => {
   };
   return (
     <form
-      className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-600 duration-300 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
+      className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-700 duration-300 focus-within:border-slate-600 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
       onSubmit={handleSubmit}
     >
       <Autocomplete
@@ -76,16 +76,17 @@ export const DictionarySearchbar = (props: Props) => {
         onChange={onChange}
         onKeyDown={onKeyDown}
         onOptionSubmit={onOptionSubmit}
-        placeholder="Enter your words..."
+        placeholder="Enter text..."
         size={isMobile ? "lg" : "xl"}
         leftSectionPointerEvents="all"
         rightSectionWidth="auto"
         autoComplete="off"
         classNames={{
-          input: "bg-transparent pl-[3.1rem] sm:pl-[4rem] border-0 text-base",
+          input:
+            "bg-transparent pl-[3.2rem] sm:pl-[4rem] border-0 text-base placeholder:text-slate-500 font-medium sm:tracking-wider",
           dropdown:
-            "!bg-slate-800 !rounded-xl !border-[1px] !border-slate-600 !shadow-lg my-2",
-          option: "!rounded-xl capitalize",
+            "!bg-slate-800 !rounded-xl !border-[1px] !border-slate-700 !shadow-lg my-2",
+          option: "rounded-xl capitalize",
         }}
         leftSection={
           <div className="h-full w-full rounded-l-xl">
