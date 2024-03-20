@@ -1,10 +1,4 @@
-import {
-  ActionIcon,
-  Button,
-  Divider,
-  Menu,
-  SegmentedControl,
-} from "@mantine/core";
+import { ActionIcon, Button, Menu, SegmentedControl } from "@mantine/core";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import * as React from "react";
 import languagesLabels from "../../content/languages-names.json";
@@ -12,7 +6,7 @@ import languages from "../../content/languages.json";
 import { type DictionaryMode, useResponse } from "@/hooks";
 import { CustomSelect } from "../Mantine/custom-select";
 import { CustomMenu } from "../Mantine/custom-menu";
-import {  useMediaQuery } from "@mantine/hooks";
+import { useMediaQuery } from "@mantine/hooks";
 import { useLastLangs } from "@/hooks/use-last-langs";
 
 //---------------------------------------------------MONOLINGUAL
@@ -180,7 +174,7 @@ const LanguagesMenu = () => {
                     ?.value) as string)}
             </ActionIcon>
           </div>
-          <Divider orientation="vertical" mx={4} my={12} />
+          {/* <Divider orientation="vertical" mx={4} my={12} /> */}
         </div>
       </Menu.Target>
       <Menu.Dropdown p="sm">
