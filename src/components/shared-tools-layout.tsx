@@ -37,7 +37,7 @@ export const SharedToolsLayout = ({
     <AppShell
       header={{ height: 55 }}
       navbar={{
-        width: "240px",
+        width: { xs: "180px", sm: "200", md: "240px", lg: "250" },
         breakpoint: "sm",
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
@@ -75,7 +75,10 @@ export const SharedToolsLayout = ({
         </div>
       </AppShell.Header>
 
-      <AppShell.Navbar p="xs" withBorder={false}>
+      <AppShell.Navbar
+        p={{ base: "xs", md: "md", lg: "lg" }}
+        withBorder={false}
+      >
         {/* <div className="relative h-10 w-32">
               <Image src="/logo.svg" fill alt="logo" />
             </div> */}
@@ -84,9 +87,9 @@ export const SharedToolsLayout = ({
             <Link
               href={item.href}
               key={item.label}
-              className="group block rounded px-2 py-2 text-slate-200 no-underline"
+              className="group block rounded py-2 text-slate-200 no-underline"
             >
-              <div className="gap-5 flex-row-start">
+              <div className="gap-3 flex-row-start md:gap-5">
                 <span
                   className={cn(
                     "center h-8 w-8 rounded-lg border border-solid border-slate-500 duration-300 group-hover:border-transparent group-hover:bg-primary-600",
@@ -95,7 +98,9 @@ export const SharedToolsLayout = ({
                 >
                   {item.icon}
                 </span>
-                <span className="font-medium tracking-wide">{item.label}</span>
+                <span className="text-sm font-medium tracking-wide md:text-base">
+                  {item.label}
+                </span>
               </div>
             </Link>
           ))}
@@ -106,11 +111,11 @@ export const SharedToolsLayout = ({
         <div className="flex">
           <div
             className={cn(
-              "hidden h-full md:block",
-              !desktopOpened ? "hidden" : "w-[240px]"
+              "hidden h-40 sm:block",
+              desktopOpened ? "w-[290px] grow md:w-[340px]" : "hidden"
             )}
           ></div>
-          <div className="grow p-1">
+          <div className={cn("w-full p-1", desktopOpened ? "" : "grow")}>
             <div className="mx-auto max-w-4xl pb-28 pt-10 sm:pb-4">
               {children}
             </div>
