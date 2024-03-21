@@ -21,11 +21,11 @@ const FrontCard = ({ phrase, open }: { phrase: string; open: () => void }) => {
       className="center break-inside-avoid rounded-xl bg-slate-900/70 py-12 text-3xl font-bold tracking-wider text-theme-secondary shadow md:py-20"
       style={{ boxShadow: "2px 2px 1px #020617" }}
       animate={{
-        rotateY: 0,
-        transition: { duration: 0.9 },
+        rotateX: 0,
+        transition: { duration: 1 },
         transformStyle: "preserve-3d",
       }}
-      exit={{ rotateY: -180 }}
+      exit={{ rotateX: -180 }}
     >
       <p className="first-letter:uppercase">{phrase}</p>
     </motion.div>
@@ -44,13 +44,13 @@ const BackCard = ({ definition, id, term, remove }: FlashCardProps) => {
     <motion.div
       className="flex break-inside-avoid flex-col rounded-xl bg-slate-900/40 px-3 pb-4 pt-6 shadow"
       style={{ boxShadow: "2px 2px 1px #020617" }}
-      initial={{ rotateY: 180 }}
+      initial={{ rotateX: 180 }}
       animate={{
-        rotateY: 0,
-        transition: { duration: 0.9 },
+        rotateX: 0,
+        transition: { duration: 1 },
         transformStyle: "preserve-3d",
       }}
-      exit={{ rotateY: 180 }}
+      exit={{ rotateX: 180 }}
     >
       <div className="grow">
         <div className="mb-2 flex-row-between">
@@ -91,7 +91,7 @@ const FlashCard = (props: FlashCardProps) => {
 export const DictionaryHistory = () => {
   const lexicalEntries = useHistoryStore((s) => s.lexicalEntries);
   const removeWordEntry = useHistoryStore((s) => s.setLexicalEntries);
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const cached = Object.entries(lexicalEntries)
     .sort((a, b) => b[1].createdAt - a[1].createdAt)
     .map(([key, value]) => (
