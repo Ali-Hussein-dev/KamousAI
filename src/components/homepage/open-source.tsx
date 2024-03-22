@@ -4,7 +4,7 @@ import { BsGithub } from "react-icons/bs";
 //======================================
 export const OpenSource = () => {
   return (
-    <div className=" pt-20">
+    <div className=" overflow-clip pt-20">
       <div className="rotate-[1.5deg] bg-gradient-to-r from-theme-accent to-theme-primary">
         <div className="center -rotate-[1.5deg] bg-slate-200 px-2 py-10 text-slate-800 shadow md:py-24">
           <h3 className="mb-2 text-2xl font-extrabold sm:text-3xl md:text-5xl">
