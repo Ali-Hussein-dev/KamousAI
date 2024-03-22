@@ -282,6 +282,10 @@ export const ParaphraserBase = () => {
                   {form.isDirty() && (
                     <Button
                       type="submit"
+                      onClick={(
+                        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                        // @ts-expect-error igonore this error
+                      ) => onSubmit(e)}
                       w="100%"
                       radius="xl"
                       loading={isPending}
