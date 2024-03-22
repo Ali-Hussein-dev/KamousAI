@@ -19,7 +19,7 @@ const Frontface = ({ phrase, open }: { phrase: string; open: () => void }) => {
   return (
     <motion.div
       onClick={() => open()}
-      className="center break-inside-avoid rounded-xl bg-slate-900 py-12 text-3xl font-bold tracking-wider text-theme-secondary shadow md:py-20"
+      className="rounded-3xl bg-slate-900 p-1 text-3xl font-bold tracking-wider text-theme-secondary"
       style={{
         boxShadow: "2px 2px 1px #020617",
         backfaceVisibility: "hidden",
@@ -34,7 +34,9 @@ const Frontface = ({ phrase, open }: { phrase: string; open: () => void }) => {
         opacity: 0,
       }}
     >
-      <p className="first-letter:uppercase">{phrase}</p>
+      <div className="center h-full min-h-40 w-full rounded-3xl border border-dashed border-theme-secondary/20 md:min-h-56">
+        <p className="first-letter:uppercase">{phrase}</p>
+      </div>
     </motion.div>
   );
 };
@@ -49,7 +51,7 @@ const Backface = ({ definition, id, term, remove }: FlipCardProps) => {
   const { play, isFetching } = useVoiceContext({ text: term });
   return (
     <motion.div
-      className="flex h-full grow flex-col rounded-xl bg-slate-900/40 px-3 pb-4 pt-6"
+      className="flex h-full grow flex-col rounded-3xl bg-slate-900/40 px-3 pb-4 pt-6"
       style={{
         boxShadow: "2px 2px 1px #020617",
         backfaceVisibility: "hidden",
@@ -150,8 +152,7 @@ export const DictionaryHistory = () => {
       {open ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-4 pt-6 text-slate-300",
-            cached.length > 1 ? "grid-cols-2" : ""
+            "grid grid-cols-1 gap-4 pt-6 text-slate-300 md:grid-cols-2"
           )}
         >
           {cached}
