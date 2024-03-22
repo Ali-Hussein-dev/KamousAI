@@ -64,8 +64,11 @@ export const ToolCard = ({
               </span>
             ))}
           </div>
-          <Link href={href} className="text-theme-secondary ">
-            <PiCaretCircleDoubleRightThin size="40" />
+          <Link href={href} className=" text-theme-secondary">
+            <PiCaretCircleDoubleRightThin
+              size="40"
+              className="rounded-full bg-slate-900"
+            />
           </Link>
         </div>
       </div>
