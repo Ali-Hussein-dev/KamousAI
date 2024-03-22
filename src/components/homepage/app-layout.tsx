@@ -23,7 +23,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         }}
       >
         <Header />
-        <AppShell.Main py="lg" px="xs">
+        <AppShell.Main py="lg" px="0">
           {children}
         </AppShell.Main>
         <AppShell.Footer p="xs" className="!relative" withBorder={false}>

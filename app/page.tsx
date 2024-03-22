@@ -27,11 +27,11 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="mx-auto mb-12 w-full max-w-6xl">
+      <div className="mx-auto mb-12 w-full max-w-6xl px-2">
         <ToolsBentoTools />
       </div>
       <OpenSource />
-      <div className="mx-auto mb-12 w-full">
+      <div className="mx-auto mb-12 w-full px-2">
         <EasyAccess />
       </div>
     </AppLayout>
