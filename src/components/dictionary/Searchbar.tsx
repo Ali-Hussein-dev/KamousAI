@@ -67,7 +67,10 @@ export const DictionarySearchbar = (props: Props) => {
   };
   return (
     <form
-      className="mb-6 w-full overflow-hidden rounded-full border border-solid border-slate-700 duration-300 focus-within:border-slate-600 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
+      className={cn(
+        "mb-6 w-full overflow-hidden border border-solid border-slate-700 focus-within:border-slate-600 focus-within:bg-slate-800/50 focus-within:shadow-2xl",
+        isContextOpen ? "rounded-xl" : "rounded-full"
+      )}
       onSubmit={handleSubmit}
     >
       <Autocomplete
