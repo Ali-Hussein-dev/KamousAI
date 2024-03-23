@@ -89,10 +89,7 @@ const SummarizerPage = () => {
           </div>
         </div>
       </form>
-      <div
-        hidden={messages.length < 1}
-        className="space-y-2 rounded-lg pt-5 text-slate-300"
-      >
+      <div hidden={messages.length < 1} className="px-1 py-4 text-slate-300">
         {messages
           .filter((msg) => msg.role === "assistant")
           .reverse()

@@ -89,10 +89,7 @@ export default function GrammerCheckerPage() {
           </div>
         </div>
       </form>
-      <div
-        hidden={messages.length < 1}
-        className="mt-4 space-y-2 rounded-lg px-1 py-4"
-      >
+      <div hidden={messages.length < 1} className="px-1 py-4">
         {messages
           .filter((msg) => msg.role === "assistant")
           .reverse()
