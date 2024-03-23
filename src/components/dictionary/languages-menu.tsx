@@ -158,7 +158,7 @@ const LanguagesMenu = () => {
           <div className="center h-full w-full">
             <ActionIcon
               size={isMobile ? "lg" : "xl"}
-              radius={isMobile ? "md" : "lg"}
+              radius={"xl"}
               fz={mode === "bili" ? "xs" : "sm"}
               fw="bold"
               ta="center"

@@ -68,7 +68,7 @@ const config = {
           base: "#424e88", // slate-800
           light: "#4c5897", // primary-700
           dark: "#364379", // primary-900
-          destructive: "#f6ad55",
+          destructive: "hsl(10, 80%, 40%)",
           success: "#48bb78",
         }
       },

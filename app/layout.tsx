@@ -1,7 +1,7 @@
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript } from "@mantine/core";
 // import { AppLayout } from "@/components/app-layout";
-import { Nunito } from "next/font/google";
+import { Nunito, Salsa } from "next/font/google";
 import "../src/styles/globals.css";
 import "@mantine/core/styles.css";
 import { Providers } from "@/context/Providers";
@@ -13,6 +13,13 @@ const fontFamily = Nunito({
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
+const salaFont = Salsa({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  variable: "--salsa-font",
+});
+
 const APP_NAME = "KamousAI";
 const APP_DEFAULT_TITLE = "KamousAI";
 const APP_TITLE_TEMPLATE = "%s - KamousAI";
@@ -81,7 +88,7 @@ export default function RootLayout({
         ></script>
         <meta name="theme-color" content="#1e293b" />
       </head>
-      <body className={fontFamily.className}>
+      <body className={`${fontFamily.className} ${salaFont.variable}`}>
         <NextTopLoader color="#6672b0" showSpinner={false} speed={300} />
         <Providers>{children}</Providers>
       </body>

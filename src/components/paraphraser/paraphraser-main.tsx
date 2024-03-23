@@ -112,7 +112,17 @@ export const ParaphraserMain = () => {
           .filter((msg) => msg.role === "assistant")
           .reverse()
           .map((msg, i) => (
-            <TextCard key={i} content={msg.content} />
+            <TextCard
+              key={i}
+              content={msg.content}
+              drop={() => {
+                const modified = history;
+                modified.splice(i, 1);
+                console.log({ i, original: modified });
+                setHistory(modified);
+                setMessages(modified);
+              }}
+            />
           ))}
         <ClearButton
           isLoading={isLoading}

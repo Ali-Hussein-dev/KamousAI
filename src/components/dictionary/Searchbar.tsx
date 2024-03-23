@@ -2,7 +2,7 @@
 import { ActionIcon, Badge, Loader, Autocomplete } from "@mantine/core";
 import LanguagesMenu from "./languages-menu";
 import { MdClear } from "react-icons/md";
-import { BsFillSendFill, BsStopCircle } from "react-icons/bs";
+import { BsStopCircle } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import * as React from "react";
 import { useHistoryStore } from "@/hooks/use-history-store";
@@ -10,6 +10,7 @@ import { cn } from "@/utils/helpers";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { CustomTextarea } from "../Mantine/custom-textarea";
 import { useMediaQuery } from "@mantine/hooks";
+import { EnterIcon } from "../shared/enter-icon";
 
 type Props = {
   input: string;
@@ -62,11 +63,11 @@ export const DictionarySearchbar = (props: Props) => {
   const iconSize = isMobile ? "15" : "20";
   const sharedBtnProps = {
     size: isMobile ? "md" : "xl",
-    radius: isMobile ? "md" : "lg",
+    radius: "xl",
   };
   return (
     <form
-      className="mb-6 w-full overflow-hidden rounded-2xl border border-solid border-slate-700 duration-300 focus-within:border-slate-600 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
+      className="mb-6 w-full overflow-hidden rounded-full border border-solid border-slate-700 duration-300 focus-within:border-slate-600 focus-within:bg-slate-800/50 focus-within:shadow-2xl"
       onSubmit={handleSubmit}
     >
       <Autocomplete
@@ -106,7 +107,7 @@ export const DictionarySearchbar = (props: Props) => {
                 <ActionIcon
                   {...sharedBtnProps}
                   onClick={() => setInput("")}
-                  variant="outline"
+                  variant="subtle"
                 >
                   <MdClear size={iconSize} />
                 </ActionIcon>
@@ -145,7 +146,7 @@ export const DictionarySearchbar = (props: Props) => {
               <div className="">
                 {input ? (
                   <ActionIcon type="submit" {...sharedBtnProps}>
-                    <BsFillSendFill size={iconSize} />
+                    <EnterIcon />
                   </ActionIcon>
                 ) : (
                   <div className="center size-8">
