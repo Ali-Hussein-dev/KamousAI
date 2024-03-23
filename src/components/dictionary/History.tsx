@@ -24,7 +24,7 @@ const Frontface = ({ phrase, open }: { phrase: string; open: () => void }) => {
         boxShadow: "2px 2px 1px #020617",
         backfaceVisibility: "hidden",
         transformStyle: "preserve-3d",
-        fontFamily: "Lobster, cursive",
+        fontFamily: "var(--salsa-font)",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
