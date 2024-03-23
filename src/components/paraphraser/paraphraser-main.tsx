@@ -96,6 +96,7 @@ export const ParaphraserMain = () => {
                 radius="lg"
                 w="fit-content"
                 disabled={!input}
+                data-umami-event="paraphraser"
               >
                 Improve writing
               </Button>

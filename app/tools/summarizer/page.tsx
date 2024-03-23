@@ -81,6 +81,7 @@ const SummarizerPage = () => {
                 radius="lg"
                 // w="7rem"
                 disabled={!input}
+                data-umami-event="summarizer"
               >
                 Summarize
               </Button>
