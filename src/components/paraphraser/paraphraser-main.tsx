@@ -113,13 +113,13 @@ export const ParaphraserMain = () => {
             <TextCard
               key={i}
               content={msg.content}
-              drop={() => {
-                const modified = history;
-                modified.splice(i, 1);
-                console.log({ i, original: modified });
-                setHistory(modified);
-                setMessages(modified);
-              }}
+              // drop={() => {
+              //   const modified = history;
+              //   modified.splice(i, 1);
+              //   console.log({ i, original: modified });
+              //   setHistory(modified);
+              //   setMessages(modified);
+              // }}
             />
           ))}
         <ClearButton
