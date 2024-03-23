@@ -42,6 +42,9 @@ export const ParaphraserMain = () => {
       temperature: data?.configs?.temperature ?? 1,
     },
   });
+  const displayMessages = messages
+    .filter((msg) => msg.role === "assistant")
+    .reverse();
   return (
     <ToolContainer
       title="paraphraser"
@@ -105,22 +108,19 @@ export const ParaphraserMain = () => {
         </div>
       </form>
       {/* //---------------------------------------------------OUTPUT AREA */}
-      <div hidden={messages.length < 2} className="px-1 py-4">
-        {messages
-          .filter((msg) => msg.role === "assistant")
-          .reverse()
-          .map((msg, i) => (
-            <TextCard
-              key={i}
-              content={msg.content}
-              drop={() => {
-                const id = msg.id;
-                const modified = history.filter((msg) => msg.id !== id);
-                setHistory(modified);
-                setMessages(modified);
-              }}
-            />
-          ))}
+      <div hidden={displayMessages.length < 1} className="px-1 py-4">
+        {displayMessages.map((msg, i) => (
+          <TextCard
+            key={i}
+            content={msg.content}
+            drop={() => {
+              const id = msg.id;
+              const modified = history.filter((msg) => msg.id !== id);
+              setHistory(modified);
+              setMessages(modified);
+            }}
+          />
+        ))}
         <ClearButton
           isLoading={isLoading}
           visible={messages.length > 0}
