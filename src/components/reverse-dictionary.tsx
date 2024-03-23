@@ -150,7 +150,12 @@ export const ReverseDictionary = () => {
                   <IoStopCircleOutline size="20" />
                 </ActionIcon>
               ) : (
-                <Button type="submit" radius="lg" disabled={!input}>
+                <Button
+                  type="submit"
+                  radius="lg"
+                  disabled={!input}
+                  data-umami-event="reverse-dictionary"
+                >
                   Get definition
                 </Button>
               )}

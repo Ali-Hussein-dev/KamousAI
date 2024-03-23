@@ -81,6 +81,7 @@ export default function GrammerCheckerPage() {
                 radius="lg"
                 w="6rem"
                 disabled={!input}
+                data-umami-event="grammar-corrector"
               >
                 Check
               </Button>

@@ -145,7 +145,11 @@ export const DictionarySearchbar = (props: Props) => {
             ) : (
               <div className="">
                 {input ? (
-                  <ActionIcon type="submit" {...sharedBtnProps}>
+                  <ActionIcon
+                    type="submit"
+                    {...sharedBtnProps}
+                    data-umami-event="ai-dictionary"
+                  >
                     <EnterIcon />
                   </ActionIcon>
                 ) : (
