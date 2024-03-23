@@ -1,14 +1,14 @@
-// import { ActionIcon } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
 import { Markdown } from "./Markdown";
 import { CopyButton } from "./copy-button";
-// import { MdDelete } from "react-icons/md";
-// import { isFunction } from "@/utils/helpers";
+import { MdDelete } from "react-icons/md";
+import { isFunction } from "@/utils/helpers";
 
 //======================================
 export const TextCard = ({
   content,
-}: // drop,
-{
+  drop,
+}: {
   content: string;
   drop?: () => void;
 }) => {
@@ -17,7 +17,7 @@ export const TextCard = ({
       <Markdown tw="prose-p:my-0 mb-0">{content}</Markdown>
       <div className="flex-row-end">
         <div className="translate-y-4 gap-2 rounded-full border border-dashed border-slate-700 bg-slate-800 px-2 py-1.5 flex-row-start">
-          {/* {drop && (
+          {drop && (
             <ActionIcon
               radius="lg"
               classNames={{ icon: "text-theme-destructive" }}
@@ -28,7 +28,7 @@ export const TextCard = ({
             >
               <MdDelete />
             </ActionIcon>
-          )} */}
+          )}
           <CopyButton text={content} size="md" variant="subtle" />
         </div>
       </div>
