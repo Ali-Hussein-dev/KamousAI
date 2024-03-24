@@ -11,6 +11,8 @@ import { TonesSelect } from "./customize-paraphraser";
 import { TextCard } from "../shared/text-card";
 import { ClearButton } from "../shared/clear-button";
 import { useQueryParaphraser } from "@/hooks/use-query-paraphraser";
+import { AnimatePresence } from "framer-motion";
+import { AnimatedItemList } from "../shared/animated-item-list";
 
 //======================================
 export const ParaphraserMain = () => {
@@ -109,18 +111,21 @@ export const ParaphraserMain = () => {
       </form>
       {/* //---------------------------------------------------OUTPUT AREA */}
       <div hidden={displayMessages.length < 1} className="px-1 py-4">
-        {displayMessages.map((msg, i) => (
-          <TextCard
-            key={i}
-            content={msg.content}
-            drop={() => {
-              const id = msg.id;
-              const modified = history.filter((msg) => msg.id !== id);
-              setHistory(modified);
-              setMessages(modified);
-            }}
-          />
-        ))}
+        <AnimatePresence>
+          {displayMessages.map((msg) => (
+            <AnimatedItemList key={msg.id}>
+              <TextCard
+                content={msg.content}
+                drop={() => {
+                  const id = msg.id;
+                  const modified = history.filter((msg) => msg.id !== id);
+                  setHistory(modified);
+                  setMessages(modified);
+                }}
+              />
+            </AnimatedItemList>
+          ))}
+        </AnimatePresence>
         <ClearButton
           isLoading={isLoading}
           visible={messages.length > 0}
