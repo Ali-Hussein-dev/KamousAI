@@ -12,7 +12,7 @@ export const AnimatedItemList: React.FC<AnimatedItemList> = ({
     <motion.div
       initial={{ opacity: 1, height: "auto" }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, height: 0, x: "-100vw" }}
+      exit={{ opacity: 0, height: 0, scale: 0, transition: { duration: 0.4 } }}
       {...rest}
     >
       {children}
