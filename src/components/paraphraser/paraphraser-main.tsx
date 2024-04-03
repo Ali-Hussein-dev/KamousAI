@@ -37,7 +37,7 @@ export const ParaphraserMain = () => {
       setInput(input);
     },
     onFinish: (d) => {
-      setHistory([...history.slice(-5), d]);
+      setHistory([...history, d]);
     },
     body: {
       tones: selected.join(", "),
