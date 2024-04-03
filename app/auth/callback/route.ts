@@ -2,6 +2,9 @@ import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
+/**
+ * Get the site URL based on the environment.
+ */
 const getURL = () => {
     let url =
         process.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
@@ -12,7 +15,7 @@ const getURL = () => {
     // Make sure to include `https://` when not localhost.
     url = url.includes("http") ? url : `https://${url}`;
     // Make sure to include a trailing `/`.
-    url = url.charAt(url.length - 1) === "/" ? url : `${url}/`;
+    url = url.endsWith("/") ? url : `${url}/`;
     return url;
 };
 
