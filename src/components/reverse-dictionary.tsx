@@ -162,7 +162,7 @@ export const ReverseDictionary = () => {
             </div>
           </div>
         </form>
-        <div hidden={messages.length < 1} className="px-1 py-4">
+        <div hidden={messages.length < 1} className="px-1 py-4 space-y-2">
           {convertToShape(messages)
             .reverse()
             .map((arr, i) => (
