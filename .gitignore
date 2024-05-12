@@ -43,3 +43,6 @@ yarn-error.log*
 .history
 
 public/sw.js
+
+# Sentry Config File
+.sentryclirc
