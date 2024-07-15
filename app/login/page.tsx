@@ -24,7 +24,7 @@ const LoginPage = async ({
   }
   return (
     <div className="center h-screen bg-slate-800 px-2 pt-10 md:pt-16">
-      <div className="w-full max-w-xl rounded-xl border-[0.5px] border-solid border-primary-400/80 bg-gradient-to-t from-slate-900 to-slate-800/90 px-5 pb-4 pt-10 shadow-xl sm:mb-20">
+      <div className="w-full max-w-xl rounded-xl border-[0.5px] border-solid border-primary-400/80 bg-gradient-to-t from-slate-900 to-slate-800/40 px-5 pb-4 pt-10 shadow-xl animate-in sm:mb-20">
         <div className="flex grow flex-col gap-1">
           <div className="gap-2 flex-row-center">
             {/* <FaLock size="20" className=" text-teal-500" /> */}
@@ -52,7 +52,7 @@ const LoginPage = async ({
           {/* <OAuthButton /> */}
         </div>
         {searchParams?.message && (
-          <p className="animate-in mb-0 gap-2 rounded-sm bg-slate-200/10 py-2 text-center flex-row-center">
+          <p className="mb-0 gap-2 rounded-sm bg-slate-200/10 py-2 text-center flex-row-center">
             <FaInfoCircle size="17" />
             {searchParams.message}
           </p>
