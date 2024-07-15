@@ -29,7 +29,11 @@ export const TextCard = ({
               <MdDelete />
             </ActionIcon>
           )}
-          <CopyButton text={content} size="md" variant="subtle" />
+          <CopyButton
+            text={content.replace(/[\*\n]/g, "")}
+            size="md"
+            variant="subtle"
+          />
         </div>
       </div>
     </div>
