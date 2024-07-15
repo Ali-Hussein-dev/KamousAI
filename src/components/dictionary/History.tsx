@@ -34,8 +34,8 @@ const Frontface = ({ phrase, open }: { phrase: string; open: () => void }) => {
         opacity: 0,
       }}
     >
-      <div className="center h-full min-h-40 w-full rounded-3xl border border-dashed border-slate-600 md:min-h-56">
-        <p className="first-letter:uppercase">{phrase}</p>
+      <div className="center h-full min-h-40 w-full rounded-3xl border border-dashed border-slate-600 px-4 md:min-h-56">
+        <span className="first-letter:uppercase">{phrase}</span>
       </div>
     </motion.div>
   );
