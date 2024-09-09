@@ -47,11 +47,7 @@ export const updateUserProfile = async (
     const validatedData = schema.safeParse({
       name: formData.get("name"),
       languages: Object.values(languages),
-    }) as {
-      data: UserProfile;
-      error: Record<string, string>[];
-      success: boolean;
-    };
+    });
 
     if (!!validatedData.error) {
       console.warn("Validation Error", validatedData.error, id);
