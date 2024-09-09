@@ -27,11 +27,7 @@ export class CreatePrompt {
   Paraphrase the following text to have the following tones ${tones}, 
   - use the same language 
   - don't answer questions
-  don't explain it
-  use more suitable synonyms if needed or as required.
-  Here is an expample:
-
-  input: einen Fehler machen
-  output: einen Fehler begehen`
-    }
+  - don't explain it
+  - Be creative, authentic and make it sound natural
+  - use more suitable synonyms if needed or as required.`}
 }
