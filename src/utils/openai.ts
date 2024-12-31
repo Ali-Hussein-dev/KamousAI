@@ -1,29 +1,34 @@
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { type ChatCompletionCreateParamsBase } from "openai/resources/chat/completions";
-import { type Stream } from "openai/streaming";
+import { streamText } from "ai";
+import { openai, } from '@ai-sdk/openai';
 import OpenAI from "openai";
 
-const openai = new OpenAI();
 
 export async function getOpenaiAudio({ input }: { input: string }) {
+    const openai = new OpenAI();
     const mp3 = await openai.audio.speech.create({
-        model: "tts-1",
+        model: "tts-1-hd",
         voice: "alloy",
         input,
     });
     return Buffer.from(await mp3.arrayBuffer());
 }
 
-export const createChatStream = async (configs: Partial<ChatCompletionCreateParamsBase>) => {
-    const customconfigs: ChatCompletionCreateParamsBase = {
-        model: "gpt-4o-mini",
-        stream: true,
-        messages: [],
+export const createChatStream = async (configs: {
+    messages: any[],
+    system: string,
+}) => {
+    const system = configs.messages?.[0]?.content
+    const customConfigs = {
+        temperature: 0.5,
         ...configs,
+        messages: configs.messages?.slice(1),
+        system,
     }
-    const response = await openai.chat.completions.create(customconfigs) as Stream<OpenAI.Chat.Completions.ChatCompletionChunk>;
-    // Convert the response into a friendly text-stream
-    const stream = OpenAIStream(response);
     // Respond with the stream
-    return new StreamingTextResponse(stream)
+    const res = streamText({
+        model: openai('gpt-4o-mini', {},
+        ),
+        ...customConfigs
+    })
+    return res.toDataStreamResponse()
 }
