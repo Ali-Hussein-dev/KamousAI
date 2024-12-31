@@ -1,7 +1,7 @@
-import { type ChatCompletionMessageParam } from "openai/resources/chat";
 import { type WordEntryKey } from "@/hooks/use-history-store";
 import { type PreferencesT } from "@/hooks/use-response";
 import { createChatStream } from "@/utils/openai";
+import type { CoreMessage } from "ai";
 
 export const runtime = "edge";
 
@@ -48,7 +48,7 @@ const contextPrompt = (context?: string) => context ? `, use the following conte
 const getMessages = (
     messages: string,
     options: Options
-): Array<ChatCompletionMessageParam> => {
+): Array<CoreMessage> => {
     const {
         wordEntryKey = "definition",
         mode = "mono",

@@ -1,4 +1,4 @@
-import { streamText } from "ai";
+import { type CoreMessage, streamText } from "ai";
 import { openai, } from '@ai-sdk/openai';
 import OpenAI from "openai";
 
@@ -14,21 +14,22 @@ export async function getOpenaiAudio({ input }: { input: string }) {
 }
 
 export const createChatStream = async (configs: {
-    messages: any[],
-    system: string,
+    messages: CoreMessage[],
+    system?: string,
+    temperature?: number,
 }) => {
-    const system = configs.messages?.[0]?.content
+
+
     const customConfigs = {
         temperature: 0.5,
         ...configs,
-        messages: configs.messages?.slice(1),
-        system,
     }
     // Respond with the stream
     const res = streamText({
-        model: openai('gpt-4o-mini', {},
+        model: openai('gpt-4o-mini'
         ),
-        ...customConfigs
+        ...customConfigs,
+        messages: customConfigs.messages,
     })
     return res.toDataStreamResponse()
 }
