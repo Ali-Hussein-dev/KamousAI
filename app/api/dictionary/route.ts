@@ -1,13 +1,13 @@
 import { type WordEntryKey } from "@/hooks/use-history-store";
 import { type PreferencesT } from "@/hooks/use-response";
-import { createChatStream } from "@/utils/openai";
+import { createChatStreamDeepSeek } from "@/utils/deepseek";
 import type { CoreMessage } from "ai";
 
 export const runtime = "edge";
 
 const systemMessages = {
     definition: [
-        "Act as a dictionary. Follow the following rules strictly:\n",
+        "Act as a dictionary, linguistic expert, excellent teacher. Follow the following rules strictly:\n",
         "* Be concise with your answer\n",
         "* Use emoji if it represent the meaning\n",
         "* Do not mention this phrase ever 'As an AI language model'\n",
@@ -129,7 +129,7 @@ const getMessages = (
 };
 export const POST = async (req: Request) => {
     const { prompt, wordEntryKey, preferences, context } = await req.json();
-    return await createChatStream({
+    return await createChatStreamDeepSeek({
         messages: getMessages(prompt, {
             wordEntryKey: wordEntryKey || "definition",
             ...preferences,
