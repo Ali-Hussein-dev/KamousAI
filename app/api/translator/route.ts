@@ -5,7 +5,8 @@ export const runtime = "edge";
 
 export const POST = async (req: Request) => {
   const { prompt, inputLanguage, outputLanguage } = await req.json();
-  const params = {
+
+  return await createChatStreamDeepSeek({
     messages: [
       {
         role: "system",
@@ -13,6 +14,5 @@ export const POST = async (req: Request) => {
       },
       { role: "user", content: prompt },
     ],
-  };
-  return await createChatStreamDeepSeek(params);
+  });
 };
