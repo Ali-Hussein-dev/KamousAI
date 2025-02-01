@@ -26,8 +26,8 @@ specifiers:
   '@upstash/redis': ^1.28.3
   ai: ^4.0.22
   autoprefixer: ^10.4.14
-  class-variance-authority: ^0.7.0
-  clsx: ^2.0.0
+  class-variance-authority: ^0.7.1
+  clsx: ^2.1.1
   dotenv: ^16.4.5
   eslint: ^8.37.0
   eslint-config-next: ^14.2.8
