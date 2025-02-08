@@ -52,7 +52,7 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#5c68ac",
-    "start_url": "/",
+    "start_url": "/tools/dictionary",
     "id": "/",
     "display_override": [
         "fullscreen"
