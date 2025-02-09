@@ -24,7 +24,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.57.1
   '@typescript-eslint/parser': ^5.57.1
   '@upstash/redis': ^1.28.3
-  ai: ^4.0.22
+  ai: ^4.1.27
   autoprefixer: ^10.4.14
   class-variance-authority: ^0.7.1
   clsx: ^2.1.1
@@ -74,7 +74,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.16_tailwindcss@3.4.17
   '@tanstack/react-query': 5.65.0_react@18.2.0
   '@upstash/redis': 1.34.3
-  ai: 4.1.9_react@18.2.0+zod@3.24.1
+  ai: 4.1.27_react@18.2.0+zod@3.24.1
   class-variance-authority: 0.7.1
   clsx: 2.1.1
   dotenv: 16.4.7
@@ -197,6 +197,22 @@ packages:
       zod: 3.24.1
     dev: false
 
+  /@ai-sdk/provider-utils/2.1.6_zod@3.24.1:
+    resolution: {integrity: sha512-Pfyaj0QZS22qyVn5Iz7IXcJ8nKIKlu2MeSAdKJzTwkAks7zdLaKVB+396Rqcp1bfQnxl7vaduQVMQiXUrgK8Gw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 1.0.7
+      eventsource-parser: 3.0.0
+      nanoid: 3.3.8
+      secure-json-parse: 2.7.0
+      zod: 3.24.1
+    dev: false
+
   /@ai-sdk/provider/0.0.26:
     resolution: {integrity: sha512-dQkfBDs2lTYpKM8389oopPdQgIU007GQyCbuPPrV+K6MtSII3HBfE0stUIMXUb44L+LK1t6GXPP7wjSzjO6uKg==}
     engines: {node: '>=18'}
@@ -211,8 +227,15 @@ packages:
       json-schema: 0.4.0
     dev: false
 
-  /@ai-sdk/react/1.1.6_react@18.2.0+zod@3.24.1:
-    resolution: {integrity: sha512-kP5pimLyNWldw8+0j3ym+AACFEXcQHdELNtk45wDJA3HoH486x/zffdn7yLc3c1DOu5apew+COl8CNL4A+2E4g==}
+  /@ai-sdk/provider/1.0.7:
+    resolution: {integrity: sha512-q1PJEZ0qD9rVR+8JFEd01/QM++csMT5UVwYXSN2u54BrVw/D8TZLTeg2FEfKK00DgAx0UtWd8XOhhwITP9BT5g==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
+    dev: false
+
+  /@ai-sdk/react/1.1.11_react@18.2.0+zod@3.24.1:
+    resolution: {integrity: sha512-vfjZ7w2M+Me83HTMMrnnrmXotz39UDCMd27YQSrvt2f1YCLPloVpLhP+Y9TLZeFE/QiiRCrPYLDQm6aQJYJ9PQ==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
@@ -223,16 +246,16 @@ packages:
       zod:
         optional: true
     dependencies:
-      '@ai-sdk/provider-utils': 2.1.5_zod@3.24.1
-      '@ai-sdk/ui-utils': 1.1.6_zod@3.24.1
+      '@ai-sdk/provider-utils': 2.1.6_zod@3.24.1
+      '@ai-sdk/ui-utils': 1.1.11_zod@3.24.1
       react: 18.2.0
       swr: 2.3.0_react@18.2.0
       throttleit: 2.1.0
       zod: 3.24.1
     dev: false
 
-  /@ai-sdk/ui-utils/1.1.6_zod@3.24.1:
-    resolution: {integrity: sha512-YAwZhFwpIcvWERIjkET2o2MAwMFfJG18WdtcIjtxxMW7hA0bt5cliOV78DVcwRrxqJ2IKBlxaFmwUjW6M4SdOQ==}
+  /@ai-sdk/ui-utils/1.1.11_zod@3.24.1:
+    resolution: {integrity: sha512-1SC9W4VZLcJtxHRv4Y0aX20EFeaEP6gUvVqoKLBBtMLOgtcZrv/F/HQRjGavGugiwlS3dsVza4X+E78fiwtlTA==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -240,8 +263,8 @@ packages:
       zod:
         optional: true
     dependencies:
-      '@ai-sdk/provider': 1.0.6
-      '@ai-sdk/provider-utils': 2.1.5_zod@3.24.1
+      '@ai-sdk/provider': 1.0.7
+      '@ai-sdk/provider-utils': 2.1.6_zod@3.24.1
       zod: 3.24.1
       zod-to-json-schema: 3.24.1_zod@3.24.1
     dev: false
@@ -1382,8 +1405,8 @@ packages:
       humanize-ms: 1.2.1
     dev: false
 
-  /ai/4.1.9_react@18.2.0+zod@3.24.1:
-    resolution: {integrity: sha512-EUc21jyV/2Fv0hEd4toLxQMxjTXBWjKnw16tpto12Vrg/EvkmfVSEvtwXDa+J70iPDmASxL10VKmJk/wnb6bZA==}
+  /ai/4.1.27_react@18.2.0+zod@3.24.1:
+    resolution: {integrity: sha512-0AQj95ZwClF9SmOxknyUh8P3ImZJNantAR9PUSQ7dBt4asegdEGF9m+11Y1ISDq9iDN2P5A069hnfroBiR3BNg==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
@@ -1394,10 +1417,10 @@ packages:
       zod:
         optional: true
     dependencies:
-      '@ai-sdk/provider': 1.0.6
-      '@ai-sdk/provider-utils': 2.1.5_zod@3.24.1
-      '@ai-sdk/react': 1.1.6_react@18.2.0+zod@3.24.1
-      '@ai-sdk/ui-utils': 1.1.6_zod@3.24.1
+      '@ai-sdk/provider': 1.0.7
+      '@ai-sdk/provider-utils': 2.1.6_zod@3.24.1
+      '@ai-sdk/react': 1.1.11_react@18.2.0+zod@3.24.1
+      '@ai-sdk/ui-utils': 1.1.11_zod@3.24.1
       '@opentelemetry/api': 1.9.0
       jsondiffpatch: 0.6.0
       react: 18.2.0
