@@ -17,7 +17,7 @@
   "type": "module",
   "dependencies": {
     "@ai-sdk/anthropic": "^1.0.6",
-    "@ai-sdk/deepseek": "^0.1.6",
+    "@ai-sdk/deepseek": "^0.1.11",
     "@ai-sdk/openai": "^0.0.72",
     "@mantine/core": "^7.5.3",
     "@mantine/form": "^7.5.3",
