@@ -1,6 +1,7 @@
 import { type WordEntryKey } from "@/hooks/use-history-store";
 import { type PreferencesT } from "@/hooks/use-response";
-import { createChatStreamDeepSeek } from "@/utils/deepseek";
+// import { createChatStreamDeepSeek } from "@/utils/deepseek";
+import { createChatStream } from "@/utils/openai";
 import type { CoreMessage } from "ai";
 
 export const runtime = "edge";
@@ -129,7 +130,7 @@ const getMessages = (
 };
 export const POST = async (req: Request) => {
     const { prompt, wordEntryKey, preferences, context } = await req.json();
-    return await createChatStreamDeepSeek({
+    return await createChatStream({
         messages: getMessages(prompt, {
             wordEntryKey: wordEntryKey || "definition",
             ...preferences,

@@ -31,7 +31,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@tanstack/react-query": "^5.12.2",
     "@upstash/redis": "^1.28.3",
-    "ai": "^4.1.46",
+    "ai": "^4.3.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",

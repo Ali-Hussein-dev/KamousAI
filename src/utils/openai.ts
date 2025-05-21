@@ -1,4 +1,4 @@
-import { type CoreMessage, streamText } from "ai";
+import { type CoreMessage, smoothStream, streamText } from "ai";
 import { openai, } from '@ai-sdk/openai';
 import OpenAI from "openai";
 
@@ -30,6 +30,9 @@ export const createChatStream = async (configs: {
         ),
         ...customConfigs,
         messages: customConfigs.messages,
+        experimental_transform: smoothStream({
+            delayInMs: 5, // optional: defaults to 10ms
+        }),
     })
     return res.toDataStreamResponse()
 }
