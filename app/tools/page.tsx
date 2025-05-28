@@ -84,8 +84,11 @@ const ToolsPage = () => {
                 key={tool.label}
                 className="flex flex-row items-center justify-between rounded-xl border bg-slate-900"
               >
-                {tool.label}
-                <ArrowRight className="h-5 w-5" />
+                <div className="flex flex-row items-center gap-2">
+                  <tool.Icon className="h-4 w-4 text-slate-400" />
+                  {tool.label}
+                </div>
+                <ArrowRight className="h-5 w-5 text-theme-accent/70" />
               </Card>
             </Link>
           ))}
