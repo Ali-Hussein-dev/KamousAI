@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2017",
+    "types": [
+      // Other types...
+      // This allows Serwist to type `window.serwist`.
+      "@serwist/next/typings"
+    ],
     "lib": [
       "dom",
       "dom.iterable",
@@ -43,6 +48,7 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "public/sw.js"
   ]
 }
