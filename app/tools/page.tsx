@@ -5,6 +5,7 @@ import { GiSpellBook } from "react-icons/gi";
 import { MdOutlineShortText } from "react-icons/md";
 import { Button, Card } from "@mantine/core";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const languageTools = [
   {
@@ -72,16 +73,21 @@ const ToolsPage = () => {
       }}
     >
       <section className="center mx-auto min-h-screen bg-gradient-to-tr from-slate-900/[0.91] from-50% via-slate-900/70 to-slate-900 px-2 py-14">
-        <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ">
           {languageTools?.map((tool) => (
-            <Card key={tool.label} className="rounded-lg border bg-slate-900 ">
-              <h2 className="text-lg">{tool.label}</h2>
-              <Button variant="filled" size="md" radius="md">
-                <Link href={tool.href} className="no-underline dark:text-white">
-                  Use tool
-                </Link>
-              </Button>
-            </Card>
+            <Link
+              key={tool.label}
+              href={tool.href}
+              className="text-white no-underline"
+            >
+              <Card
+                key={tool.label}
+                className="flex flex-row items-center justify-between rounded-xl border bg-slate-900"
+              >
+                {tool.label}
+                <ArrowRight className="h-5 w-5" />
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
