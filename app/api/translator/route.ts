@@ -10,9 +10,9 @@ export const POST = async (req: Request) => {
     messages: [
       {
         role: "system",
-        content: CreatePrompt.translate(inputLanguage, outputLanguage),
+        content: "You are a multilingual translator. Your task is to translate text from one language to another accurately and fluently. You will be given the source language, target language, and the text to translate. Your response should contain only the translated text, without any additional comments or explanations.",
       },
-      { role: "user", content: prompt },
+      { role: "user", content: CreatePrompt.translate({TEXT_TO_TRANSLATE: prompt, inputLanguage, TARGET_LANGUAGE: outputLanguage}) },
     ],
   });
 };
